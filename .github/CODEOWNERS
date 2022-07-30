@@ -5,3 +5,7 @@
 
 # GitHub configs PR reviewer
 .github/*.   @MaSMas0
+
+# GitHub configs PR reviewer
+ECommerceApp/*.   @MaSMas0
+ECommerceApp/*   @MaSMas0
