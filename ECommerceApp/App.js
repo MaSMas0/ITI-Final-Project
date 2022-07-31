@@ -1,9 +1,9 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
-import SignUp from './screens/SignUp';
+import {StyleSheet} from 'react-native';
+
 import {NavigationContainer} from '@react-navigation/native';
 import AuthNavigator from './navigation/AuthNavigator';
-import SplashScreen from './screens/SplashScreen';
+
 const App = () => {
   return (
     <NavigationContainer>

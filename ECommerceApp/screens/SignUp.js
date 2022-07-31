@@ -1,22 +1,10 @@
-import React, {useRef} from 'react';
-import {
-  Button,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableWithoutFeedback,
-  TouchableOpacity,
-  View,
-  Image
-} from 'react-native';
+import React from 'react';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
 import InputApp from '../components/InputApp';
 import ErrorText from '../components/ErrorText';
 import PrimaryButton from '../components/PrimaryButton';
 import colors from '../config/colors';
-
-
 
 const SignUp = () => {
   const {
@@ -51,25 +39,21 @@ const SignUp = () => {
               },
             }}
             render={({field: {onChange, onBlur, value}}) => (
-              
-              <InputApp 
+              <InputApp
                 style={styles.inputStyle}
                 placeholder="First Name"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
                 icon="user"
-                
               />
-            
-
             )}
             name="FirstName"
           />
-          {errors.FirstName && <ErrorText ErrorText={errors.FirstName.message} />}
-          {/* {errors.FirstName && (
-            <Text style={styles.errorText}> {errors.FirstName.message}</Text>
-          )} */}
+          {errors.FirstName && (
+            <ErrorText ErrorText={errors.FirstName.message} />
+          )}
+
           <Text style={styles.labelStyle}>Last Name</Text>
 
           <Controller
@@ -93,12 +77,11 @@ const SignUp = () => {
                 onChangeText={onChange}
                 value={value}
                 icon="user"
-
               />
             )}
             name="LastName"
           />
-                   {errors.LastName && <ErrorText ErrorText={errors.LastName.message} />}
+          {errors.LastName && <ErrorText ErrorText={errors.LastName.message} />}
 
           <Text style={styles.labelStyle}>Email</Text>
 
@@ -119,12 +102,11 @@ const SignUp = () => {
                 onChangeText={onChange}
                 value={value}
                 icon="mail"
-
               />
             )}
             name="Email"
           />
-                   {errors.Email && <ErrorText ErrorText={errors.Email.message} />}
+          {errors.Email && <ErrorText ErrorText={errors.Email.message} />}
 
           <Text style={styles.labelStyle}>Password</Text>
 
@@ -171,13 +153,11 @@ const SignUp = () => {
                 value={value}
                 secureTextEntry
                 icon="lock1"
-
               />
             )}
             name="Password"
           />
-                  {errors.Password && <ErrorText ErrorText={errors.Password.message} />}
-
+          {errors.Password && <ErrorText ErrorText={errors.Password.message} />}
 
           <Text style={styles.labelStyle}>Confirm Password</Text>
 
@@ -200,12 +180,11 @@ const SignUp = () => {
             )}
             name="ConfirmPassword"
           />
-                  {errors.ConfirmPassword && <ErrorText ErrorText={errors.ConfirmPassword.message} />}
+          {errors.ConfirmPassword && (
+            <ErrorText ErrorText={errors.ConfirmPassword.message} />
+          )}
 
-
-                  <PrimaryButton title="Sign Up" onPress={handleSubmit(onSubmit)} />
-
-
+          <PrimaryButton title="Sign Up" onPress={handleSubmit(onSubmit)} />
         </View>
       </View>
     </ScrollView>
@@ -230,10 +209,8 @@ const styles = StyleSheet.create({
     color: colors.black,
     alignSelf: 'flex-start',
     marginVertical: 40,
-    marginHorizontal:20,
-
+    marginHorizontal: 20,
   },
-
 
   labelStyle: {
     color: colors.black,
@@ -248,8 +225,6 @@ const styles = StyleSheet.create({
     paddingVertical: 40,
     width: '90%',
   },
-
-
 });
 
 export default SignUp;
