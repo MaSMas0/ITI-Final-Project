@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Button,
   ScrollView,
   StyleSheet,
   Text,
@@ -10,7 +9,7 @@ import {
   View,
 } from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
-
+import AntDesign from 'react-native-vector-icons/AntDesign';
 const SignIn = ({navigation}) => {
   const {
     control,
@@ -22,7 +21,9 @@ const SignIn = ({navigation}) => {
   console.log(errors);
   const onSubmit = data => console.log(data);
   return (
-    <ScrollView>
+    <ScrollView style={styles.mainContainer}>
+      <AntDesign style={styles.backIcon} name="left" size={25}></AntDesign>
+
       <View style={styles.container}>
         <Text style={styles.header}>Sign In</Text>
         <View style={styles.subContainer}>
@@ -37,18 +38,24 @@ const SignIn = ({navigation}) => {
               },
             }}
             render={({field: {onChange, onBlur, value}}) => (
-              <TextInput
-                placeholder=" example@test.com"
-                onBlur={onBlur}
-                onChangeText={onChange}
-                value={value}
-                style={styles.inputStyle}
-              />
+              <View style={styles.passwordContainer}>
+                <TextInput
+                  placeholder=" Example@test.com"
+                  onBlur={onBlur}
+                  onChangeText={onChange}
+                  value={value}
+                  style={styles.inputStyle}
+                />
+                <AntDesign name="mail" size={20}></AntDesign>
+              </View>
             )}
             name="UserName"
           />
           {errors.UserName && (
-            <Text style={styles.errorText}>{errors.UserName.message}</Text>
+            <Text style={styles.errorText}>
+              <AntDesign name="closecircle" size={14}></AntDesign>
+              {errors.UserName.message}
+            </Text>
           )}
           <Text style={styles.labelStyle}>Password</Text>
           <Controller
@@ -57,29 +64,38 @@ const SignIn = ({navigation}) => {
               required: 'Password is required',
               minLength: {
                 value: 6,
-                message: 'min lenght is 6',
+                message: 'Min length is 6',
               },
             }}
             render={({field: {onChange, onBlur, value}}) => (
-              <TextInput
-                placeholder=" enter password"
-                onBlur={onBlur}
-                onChangeText={onChange}
-                value={value}
-                style={styles.inputStyle}
-                secureTextEntry
-              />
+              <View style={styles.passwordContainer}>
+                <TextInput
+                  placeholder=" Enter your password"
+                  onBlur={onBlur}
+                  onChangeText={onChange}
+                  value={value}
+                  style={styles.inputStyle}
+                  secureTextEntry
+                />
+                <AntDesign
+                  styles={styles.inputIcons}
+                  name="lock1"
+                  size={20}></AntDesign>
+              </View>
             )}
             name="Password"
           />
           {errors.Password && (
-            <Text style={styles.errorText}>{errors.Password.message}</Text>
+            <Text style={styles.errorText}>
+              <AntDesign name="closecircle" size={14}></AntDesign>
+              {errors.Password.message}
+            </Text>
           )}
           <TouchableOpacity onPress={handleSubmit(onSubmit)}>
             <Text style={styles.submit}>Sign in</Text>
           </TouchableOpacity>
 
-          <View style={{flexDirection: 'row'}}>
+          <View style={styles.signUpContainer}>
             <Text>Don't have account? </Text>
             <TouchableWithoutFeedback>
               <Text
@@ -100,7 +116,7 @@ const SignIn = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+
     alignItems: 'center',
     width: '100%',
   },
@@ -113,23 +129,23 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   inputStyle: {
-    borderWidth: 2,
-    borderRadius: 8,
-    borderColor: '#eee',
+    flex: 1,
   },
   labelStyle: {
     color: 'black',
     fontWeight: 'bold',
     marginBottom: 5,
+    marginTop: 5,
   },
   errorText: {
     color: 'red',
     marginBottom: 20,
+    flex: 1,
   },
   subContainer: {
     flex: 1,
     justifyContent: 'space-evenly',
-    paddingVertical: 150,
+    paddingVertical: 100,
     width: '90%',
   },
 
@@ -151,6 +167,27 @@ const styles = StyleSheet.create({
     color: 'black',
     // textDecorationLine: 'underline',
     fontWeight: 'bold',
+  },
+  mainContainer: {
+    backgroundColor: 'white',
+  },
+  backIcon: {
+    marginTop: 20,
+    marginLeft: 10,
+    color: 'black',
+  },
+  passwordContainer: {
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+    borderColor: '#000',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  errorContainer: {
+    flexDirection: 'row',
+  },
+  signUpContainer: {
+    flexDirection: 'row',
   },
 });
 
