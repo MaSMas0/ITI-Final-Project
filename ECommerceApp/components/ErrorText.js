@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import colors from '../config/colors';
 const ErrorText = ({ErrorText}) => {
   return (
     <View style={styles.errorContainer}>
@@ -17,7 +18,7 @@ const styles = StyleSheet.create({
     margin: 5,
   },
   errorText: {
-    color: 'red',
+    color: colors.danger,
     flex: 1,
     marginLeft: 5,
   },
