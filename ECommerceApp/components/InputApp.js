@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, TextInput, View} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import colors from '../config/colors';
 const InputApp = ({
   onBlur,
   onChange,
@@ -10,7 +11,7 @@ const InputApp = ({
   icon,
 }) => {
   return (
-    <View style={styles.container}>
+    <View style={styles.inputContainer}>
       <TextInput
         placeholder={placeholder}
         onBlur={onBlur}
@@ -25,13 +26,14 @@ const InputApp = ({
 };
 
 const styles = StyleSheet.create({
-  container: {
+  inputContainer: {
     flexDirection: 'row',
     borderBottomWidth: 1,
-    borderColor: '#000',
+    color: colors.black,
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 5,
+    // backgroundColor: colors.grey,
   },
 });
 

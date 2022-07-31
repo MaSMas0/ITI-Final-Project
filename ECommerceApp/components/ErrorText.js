@@ -5,7 +5,7 @@ import colors from '../config/colors';
 const ErrorText = ({ErrorText}) => {
   return (
     <View style={styles.errorContainer}>
-      <AntDesign name="closecircle" size={14} color="red" />
+      <AntDesign name="closecircle" size={14} color={colors.danger} />
       <Text style={styles.errorText}>{ErrorText}</Text>
     </View>
   );

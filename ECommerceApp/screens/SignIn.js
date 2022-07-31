@@ -3,8 +3,6 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
-  TouchableOpacity,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
@@ -13,6 +11,8 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import InputApp from '../components/InputApp';
 import ErrorText from '../components/ErrorText';
 import PrimaryButton from '../components/PrimaryButton';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import colors from '../config/colors';
 const SignIn = ({navigation}) => {
   const {
     control,
@@ -27,7 +27,10 @@ const SignIn = ({navigation}) => {
       <AntDesign style={styles.backIcon} name="left" size={25} />
 
       <View style={styles.container}>
-        <Text style={styles.header}>Sign In</Text>
+        <Text style={styles.header}>
+          <FontAwesome5 name="person-booth" size={30}></FontAwesome5>Sign In
+        </Text>
+
         <View style={styles.subContainer}>
           <Text style={styles.labelStyle}>Email</Text>
           <Controller
@@ -36,14 +39,14 @@ const SignIn = ({navigation}) => {
               required: 'Email is required',
               pattern: {
                 value: /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/gi,
-                message: 'Email valdation ',
+                message: 'Email not valid',
               },
             }}
             render={({field: {onChange, onBlur, value}}) => (
               <InputApp
                 placeholder=" Example@test.com"
                 onBlur={onBlur}
-                onChangeText={onChange}
+                onChange={onChange}
                 value={value}
                 icon="mail"
               />
@@ -65,7 +68,7 @@ const SignIn = ({navigation}) => {
               <InputApp
                 placeholder=" Enter your password"
                 onBlur={onBlur}
-                onChangeText={onChange}
+                onChange={onChange}
                 value={value}
                 icon="lock1"
                 secureTextEntry={true}
@@ -103,13 +106,13 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: 'black',
+    color: colors.black,
     marginTop: 50,
     alignSelf: 'flex-start',
     marginLeft: 20,
   },
   labelStyle: {
-    color: 'black',
+    color: colors.black,
     fontWeight: 'bold',
     margin: 5,
   },
@@ -122,18 +125,18 @@ const styles = StyleSheet.create({
   },
 
   signUp: {
-    color: 'black',
+    color: colors.black,
     // textDecorationLine: 'underline',
     fontWeight: 'bold',
     marginStart: 2,
   },
   mainContainer: {
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
   },
   backIcon: {
     marginTop: 20,
-    marginLeft: 10,
-    color: 'black',
+    margin: 10,
+    color: colors.black,
   },
   signUpContainer: {
     flexDirection: 'row',
