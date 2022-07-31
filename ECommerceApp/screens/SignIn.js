@@ -1,20 +1,21 @@
 import React from 'react';
 import {
-  Button,
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
-  TouchableOpacity,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
-
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import InputApp from '../components/InputApp';
+import ErrorText from '../components/ErrorText';
+import PrimaryButton from '../components/PrimaryButton';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import colors from '../config/colors';
 const SignIn = ({navigation}) => {
   const {
     control,
-    register,
     handleSubmit,
     formState: {errors},
   } = useForm();
@@ -22,9 +23,14 @@ const SignIn = ({navigation}) => {
   console.log(errors);
   const onSubmit = data => console.log(data);
   return (
-    <ScrollView>
+    <ScrollView style={styles.mainContainer}>
+      <AntDesign style={styles.backIcon} name="left" size={25} />
+
       <View style={styles.container}>
-        <Text style={styles.header}>Sign In</Text>
+        <Text style={styles.header}>
+          <FontAwesome5 name="person-booth" size={30}></FontAwesome5>Sign In
+        </Text>
+
         <View style={styles.subContainer}>
           <Text style={styles.labelStyle}>Email</Text>
           <Controller
@@ -33,23 +39,21 @@ const SignIn = ({navigation}) => {
               required: 'Email is required',
               pattern: {
                 value: /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/gi,
-                message: 'Email valdation ',
+                message: 'Email not valid',
               },
             }}
             render={({field: {onChange, onBlur, value}}) => (
-              <TextInput
-                placeholder=" example@test.com"
+              <InputApp
+                placeholder=" Example@test.com"
                 onBlur={onBlur}
-                onChangeText={onChange}
+                onChange={onChange}
                 value={value}
-                style={styles.inputStyle}
+                icon="mail"
               />
             )}
             name="UserName"
           />
-          {errors.UserName && (
-            <Text style={styles.errorText}>{errors.UserName.message}</Text>
-          )}
+          {errors.UserName && <ErrorText ErrorText={errors.UserName.message} />}
           <Text style={styles.labelStyle}>Password</Text>
           <Controller
             control={control}
@@ -57,29 +61,25 @@ const SignIn = ({navigation}) => {
               required: 'Password is required',
               minLength: {
                 value: 6,
-                message: 'min lenght is 6',
+                message: 'Min length is 6',
               },
             }}
             render={({field: {onChange, onBlur, value}}) => (
-              <TextInput
-                placeholder=" enter password"
+              <InputApp
+                placeholder=" Enter your password"
                 onBlur={onBlur}
-                onChangeText={onChange}
+                onChange={onChange}
                 value={value}
-                style={styles.inputStyle}
-                secureTextEntry
+                icon="lock1"
+                secureTextEntry={true}
               />
             )}
             name="Password"
           />
-          {errors.Password && (
-            <Text style={styles.errorText}>{errors.Password.message}</Text>
-          )}
-          <TouchableOpacity onPress={handleSubmit(onSubmit)}>
-            <Text style={styles.submit}>Sign in</Text>
-          </TouchableOpacity>
+          {errors.Password && <ErrorText ErrorText={errors.Password.message} />}
 
-          <View style={{flexDirection: 'row'}}>
+          <PrimaryButton title="Sign In" onPress={handleSubmit(onSubmit)} />
+          <View style={styles.signUpContainer}>
             <Text>Don't have account? </Text>
             <TouchableWithoutFeedback>
               <Text
@@ -100,57 +100,47 @@ const SignIn = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
     alignItems: 'center',
     width: '100%',
   },
   header: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: 'black',
+    color: colors.black,
     marginTop: 50,
     alignSelf: 'flex-start',
     marginLeft: 20,
   },
-  inputStyle: {
-    borderWidth: 2,
-    borderRadius: 8,
-    borderColor: '#eee',
-  },
   labelStyle: {
-    color: 'black',
+    color: colors.black,
     fontWeight: 'bold',
-    marginBottom: 5,
+    margin: 5,
   },
-  errorText: {
-    color: 'red',
-    marginBottom: 20,
-  },
+
   subContainer: {
     flex: 1,
     justifyContent: 'space-evenly',
-    paddingVertical: 150,
+    paddingVertical: 100,
     width: '90%',
   },
 
-  submit: {
-    color: 'white',
-    backgroundColor: 'black',
-    width: '100%',
-    height: 40,
-    textAlign: 'center',
-    marginTop: 10,
-    display: 'flex',
-    textAlignVertical: 'center',
-    fontSize: 18,
-    borderRadius: 8,
-    fontWeight: 'bold',
-    marginBottom: 8,
-  },
   signUp: {
-    color: 'black',
+    color: colors.black,
     // textDecorationLine: 'underline',
     fontWeight: 'bold',
+    marginStart: 2,
+  },
+  mainContainer: {
+    backgroundColor: colors.white,
+  },
+  backIcon: {
+    marginTop: 20,
+    margin: 10,
+    color: colors.black,
+  },
+  signUpContainer: {
+    flexDirection: 'row',
+    marginStart: 10,
   },
 });
 
