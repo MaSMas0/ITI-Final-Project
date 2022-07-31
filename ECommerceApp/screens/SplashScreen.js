@@ -8,7 +8,6 @@ import {
   Animated,
 } from 'react-native';
 
-//: () => React$Node
 const SplashScreen = ({navigation}) => {
   const moveAnim = useRef(new Animated.Value(0)).current;
   const fadeAnim = useRef(new Animated.Value(0)).current;
