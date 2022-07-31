@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text,
   TextInput,
+  TouchableOpacity,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
@@ -21,72 +22,135 @@ const SignIn = ({navigation}) => {
   console.log(errors);
   const onSubmit = data => console.log(data);
   return (
-    <View style={styles.container}>
-      <View>
-        {errors.UserName && <Text>{errors.UserName.message}</Text>}
-        <Controller
-          control={control}
-          rules={{
-            required: 'Email is required',
-            pattern: {
-              value: /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/gi,
-              message: 'Email valdation ',
-            },
-          }}
-          render={({field: {onChange, onBlur, value}}) => (
-            <TextInput
-              placeholder="UserName"
-              onBlur={onBlur}
-              onChangeText={onChange}
-              value={value}
-            />
+    <ScrollView>
+      <View style={styles.container}>
+        <Text style={styles.header}>Sign In</Text>
+        <View style={styles.subContainer}>
+          <Text style={styles.labelStyle}>Email</Text>
+          <Controller
+            control={control}
+            rules={{
+              required: 'Email is required',
+              pattern: {
+                value: /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/gi,
+                message: 'Email valdation ',
+              },
+            }}
+            render={({field: {onChange, onBlur, value}}) => (
+              <TextInput
+                placeholder=" example@test.com"
+                onBlur={onBlur}
+                onChangeText={onChange}
+                value={value}
+                style={styles.inputStyle}
+              />
+            )}
+            name="UserName"
+          />
+          {errors.UserName && (
+            <Text style={styles.errorText}>{errors.UserName.message}</Text>
           )}
-          name="UserName"
-        />
-        {errors.Password && <Text>{errors.Password.message}</Text>}
-        <Controller
-          control={control}
-          rules={{
-            required: 'Password is required',
-            minLength: {
-              value: 6,
-              message: 'min lenght is 6',
-            },
-          }}
-          render={({field: {onChange, onBlur, value}}) => (
-            <TextInput
-              placeholder="password"
-              onBlur={onBlur}
-              onChangeText={onChange}
-              value={value}
-            />
+          <Text style={styles.labelStyle}>Password</Text>
+          <Controller
+            control={control}
+            rules={{
+              required: 'Password is required',
+              minLength: {
+                value: 6,
+                message: 'min lenght is 6',
+              },
+            }}
+            render={({field: {onChange, onBlur, value}}) => (
+              <TextInput
+                placeholder=" enter password"
+                onBlur={onBlur}
+                onChangeText={onChange}
+                value={value}
+                style={styles.inputStyle}
+                secureTextEntry
+              />
+            )}
+            name="Password"
+          />
+          {errors.Password && (
+            <Text style={styles.errorText}>{errors.Password.message}</Text>
           )}
-          name="Password"
-        />
+          <TouchableOpacity onPress={handleSubmit(onSubmit)}>
+            <Text style={styles.submit}>Sign in</Text>
+          </TouchableOpacity>
 
-        <Button title="Submit" onPress={handleSubmit(onSubmit)} />
-        <View style={{flexDirection: 'row'}}>
-          <Text>if you don't have account </Text>
-          <TouchableWithoutFeedback>
-            <Text
-              onPress={() => {
-                navigation.navigate('SignUp');
-              }}>
-              SignUp
-            </Text>
-          </TouchableWithoutFeedback>
+          <View style={{flexDirection: 'row'}}>
+            <Text>Don't have account? </Text>
+            <TouchableWithoutFeedback>
+              <Text
+                style={styles.signUp}
+                onPress={() => {
+                  navigation.navigate('SignUp');
+                }}>
+                Sign Up
+              </Text>
+            </TouchableWithoutFeedback>
+          </View>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'yellow',
-    justifyContent: 'center',
+    backgroundColor: 'white',
     alignItems: 'center',
+    width: '100%',
+  },
+  header: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'black',
+    marginTop: 50,
+    alignSelf: 'flex-start',
+    marginLeft: 20,
+  },
+  inputStyle: {
+    borderWidth: 2,
+    borderRadius: 8,
+    borderColor: '#eee',
+  },
+  labelStyle: {
+    color: 'black',
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  errorText: {
+    color: 'red',
+    marginBottom: 20,
+  },
+  subContainer: {
+    flex: 1,
+    justifyContent: 'space-evenly',
+    paddingVertical: 150,
+    width: '90%',
+  },
+
+  submit: {
+    color: 'white',
+    backgroundColor: 'black',
+    width: '100%',
+    height: 40,
+    textAlign: 'center',
+    marginTop: 10,
+    display: 'flex',
+    textAlignVertical: 'center',
+    fontSize: 18,
+    borderRadius: 8,
+    fontWeight: 'bold',
+    marginBottom: 8,
+  },
+  signUp: {
+    color: 'black',
+    // textDecorationLine: 'underline',
+    fontWeight: 'bold',
   },
 });
 
