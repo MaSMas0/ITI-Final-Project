@@ -18,10 +18,10 @@ const Home = props => {
 
   
 
-      <FlatList
+      <FlatList style={{ margin:5,}}
         nestedScrollEnabled
          numColumns={2}
-        data={[1, 2, 3, 45, 5, 6, 7, 8, 8, 8, 8, 8, 8, 8]}
+        data={[1, 2, 3, 45, 5, 6, 7, 8, 8, 8, 8, 8, 9,9,10,10,1,1,1]}
         renderItem={(item, index) => {
           return <BrandCard />;
         }}
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   },
   line:{
     width:"100%",
-    height:8,
+    height:5,
     backgroundColor:colors.lightGrey,
     // backgroundColor:"#F6F6F6",
     margin:5
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
   h1:{
     fontSize:24,
     textTransform:'uppercase',
+    letterSpacing:3,
     fontWeight:"bold",
     color:colors.black,
 
