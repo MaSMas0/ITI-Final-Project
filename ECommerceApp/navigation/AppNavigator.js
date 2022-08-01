@@ -7,6 +7,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from '../screens/Home';
 import Settings from '../screens/Settings';
 import Category from '../screens/Category';
+import Header from '../components/Header';
 import colors from '../config/colors';
 const Tab = createMaterialBottomTabNavigator();
 
@@ -15,7 +16,11 @@ const Stack = createNativeStackNavigator();
 function HomeStackScreen() {
   return (
     <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{headerTitle: props => <Header {...props} />}}
+      />
     </Stack.Navigator>
   );
 }
