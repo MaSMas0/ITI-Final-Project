@@ -1,15 +1,6 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React, {useRef, useEffect} from 'react';
 import {
   SafeAreaView,
-  Image,
   Text,
   View,
   StyleSheet,
@@ -17,8 +8,7 @@ import {
   Animated,
 } from 'react-native';
 
-//: () => React$Node
-const SplashScreen = () => {
+const SplashScreen = ({navigation}) => {
   const moveAnim = useRef(new Animated.Value(0)).current;
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
@@ -43,6 +33,9 @@ const SplashScreen = () => {
       delay: 2000,
       useNativeDriver: false,
     }).start();
+    setTimeout(() => {
+      navigation.navigate('SignIn');
+    }, 4000);
   }, [moveAnim, fadeAnim]);
 
   return (
