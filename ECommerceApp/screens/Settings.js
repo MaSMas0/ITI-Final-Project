@@ -1,13 +1,11 @@
 import React from 'react';
-import {StyleSheet, View,Text} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
-function Category(props) {
+function Settings(props) {
   return (
     <View style={styles.container}>
       <View>
-        <Text>
-          Category
-        </Text>
+        <Text>Settings</Text>
       </View>
     </View>
   );
@@ -17,4 +15,4 @@ const styles = StyleSheet.create({
   container: {},
 });
 
-export default Category;
+export default Settings;

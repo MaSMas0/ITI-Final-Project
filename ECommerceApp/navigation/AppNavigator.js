@@ -1,35 +1,80 @@
 import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from '../screens/Home';
+import Settings from '../screens/Settings';
 import Category from '../screens/Category';
-const Tab = createBottomTabNavigator();
+import Header from '../components/Header';
+import colors from '../config/colors';
+const Tab = createMaterialBottomTabNavigator();
 
-const AppNavigator = () => (
-  <Tab.Navigator>
+const Stack = createNativeStackNavigator();
+
+function HomeStackScreen() {
+  return (
+    <Stack.Navigator initialRouteName="Home">
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{headerTitle: props => <Header {...props} />}}
+      />
+    </Stack.Navigator>
+  );
+}
+function CategoryStackScreen() {
+  return (
+    <Stack.Navigator initialRouteName="Category">
+      <Stack.Screen name="Category" component={Category} />
+    </Stack.Navigator>
+  );
+}
+function SettingsStackScreen() {
+  return (
+    <Stack.Navigator initialRouteName="Settings">
+      <Stack.Screen name="Settings" component={Settings} />
+    </Stack.Navigator>
+  );
+}
+const Footer = () => (
+  <Tab.Navigator
+    initialRouteName="Home"
+    activeColor={colors.black}
+    inactiveColor={colors.medium}
+    shifting
+    barStyle={{backgroundColor: colors.white}}>
     <Tab.Screen
       name="Home"
-      component={Home}
+      component={HomeStackScreen}
       options={{
-        tabBarIcon: ({color, size}) => (
-          <MaterialCommunityIcons name="home" color={color} size={size} />
+        tabBarIcon: ({color}) => (
+          <MaterialCommunityIcons name="home" color={color} size={25} />
         ),
       }}
     />
+
     <Tab.Screen
       name="Category"
-      component={Category}
+      component={CategoryStackScreen}
       options={{
-        tabBarIcon: ({color, size}) => (
-          <MaterialCommunityIcons
-            name="drag-indicator"
-            color={color}
-            size={size}
-          />
+        tabBarIcon: ({color}) => (
+          <MaterialIcons name="category" color={color} size={25} />
+        ),
+      }}
+    />
+
+    <Tab.Screen
+      name="Me"
+      component={SettingsStackScreen}
+      options={{
+        tabBarIcon: ({color}) => (
+          <AntDesign name="user" color={color} size={25} />
         ),
       }}
     />
   </Tab.Navigator>
 );
 
-export default AppNavigator;
+export default Footer;

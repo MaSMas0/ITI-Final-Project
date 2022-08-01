@@ -50,13 +50,17 @@ const styles = StyleSheet.create({
     flexGrow: 0,
     height: 150,
     backgroundColor: 'white',
-    borderWidth: 1,
-    borderColor: 'red',
+    borderRadius:10,
+    marginLeft:20,
+    marginRight:20,
+ 
   },
   item: {
-    borderWidth: 2,
+  
+    width:'100%',
     justifyContent: 'center',
     alignItems: 'center',
+    borderRadius:10,
   },
   text: {
     fontSize: 100,
