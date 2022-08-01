@@ -1,80 +1,105 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React from 'react';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Dimensions,
+} from 'react-native';
+import colors from '../config/colors';
 
-export default function ProductCard() {
+const width = Dimensions.get('window').width / 2 - 30;
+
+const Card = ({product}) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={() => navigation.navigate('SingleDetails', product)}>
+      <View style={style.card}>
+        <View style={{alignItems: 'flex-end'}}>
+          <View
+            style={{
+              width: 30,
+              height: 30,
+              borderRadius: 20,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}></View>
+        </View>
 
-    <View
-    style={styles.container}>
-      <View style={styles.subcontainer}>
-      <Text style={styles.discount}>
-          10 %
+        <View
+          style={{
+            height: 100,
+            alignItems: 'center',
+          }}>
+          <Image
+            source={{uri: product.image}}
+            style={{flex: 1, resizeMode: 'contain', width: 100, height: 100}}
+          />
+        </View>
+
+        <Text style={{fontWeight: 'bold', fontSize: 17, marginTop: 10}}>
+          {product.title}
         </Text>
-        <Image source={require('../assets/rr.png')} style={styles.image} />
-  
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginTop: 5,
+          }}>
+          <Text style={{fontSize: 19, fontWeight: 'bold'}}>
+            ${product.price}
+          </Text>
+          <View
+            style={{
+              height: 25,
+              width: 25,
+              backgroundColor: colors.green,
+              borderRadius: 5,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Text
+              style={{fontSize: 22, color: colors.white, fontWeight: 'bold'}}>
+              +
+            </Text>
+          </View>
+        </View>
       </View>
-        <Text style={styles.title}>name of product</Text>
-        <Text style={styles.price}>Price $</Text>
-      {/* <View
-        style={styles.shadow}></View> */}
-    </View>
-        </TouchableOpacity>
-  )
-}
+    </TouchableOpacity>
+  );
+};
 
-const styles = StyleSheet.create({
-    container :{
-        justifyContent: 'center',
-        margin: 10,
-        alignItems: 'center',
-        
-        
-      },
-      subcontainer: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: 170,
-        height: 120,
-        backgroundColor:colors.grey,
-        borderTopLeftRadius:10,
-        borderBottomRightRadius:10
-        
-        
-      },
-      discount:{
-        position:'absolute',
-        top:0,
-        left:0,
-        backgroundColor:"green",
-        width:35,
-        textAlign:'center',
-        color:colors.white,
-        borderTopLeftRadius:10,
-        borderBottomRightRadius:10,
-        fontSize:12,
-        
-    
-      },
-      image: {
-        width: 80,
-        height: 60,
-        marginStart: 12,
-      },
-      title: {
-        fontWeight: 'bold',
-        fontSize: 14,
-        alignItems:'flex-start',
-        color:colors.black
-     },
-     price:{
-    fontSize:12
-     },
-      shadow:{
-        borderRadius: 20,
-        width: 140,
-        height: 5,
-        elevation: 1,
-        shadowColor: Colors.grey,
-      }
-})
+const style = StyleSheet.create({
+  search: {
+    height: 50,
+    backgroundColor: colors.lightGrey,
+    borderRadius: 10,
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  input: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: colors.black,
+    backgroundColor: colors.grey,
+    borderRadius: 20,
+    width: 350,
+    paddingLeft: 20,
+    marginHorizontal: 10,
+  },
+
+  card: {
+    height: 225,
+    backgroundColor: colors.light,
+    width,
+    marginHorizontal: 2,
+    borderRadius: 10,
+    marginBottom: 20,
+    padding: 15,
+  },
+});
+
+export default Card;
