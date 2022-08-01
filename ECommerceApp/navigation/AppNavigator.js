@@ -19,7 +19,7 @@ function HomeStackScreen() {
       <Stack.Screen
         name="Home"
         component={Home}
-        options={{headerTitle: props => <Header {...props} />}}
+        options={{headerTitle: props => <Header title={'Home'} {...props} />}}
       />
     </Stack.Navigator>
   );

@@ -3,17 +3,20 @@ import {StyleSheet, Text, View} from 'react-native';
 import SearchBar from './SearchBar';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import colors from '../config/colors';
-function Header(props) {
+function Header({title}) {
   return (
     <View style={styles.headerContainer}>
-      <SearchBar />
+      <SearchBar title={title} />
       <View
         style={{
           flexDirection: 'row',
           flex: 1,
           justifyContent: 'space-around',
         }}>
-        <AntDesign name="shoppingcart" size={25}></AntDesign>
+        <AntDesign
+          name="shoppingcart"
+          size={25}
+          color={colors.black}></AntDesign>
         <AntDesign name="heart" size={25}></AntDesign>
       </View>
     </View>
