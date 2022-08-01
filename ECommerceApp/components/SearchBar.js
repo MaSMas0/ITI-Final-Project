@@ -44,12 +44,13 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     flexDirection: 'row',
-    width: '68%',
+    width: '70%',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
   title: {
     fontSize: 20,
+    color: colors.black,
   },
 });
 export default SearchBar;

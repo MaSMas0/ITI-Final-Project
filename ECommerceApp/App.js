@@ -4,10 +4,12 @@ import {NavigationContainer} from '@react-navigation/native';
 import AuthNavigator from './navigation/AuthNavigator';
 import AppNavigator from './navigation/AppNavigator';
 import navigationTheme from './navigation/navigationTheme';
+import FilterBar from './components/FilterBar';
 const App = () => {
   return (
     <NavigationContainer>
       <AppNavigator />
+      {/* <FilterBar /> */}
     </NavigationContainer>
   );
 };

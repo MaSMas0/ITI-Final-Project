@@ -1,11 +1,10 @@
+import React from 'react';
 import {StyleSheet, Image, Text, View} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import React from 'react';
-import {red100} from 'react-native-paper/lib/typescript/styles/colors';
-
+import * as Animatable from 'react-native-animatable';
 const ProductiteminCategory = () => {
   return (
-    <View>
+    <Animatable.View animation="flipInY" duration={1000}>
       <View style={styles.container}>
         <Image
           style={styles.image}
@@ -18,7 +17,7 @@ const ProductiteminCategory = () => {
         <Text style={styles.fav}>250.00 EGP</Text>
         <AntDesign style={styles.iconStyle} name="heart" size={25}></AntDesign>
       </View>
-    </View>
+    </Animatable.View>
   );
 };
 

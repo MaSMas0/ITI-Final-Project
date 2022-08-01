@@ -1,10 +1,12 @@
 import React from 'react';
 import {StyleSheet, View, FlatList, Text} from 'react-native';
 import ProductiteminCategory from '../components/ProductiteminCategory';
-
+import FilterBar from '../components/FilterBar';
+import * as Animatable from 'react-native-animatable';
 function Category(props) {
   return (
     <View style={styles.container}>
+      <FilterBar />
       <FlatList
         nestedScrollEnabled
         numColumns={3}

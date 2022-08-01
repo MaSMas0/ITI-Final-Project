@@ -16,8 +16,8 @@ function Header({title}) {
         <AntDesign
           name="shoppingcart"
           size={25}
-          color={colors.black}></AntDesign>
-        <AntDesign name="heart" size={25}></AntDesign>
+          color={colors.medium}></AntDesign>
+        <AntDesign name="hearto" size={25} color={colors.medium}></AntDesign>
       </View>
     </View>
   );
