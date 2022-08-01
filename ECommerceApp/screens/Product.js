@@ -16,7 +16,6 @@ import {
 } from 'react-native';
 import colors from '../config/colors';
 import Card from '../components/ProductCard';
-const width = Dimensions.get('window').width / 2 - 30;
 
 const Product = ({navigation}) => {
   const [products, setProduct] = useState([]);
@@ -34,7 +33,7 @@ const Product = ({navigation}) => {
   }, []);
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{backgroundColor: 'white', paddingHorizontal: 5}}>
       <FlatList
         columnWrapperStyle={{justifyContent: 'space-between'}}
         showsVerticalScrollIndicator={false}
@@ -49,15 +48,6 @@ const Product = ({navigation}) => {
         }}
       />
     </SafeAreaView>
-
-    // <SafeAreaView>
-    //   <View style={{marginTop: 30, flexDirection: 'row'}}>
-    //     <View style={style.search}>
-    //       <Icon name="search" size={25} style={{marginLeft: 20}} />
-    //       <TextInput placeholder="Search" />
-    //     </View>
-    //   </View>
-    // </SafeAreaView>
   );
 };
 export default Product;

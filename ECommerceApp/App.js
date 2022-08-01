@@ -17,7 +17,7 @@ const App = () => {
       {/* <AppNavigator /> */}
 
       <Stack.Navigator screenOptions={{header: () => null}}>
-        <Stack.Screen name="Products" component={Product} />
+        {/* <Stack.Screen name="Products" component={Product} /> */}
         <Stack.Screen name="SingleDetails" component={SingleDetails} />
       </Stack.Navigator>
       {/* 

@@ -2,8 +2,8 @@ import {Text, View, SafeAreaView, StyleSheet, Image} from 'react-native';
 import React from 'react';
 import colors from '../config/colors';
 
-const SingleDetails = ({navigation, route}) => {
-  const product = route.params;
+const SingleDetails = () => {
+  // const product = route.params;
   return (
     <SafeAreaView
       style={{
@@ -16,7 +16,9 @@ const SingleDetails = ({navigation, route}) => {
       </View>
       <View style={style.imageContainer}>
         <Image
-          source={{uri: product.image}}
+          source={{
+            uri: 'https://www.slazzer.com/static/images/home-page/individual-image-design-maker.jpg',
+          }}
           style={{resizeMode: 'contain', flex: 1, width: 150, height: 200}}
         />
       </View>
@@ -35,7 +37,7 @@ const SingleDetails = ({navigation, route}) => {
             alignItems: 'center',
           }}>
           <Text style={{fontSize: 22, fontWeight: 'bold', color: colors.black}}>
-            {product.title}
+            image product
           </Text>
           <View style={style.priceTag}>
             <Text
@@ -45,7 +47,7 @@ const SingleDetails = ({navigation, route}) => {
                 fontWeight: 'bold',
                 fontSize: 16,
               }}>
-              ${product.price}
+              $200
             </Text>
           </View>
         </View>
@@ -58,7 +60,9 @@ const SingleDetails = ({navigation, route}) => {
               lineHeight: 22,
               marginTop: 4,
             }}>
-            {product.description}
+            praising pain was born and I will give you a complete account of the
+            system, and expound the actual teachings of the great explorer of
+            the truth, the master-builder of human happiness.
           </Text>
           <View
             style={{
