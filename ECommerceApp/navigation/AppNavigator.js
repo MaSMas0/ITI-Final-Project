@@ -3,52 +3,46 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 
 import Home from '../screens/Home';
 import Category from '../screens/Category';
-const Tab = createBottomTabNavigator();
+import colors from '../config/colors';
+const Tab = createMaterialBottomTabNavigator();
 
 const Footer = () => (
-  <Tab.Navigator 
-  screenOptions={{
-    tabBarActiveTintColor:'black',
-    // headerShown:false
-  }}>
-   
+  <Tab.Navigator
+    initialRouteName="Home"
+    activeColor={colors.black}
+    inactiveColor={colors.medium}
+    shifting
+    barStyle={{backgroundColor: colors.white}}>
     <Tab.Screen
       name="Home"
       component={Home}
       options={{
-        tabBarIcon: ({ focused,color, size}) => (
-          <MaterialCommunityIcons name="home" color={color} size={size} />
+        tabBarIcon: ({color}) => (
+          <MaterialCommunityIcons name="home" color={color} size={25} />
         ),
       }}
     />
-    
+
     <Tab.Screen
       name="Category"
       component={Category}
       options={{
         tabBarIcon: ({color, size}) => (
-          <MaterialIcons
-            name="category"
-            color={color}
-            size={size}
-          />
+          <MaterialIcons name="category" color={color} size={25} />
         ),
       }}
     />
 
     <Tab.Screen
-      name="Settings"
+      name="Me"
       component={Category}
       options={{
         tabBarIcon: ({color, size}) => (
-          <AntDesign
-            name="setting"
-            color={color}
-            size={size}
-          />
+          <AntDesign name="user" color={color} size={25} />
         ),
       }}
     />
