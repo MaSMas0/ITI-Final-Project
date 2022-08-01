@@ -4,7 +4,12 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 function BrandCard(props) {
   return (
     <View
-      style={{marginTop: 20, justifyContent: 'center', alignItems: 'center'}}>
+      style={{
+        marginTop: 20,
+        justifyContent: 'center',
+        margin: 10,
+        alignItems: 'center',
+      }}>
       <View style={styles.container}>
         <Image source={require('../assets/rr.png')} style={styles.image} />
         <Text style={styles.title}>Adidas</Text>
@@ -15,7 +20,7 @@ function BrandCard(props) {
           width: 140,
           height: 5,
           elevation: 1,
-          shadowColor: 'black',
+          shadowColor: 'gray',
         }}></View>
     </View>
   );

@@ -3,13 +3,11 @@ import {StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import AuthNavigator from './navigation/AuthNavigator';
 import AppNavigator from './navigation/AppNavigator';
-import BrandCard from './components/BrandCard';
 
 const App = () => {
   return (
     <NavigationContainer>
-      {/* <AppNavigator /> */}
-      <BrandCard />
+      <AppNavigator />
     </NavigationContainer>
   );
 };
