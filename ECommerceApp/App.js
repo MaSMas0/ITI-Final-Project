@@ -1,13 +1,28 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
 import AuthNavigator from './navigation/AuthNavigator';
 import AppNavigator from './navigation/AppNavigator';
 import navigationTheme from './navigation/navigationTheme';
+import Product from './screens/Product';
+import SingleDetails from './screens/SingleDetails';
+
+const Stack = createNativeStackNavigator();
+
 const App = () => {
   return (
     <NavigationContainer>
-      <AppNavigator />
+      {/* <AppNavigator /> */}
+
+      <Stack.Navigator screenOptions={{header: () => null}}>
+        {/* <Stack.Screen name="Products" component={Product} /> */}
+        <Stack.Screen name="SingleDetails" component={SingleDetails} />
+      </Stack.Navigator>
+      {/* 
+      <Product />
+      <SingleDetails /> */}
     </NavigationContainer>
   );
 };
