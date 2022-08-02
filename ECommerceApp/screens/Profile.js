@@ -1,8 +1,8 @@
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
+import colors from '../config/colors';
 import TopNavigator from '../navigation/TopNavigator';
-import TabViewExample from './Ansary';
 
 function Settings(props) {
   return (
@@ -13,7 +13,10 @@ function Settings(props) {
             <Text style={styles.userName}>Kareem Ansary</Text>
             <Text style={styles.email}>kareem.ansary@gmail</Text>
           </View>
-          <Image style={styles.image} source={require('../assets/rr.png')} />
+          <Image
+            style={styles.image}
+            source={require('../assets/account.png')}
+          />
         </View>
       </View>
 
@@ -24,7 +27,9 @@ function Settings(props) {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: '20%',
+    height: '40%',
+    paddingHorizontal: 20,
+    backgroundColor: colors.white,
   },
   image: {
     width: 60,
@@ -36,13 +41,15 @@ const styles = StyleSheet.create({
   },
 
   email: {
-    fontWeight: 'bold',
-    fontSize: 13,
+    fontWeight: '500',
+    fontSize: 12.5,
+    marginStart: 2,
   },
   infoContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginTop: 30,
   },
 });
 

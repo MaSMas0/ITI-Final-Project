@@ -6,7 +6,7 @@ import {createMaterialBottomTabNavigator} from '@react-navigation/material-botto
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import Home from '../screens/Home';
-import Settings from '../screens/Settings';
+import Settings from '../screens/Profile';
 import Category from '../screens/Category';
 import Product from '../screens/ProductList';
 
@@ -18,6 +18,7 @@ import WishList from '../screens/WishList';
 import SearchBar from '../components/SearchBar';
 import HeaderRight from '../components/HeaderRight';
 import Cart from '../screens/Cart';
+import DrawerNavigator from './DrawerNavigator';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -102,7 +103,11 @@ function CategoryStackScreen() {
 function SettingsStackScreen() {
   return (
     <Stack.Navigator initialRouteName="Settings">
-      <Stack.Screen name="Settings" component={Settings} />
+      <Stack.Screen
+        name="Settings"
+        component={DrawerNavigator}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   );
 }
