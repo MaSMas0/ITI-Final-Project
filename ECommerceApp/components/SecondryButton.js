@@ -14,14 +14,15 @@ function SecondryButton({onPress, title}) {
 const styles = StyleSheet.create({
   submit: {
     color: colors.black,
-    backgroundColor: "#fdb833",
-    width: '100%',
-    height: 40,
+    backgroundColor: colors.gold,
+   
+    height: 35,
     textAlign: 'center',
     textAlignVertical: 'center',
-    fontSize: 18,
+    fontSize: 14,
     borderRadius: 8,
     fontWeight: 'bold',
+    color:colors.lightGrey
   },
 });
 

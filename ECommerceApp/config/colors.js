@@ -5,4 +5,5 @@ export default {
   medium: '#6e6969',
   danger: '#bf1616',
   lightGrey:'#F6F6F6',
+  gold:'#FEB139'
 };
