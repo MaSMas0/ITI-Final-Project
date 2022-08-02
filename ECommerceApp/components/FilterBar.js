@@ -4,8 +4,10 @@ import {
   StyleSheet,
   Text,
   TouchableHighlight,
+  TouchableOpacity,
   View,
 } from 'react-native';
+import colors from '../config/colors';
 
 
 const FilterBar = props => {
@@ -17,11 +19,11 @@ const FilterBar = props => {
         data={[1, 2, 3, 45, 5, 6, 7, 8, 8, 8, 8, 8, 8, 8]}
         renderItem={(item, index) => {
           return (
-            <TouchableHighlight>
+            <TouchableOpacity>
               <View style={styles.container}>
-                <Text>Karim and Hoda</Text>
+                <Text style={styles.nameOfCategory}>Karim and Hoda</Text>
               </View>
-            </TouchableHighlight>
+            </TouchableOpacity>
           );
         }}
       />
@@ -31,14 +33,20 @@ const FilterBar = props => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 25,
-    backgroundColor: 'gray',
+    height: 30,
+    backgroundColor: colors.black,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 12,
-    margin: 10,
+    borderTopLeftRadius:8,
+    borderBottomRightRadius:8,
+    marginVertical: 20,
+    marginHorizontal: 8,
     paddingHorizontal: 10,
   },
+  nameOfCategory:{
+    color:colors.lightGrey,
+
+  }
 });
 
 export default FilterBar;
