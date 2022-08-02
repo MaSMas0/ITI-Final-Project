@@ -1,80 +1,111 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, {useState} from 'react';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Dimensions,
+} from 'react-native';
+import colors from '../config/colors';
+import SecondryButton from './SecondryButton';
+import FreeShipping from './FreeShipping';
+import Like from './Like';
 
-export default function ProductCard() {
+const width = Dimensions.get('window').width / 2 - 15;
+
+const Card = ({product, onPress}) => {
   return (
-    <TouchableOpacity>
-
-    <View
-    style={styles.container}>
-      <View style={styles.subcontainer}>
-      <Text style={styles.discount}>
-          10 %
+    <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
+      <View style={styles.card}>
+        <FreeShipping />
+        <Image source={{uri: product.image}} style={styles.image} />
+        <Text style={styles.like}>
+          <Like />
         </Text>
-        <Image source={require('../assets/rr.png')} style={styles.image} />
-  
+
+        <Text style={styles.name}> Name of Product</Text>
+        <View style={styles.info}>
+          <Text style={styles.price}>${product.price}</Text>
+        </View>
+        <Text
+          style={{
+            fontWeight: 'bold',
+            letterSpacing: 2,
+            fontSize: 12,
+            color: colors.black,
+          }}>
+          Nile
+          <Text
+            style={{
+              color: colors.gold,
+            }}>
+            EXPRESS
+          </Text>
+        </Text>
+        <Text style={{fontSize: 12}}>
+          Eligable for
+          <Text
+            style={{
+              fontWeight: 'bold',
+              color: colors.black,
+            }}>
+            Free Delivery
+          </Text>
+        </Text>
+
+        {/* <Like /> */}
+
+        <SecondryButton title="ADD TO CART" />
       </View>
-        <Text style={styles.title}>name of product</Text>
-        <Text style={styles.price}>Price $</Text>
-      {/* <View
-        style={styles.shadow}></View> */}
-    </View>
-        </TouchableOpacity>
-  )
-}
+    </TouchableOpacity>
+  );
+};
 
 const styles = StyleSheet.create({
-    container :{
-        justifyContent: 'center',
-        margin: 10,
-        alignItems: 'center',
-        
-        
-      },
-      subcontainer: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: 170,
-        height: 120,
-        backgroundColor:colors.grey,
-        borderTopLeftRadius:10,
-        borderBottomRightRadius:10
-        
-        
-      },
-      discount:{
-        position:'absolute',
-        top:0,
-        left:0,
-        backgroundColor:"green",
-        width:35,
-        textAlign:'center',
-        color:colors.white,
-        borderTopLeftRadius:10,
-        borderBottomRightRadius:10,
-        fontSize:12,
-        
-    
-      },
-      image: {
-        width: 80,
-        height: 60,
-        marginStart: 12,
-      },
-      title: {
-        fontWeight: 'bold',
-        fontSize: 14,
-        alignItems:'flex-start',
-        color:colors.black
-     },
-     price:{
-    fontSize:12
-     },
-      shadow:{
-        borderRadius: 20,
-        width: 140,
-        height: 5,
-        elevation: 1,
-        shadowColor: Colors.grey,
-      }
-})
+  search: {
+    height: 50,
+    backgroundColor: 'red',
+    borderRadius: 10,
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  card: {
+    flex: 1,
+    height: 350,
+    backgroundColor: colors.white,
+    width,
+    margin: 5,
+    borderRadius: 15,
+    justifyContent: 'space-between',
+    padding: 10,
+  },
+  price: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: colors.black,
+  },
+
+  image: {
+    width,
+    height: 100,
+    resizeMode: 'contain',
+    alignItems: 'center',
+  },
+  info: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+
+  like: {
+    marginLeft: 15,
+  },
+  name: {
+    marginHorizontal: 5,
+  },
+});
+
+export default Card;
