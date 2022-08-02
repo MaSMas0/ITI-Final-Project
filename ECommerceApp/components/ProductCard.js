@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import colors from '../config/colors';
 import SecondryButton from './SecondryButton';
+import FreeShipping from './FreeShipping';
 import Like from './Like';
 
 const width = Dimensions.get('window').width / 2 - 15;
@@ -21,7 +22,7 @@ const Card = ({product,navigation}) => {
       activeOpacity={0.8}
       onPress={() => navigation.navigate('SingleDetails', product)}>
       <View style={styles.card}>
-        <Text style={styles.shipping}>Free Shipping*</Text>
+        <FreeShipping />
           <Image
             source={{uri: product.image}}
             style={styles.image}
@@ -107,20 +108,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',  
   },
-  shipping:{
-    backgroundColor:colors.gold,
-    color:colors.grey,
-    width:'45%',
-    height:20,
-    textAlignVertical:'center',
-    textAlign:'center',
-    fontSize:10,
-    fontWeight:'bold',
-    borderRadius:5,
-    marginLeft:3,
-    
-    
-  },
+
   like:{
     marginLeft:15
   },
