@@ -4,11 +4,21 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+
 import Home from '../screens/Home';
 import Settings from '../screens/Settings';
 import Category from '../screens/Category';
+import Product from '../screens/ProductList';
 import Header from '../components/Header';
+import ProductDetails from '../screens/ProductDetails';
+
+
 import colors from '../config/colors';
+
+
+
+
 const Tab = createMaterialBottomTabNavigator();
 
 const Stack = createNativeStackNavigator();
@@ -20,6 +30,20 @@ function HomeStackScreen() {
         name="HomeStack"
         component={Home}
         options={{headerTitle: props => <Header title={'Home'} {...props} />}}
+      />
+      <Stack.Screen
+        name="Products"
+        component={Product}
+        options={{
+          headerTitle: props => <Header title={'Products'} {...props} />,
+        }}
+      />
+      <Stack.Screen
+        name="ProductDetails"
+        component={ProductDetails}
+        options={{
+          headerTitle: props => <Header title={'ProductDetails'} {...props} />,
+        }}
       />
     </Stack.Navigator>
   );

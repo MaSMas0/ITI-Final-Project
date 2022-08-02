@@ -2,13 +2,11 @@ import {Text, View, SafeAreaView, StyleSheet, Image} from 'react-native';
 import React from 'react';
 import colors from '../config/colors';
 
+const ProductDetails = () => {
 
-const SingleDetails = () => {
-  // const product = route.params;
   return (
-  <SafeAreaView
-      style={{flex: 1,backgroundColor: colors.white,}}>
-     <View style={style.header}>
+    <SafeAreaView style={{flex: 1, backgroundColor: colors.white}}>
+      <View style={style.header}>
         {/* <Icon name="arrow-back" size={28} onPress={() => navigation.goBack()} /> */}
         <Text onPress={() => navigation.goBack()}>Back</Text>
       </View>
@@ -161,4 +159,4 @@ const style = StyleSheet.create({
   },
 });
 
-export default SingleDetails;
+export default ProductDetails;

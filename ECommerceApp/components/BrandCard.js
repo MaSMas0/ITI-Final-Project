@@ -1,55 +1,53 @@
 import React from 'react';
-import {Image, ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 import colors from '../config/colors';
 
-function BrandCard(props) {
+function BrandCard({onpress}) {
   return (
-
-    <TouchableOpacity>
-
-    <View
-    style={styles.container}>
-      <View style={styles.subcontainer}>
-       
-        {/* <Image source={require('../assets/rr.png')} style={styles.image} /> */}
-        <Image
-        style={styles.image}
-        source={{
-          uri: 'https://img.icons8.com/external-tal-revivo-bold-tal-revivo/96/000000/external-adidas-a-multinational-corporation-that-designs-and-manufactures-shoes-clothing-and-accessories-fashion-bold-tal-revivo.png',
-        }}/>
-        <Text style={styles.title}>adidas</Text>
+    <TouchableOpacity onPress={onpress}>
+      <View style={styles.container}>
+        <View style={styles.subcontainer}>
+          {/* <Image source={require('../assets/rr.png')} style={styles.image} /> */}
+          <Image
+            style={styles.image}
+            source={{
+              uri: 'https://img.icons8.com/external-tal-revivo-bold-tal-revivo/96/000000/external-adidas-a-multinational-corporation-that-designs-and-manufactures-shoes-clothing-and-accessories-fashion-bold-tal-revivo.png',
+            }}
+          />
+          <Text style={styles.title}>adidas</Text>
+        </View>
+        <View style={styles.shadow}></View>
       </View>
-      <View
-        style={styles.shadow}></View>
-    </View>
-        </TouchableOpacity>
-
+    </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
-  container :{
+  container: {
     justifyContent: 'center',
     alignItems: 'center',
 
-    marginVertical :8,
-    marginHorizontal:10
-  
+    marginVertical: 8,
+    marginHorizontal: 10,
+
     // alignItems: 'center',
-    
-    
   },
   subcontainer: {
     justifyContent: 'center',
     alignItems: 'center',
     width: 160,
     height: 90,
-    backgroundColor:colors.grey,
-    borderTopLeftRadius:10,
-    borderTopRightRadius:10
-    
-    
+    backgroundColor: colors.grey,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
   },
 
   image: {
@@ -60,17 +58,17 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     fontSize: 14,
-    color:colors.black
- },
+    color: colors.black,
+  },
 
-  shadow:{
+  shadow: {
     borderRadius: 100,
     width: 160,
-    
+
     height: 0.5,
     elevation: 2.5,
     shadowColor: Colors.lightGrey,
-  }
+  },
 });
 
 export default BrandCard;

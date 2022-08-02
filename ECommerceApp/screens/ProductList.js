@@ -44,7 +44,14 @@ const Product = ({navigation}) => {
         numColumns={2}
         data={products}
         renderItem={({item}) => {
-          return <Card product={item} />;
+          return (
+            <Card
+              product={item}
+              onPress={() => {
+                navigation.navigate('ProductDetails', item);
+              }}
+            />
+          );
         }}
       />
     </SafeAreaView>
