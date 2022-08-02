@@ -20,22 +20,7 @@ const WishList = () => {
           borderColor: 'grey',
           flexDirection: 'row',
           justifyContent: 'space-between',
-        }}>
-        <AntDesign name="left" size={25} />
-        <View
-          style={{
-            justifyContent: 'flex-start',
-          }}>
-          <Text
-            style={{
-              color: colors.black,
-              fontSize: 25,
-              fontWeight: 'bold',
-            }}>
-            WishList
-          </Text>
-        </View>
-      </View>
+        }}></View>
       <ScrollView>
         <WishlistComponent />
       </ScrollView>

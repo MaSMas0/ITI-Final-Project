@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-
+import TabViewExample from './screens/Ansary';
 import AuthNavigator from './navigation/AuthNavigator';
 import AppNavigator from './navigation/AppNavigator';
 import navigationTheme from './navigation/navigationTheme';
@@ -11,6 +11,8 @@ const App = () => {
   return (
     <NavigationContainer>
       <AppNavigator />
+
+      
     </NavigationContainer>
   );
 };
