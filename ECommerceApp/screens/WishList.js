@@ -38,12 +38,6 @@ const WishList = () => {
       </View>
       <ScrollView>
         <WishlistComponent />
-        <WishlistComponent />
-        <WishlistComponent />
-        <WishlistComponent />
-        <WishlistComponent />
-        <WishlistComponent />
-        <WishlistComponent />
       </ScrollView>
     </SafeAreaView>
   );
