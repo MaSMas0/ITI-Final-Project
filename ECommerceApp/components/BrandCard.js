@@ -1,10 +1,11 @@
 import React from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Image, ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import colors from '../config/colors';
 
 function BrandCard(props) {
   return (
+
     <TouchableOpacity>
 
     <View
@@ -23,13 +24,18 @@ function BrandCard(props) {
         style={styles.shadow}></View>
     </View>
         </TouchableOpacity>
+
   );
 }
 
 const styles = StyleSheet.create({
   container :{
     justifyContent: 'center',
-    margin: 10,
+    alignItems: 'center',
+
+    marginVertical :8,
+    marginHorizontal:10
+  
     // alignItems: 'center',
     
     
@@ -37,8 +43,8 @@ const styles = StyleSheet.create({
   subcontainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 170,
-    height: 110,
+    width: 160,
+    height: 90,
     backgroundColor:colors.grey,
     borderTopLeftRadius:10,
     borderTopRightRadius:10
@@ -54,16 +60,12 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     fontSize: 14,
-    alignItems:'flex-start',
     color:colors.black
  },
- price:{
-fontSize:12
- },
+
   shadow:{
-    // borderRadius: 100,
-    borderBottomLeftRadius:100,
-    width: 170,
+    borderRadius: 100,
+    width: 160,
     
     height: 0.5,
     elevation: 2.5,

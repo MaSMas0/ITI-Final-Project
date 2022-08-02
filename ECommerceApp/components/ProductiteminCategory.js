@@ -1,11 +1,17 @@
-import {StyleSheet, Image, Text, View} from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import React from 'react';
-import {red100} from 'react-native-paper/lib/typescript/styles/colors';
+import {StyleSheet, Image, Text, View, ScrollView, TouchableOpacity} from 'react-native';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import * as Animatable from 'react-native-animatable';
+import colors from '../config/colors';
 
 const ProductiteminCategory = () => {
   return (
-    <View>
+    <TouchableOpacity>
+
+    <ScrollView>
+
+
+    <Animatable.View animation="flipInY" duration={1000} style={{ margin:8}}>
       <View style={styles.container}>
         <Image
           style={styles.image}
@@ -15,22 +21,26 @@ const ProductiteminCategory = () => {
         />
       </View>
       <View style={styles.details}>
-        <Text style={styles.fav}>250.00 EGP</Text>
+        <Text style={styles.fav}>250 EG</Text>
+        <TouchableOpacity>
+
         <AntDesign style={styles.iconStyle} name="heart" size={25}></AntDesign>
+        </TouchableOpacity>
       </View>
-    </View>
+    </Animatable.View>
+    </ScrollView>
+    </TouchableOpacity>
+
+
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
-    flexDirection: 'row',
-    // flex : 1
-    backgroundColor: 'red',
-    // margin: 10,
+ 
+    backgroundColor: colors.lightGrey,
     padding: 8,
-    margin: 8,
+    marginVertical: 5,
     width: 103,
     borderColor: 'black',
     borderRadius: 20,
@@ -42,15 +52,17 @@ const styles = StyleSheet.create({
   },
   fav: {
     fontWeight: 'bold',
+    fontSize:12
   },
   iconStyle: {
-    fontSize: 19,
-    marginStart: 8,
+    fontSize: 16,
+    marginStart: 5,
   },
   details: {
     display: 'flex',
     flexDirection: 'row',
     marginStart: 10,
+    justifyContent:'space-evenly'
   },
 });
 
