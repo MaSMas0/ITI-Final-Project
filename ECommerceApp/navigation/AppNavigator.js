@@ -17,7 +17,7 @@ function HomeStackScreen() {
   return (
     <Stack.Navigator initialRouteName="Home">
       <Stack.Screen
-        name="Home"
+        name="HomeStack"
         component={Home}
         options={{headerTitle: props => <Header title={'Home'} {...props} />}}
       />
@@ -28,7 +28,7 @@ function CategoryStackScreen() {
   return (
     <Stack.Navigator initialRouteName="Category">
       <Stack.Screen
-        name="Category"
+        name="CategoryStack"
         component={Category}
         options={{
           headerTitle: props => <Header title={'Category'} {...props} />,
