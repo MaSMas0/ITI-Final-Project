@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import colors from '../config/colors';
 
-
 const FilterBar = props => {
   return (
     <View>
@@ -21,7 +20,7 @@ const FilterBar = props => {
           return (
             <TouchableOpacity>
               <View style={styles.container}>
-                <Text style={styles.nameOfCategory}>Karim and Hoda</Text>
+                <Text style={styles.nameOfCategory}>Nike</Text>
               </View>
             </TouchableOpacity>
           );
@@ -37,16 +36,15 @@ const styles = StyleSheet.create({
     backgroundColor: colors.black,
     justifyContent: 'center',
     alignItems: 'center',
-    borderTopLeftRadius:8,
-    borderBottomRightRadius:8,
+    borderTopLeftRadius: 8,
+    borderBottomRightRadius: 8,
     marginVertical: 20,
     marginHorizontal: 8,
     paddingHorizontal: 10,
   },
-  nameOfCategory:{
-    color:colors.lightGrey,
-
-  }
+  nameOfCategory: {
+    color: colors.lightGrey,
+  },
 });
 
 export default FilterBar;
