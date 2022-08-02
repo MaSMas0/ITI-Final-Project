@@ -3,12 +3,10 @@ import React from 'react';
 import colors from '../config/colors';
 
 const ProductDetails = () => {
-
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: colors.white}}>
       <View style={style.header}>
         {/* <Icon name="arrow-back" size={28} onPress={() => navigation.goBack()} /> */}
-        <Text onPress={() => navigation.goBack()}>Back</Text>
       </View>
       <View style={style.imageContainer}>
         <Image

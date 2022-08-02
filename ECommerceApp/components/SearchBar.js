@@ -23,7 +23,7 @@ const SearchBar = ({title}) => {
         <Animatable.View
           animation="zoomIn"
           duration={500}
-          style={styles.searchContainer}>
+          style={styles.search}>
           <Searchbar
             placeholder="Search"
             onChangeText={onChangeSearch}
@@ -40,11 +40,14 @@ const SearchBar = ({title}) => {
 
 const styles = StyleSheet.create({
   searchContainer: {
-    flex: 4.1,
+    flex: 1,
+  },
+  search: {
+    paddingEnd: '25%',
   },
   iconContainer: {
     flexDirection: 'row',
-    width: '70%',
+    width: '54%',
     alignItems: 'center',
     justifyContent: 'space-between',
   },

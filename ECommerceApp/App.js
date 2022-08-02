@@ -10,9 +10,7 @@ import Cart from './screens/Cart';
 const App = () => {
   return (
     <NavigationContainer>
-      <Cart />
-      {/* <WishList /> */}
-      {/* <AppNavigator /> */}
+      <AppNavigator />
     </NavigationContainer>
   );
 };
