@@ -9,77 +9,54 @@ import {
   Dimensions,
 } from 'react-native';
 import colors from '../config/colors';
+import SecondryButton from './SecondryButton';
 
 const width = Dimensions.get('window').width / 2 - 15;
 
-const Card = ({product}) => {
+const Card = ({product,navigation}) => {
   const [like, setLike] = useState(false);
   function handelLike() {
     setLike(!like);
   }
 
   return (
-    <TouchableOpacity
-      activeOpacity={0.8}
-      onPress={() => navigation.navigate('SingleDetails', product)}>
-      <View style={style.card}>
-        <View
-          style={{
-            height: 170,
-            width: 300,
-            // alignItems: 'center',
-            // justifyContent: 'center',
-            // flex: 1,
-          }}>
+    // <TouchableOpacity
+      // activeOpacity={0.8}
+      // onPress={() => navigation.navigate('SingleDetails', product)}>
+      <View style={styles.card}>
           <Image
             source={{uri: product.image}}
-            style={{
-              flex: 1,
-              resizeMode: 'contain',
-              width: 200,
-              height: 100,
-            }}
+            style={styles.image}
           />
-        </View>
-
-        {/* <Text style={{fontWeight: 'bold', fontSize: 17, marginTop: 10}}>
-          {product.title}
-        </Text> */}
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            marginTop: 5,
-            paddingHorizontal: 20,
-            paddingTop: 15,
-            paddingBottom: 20,
-          }}>
-          <Text style={{fontSize: 19, fontWeight: 'bold'}}>
+          <Text> name of Product</Text>
+        <View 
+          style={styles.info}>
+          <Text style={styles.price}>
             ${product.price}
           </Text>
-          <View
-            style={{
-              height: 25,
-              width: 25,
-              backgroundColor: colors.green,
-              borderRadius: 5,
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <Text onPress={() => handelLike()}>
-              <AntDesign
+
+              <AntDesign 
+              onPress={() => handelLike()}
                 name="heart"
-                size={25}
-                color={like ? 'red' : 'grey'}></AntDesign>
-            </Text>
-          </View>
+                size={20}
+                color={like ? colors.black : 'grey'}></AntDesign>
         </View>
+       
+        {/* <AntDesign onPress={() => handelLike()}
+                name="staro"
+                size={40}
+                color={like ? 'red' : 'grey'}>
+
+            </AntDesign> */}
+        
+        <SecondryButton title="Add to Cart" />
       </View>
-    </TouchableOpacity>
   );
+    {/* </TouchableOpacity> */}
 };
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
+
   search: {
     height: 50,
     backgroundColor: 'red',
@@ -89,16 +66,32 @@ const style = StyleSheet.create({
     alignItems: 'center',
   },
   card: {
-    height: 225,
-    backgroundColor: colors.grey,
+    // flex:1,
+    height: 300,
+    backgroundColor: colors.white,
     width,
-    marginHorizontal: 2,
+    margin: 5,
     borderRadius: 15,
-    marginBottom: 20,
-    // padding: 15,
-    // borderWidth: 1,
-    // borderColor:""
+    justifyContent:'space-evenly',
+    alignItems:'center',
+    paddingVertical:10,
+    
   },
+  price:{
+    color:'red'
+  },
+
+  image:{
+    width: 100,
+    height: 100,
+    resizeMode: 'contain',
+  },
+  info:{
+    flex:1,
+    width:'100%',
+    flexDirection: 'row',
+    justifyContent: 'space-around',  
+  }
 });
 
 export default Card;

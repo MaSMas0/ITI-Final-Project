@@ -33,10 +33,10 @@ const Product = ({navigation}) => {
   }, []);
 
   return (
-    <SafeAreaView style={{backgroundColor: 'white', paddingHorizontal: 5}}>
+    <SafeAreaView style={{backgroundColor: colors.grey, paddingHorizontal: 5}}>
       <FlatList
         columnWrapperStyle={{justifyContent: 'space-between'}}
-        showsVerticalScrollIndicator={false}
+        // showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           marginTop: 10,
           paddingBottom: 50,
