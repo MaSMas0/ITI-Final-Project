@@ -7,7 +7,7 @@ import navigationTheme from './navigation/navigationTheme';
 const App = () => {
   return (
     <NavigationContainer>
-      <AppNavigator />
+      <AuthNavigator />
     </NavigationContainer>
   );
 };

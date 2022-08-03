@@ -4,5 +4,5 @@ export default {
   grey: '#eee',
   medium: '#6e6969',
   danger: '#bf1616',
-  lightGrey:'#F6F6F6',
+  lightGrey: '#F6F6F6',
 };
