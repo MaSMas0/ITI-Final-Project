@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   ScrollView,
   StyleSheet,
@@ -13,15 +13,39 @@ import ErrorText from '../components/ErrorText';
 import PrimaryButton from '../components/PrimaryButton';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import colors from '../config/colors';
+
+import {useDispatch, useSelector} from 'react-redux';
+import {login} from '../actions/UserAction';
+
 const SignIn = ({navigation}) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const userLogin = useSelector(state => state.userLogin);
+  const {loading, error, userInfo} = userLogin;
+  const dispatch = useDispatch();
   const {
     control,
     handleSubmit,
     formState: {errors},
+    watch,
   } = useForm();
+  const emailInput = watch().Email;
+  const passwordInput = watch().Password;
+  useEffect(() => {
+    if (userInfo) {
+      navigation.navigate('SignUp');
+    }
+  }, [navigation, userInfo]);
 
-  console.log(errors);
-  const onSubmit = data => console.log(data);
+  useEffect(() => {
+    setEmail(emailInput);
+    setPassword(passwordInput);
+  }, [emailInput, passwordInput]);
+  const onSubmit = () => {
+    // console.log(email);
+    // console.log(userInfo);
+    dispatch(login(email, password));
+  };
   return (
     <ScrollView style={styles.mainContainer}>
       <AntDesign style={styles.backIcon} name="left" size={25} />
@@ -30,7 +54,6 @@ const SignIn = ({navigation}) => {
         <Text style={styles.header}>
           <FontAwesome5 name="person-booth" size={30}></FontAwesome5>Sign In
         </Text>
-
         <View style={styles.subContainer}>
           <Text style={styles.labelStyle}>Email</Text>
           <Controller
@@ -51,9 +74,9 @@ const SignIn = ({navigation}) => {
                 icon="mail"
               />
             )}
-            name="UserName"
+            name="Email"
           />
-          {errors.UserName && <ErrorText ErrorText={errors.UserName.message} />}
+          {errors.Email && <ErrorText ErrorText={errors.Email.message} />}
           <Text style={styles.labelStyle}>Password</Text>
           <Controller
             control={control}
@@ -79,6 +102,7 @@ const SignIn = ({navigation}) => {
           {errors.Password && <ErrorText ErrorText={errors.Password.message} />}
 
           <PrimaryButton title="Sign In" onPress={handleSubmit(onSubmit)} />
+          {error && <ErrorText ErrorText={error} />}
           <View style={styles.signUpContainer}>
             <Text>Don't have account? </Text>
             <TouchableWithoutFeedback>
