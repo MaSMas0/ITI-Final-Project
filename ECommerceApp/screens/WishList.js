@@ -1,11 +1,12 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, View, Text} from 'react-native';
+import {SafeAreaView, ScrollView, StyleSheet} from 'react-native';
 import WishlistComponent from '../components/WishlistComponant';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+
 import colors from '../config/colors';
 
 const WishList = () => {
   return (
+<<<<<<< HEAD
     <SafeAreaView
       style={{
         marginTop: 20,
@@ -21,7 +22,15 @@ const WishList = () => {
           flexDirection: 'row',
           justifyContent: 'space-between',
         }}></View>
+=======
+    <SafeAreaView>
+>>>>>>> 16a2b7ce3ca01f86cd3a90fb4d4c1e89632a101b
       <ScrollView>
+        <WishlistComponent />
+        <WishlistComponent />
+        <WishlistComponent />
+        <WishlistComponent />
+        <WishlistComponent />
         <WishlistComponent />
       </ScrollView>
     </SafeAreaView>

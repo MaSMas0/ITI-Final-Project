@@ -8,6 +8,7 @@ import AppNavigator from './navigation/AppNavigator';
 import navigationTheme from './navigation/navigationTheme';
 import WishList from './screens/WishList';
 import Cart from './screens/Cart';
+import SettingProfile from './screens/SettingProfile';
 const App = () => {
   return (
     <NavigationContainer>
