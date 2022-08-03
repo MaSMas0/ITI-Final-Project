@@ -1,64 +1,70 @@
 import React, {useState} from 'react';
-import {Image, Text, TouchableOpacity, View} from 'react-native';
+import {Image, Text, View, StyleSheet} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-
+import colors from '../config/colors';
 const WishlistComponent = () => {
   const [like, setLike] = useState(true);
   function handelLike() {
     setLike(!like);
   }
   return (
-    <View>
-      <View
-        style={{
-          backgroundColor: '#fff',
-          flexDirection: 'row',
-          padding: 10,
-          borderWidth: 1,
-          borderColor: '#81d4fa',
-          marginBottom: 20,
-          borderRadius: 40,
-        }}>
-        <View>
-          <Image
-            source={{
-              uri: 'https://img.freepik.com/free-vector/vector-illustration-mountain-landscape_1441-71.jpg?w=2000',
-            }}
-            style={{
-              width: 140,
-              height: 150,
-              marginHorizontal: 8,
-              borderRadius: 13,
-            }}
-          />
+    <View style={styles.container}>
+      <Image
+        source={{
+          uri: 'https://img.freepik.com/free-vector/vector-illustration-mountain-landscape_1441-71.jpg?w=2000',
+        }}
+        style={styles.imgStyle}
+      />
+      <View style={{flexShrink: 1}}>
+        <View style={styles.subContainer}>
+          <Text style={styles.title}>Product Nike</Text>
+          <AntDesign
+            onPress={() => handelLike()}
+            style={styles.iconStyle}
+            color={like ? colors.blue : 'grey'}
+            name="heart"
+            size={25}></AntDesign>
         </View>
-        <View style={{flexShrink: 1}}>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}>
-            <Text style={{fontWeight: 'bold', fontSize: 21}}>Product Nike</Text>
-            <AntDesign
-              onPress={() => handelLike()}
-              style={{
-                marginEnd: 20,
-                marginTop: 5,
-              }}
-              color={like ? 'red' : 'grey'}
-              name="heart"
-              size={25}></AntDesign>
-          </View>
-          <Text>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s.
-          </Text>
-        </View>
+        <Text>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry.
+        </Text>
       </View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    backgroundColor: colors.white,
+    borderWidth: 1,
+    borderColor: colors.grey,
+    marginTop: 10,
+    borderRadius: 20,
+    marginHorizontal: 10,
+  },
+  subContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  imgStyle: {
+    width: 100,
+    height: 100,
+    marginHorizontal: 8,
+    borderRadius: 13,
+    margin: 10,
+  },
+  iconStyle: {
+    marginEnd: 20,
+    marginTop: 10,
+  },
+  title: {
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: colors.black,
+  },
+});
 
 export default WishlistComponent;
