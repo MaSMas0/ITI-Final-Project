@@ -15,7 +15,7 @@ const Cart = () => {
   const arr = [];
   return (
     <SafeAreaView>
-      {arr.length === 0 ? (
+      {arr.length !== 0 ? (
         <View
           style={{
             justifyContent: 'center',
