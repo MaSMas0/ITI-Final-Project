@@ -9,14 +9,15 @@ export default function FreeShipping() {
 
 const styles = StyleSheet.create({
   shipping: {
-    backgroundColor: colors.gold,
+    backgroundColor: colors.mediumBlue,
     color: colors.grey,
-    width: '45%',
+    width: '52%',
+    paddingVertical: 4,
     textAlignVertical: 'center',
     textAlign: 'center',
     fontSize: 10,
     fontWeight: 'bold',
-    borderRadius: 5,
+    borderRadius: 7,
     marginLeft: 3,
   },
 });

@@ -7,4 +7,6 @@ export default {
   lightGrey: '#F6F6F6',
   gold: '#FEB139',
   blue: '#030A4E',
+  mediumBlue: '#22336a',
+  lightBlue: '#22336a',
 };
