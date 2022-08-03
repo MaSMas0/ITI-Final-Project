@@ -9,13 +9,12 @@ import {
   View,
 } from 'react-native';
 import colors from '../config/colors';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const Cart = () => {
   const arr = [];
   return (
     <SafeAreaView>
-      {arr.length !== 0 ? (
+      {arr.length === 0 ? (
         <View
           style={{
             justifyContent: 'center',
@@ -30,6 +29,7 @@ const Cart = () => {
               position: 'absolute',
               top: 50,
               left: 75,
+              color: colors.white,
             }}>
             <Image
               source={{
@@ -49,7 +49,7 @@ const Cart = () => {
               }}>
               <Text
                 style={{
-                  color: '#F32013',
+                  color: colors.blue,
                   fontSize: 26,
                   fontWeight: 'bold',
                   marginBottom: 12,
@@ -64,12 +64,12 @@ const Cart = () => {
                   marginBottom: 6,
                 }}>
                 Your Cart is
-                <Text style={{color: '#FF5733'}}> Empty</Text>
+                <Text style={{color: colors.blue}}> Empty</Text>
               </Text>
               <Text
                 style={{
-                  color: '#bdbdbd',
-                  fontSize: 14,
+                  color: colors.white,
+                  fontSize: 20,
                   fontWeight: 'bold',
                   marginBottom: 25,
                 }}>
@@ -77,7 +77,7 @@ const Cart = () => {
               </Text>
               <TouchableOpacity
                 style={{
-                  backgroundColor: '#FF5733',
+                  backgroundColor: colors.blue,
                   width: 200,
                   height: 47,
                   justifyContent: 'center',

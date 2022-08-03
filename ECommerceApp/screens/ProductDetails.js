@@ -112,7 +112,7 @@ const style = StyleSheet.create({
     marginTop: 5,
   },
   description: {
-    color: 'grey',
+    color: colors.medium,
     fontSize: 16,
     lineHeight: 22,
     marginTop: 4,
@@ -139,7 +139,7 @@ const style = StyleSheet.create({
     alignItems: 'center',
     width: 35,
     height: 35,
-    backgroundColor: colors.white,
+    backgroundColor: colors.lightGrey,
   },
   decreBtn: {
     fontWeight: 'bold',

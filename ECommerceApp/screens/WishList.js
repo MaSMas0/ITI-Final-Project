@@ -1,8 +1,6 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, StyleSheet} from 'react-native';
+import {SafeAreaView, ScrollView} from 'react-native';
 import WishlistComponent from '../components/WishlistComponant';
-
-import colors from '../config/colors';
 
 const WishList = () => {
   return (
