@@ -16,19 +16,19 @@ const SignUp = ({navigation}) => {
     watch,
   } = useForm();
   const dispatch = useDispatch();
-  const nameInput = watch().FirstName + ' ' + watch().LastName;
-  const emailInput = watch().Email;
+  // const nameInput = watch().FirstName + ' ' + watch().LastName;
+  // const emailInput = watch().Email;
   const passwordInput = watch().Password;
-  const confirmPasswordInput = watch().ConfirmPassword;
+  // const confirmPasswordInput = watch().ConfirmPassword;
 
-  console.log(nameInput);
-  console.log(emailInput);
-  console.log(passwordInput);
-  console.log(confirmPasswordInput);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  // console.log(nameInput);
+  // console.log(emailInput);
+  // console.log(passwordInput);
+  // console.log(confirmPasswordInput);
+  // const [name, setName] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+  // const [confirmPassword, setConfirmPassword] = useState('');
 
   const userRegister = useSelector(state => state.userRegister);
   const {loading, error, userInfo} = userRegister;
@@ -39,17 +39,16 @@ const SignUp = ({navigation}) => {
     }
   }, [userInfo, navigation]);
 
-  useEffect(() => {
-    setEmail(emailInput);
-    setPassword(passwordInput);
-    setName(nameInput);
-    setConfirmPassword(confirmPasswordInput);
-  }, [confirmPasswordInput, emailInput, nameInput, passwordInput]);
+  // useEffect(() => {
+  //   setEmail(emailInput);
+  //   setPassword(passwordInput);
+  //   setName(nameInput);
+  //   setConfirmPassword(confirmPasswordInput);
+  // }, [confirmPasswordInput, emailInput, nameInput, passwordInput]);
 
-  const onSubmit = () => {
-    // console.log(email);
-    // console.log(userInfo);
-    dispatch(register(name, email, password));
+  const onSubmit = ({FirstName, LastName, Password, Email}) => {
+    let fullName = FirstName + LastName;
+    dispatch(register(fullName, Email, Password));
   };
   return (
     <ScrollView style={styles.ScrollView}>
