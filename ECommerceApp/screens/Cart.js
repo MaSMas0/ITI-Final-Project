@@ -7,259 +7,308 @@ import {
   Text,
   TouchableOpacity,
   View,
+  StyleSheet,
 } from 'react-native';
+import {color} from 'react-native-reanimated';
 import colors from '../config/colors';
+import LinearGradient from 'react-native-linear-gradient';
 
 const Cart = () => {
   const arr = [];
   return (
     <SafeAreaView>
-      {arr.length === 0 ? (
-        <View
-          style={{
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <View
-            style={{
-              justifyContent: 'center',
-              alignContent: 'center',
-              width: 600,
-              flexDirection: 'column',
-              position: 'absolute',
-              top: 50,
-              left: 75,
-              color: colors.white,
-            }}>
+      {arr.length !== 0 ? (
+        <View style={styles.emptyCartContainer}>
+          <View style={styles.imgContainer}>
             <Image
               source={{
                 uri: 'https://cdn-icons-png.flaticon.com/512/5435/5435052.png',
-                width: 250,
-                height: 250,
               }}
+              style={styles.imgStyle}
             />
-            <View
-              style={{
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                position: 'relative',
-                left: -168,
-                top: 17,
-              }}>
-              <Text
-                style={{
-                  color: colors.blue,
-                  fontSize: 26,
-                  fontWeight: 'bold',
-                  marginBottom: 12,
-                }}>
-                Oops!
-              </Text>
-              <Text
-                style={{
-                  color: '#9e9e9e',
-                  fontSize: 24,
-                  fontWeight: 'bold',
-                  marginBottom: 6,
-                }}>
+            <View style={styles.textContainer}>
+              <Text style={styles.text1Style}>Oops!</Text>
+              <Text style={styles.text2Style}>
                 Your Cart is
                 <Text style={{color: colors.blue}}> Empty</Text>
               </Text>
-              <Text
-                style={{
-                  color: colors.white,
-                  fontSize: 20,
-                  fontWeight: 'bold',
-                  marginBottom: 25,
-                }}>
-                Add item to get started
-              </Text>
-              <TouchableOpacity
-                style={{
-                  backgroundColor: colors.blue,
-                  width: 200,
-                  height: 47,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  borderRadius: 20,
-                  marginTop: 20,
-                }}>
-                <Text
-                  style={{
-                    color: '#fff',
-                    fontSize: 16,
-                    fontWeight: 'bold',
-                  }}>
-                  GO TO STORE
-                </Text>
+              <Text style={styles.addItemStyle}>Add item to get started</Text>
+              <TouchableOpacity style={styles.emptyCartBtn}>
+                <Text style={styles.cartBtnStyle}>GO TO STORE</Text>
               </TouchableOpacity>
             </View>
           </View>
         </View>
       ) : (
         <ScrollView>
-          <View
-            style={{
-              paddingVertical: 30,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <View
-              style={{
-                backgroundColor: '#fff',
-                flexDirection: 'row',
-                //   padding: 10,
-                borderWidth: 1,
-                borderColor: '#eeeeee',
-                marginBottom: 20,
-                borderRadius: 40,
-                shadowColor: '#52006A',
-                elevation: 20,
-                width: 370,
-              }}>
-              <View>
-                <Image
-                  source={{
-                    uri: 'https://img.freepik.com/free-vector/vector-illustration-mountain-landscape_1441-71.jpg?w=2000',
-                  }}
-                  style={{
-                    width: 140,
-                    height: 150,
-                    marginHorizontal: 8,
-                    borderBottomLeftRadius: 40,
-                    borderTopLeftRadius: 40,
-                    position: 'relative',
-                    left: -8.4,
-                  }}
-                />
-              </View>
-              <View style={{flexShrink: 1, paddingTop: 20}}>
-                <Text style={{fontWeight: 'bold', fontSize: 21}}>
-                  Product Nike
-                </Text>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    marginTop: 10,
-                  }}>
-                  <Text
-                    style={{
-                      fontSize: 16,
-                      fontWeight: 'bold',
-                      color: '#e0e0e0',
-                    }}>
-                    Qty:1
-                  </Text>
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      justifyContent: 'space-around',
-                      marginLeft: 80,
-                    }}>
-                    <Button title="+" color="#ffcc00" style={{}}></Button>
-                    <View style={{marginHorizontal: 5}}></View>
-                    <Button title="-" color="#F32013"></Button>
+          <View style={styles.cartContainer}>
+            <View style={styles.cartImgContainer}>
+              <Image
+                source={{
+                  uri: 'https://img.freepik.com/free-vector/vector-illustration-mountain-landscape_1441-71.jpg?w=2000',
+                }}
+                style={styles.CartImgStyle}
+              />
+
+              <View style={{flexShrink: 1}}>
+                <Text style={styles.prodTitle}>Product Name</Text>
+                <View style={styles.CartText1Container}>
+                  <Text style={styles.qtStyle}>Qty:1</Text>
+                  <View style={styles.incDeCont}>
+                    <LinearGradient
+                      start={{x: 1, y: 0}}
+                      end={{x: 0, y: 0}}
+                      colors={['#030A4E', '#22336a']}
+                      style={styles.increSubContainer}>
+                      <Text style={styles.increBtn}>+</Text>
+                    </LinearGradient>
+                    <View style={{marginHorizontal: 10}}></View>
+                    <View style={styles.decreSubContainer}>
+                      <Text style={styles.decreBtn}>-</Text>
+                    </View>
                   </View>
                 </View>
-                <View
-                  style={{
-                    marginTop: 10,
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                  }}>
-                  <Text
-                    style={{
-                      fontSize: 16,
-                      fontWeight: 'bold',
-                      color: '#e0e0e0',
-                    }}>
-                    Price
-                  </Text>
-                  <Text
-                    style={{
-                      fontSize: 20,
-                      fontWeight: 'bold',
-                    }}>
-                    250$
-                  </Text>
+                <View style={styles.priceContainer}>
+                  <Text style={styles.priceText}>Price</Text>
+                  <Text style={styles.priceStyle}>250$</Text>
                 </View>
               </View>
             </View>
           </View>
-          <View
-            style={{
-              flex: 1,
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <View
-              style={{
-                borderBottomWidth: 1,
-                borderTopWidth: 1,
-                borderColor: '#e0e0e0',
-                paddingVertical: 30,
-                paddingHorizontal: 10,
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                width: 350,
-              }}>
-              <Text
-                style={{
-                  fontSize: 18,
-                  color: colors.black,
-                  fontWeight: 'bold',
-                }}>
-                Total:
-              </Text>
-              <Text
-                style={{
-                  fontSize: 18,
-                  color: colors.black,
-                  fontWeight: 'bold',
-                }}>
-                250$
-              </Text>
+          <View style={styles.secondContainer}>
+            <View>
+              <Text style={styles.summeryStyle}>Order summary</Text>
+
+              <View style={styles.subSecContainer}>
+                <Text style={styles.greyText}>Price :</Text>
+                <Text style={styles.blueText}>250$</Text>
+              </View>
+              <View style={styles.delivCont}>
+                <Text style={styles.greyText}>Delivery Service:</Text>
+                <Text style={styles.blueText}>0$ (Free Delivery)</Text>
+              </View>
+              <View style={styles.totalPriceCont}>
+                <Text style={styles.greyText}>Total Price :</Text>
+                <Text style={styles.blueText}>250$</Text>
+              </View>
             </View>
           </View>
-          <View
-            style={{
-              marginTop: 60,
-              flex: 1,
-              justifyContent: 'center',
-              alignItems: 'center',
-              flexDirection: 'row',
-              paddingBottom: 20,
-            }}>
-            <TouchableOpacity
-              style={{
-                backgroundColor: '#ffcc00',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: 320,
-                height: 47,
-                borderRadius: 30,
-                color: colors.black,
-                shadowColor: '#52006A',
-                elevation: 10,
-              }}>
-              <Text
-                style={{
-                  fontSize: 15,
-                  fontWeight: 'bold',
-                }}>
-                CHECK OUT
-              </Text>
-            </TouchableOpacity>
+          <View style={styles.checkBtnCont}>
+            <LinearGradient
+              start={{x: 1, y: 0}}
+              end={{x: 0, y: 0}}
+              colors={['#030A4E', '#22336a']}
+              style={styles.checkOutContainer}>
+              <Text style={styles.checkOut}> CHECK OUT</Text>
+            </LinearGradient>
           </View>
         </ScrollView>
       )}
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  emptyCartContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  imgContainer: {
+    justifyContent: 'center',
+    alignContent: 'center',
+    width: 600,
+    flexDirection: 'column',
+    position: 'absolute',
+    top: 50,
+    left: 75,
+    color: colors.white,
+  },
+  imgStyle: {
+    width: 250,
+    height: 250,
+  },
+  textContainer: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+    left: -168,
+    top: 17,
+  },
+  text1Style: {
+    color: colors.blue,
+    fontSize: 26,
+    fontWeight: 'bold',
+    marginBottom: 12,
+  },
+  text2Style: {
+    color: colors.medium,
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 6,
+  },
+  addItemStyle: {
+    color: colors.medium,
+    fontSize: 16,
+
+    marginBottom: 25,
+  },
+  emptyCartBtn: {
+    backgroundColor: colors.blue,
+    width: 200,
+    height: 47,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 20,
+    marginTop: 20,
+  },
+  cartBtnStyle: {
+    color: colors.white,
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  increSubContainer: {
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 35,
+    height: 35,
+  },
+  increBtn: {fontWeight: 'bold', color: colors.white, fontSize: 22},
+  decreSubContainer: {
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 35,
+    height: 35,
+    backgroundColor: colors.white,
+  },
+  decreBtn: {
+    fontWeight: 'bold',
+    fontSize: 22,
+    color: colors.black,
+  },
+  checkOutContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 320,
+    height: 47,
+  },
+  checkOut: {
+    color: 'white',
+    fontSize: 22,
+    fontWeight: 'bold',
+  },
+  prodTitle: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: colors.black,
+  },
+  cartContainer: {
+    paddingVertical: 15,
+    paddingHorizontal: 5,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  cartImgContainer: {
+    // backgroundColor: '#fff',
+    flexDirection: 'row',
+    //   padding: 10,
+    // borderWidth: 1,
+    // borderColor: '#eeeeee',
+    marginBottom: 100,
+    // borderRadius: 40,
+    // shadowColor: '#52006A',
+    // elevation: 20,
+    width: 370,
+  },
+  CartImgStyle: {
+    width: 100,
+    height: 100,
+    // marginHorizontal: 8,
+    // borderBottomLeftRadius: 40,
+    // borderTopLeftRadius: 40,
+    position: 'relative',
+    left: -8.4,
+  },
+  CartText1Container: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 5,
+  },
+  qtStyle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: colors.medium,
+  },
+  incDeCont: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginLeft: 120,
+  },
+  priceContainer: {
+    marginTop: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  priceText: {
+    fontSize: 17,
+    fontWeight: 'bold',
+    color: colors.medium,
+  },
+  priceStyle: {fontSize: 18, fontWeight: 'bold', color: colors.lightBlue},
+  secondContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.white,
+    height: 270,
+  },
+  summeryStyle: {
+    fontSize: 18,
+    color: colors.blue,
+    fontWeight: 'bold',
+    paddingBottom: 15,
+    paddingTop: 10,
+  },
+  subSecContainer: {
+    paddingVertical: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: 350,
+  },
+  greyText: {
+    fontSize: 18,
+    color: colors.medium,
+    fontWeight: 'bold',
+  },
+  blueText: {
+    fontSize: 18,
+    color: colors.blue,
+    fontWeight: 'bold',
+  },
+  delivCont: {
+    paddingVertical: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: 350,
+  },
+  totalPriceCont: {
+    paddingVertical: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  checkBtnCont: {
+    alignItems: 'center',
+
+    backgroundColor: colors.white,
+  },
+});
 
 export default Cart;

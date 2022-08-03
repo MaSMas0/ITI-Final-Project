@@ -24,39 +24,18 @@ const Card = ({product, onPress}) => {
         <Text style={styles.like}>
           <Like />
         </Text>
-
         <Text style={styles.name}> Name of Product</Text>
         <View style={styles.info}>
           <Text style={styles.price}>${product.price}</Text>
         </View>
-        <Text
-          style={{
-            fontWeight: 'bold',
-            letterSpacing: 2,
-            fontSize: 12,
-            color: colors.medium,
-          }}>
-          Nile
-          <Text
-            style={{
-              color: '#3330E4',
-            }}>
-            EXPRESS
-          </Text>
+
+        <Text style={styles.nileExpress}>
+          Nile <Text style={styles.expressStyle}>EXPRESS</Text>
         </Text>
+
         <Text style={{fontSize: 12}}>
-          Eligable for
-          <Text
-            style={{
-              fontWeight: 'bold',
-              color: colors.black,
-            }}>
-            Free Delivery
-          </Text>
+          Eligable for <Text style={styles.freeDelvStyle}>Free Delivery</Text>
         </Text>
-
-        {/* <Like /> */}
-
         <SecondryButton title="ADD TO CART" />
       </View>
     </TouchableOpacity>
@@ -87,7 +66,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: colors.black,
   },
-
+  nileExpress: {
+    fontWeight: 'bold',
+    letterSpacing: 2,
+    fontSize: 12,
+    color: colors.medium,
+  },
+  expressStyle: {color: colors.mediumBlue},
+  freeDelvStyle: {fontWeight: 'bold', color: colors.black},
   image: {
     width,
     height: 100,

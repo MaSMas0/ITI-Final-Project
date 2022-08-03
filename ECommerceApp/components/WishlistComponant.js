@@ -21,7 +21,7 @@ const WishlistComponent = () => {
           <AntDesign
             onPress={() => handelLike()}
             style={styles.iconStyle}
-            color={like ? colors.blue : 'grey'}
+            color={like ? colors.mediumBlue : 'grey'}
             name="heart"
             size={25}></AntDesign>
         </View>
