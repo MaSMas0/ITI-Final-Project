@@ -12,7 +12,7 @@ import SettingProfile from './screens/SettingProfile';
 const App = () => {
   return (
     <NavigationContainer>
-      <AppNavigator />
+      <AuthNavigator />
     </NavigationContainer>
   );
 };
