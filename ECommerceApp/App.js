@@ -11,6 +11,7 @@ import Cart from './screens/Cart';
 import SettingProfile from './screens/SettingProfile';
 const App = () => {
   return (
+    
     <NavigationContainer>
       <AuthNavigator />
     </NavigationContainer>
