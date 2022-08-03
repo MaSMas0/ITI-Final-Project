@@ -43,8 +43,8 @@ const styles = StyleSheet.create({
   subcontainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 160,
-    height: 90,
+    width: 140,
+    height: 160,
     backgroundColor: colors.grey,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
@@ -53,17 +53,17 @@ const styles = StyleSheet.create({
   image: {
     width: 80,
     height: 60,
-    marginStart: 12,
+    marginStart: 2,
   },
   title: {
     fontWeight: 'bold',
-    fontSize: 14,
+    fontSize: 16,
     color: colors.black,
   },
 
   shadow: {
     borderRadius: 100,
-    width: 160,
+    width: 135,
 
     height: 0.5,
     elevation: 2.5,
