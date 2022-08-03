@@ -9,10 +9,12 @@ import navigationTheme from './navigation/navigationTheme';
 import WishList from './screens/WishList';
 import Cart from './screens/Cart';
 import SettingProfile from './screens/SettingProfile';
+import Payment from './screens/Payment';
 const App = () => {
   return (
     <NavigationContainer>
-      <AuthNavigator />
+      <Payment />
+      {/* <AuthNavigator /> */}
     </NavigationContainer>
   );
 };
