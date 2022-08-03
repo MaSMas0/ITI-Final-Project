@@ -1,23 +1,56 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
 import InputApp from '../components/InputApp';
 import ErrorText from '../components/ErrorText';
 import PrimaryButton from '../components/PrimaryButton';
 import colors from '../config/colors';
+import {useDispatch, useSelector} from 'react-redux';
+import {register} from '../actions/UserAction';
 
-const SignUp = () => {
+const SignUp = ({navigation}) => {
   const {
     control,
     handleSubmit,
     formState: {errors},
     watch,
   } = useForm();
+  const dispatch = useDispatch();
+  const nameInput = watch().FirstName + ' ' + watch().LastName;
+  const emailInput = watch().Email;
+  const passwordInput = watch().Password;
+  const confirmPasswordInput = watch().ConfirmPassword;
 
-  const password = watch('Password');
-  console.log(password);
-  console.log(errors);
-  const onSubmit = data => console.log(data);
+  console.log(nameInput);
+  console.log(emailInput);
+  console.log(passwordInput);
+  console.log(confirmPasswordInput);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const userRegister = useSelector(state => state.userRegister);
+  const {loading, error, userInfo} = userRegister;
+
+  useEffect(() => {
+    if (userInfo) {
+      navigation.navigate('SignIn');
+    }
+  }, [userInfo, navigation]);
+
+  useEffect(() => {
+    setEmail(emailInput);
+    setPassword(passwordInput);
+    setName(nameInput);
+    setConfirmPassword(confirmPasswordInput);
+  }, [confirmPasswordInput, emailInput, nameInput, passwordInput]);
+
+  const onSubmit = () => {
+    // console.log(email);
+    // console.log(userInfo);
+    dispatch(register(name, email, password));
+  };
   return (
     <ScrollView style={styles.ScrollView}>
       <View style={styles.container}>
@@ -43,7 +76,7 @@ const SignUp = () => {
                 style={styles.inputStyle}
                 placeholder="First Name"
                 onBlur={onBlur}
-                onChangeText={onChange}
+                onChange={onChange}
                 value={value}
                 icon="user"
               />
@@ -74,7 +107,7 @@ const SignUp = () => {
                 style={styles.inputStyle}
                 placeholder="Last Name"
                 onBlur={onBlur}
-                onChangeText={onChange}
+                onChange={onChange}
                 value={value}
                 icon="user"
               />
@@ -99,7 +132,7 @@ const SignUp = () => {
                 style={styles.inputStyle}
                 placeholder="Email"
                 onBlur={onBlur}
-                onChangeText={onChange}
+                onChange={onChange}
                 value={value}
                 icon="mail"
               />
@@ -149,7 +182,7 @@ const SignUp = () => {
                 style={styles.inputStyle}
                 placeholder="Password"
                 onBlur={onBlur}
-                onChangeText={onChange}
+                onChange={onChange}
                 value={value}
                 secureTextEntry
                 icon="lock1"
@@ -165,14 +198,15 @@ const SignUp = () => {
             control={control}
             rules={{
               required: 'Confirm Password is required',
-              validate: value => password === value || 'Passowrd not match',
+              validate: value =>
+                passwordInput === value || 'Passowrd not match',
             }}
             render={({field: {onChange, onBlur, value}}) => (
               <InputApp
                 style={styles.inputStyle}
                 placeholder="Confirm Password"
                 onBlur={onBlur}
-                onChangeText={onChange}
+                onChange={onChange}
                 value={value}
                 secureTextEntry
                 icon="lock1"

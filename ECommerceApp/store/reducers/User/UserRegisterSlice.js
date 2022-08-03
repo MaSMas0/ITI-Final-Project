@@ -11,9 +11,7 @@ const userInfoFromStorage = async () => {
   }
 };
 
-const initialState = {
-  userInfo: {},
-};
+const initialState = {};
 
 export const userRegisterSlice = createSlice({
   name: 'userRegister',
