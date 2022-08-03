@@ -34,12 +34,12 @@ const Card = ({product, onPress}) => {
             fontWeight: 'bold',
             letterSpacing: 2,
             fontSize: 12,
-            color: colors.black,
+            color: colors.medium,
           }}>
           Nile
           <Text
             style={{
-              color: colors.gold,
+              color: '#3330E4',
             }}>
             EXPRESS
           </Text>
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     marginLeft: 15,
   },
   name: {
-    marginHorizontal: 5,
+    marginHorizontal: 15,
   },
 });
 

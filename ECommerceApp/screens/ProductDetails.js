@@ -154,8 +154,8 @@ const style = StyleSheet.create({
   },
   borderBtnText: {fontWeight: 'bold', fontSize: 30},
   buyBtn: {
-    width: 130,
-    height: 50,
+    width: 110,
+    height: 40,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 30,
@@ -166,7 +166,7 @@ const style = StyleSheet.create({
     fontWeight: 'bold',
   },
   priceContainer: {
-    width: 80,
+    width: 75,
     height: 40,
     justifyContent: 'center',
     borderTopLeftRadius: 25,
