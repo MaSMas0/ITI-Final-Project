@@ -12,10 +12,8 @@ import SettingProfile from './screens/SettingProfile';
 import Payment from './screens/Payment';
 const App = () => {
   return (
-    
     <NavigationContainer>
-      <Payment />
-      {/* <AuthNavigator /> */}
+      <AppNavigator />
     </NavigationContainer>
   );
 };

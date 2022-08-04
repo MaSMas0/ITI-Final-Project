@@ -19,8 +19,9 @@ function Settings(props) {
           />
         </View>
       </View>
-
-      <TopNavigator />
+      <NavigationContainer independent={true}>
+        <TopNavigator />
+      </NavigationContainer>
     </>
   );
 }
