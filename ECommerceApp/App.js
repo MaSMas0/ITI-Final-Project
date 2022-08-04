@@ -13,7 +13,8 @@ import Payment from './screens/Payment';
 const App = () => {
   return (
     <NavigationContainer>
-      <AppNavigator />
+      {/* <AppNavigator /> */}
+      <Payment />
     </NavigationContainer>
   );
 };
