@@ -14,7 +14,7 @@ export default function Like() {
       <AntDesign
         onPress={() => handelLike()}
         name="heart"
-        size={20}
+        size={18}
         color={like ? colors.mediumBlue : colors.medium}></AntDesign>
     </View>
   );

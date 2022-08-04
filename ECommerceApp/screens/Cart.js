@@ -8,15 +8,20 @@ import {
   TouchableOpacity,
   View,
   StyleSheet,
+  TouchableHighlight
 } from 'react-native';
 import {color} from 'react-native-reanimated';
 import colors from '../config/colors';
 import LinearGradient from 'react-native-linear-gradient';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
 
 const Cart = () => {
   const arr = [];
   return (
-    <SafeAreaView>
+    <ScrollView style={{
+      backgroundColor:colors.white
+    }}>
       {arr.length !== 0 ? (
         <View style={styles.emptyCartContainer}>
           <View style={styles.imgContainer}>
@@ -51,7 +56,17 @@ const Cart = () => {
               />
 
               <View style={{flexShrink: 1}}>
+                <View style={{
+                  flexDirection:'row',
+                  justifyContent:'space-between'
+                }}>
+
                 <Text style={styles.prodTitle}>Product Name</Text>
+                <FontAwesome
+                        name="remove"
+                        size={20}>
+                </FontAwesome> 
+                </View>
                 <View style={styles.CartText1Container}>
                   <Text style={styles.qtStyle}>Qty:1</Text>
                   <View style={styles.incDeCont}>
@@ -71,10 +86,13 @@ const Cart = () => {
                 <View style={styles.priceContainer}>
                   <Text style={styles.priceText}>Price</Text>
                   <Text style={styles.priceStyle}>250$</Text>
-                </View>
+                </View>  
               </View>
             </View>
           </View>
+              {/* <Text>
+                  Remove
+                </Text> */}
           <View style={styles.secondContainer}>
             <View>
               <Text style={styles.summeryStyle}>Order summary</Text>
@@ -94,17 +112,20 @@ const Cart = () => {
             </View>
           </View>
           <View style={styles.checkBtnCont}>
+            <TouchableOpacity>
             <LinearGradient
               start={{x: 1, y: 0}}
               end={{x: 0, y: 0}}
               colors={['#030A4E', '#22336a']}
               style={styles.checkOutContainer}>
+
               <Text style={styles.checkOut}> CHECK OUT</Text>
             </LinearGradient>
+                </TouchableOpacity>
           </View>
         </ScrollView>
       )}
-    </SafeAreaView>
+    </ScrollView>
   );
 };
 
@@ -205,36 +226,25 @@ const styles = StyleSheet.create({
   prodTitle: {
     fontWeight: 'bold',
     fontSize: 20,
-    color: colors.black,
+    color: colors.lightBlue,
   },
   cartContainer: {
     paddingVertical: 15,
     paddingHorizontal: 5,
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
     justifyContent: 'center',
   },
   cartImgContainer: {
-    // backgroundColor: '#fff',
-    flexDirection: 'row',
-    //   padding: 10,
-    // borderWidth: 1,
-    // borderColor: '#eeeeee',
-    marginBottom: 100,
-    // borderRadius: 40,
-    // shadowColor: '#52006A',
-    // elevation: 20,
-    width: 370,
+      flexDirection: 'row',
+      padding: 8,
+      width: 370,
   },
   CartImgStyle: {
     width: 100,
     height: 100,
-    // marginHorizontal: 8,
-    // borderBottomLeftRadius: 40,
-    // borderTopLeftRadius: 40,
-    position: 'relative',
-    left: -8.4,
+    marginRight:8
+    
   },
   CartText1Container: {
     flexDirection: 'row',
