@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, Image, Text, View, ScrollView, TouchableOpacity} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import * as Animatable from 'react-native-animatable';
+import Like from './Like';
 import colors from '../config/colors';
 
 const ProductiteminCategory = () => {
@@ -22,10 +23,8 @@ const ProductiteminCategory = () => {
       </View>
       <View style={styles.details}>
         <Text style={styles.fav}>250 EG</Text>
-        <TouchableOpacity>
 
-        <AntDesign style={styles.iconStyle} name="heart" size={25}></AntDesign>
-        </TouchableOpacity>
+         <Like />   
       </View>
     </Animatable.View>
     </ScrollView>

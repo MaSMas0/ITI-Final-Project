@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {StatusBar, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import 'react-native-gesture-handler';
 import TabViewExample from './screens/Ansary';
@@ -16,11 +16,9 @@ import NewAddress from './screens/NewAddress';
 const App = () => {
   return (
     <NavigationContainer>
-      {/* <AppNavigator /> */}
-      {/* <Payment /> */}
-      {/* <Page1 /> */}
-      {/* <Address /> */}
-      <NewAddress />
+
+      <StatusBar backgroundColor='white' barStyle='dark-content'  />
+      <AppNavigator />
     </NavigationContainer>
   );
 };
