@@ -5,10 +5,13 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  StyleSheet,
   View,
 } from 'react-native';
 import {RadioButton} from 'react-native-paper';
 import colors from '../config/colors';
+
+import SecondryButton from '../components/SecondryButton';
 
 const Payment = () => {
   const [checked, setChecked] = useState('first');
@@ -17,119 +20,94 @@ const Payment = () => {
   return (
     <SafeAreaView>
       <View>
-        <View
-          style={{
-            paddingVertical: 10,
-            paddingHorizontal: 12,
-          }}>
-          <Text style={{fontSize: 17, color: colors.black, fontWeight: '700'}}>
-            {' '}
-            Online Payment
-          </Text>
+        <View style={styles.barContainer}>
+          <View style={styles.barStyle}>
+            <Text></Text>
+          </View>
+          <View style={styles.barStyle}>
+            <Text></Text>
+          </View>
         </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            paddingVertical: 30,
-            backgroundColor: '#fff',
-            paddingHorizontal: 20,
-          }}>
+        <View style={styles.payCon}>
+          <Text style={styles.payText}> Choose Paymeny Method</Text>
+        </View>
+
+        <View style={styles.textCont}>
+          <View
+            style={{
+              flex: 1,
+              justifyContent: 'flex-end',
+            }}>
+            <Text style={styles.textStyle}> Nile Pay (0 $)</Text>
+          </View>
+
           <RadioButton
-            color="#ffc107"
+            color="blue"
+            value="first"
+            status={checked === 'second' ? 'checked' : 'unchecked'}
+            onPress={() => setChecked('second')}
+          />
+        </View>
+
+        <View style={styles.textCont}>
+          <View
+            style={{
+              flex: 1,
+              justifyContent: 'flex-end',
+            }}>
+            <Text style={styles.textStyle}> Pay With Card</Text>
+          </View>
+
+          <RadioButton
+            color="blue"
             value="first"
             status={checked === 'first' ? 'checked' : 'unchecked'}
             onPress={() => setChecked('first')}
           />
-          <Text style={{fontSize: 20, color: colors.black, fontWeight: '700'}}>
-            {' '}
-            Apple Pay
-          </Text>
         </View>
-        <View
-          style={{
-            paddingVertical: 10,
-            paddingHorizontal: 12,
-          }}>
-          <Text style={{fontSize: 17, color: colors.black, fontWeight: '700'}}>
-            {' '}
-            More payment option
-          </Text>
-        </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            paddingVertical: 30,
-            backgroundColor: '#fff',
-            paddingHorizontal: 20,
-          }}>
+        <View style={styles.textCont}>
+          <View
+            style={{
+              flex: 1,
+              justifyContent: 'flex-end',
+            }}>
+            <Text style={styles.textStyle}> Cash on Delivery (COD)</Text>
+          </View>
+
           <RadioButton
-            color="#ffc107"
-            value="second"
-            status={checked === 'second' ? 'checked' : 'unchecked'}
-            onPress={() => setChecked('second')}
+            color="blue"
+            value="first"
+            status={checked === 'third' ? 'checked' : 'unchecked'}
+            onPress={() => setChecked('third')}
           />
-          <Text style={{fontSize: 20, color: colors.black, fontWeight: '700'}}>
-            Cash On Delivery (COD)
-          </Text>
         </View>
       </View>
-
-      <TouchableOpacity
-        onPress={() => setShow(true)}
-        style={{
-          backgroundColor: '#ffc107',
-          width: 270,
-          height: 49,
-          borderRadius: 25,
-          justifyContent: 'center',
-          alignItems: 'center',
-          position: 'absolute',
-          top: 500,
-          left: 60,
-        }}>
-        <Text
-          style={{
-            color: '#fff',
-            fontSize: 18,
-            fontWeight: '700',
-          }}>
-          CONTINUE TO PAYMENT
-        </Text>
-      </TouchableOpacity>
+      <View style={{alignItems: 'center', paddingVertical: 300}}>
+        <SecondryButton
+          title="CONTINUE TO PAYMENT"
+          onPress={() => setShow(true)}
+          style={styles.secondaryButton}
+        />
+      </View>
       <View
         style={{
           margin: 20,
         }}>
-        <Modal transparent={true} visible={show}>
+        <Modal transparent={true} animationType="fade" visible={show}>
           <View
             style={{
               backgroundColor: '#000000aa',
               flex: 1,
             }}>
-            <View
-              style={{
-                backgroundColor: '#fff',
-                margin: 30,
-                paddingHorizontal: 20,
-                paddingTop: 30,
-                borderRadius: 30,
-              }}>
+            <View style={styles.popUpCont}>
               <View
                 style={{
                   flexDirection: 'row',
                   justifyContent: 'space-between',
                   marginBottom: 10,
                 }}>
-                <Text
-                  style={{fontSize: 18, fontWeight: '700', color: '#8e24aa'}}>
-                  Sub Totle
-                </Text>
-                <Text
-                  style={{fontSize: 18, fontWeight: '700', color: '#8e24aa'}}>
-                  976.0 USD
-                </Text>
+                <Text style={styles.blueText}>Sub Total</Text>
+                <Text style={styles.blackText}>976.0 USD</Text>
               </View>
               <View
                 style={{
@@ -137,14 +115,8 @@ const Payment = () => {
                   justifyContent: 'space-between',
                   marginBottom: 25,
                 }}>
-                <Text
-                  style={{fontSize: 18, fontWeight: '700', color: '#8e24aa'}}>
-                  Shipping Fees
-                </Text>
-                <Text
-                  style={{fontSize: 18, fontWeight: '700', color: '#8e24aa'}}>
-                  30.0 USD
-                </Text>
+                <Text style={styles.blueText}>Shipping Fees</Text>
+                <Text style={styles.blackText}>30.0 USD</Text>
               </View>
               <View
                 style={{
@@ -153,86 +125,23 @@ const Payment = () => {
                   marginBottom: 30,
                 }}>
                 <TextInput
-                  style={{
-                    borderWidth: 1,
-                    width: 150,
-                    height: 40,
-                  }}
+                  maxLength={3}
+                  style={styles.textInput}
+                  underlineColorAndroid="transparent"
+                  placeholder="Coupon Code"
                 />
-                <Text
-                  style={{fontSize: 20, fontWeight: 'bold', color: '#6a1b9a'}}>
-                  Validate
-                </Text>
+                <Text style={styles.validateStyle}>Validate</Text>
               </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  marginBottom: 20,
-                }}>
-                <Text
-                  style={{fontSize: 18, fontWeight: '700', color: '#8e24aa'}}>
-                  Shipping Fees
-                </Text>
-                <Text style={{fontSize: 17, fontWeight: '600', color: 'red'}}>
-                  30.0 USD
-                </Text>
-              </View>
-              <Text
-                style={{
-                  fontSize: 16,
-                  fontWeight: '800',
-                  color: '#000',
-                  marginBottom: 10,
-                }}>
-                Grand Total
-              </Text>
-              <Text style={{fontSize: 18, fontWeight: '800', color: '#6a1b9a'}}>
-                1006.0 USD
-              </Text>
-              <TouchableOpacity
-                style={{
-                  backgroundColor: '#6a1b9a',
-                  width: 240,
-                  height: 46,
-                  borderRadius: 25,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  marginBottom: 20,
-                  marginTop: 45,
-                  position: 'relative',
-                  left: 30,
-                }}>
-                <Text
-                  style={{
-                    color: '#fff',
-                    fontSize: 18,
-                    fontWeight: '700',
-                  }}>
-                  Place Order
-                </Text>
+
+              <Text style={styles.blueText}>Total Price</Text>
+              <Text style={styles.blackText}>1006.0 USD</Text>
+              <TouchableOpacity style={styles.orderStyle}>
+                <Text style={styles.orderText}>Place Order</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => setShow(false)}
-                style={{
-                  backgroundColor: 'red',
-                  width: 240,
-                  height: 46,
-                  borderRadius: 25,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  position: 'relative',
-                  left: 30,
-                  marginBottom: 60,
-                }}>
-                <Text
-                  style={{
-                    color: '#fff',
-                    fontSize: 18,
-                    fontWeight: '700',
-                  }}>
-                  Cancele
-                </Text>
+                style={styles.cancelBtn}>
+                <Text style={styles.orderText}>Cancel</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -241,5 +150,104 @@ const Payment = () => {
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  barContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 5,
+    backgroundColor: colors.white,
+  },
+  barStyle: {
+    borderColor: 'blue',
+    borderBottomWidth: 3,
+    width: '45%',
+    backgroundColor: colors.white,
+    borderRadius: 20,
+  },
+  payCon: {
+    paddingVertical: 20,
+    paddingHorizontal: 12,
+    backgroundColor: colors.white,
+  },
+  payText: {
+    fontSize: 18,
+    color: colors.blue,
+    fontWeight: 'bold',
+  },
+  textCont: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+    paddingHorizontal: 20,
+    borderBottomColor: colors.grey,
+    backgroundColor: colors.white,
+  },
+  textStyle: {fontSize: 17, color: colors.black, fontWeight: 'bold'},
+  secondaryButton: {
+    backgroundColor: colors.blue,
+    width: 250,
+    height: 50,
+    borderRadius: 25,
+    justifyContent: 'center',
+  },
+  popUpCont: {
+    backgroundColor: colors.grey,
+    margin: 30,
+    paddingHorizontal: 20,
+    paddingTop: 30,
+    borderRadius: 30,
+  },
+  blueText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: colors.blue,
+  },
+  blackText: {
+    fontSize: 17,
+    fontWeight: 'bold',
+    color: colors.black,
+  },
+  textInput: {
+    borderWidth: 1,
+    width: 150,
+    height: 40,
+    borderRadius: 5,
+    borderColor: colors.blue,
+    color: colors.medium,
+    fontSize: 19,
+    textAlign: 'center',
+  },
+  validateStyle: {fontSize: 20, fontWeight: 'bold', color: colors.blue},
+  orderStyle: {
+    backgroundColor: colors.blue,
+    width: 240,
+    height: 46,
+    borderRadius: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+    marginTop: 45,
+    position: 'relative',
+    left: 30,
+  },
+  orderText: {
+    color: colors.white,
+    fontSize: 18,
+    fontWeight: '700',
+  },
+  cancelBtn: {
+    backgroundColor: colors.medium,
+    width: 240,
+    height: 46,
+    borderRadius: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+    left: 30,
+    marginBottom: 60,
+  },
+});
 
 export default Payment;

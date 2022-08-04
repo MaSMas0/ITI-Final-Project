@@ -15,8 +15,6 @@ const App = () => {
     <NavigationContainer>
       <StatusBar backgroundColor='white' barStyle='dark-content'  />
       <AppNavigator />
-      {/* <ApphNavigator /> */}
-      
     </NavigationContainer>
   );
 };
