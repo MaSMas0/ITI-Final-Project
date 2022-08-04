@@ -14,7 +14,8 @@ function SecondryButton({onPress, title, style}) {
         colors={['#030A4E', '#22336a']}
         style={[styles.submit, style]}>
         <Text style={styles.submit}>
-          <FontAwesome name="cart-plus" size={20}></FontAwesome> {title}
+          {/* <FontAwesome name="cart-plus" size={20}></FontAwesome>  */}
+          {title}
         </Text>
       </LinearGradient>
     </TouchableOpacity>
