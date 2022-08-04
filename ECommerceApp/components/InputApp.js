@@ -9,32 +9,44 @@ const InputApp = ({
   secureTextEntry = false,
   placeholder,
   icon,
+  placeholderTextColor
 }) => {
   return (
     <View style={styles.inputContainer}>
       <TextInput
         placeholder={placeholder}
+        placeholderTextColor={placeholderTextColor}
         onBlur={onBlur}
         onChangeText={onChange}
         value={value}
         secureTextEntry={secureTextEntry}
         style={styles.inputStyle}
+      
       />
-      <AntDesign syles={styles.inputIcons} name={icon} size={20} />
+      {/* <AntDesign  color={'#030A4E'} name={icon} size={20} /> */}
     </View>
+
   );
 };
 
 const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
-    borderBottomWidth: 1,
-    color: colors.black,
+    color: colors.blue,
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 5,
-    // backgroundColor: colors.grey,
+    borderWidth:1,
+    borderColor:colors.blue,
+    margin:5,
+    borderRadius:10,
+
   },
+  inputStyle:{
+    flex:1,
+
+  }
+
 });
 
 export default InputApp;
