@@ -192,8 +192,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
     width: 320,
     height: 47,
   },
@@ -213,7 +211,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    justifyContent: 'center',
   },
   cartImgContainer: {
     // backgroundColor: '#fff',
