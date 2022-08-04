@@ -33,7 +33,7 @@ const FilterBar = props => {
 const styles = StyleSheet.create({
   container: {
     height: 30,
-    backgroundColor: colors.black,
+    backgroundColor: colors.lightBlue,
     justifyContent: 'center',
     alignItems: 'center',
     borderTopLeftRadius: 8,

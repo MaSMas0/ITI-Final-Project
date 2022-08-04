@@ -47,15 +47,27 @@ const SignIn = ({navigation}) => {
     dispatch(login(data.Email, data.Password));
   };
   return (
-    <ScrollView style={styles.mainContainer}>
-      <AntDesign style={styles.backIcon} name="left" size={25} />
 
-      <View style={styles.container}>
-        <Text style={styles.header}>
-          <FontAwesome5 name="person-booth" size={30}></FontAwesome5>Sign In
-        </Text>
+
+    <View style={styles.container}>
+          <View style={styles.welcome}>
+      <AntDesign style={styles.backIcon} name="back" size={40} />
+              <Text style={{
+                color:colors.blue,
+                fontSize: 40,
+                fontWeight: 'bold',
+                color: colors.blue,
+                
+                }}>
+                Let's Sign You in.
+              </Text>
+              <Text style={styles.text}>
+                Welcome Back.
+              </Text>
+              <Text style={styles.text}>
+                You Have Been Missed!
+              </Text> 
         <View style={styles.subContainer}>
-          <Text style={styles.labelStyle}>Email</Text>
           <Controller
             control={control}
             rules={{
@@ -72,12 +84,13 @@ const SignIn = ({navigation}) => {
                 onChange={onChange}
                 value={value}
                 icon="mail"
+                placeholderTextColor={colors.lightBlue}
+
               />
             )}
             name="Email"
           />
           {errors.Email && <ErrorText ErrorText={errors.Email.message} />}
-          <Text style={styles.labelStyle}>Password</Text>
           <Controller
             control={control}
             rules={{
@@ -95,29 +108,36 @@ const SignIn = ({navigation}) => {
                 value={value}
                 icon="lock1"
                 secureTextEntry={true}
+                placeholderTextColor={colors.lightBlue}
               />
             )}
             name="Password"
           />
           {errors.Password && <ErrorText ErrorText={errors.Password.message} />}
-
-          <PrimaryButton title="Sign In" onPress={handleSubmit(onSubmit)} />
           {error && <ErrorText ErrorText={error} />}
+          </View>
+
+        </View>
+
+              <View>
+
           <View style={styles.signUpContainer}>
-            <Text>Don't have account? </Text>
+            <Text style={{fontSize:16 }}>Don't have an account? </Text>
             <TouchableWithoutFeedback>
               <Text
                 style={styles.signUp}
                 onPress={() => {
                   navigation.navigate('SignUp');
                 }}>
-                Sign Up
+                 Register
               </Text>
             </TouchableWithoutFeedback>
           </View>
+
+          <PrimaryButton title="Sign In" onPress={handleSubmit(onSubmit)} />
+              </View>
         </View>
-      </View>
-    </ScrollView>
+
   );
 };
 
@@ -126,46 +146,45 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     width: '100%',
+    justifyContent:'space-between',
+    backgroundColor:colors.white,
+    paddingBottom:15
   },
-  header: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: colors.black,
-    marginTop: 50,
+  welcome: {
+    marginTop: 10,
     alignSelf: 'flex-start',
     marginLeft: 20,
   },
-  labelStyle: {
-    color: colors.black,
-    fontWeight: 'bold',
-    margin: 5,
+  text:{
+    fontSize: 30,
+    color: colors.blue,
   },
+ 
 
   subContainer: {
-    flex: 1,
-    justifyContent: 'space-evenly',
-    paddingVertical: 100,
-    width: '90%',
+    paddingVertical: 50,
+    marginStart:10,
+   
   },
 
   signUp: {
-    color: colors.black,
-    // textDecorationLine: 'underline',
+    color: colors.blue,
     fontWeight: 'bold',
+    fontSize:18,
     marginStart: 2,
   },
-  mainContainer: {
-    backgroundColor: colors.white,
-  },
+
   backIcon: {
-    marginTop: 20,
-    margin: 10,
-    color: colors.black,
+    marginBottom:10,
+    color: colors.lightBlue,
   },
   signUpContainer: {
+    marginBottom:15,
     flexDirection: 'row',
-    marginStart: 10,
+    justifyContent:'center',
+    alignItems:'center'
   },
+ 
 });
 
 export default SignIn;

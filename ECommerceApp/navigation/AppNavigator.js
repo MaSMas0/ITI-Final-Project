@@ -114,8 +114,8 @@ function SettingsStackScreen() {
 const Footer = () => (
   <Tab.Navigator
     initialRouteName="Home"
-    activeColor={colors.black}
-    inactiveColor={colors.medium}
+    activeColor={colors.blue}
+    inactiveColor={colors.lightBlue}
     shifting
     barStyle={{backgroundColor: colors.white}}>
     <Tab.Screen

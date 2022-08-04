@@ -4,26 +4,30 @@ import colors from '../config/colors';
 function PrimaryButton({onPress, title}) {
   return (
     <TouchableOpacity onPress={onPress}>
-      <Text style={styles.submit}>{title}</Text>
+      <View style={styles.submit}>
+
+      <Text style={styles.title}>{title}</Text>
+      </View>
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   submit: {
-    color: colors.white,
-    backgroundColor: colors.black,
-    width: '100%',
-    height: 40,
-    textAlign: 'center',
-    marginTop: 10,
-    display: 'flex',
-    textAlignVertical: 'center',
-    fontSize: 18,
-    borderRadius: 8,
-    fontWeight: 'bold',
-    marginBottom: 8,
+    backgroundColor: colors.blue,
+    width: 320,
+    height: 60,
+    borderRadius: 22,
+    alignItems:'center',
+    justifyContent:'center',
+    marginBottom:10
+
   },
+  title:{
+    color: colors.white,
+    fontSize: 24,
+    fontWeight:'bold' 
+  }
 });
 
 export default PrimaryButton;

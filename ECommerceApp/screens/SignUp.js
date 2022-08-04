@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View,TouchableWithoutFeedback} from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
 import InputApp from '../components/InputApp';
 import ErrorText from '../components/ErrorText';
@@ -33,11 +33,21 @@ const SignUp = ({navigation}) => {
     dispatch(register(fullName, Email, Password));
   };
   return (
-    <ScrollView style={styles.ScrollView}>
-      <View style={styles.container}>
-        <Text style={styles.signup}>Sign Up</Text>
+        <ScrollView style={styles.ScrollView}>
+    <View style={styles.container}>
+        <View style={{
+          alignSelf: 'flex-start',
+          marginVertical: 30,
+          marginHorizontal: 25,
+        }}>
+
+          <Text style={styles.signup}>Let's Sign You Up.</Text>
+          <Text style={styles.text}>Join Us, </Text>
+          <Text style={styles.text}>
+          Create an Account.
+          </Text>
+        </View>
         <View style={styles.subContainer}>
-          <Text style={styles.labelStyle}>First Name</Text>
 
           <Controller
             control={control}
@@ -60,6 +70,8 @@ const SignUp = ({navigation}) => {
                 onChange={onChange}
                 value={value}
                 icon="user"
+                placeholderTextColor={colors.lightBlue}
+
               />
             )}
             name="FirstName"
@@ -68,7 +80,6 @@ const SignUp = ({navigation}) => {
             <ErrorText ErrorText={errors.FirstName.message} />
           )}
 
-          <Text style={styles.labelStyle}>Last Name</Text>
 
           <Controller
             control={control}
@@ -91,13 +102,14 @@ const SignUp = ({navigation}) => {
                 onChange={onChange}
                 value={value}
                 icon="user"
+                placeholderTextColor={colors.lightBlue}
+
               />
             )}
             name="LastName"
           />
           {errors.LastName && <ErrorText ErrorText={errors.LastName.message} />}
 
-          <Text style={styles.labelStyle}>Email</Text>
 
           <Controller
             control={control}
@@ -116,38 +128,15 @@ const SignUp = ({navigation}) => {
                 onChange={onChange}
                 value={value}
                 icon="mail"
+                placeholderTextColor={colors.lightBlue}
+
               />
             )}
             name="Email"
           />
           {errors.Email && <ErrorText ErrorText={errors.Email.message} />}
 
-          <Text style={styles.labelStyle}>Password</Text>
 
-          {/* <View style={{flexDirection: 'row'}}>
-          <TextInput style={styles.inputStyle1} value="+20" editable={false} />
-          <Controller
-            control={control}
-            rules={{
-              required: 'Number is required',
-              pattern: {
-                value: /^01[0125][0-9]{8}$/gm,
-                message: 'Phone is not valid',
-              },
-            }}
-            render={({field: {onChange, onBlur, value}}) => (
-              <TextInput
-                style={styles.inputStyle2}
-                placeholder="Number"
-                onBlur={onBlur}
-                onChangeText={onChange}
-                value={value}
-                keyboardType="number-pad"
-              />
-            )}
-            name="Number"
-          />
-        </View> */}
 
           <Controller
             control={control}
@@ -167,13 +156,14 @@ const SignUp = ({navigation}) => {
                 value={value}
                 secureTextEntry
                 icon="lock1"
+                placeholderTextColor={colors.lightBlue}
+
               />
             )}
             name="Password"
           />
           {errors.Password && <ErrorText ErrorText={errors.Password.message} />}
 
-          <Text style={styles.labelStyle}>Confirm Password</Text>
 
           <Controller
             control={control}
@@ -191,6 +181,8 @@ const SignUp = ({navigation}) => {
                 value={value}
                 secureTextEntry
                 icon="lock1"
+                placeholderTextColor={colors.lightBlue}
+
               />
             )}
             name="ConfirmPassword"
@@ -199,8 +191,27 @@ const SignUp = ({navigation}) => {
             <ErrorText ErrorText={errors.ConfirmPassword.message} />
           )}
 
-          <PrimaryButton title="Sign Up" onPress={handleSubmit(onSubmit)} />
         </View>
+      </View>
+      <View style={{
+        alignItems:'center',
+        marginTop:50,
+      }}>
+        <View style={styles.signinContainer}>
+               <Text style={{fontSize:16 }}> Have an account? </Text>
+            <TouchableWithoutFeedback>
+              <Text
+                style={styles.signUp}
+                onPress={() => {
+                  navigation.navigate('SignUp');
+                }}>
+                 SignIn
+              </Text>
+            </TouchableWithoutFeedback>
+          {error && <ErrorText ErrorText={error} />}
+          </View>
+
+          <PrimaryButton title="Sign Up" onPress={handleSubmit(onSubmit)} />
       </View>
     </ScrollView>
   );
@@ -209,37 +220,51 @@ const SignUp = ({navigation}) => {
 const styles = StyleSheet.create({
   ScrollView: {
     // flex: 1,
+    flexGrow:1,
     backgroundColor: colors.white,
+    
   },
   container: {
     flex: 1,
     backgroundColor: colors.white,
     alignItems: 'center',
-    width: '100%',
     justifyContent: 'space-between',
-  },
-  signup: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: colors.black,
-    alignSelf: 'flex-start',
-    marginVertical: 40,
-    marginHorizontal: 20,
-  },
+    // paddingVertical: 30,
 
-  labelStyle: {
-    color: colors.black,
-    fontWeight: 'bold',
-    margin: 5,
+    
   },
-
   subContainer: {
     flex: 1,
     justifyContent: 'space-between',
     // alignItems: 'center',
-    paddingVertical: 40,
+    paddingVertical: 10,
     width: '90%',
   },
+  signup: {
+    fontWeight: 'bold',
+    
+    fontSize: 40,
+    color: colors.blue,
+  },
+  text:{
+    fontSize: 30,
+    color: colors.blue,
+  },
+  signUp: {
+    color: colors.blue,
+    fontWeight: 'bold',
+    fontSize:18,
+    marginStart: 2,
+  },
+  signinContainer:{
+    marginBottom:15,
+    flexDirection: 'row',
+    justifyContent:'center',
+    alignItems:'center'
+  }
+
+
+
 });
 
 export default SignUp;
