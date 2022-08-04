@@ -16,9 +16,9 @@ import NewAddress from './screens/NewAddress';
 const App = () => {
   return (
     <NavigationContainer>
-
-      <StatusBar backgroundColor='white' barStyle='dark-content'  />
-      <AppNavigator />
+      <StatusBar backgroundColor="white" barStyle="dark-content" />
+      {/* <AppNavigator /> */}
+      <Payment />
     </NavigationContainer>
   );
 };
