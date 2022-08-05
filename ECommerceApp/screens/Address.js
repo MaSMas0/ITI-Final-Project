@@ -75,13 +75,7 @@ const Address = () => {
           </Text>
         </View>
       </View>
-      <TouchableOpacity
-        style={{
-          position: 'relative',
-          top: 350,
-          width: 200,
-          left: 75,
-        }}>
+      <TouchableOpacity>
         <SecondryButton title="ADD NEW ADDRESS" />
       </TouchableOpacity>
     </View>
