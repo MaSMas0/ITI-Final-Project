@@ -2,7 +2,7 @@ import {View, Text, SafeAreaView, TouchableOpacity} from 'react-native';
 import React from 'react';
 import SecondryButton from '../components/SecondryButton';
 
-const Address = () => {
+const Address = ({navigation}) => {
   return (
     <View>
       <View
@@ -75,9 +75,13 @@ const Address = () => {
           </Text>
         </View>
       </View>
-      <TouchableOpacity>
-        <SecondryButton title="ADD NEW ADDRESS" />
-      </TouchableOpacity>
+
+      <SecondryButton
+        title="ADD NEW ADDRESS"
+        onPress={() => {
+          navigation.navigate('NewAddress');
+        }}
+      />
     </View>
   );
 };
