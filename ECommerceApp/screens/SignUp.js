@@ -6,7 +6,7 @@ import ErrorText from '../components/ErrorText';
 import PrimaryButton from '../components/PrimaryButton';
 import colors from '../config/colors';
 import {useDispatch, useSelector} from 'react-redux';
-import {register} from '../actions/UserAction';
+import {register} from '../actions/UserActions';
 
 const SignUp = ({navigation}) => {
   const {
