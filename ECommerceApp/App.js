@@ -17,8 +17,8 @@ const App = () => {
   return (
     <NavigationContainer>
       <StatusBar backgroundColor="white" barStyle="dark-content" />
-      {/* <AppNavigator /> */}
-      <Payment />
+      <AppNavigator />
+      {/* <Payment /> */}
     </NavigationContainer>
   );
 };

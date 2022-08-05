@@ -14,6 +14,7 @@ const Home = ({navigation}) => {
       <Text style={styles.line}></Text>
 
       <FlatList
+        showsVerticalScrollIndicator={false} 
         style={{margin: 5}}
         nestedScrollEnabled
         numColumns={2}
