@@ -9,7 +9,6 @@ const OrderItems = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="MoreOrderDetails" component={MoreOrderDetails} />
-      <Stack.Screen name="NewAddress" component={NewAddress} />
     </Stack.Navigator>
   );
 };
