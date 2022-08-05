@@ -15,7 +15,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import colors from '../config/colors';
 
 import {useDispatch, useSelector} from 'react-redux';
-import {login} from '../actions/UserAction';
+import {login} from '../actions/UserActions';
 
 const SignIn = ({navigation}) => {
   // const [email, setEmail] = useState('');
