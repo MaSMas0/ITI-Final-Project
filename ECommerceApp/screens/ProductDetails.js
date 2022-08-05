@@ -9,11 +9,15 @@ import {
 import React, {useState} from 'react';
 import colors from '../config/colors';
 import LinearGradient from 'react-native-linear-gradient';
+import {useSelector, useDispatch} from 'react-redux/';
+import {addToCart} from '../store/reducers/User/CartReducer';
+
 const ProductDetails = ({route}) => {
   const {item} = route.params;
   console.log(item);
   const [counter, SetCounter] = useState(1);
 
+  const dispatch = useDispatch();
   const handleCounter = inc => {
     if (inc == true) {
       SetCounter(c => c + 1);
@@ -29,7 +33,7 @@ const ProductDetails = ({route}) => {
         <Image
           style={style.imgStyle}
           source={{
-            uri: 'https://www.slazzer.com/static/images/home-page/individual-image-design-maker.jpg',
+            uri: item.image,
           }}
         />
       </View>
@@ -48,7 +52,7 @@ const ProductDetails = ({route}) => {
           <Text style={style.description}>{item.description}</Text>
           <View style={style.downContainer}>
             <View style={style.subDownContainer}>
-              <TouchableOpacity onPress={() => handleCounter(fa)}>
+              <TouchableOpacity onPress={() => handleCounter(false)}>
                 <View style={style.decreContainer}>
                   <Text style={style.decreBtn}>-</Text>
                 </View>
@@ -65,7 +69,10 @@ const ProductDetails = ({route}) => {
                 </LinearGradient>
               </TouchableOpacity>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                dispatch(addToCart(item));
+              }}>
               <LinearGradient
                 start={{x: 1, y: 0}}
                 end={{x: 0, y: 0}}
