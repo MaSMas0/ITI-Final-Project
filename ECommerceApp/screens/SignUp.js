@@ -1,5 +1,11 @@
 import React, {useEffect} from 'react';
-import {ScrollView, StyleSheet, Text, View,TouchableWithoutFeedback} from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
 import InputApp from '../components/InputApp';
 import ErrorText from '../components/ErrorText';
@@ -33,22 +39,19 @@ const SignUp = ({navigation}) => {
     dispatch(register(fullName, Email, Password));
   };
   return (
-        <ScrollView style={styles.ScrollView}>
-    <View style={styles.container}>
-        <View style={{
-          alignSelf: 'flex-start',
-          marginVertical: 30,
-          marginHorizontal: 25,
-        }}>
-
+    <ScrollView style={styles.ScrollView}>
+      <View style={styles.container}>
+        <View
+          style={{
+            alignSelf: 'flex-start',
+            marginVertical: 30,
+            marginHorizontal: 25,
+          }}>
           <Text style={styles.signup}>Let's Sign You Up.</Text>
           <Text style={styles.text}>Join Us, </Text>
-          <Text style={styles.text}>
-          Create an Account.
-          </Text>
+          <Text style={styles.text}>Create an Account.</Text>
         </View>
         <View style={styles.subContainer}>
-
           <Controller
             control={control}
             rules={{
@@ -71,7 +74,6 @@ const SignUp = ({navigation}) => {
                 value={value}
                 icon="user"
                 placeholderTextColor={colors.lightBlue}
-
               />
             )}
             name="FirstName"
@@ -79,7 +81,6 @@ const SignUp = ({navigation}) => {
           {errors.FirstName && (
             <ErrorText ErrorText={errors.FirstName.message} />
           )}
-
 
           <Controller
             control={control}
@@ -103,13 +104,11 @@ const SignUp = ({navigation}) => {
                 value={value}
                 icon="user"
                 placeholderTextColor={colors.lightBlue}
-
               />
             )}
             name="LastName"
           />
           {errors.LastName && <ErrorText ErrorText={errors.LastName.message} />}
-
 
           <Controller
             control={control}
@@ -129,14 +128,11 @@ const SignUp = ({navigation}) => {
                 value={value}
                 icon="mail"
                 placeholderTextColor={colors.lightBlue}
-
               />
             )}
             name="Email"
           />
           {errors.Email && <ErrorText ErrorText={errors.Email.message} />}
-
-
 
           <Controller
             control={control}
@@ -157,13 +153,11 @@ const SignUp = ({navigation}) => {
                 secureTextEntry
                 icon="lock1"
                 placeholderTextColor={colors.lightBlue}
-
               />
             )}
             name="Password"
           />
           {errors.Password && <ErrorText ErrorText={errors.Password.message} />}
-
 
           <Controller
             control={control}
@@ -182,7 +176,6 @@ const SignUp = ({navigation}) => {
                 secureTextEntry
                 icon="lock1"
                 placeholderTextColor={colors.lightBlue}
-
               />
             )}
             name="ConfirmPassword"
@@ -190,28 +183,28 @@ const SignUp = ({navigation}) => {
           {errors.ConfirmPassword && (
             <ErrorText ErrorText={errors.ConfirmPassword.message} />
           )}
-
         </View>
       </View>
-      <View style={{
-        alignItems:'center',
-        marginTop:50,
-      }}>
+      <View
+        style={{
+          alignItems: 'center',
+          marginTop: 50,
+        }}>
         <View style={styles.signinContainer}>
-               <Text style={{fontSize:16 }}> Have an account? </Text>
-            <TouchableWithoutFeedback>
-              <Text
-                style={styles.signUp}
-                onPress={() => {
-                  navigation.navigate('SignUp');
-                }}>
-                 SignIn
-              </Text>
-            </TouchableWithoutFeedback>
+          <Text style={{fontSize: 16}}> Have an account? </Text>
+          <TouchableWithoutFeedback>
+            <Text
+              style={styles.signUp}
+              onPress={() => {
+                navigation.navigate('SignUp');
+              }}>
+              SignIn
+            </Text>
+          </TouchableWithoutFeedback>
           {error && <ErrorText ErrorText={error} />}
-          </View>
+        </View>
 
-          <PrimaryButton title="Sign Up" onPress={handleSubmit(onSubmit)} />
+        <PrimaryButton title="Sign Up" onPress={handleSubmit(onSubmit)} />
       </View>
     </ScrollView>
   );
@@ -219,10 +212,8 @@ const SignUp = ({navigation}) => {
 
 const styles = StyleSheet.create({
   ScrollView: {
-    // flex: 1,
-    flexGrow:1,
+    flexGrow: 1,
     backgroundColor: colors.white,
-    
   },
   container: {
     flex: 1,
@@ -230,8 +221,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     // paddingVertical: 30,
-
-    
   },
   subContainer: {
     flex: 1,
@@ -242,29 +231,26 @@ const styles = StyleSheet.create({
   },
   signup: {
     fontWeight: 'bold',
-    
+
     fontSize: 40,
     color: colors.blue,
   },
-  text:{
+  text: {
     fontSize: 30,
     color: colors.blue,
   },
   signUp: {
     color: colors.blue,
     fontWeight: 'bold',
-    fontSize:18,
+    fontSize: 18,
     marginStart: 2,
   },
-  signinContainer:{
-    marginBottom:15,
+  signinContainer: {
+    marginBottom: 15,
     flexDirection: 'row',
-    justifyContent:'center',
-    alignItems:'center'
-  }
-
-
-
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
 export default SignUp;

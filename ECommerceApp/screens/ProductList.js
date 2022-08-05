@@ -2,18 +2,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import Icon from 'react-native-vector-icons';
-import {
-  Dimensions,
-  FlatList,
-  Image,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TextInput,
-  Touchable,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {FlatList, SafeAreaView} from 'react-native';
 import colors from '../config/colors';
 import Card from '../components/ProductCard';
 

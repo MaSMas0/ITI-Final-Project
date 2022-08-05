@@ -1,11 +1,4 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  Image,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, SafeAreaView, Image, TextInput} from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
 import React from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';

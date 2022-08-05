@@ -1,8 +1,25 @@
-import {Text, View, SafeAreaView, StyleSheet, Image} from 'react-native';
-import React from 'react';
+import {
+  Text,
+  View,
+  SafeAreaView,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
+import React, {useState} from 'react';
 import colors from '../config/colors';
 import LinearGradient from 'react-native-linear-gradient';
 const ProductDetails = () => {
+  const [counter, SetCounter] = useState(1);
+
+  const handleCounter = inc => {
+    if (inc == true) {
+      SetCounter(c => c + 1);
+    }
+    if (!inc && counter > 1) {
+      SetCounter(c => c - 1);
+    }
+  };
   return (
     <SafeAreaView style={style.saveAreaStyle}>
       <View style={style.header}></View>
@@ -33,18 +50,22 @@ const ProductDetails = () => {
           </Text>
           <View style={style.downContainer}>
             <View style={style.subDownContainer}>
-              <View style={style.decreContainer}>
-                <Text style={style.decreBtn}>-</Text>
-              </View>
-              <Text style={style.prodNo}>1</Text>
+              <TouchableOpacity onPress={() => handleCounter(false)}>
+                <View style={style.decreContainer}>
+                  <Text style={style.decreBtn}>-</Text>
+                </View>
+              </TouchableOpacity>
+              <Text style={style.prodNo}>{counter}</Text>
 
-              <LinearGradient
-                start={{x: 1, y: 0}}
-                end={{x: 0, y: 0}}
-                colors={['#030A4E', '#22336a']}
-                style={style.increContainer}>
-                <Text style={style.increBtn}>+</Text>
-              </LinearGradient>
+              <TouchableOpacity onPress={() => handleCounter(true)}>
+                <LinearGradient
+                  start={{x: 1, y: 0}}
+                  end={{x: 0, y: 0}}
+                  colors={['#030A4E', '#22336a']}
+                  style={style.increContainer}>
+                  <Text style={style.increBtn}>+</Text>
+                </LinearGradient>
+              </TouchableOpacity>
             </View>
 
             <LinearGradient

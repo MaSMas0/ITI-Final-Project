@@ -1,56 +1,48 @@
 import React from 'react';
-import {StyleSheet, Text, View,Image} from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
-import { Colors } from 'react-native-paper';
-import { color } from 'react-native-reanimated';
+import {StyleSheet, Text, View, Image, ScrollView} from 'react-native';
+
+import colors from '../config/colors';
 const AboutScreen = () => {
   return (
     <ScrollView>
-
-    <View style={styles.container}>
-       <Image
-       style={styles.img}
-        
-        source={require('../assets/cc.png')}
-      />
-      <Text style={styles.paragraph}>
-        This Application is Our Graduation Project, Try use this application and
-        if you fount any problem , please Contact Us to solve it and improve our
-        application.
-      </Text>
-      <Text style={styles.our}>Our Team :</Text>
-      <Text style={styles.item}>Mahmoud Mahmoud Abdallah</Text>
-      <Text style={styles.item}>Ahmed Mahmoud Raghb</Text>
-      <Text style={styles.item}>Amr El Sokary</Text>
-      <Text style={styles.item}>Kareem El Ansary</Text>
-      <Text style={styles.item}>Mohamed Ashraf</Text>
-      <Text style={styles.item}>Mohamed AbdelSamee</Text>
-    </View>
+      <View style={styles.container}>
+        <Image style={styles.img} source={require('../assets/cc.png')} />
+        <Text style={styles.paragraph}>
+          This Application is Our Graduation Project, Try use this application
+          and if you fount any problem , please Contact Us to solve it and
+          improve our application.
+        </Text>
+        <Text style={styles.our}>Our Team :</Text>
+        <Text style={styles.item}>Mahmoud Mahmoud Abdallah</Text>
+        <Text style={styles.item}>Ahmed Mahmoud Raghb</Text>
+        <Text style={styles.item}>Amr El Sokary</Text>
+        <Text style={styles.item}>Kareem El Ansary</Text>
+        <Text style={styles.item}>Mohamed Ashraf</Text>
+        <Text style={styles.item}>Mohamed AbdelSamee</Text>
+      </View>
     </ScrollView>
-
   );
 };
 export default AboutScreen;
 const styles = StyleSheet.create({
   container: {
-
     // padding: 10,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor:Colors.blue50
+    backgroundColor: colors.blue,
   },
-  img:{
-    marginTop:20,
-    width:500,
-    height:400
+  img: {
+    marginTop: 20,
+    width: 500,
+    height: 400,
   },
   item: {
     fontSize: 24,
     padding: 5,
   },
   our: {
-    color:colors.blue,
+    color: colors.blue,
     fontWeight: 'bold',
     fontSize: 26,
     marginStart: 5,
