@@ -1,5 +1,9 @@
 import React from 'react';
 import InputApp from '../components/InputApp';
+import Entypo from 'react-native-vector-icons/Entypo';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
+
 import PrimaryButton from '../components/PrimaryButton';
 import colors from '../config/colors';
 
@@ -32,6 +36,13 @@ const ContactUs = () => {
          color: colors.blue,
       }}>Feel Free to message us and we will get back to you as soon as we can.  </Text>
     </View>
+    <View style={styles.viewIcon}>
+      <Text style={styles.icon}><Entypo name="location-pin"size={14} color={colors.lightBlue}></Entypo> 102 Street 27 Don  </Text>
+
+      <Text style={styles.icon}><Ionicons name="call"size={14}color={colors.lightBlue}> </Ionicons>+02 1234 567</Text>
+
+    </View>
+      <Text style={styles.icon}><Entypo name="mail" color={colors.lightBlue} size={14}></Entypo> hello@flowbase.com</Text>
     <View style={styles.form}>
       <InputApp placeholder='Name'placeholderTextColor={colors.blue} />
       <InputApp placeholder='Email' placeholderTextColor={colors.blue} />
@@ -62,6 +73,7 @@ const styles = StyleSheet.create({
     width:'90%'
   },
   form:{
+    marginTop:5,
     width:'90%'
   },
   textarea:{
@@ -85,13 +97,28 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignItems:'center',
     justifyContent:'center',
-    marginTop:20
+    marginTop:8
 
   },
   title:{
     color: colors.white,
     fontSize: 18,
     fontWeight:'bold' 
+  },
+  icon:{
+    fontSize:14,
+    // marginLeft:10,
+    color:colors.black,
+
+    flexDirection:'row'
+  },
+  viewIcon:{
+    flexDirection:'row',
+    fontSize:10,
+    width:'90%',
+    marginBottom:10,
+    justifyContent:'space-evenly'
+
   }
 });
 
