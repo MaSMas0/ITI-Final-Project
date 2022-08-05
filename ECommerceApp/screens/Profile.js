@@ -9,14 +9,14 @@ function Settings(props) {
     <>
       <View style={styles.container}>
         <View style={styles.infoContainer}>
-          <View>
-            <Text style={styles.userName}>Kareem Ansary</Text>
-            <Text style={styles.email}>kareem.ansary@gmail</Text>
-          </View>
           <Image
             style={styles.image}
             source={require('../assets/account.png')}
           />
+          <View>
+            <Text style={styles.userName}>Kareem Ansary</Text>
+            <Text style={styles.email}>kareem.ansary@gmail</Text>
+          </View>
         </View>
       </View>
       <NavigationContainer independent={true}>
@@ -47,10 +47,9 @@ const styles = StyleSheet.create({
     marginStart: 2,
   },
   infoContainer: {
-    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginTop: 30,
+    // marginTop: 30,
   },
 });
 

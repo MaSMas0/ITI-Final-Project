@@ -15,7 +15,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import colors from '../config/colors';
 
 import {useDispatch, useSelector} from 'react-redux';
-import {login} from '../actions/UserAction';
+import {login} from '../actions/UserActions';
 
 const SignIn = ({navigation}) => {
   // const [email, setEmail] = useState('');
@@ -47,26 +47,19 @@ const SignIn = ({navigation}) => {
     dispatch(login(data.Email, data.Password));
   };
   return (
-
-
     <View style={styles.container}>
-          <View style={styles.welcome}>
-      <AntDesign style={styles.backIcon} name="back" size={40} />
-              <Text style={{
-                color:colors.blue,
-                fontSize: 40,
-                fontWeight: 'bold',
-                color: colors.blue,
-                
-                }}>
-                Let's Sign You in.
-              </Text>
-              <Text style={styles.text}>
-                Welcome Back.
-              </Text>
-              <Text style={styles.text}>
-                You Have Been Missed!
-              </Text> 
+      <View style={styles.welcome}>
+        <AntDesign style={styles.backIcon} name="back" size={40} />
+        <Text
+          style={{
+            color: colors.blue,
+            fontSize: 40,
+            fontWeight: 'bold',
+          }}>
+          Let's Sign You in.
+        </Text>
+        <Text style={styles.text}>Welcome Back.</Text>
+        <Text style={styles.text}>You Have Been Missed!</Text>
         <View style={styles.subContainer}>
           <Controller
             control={control}
@@ -85,7 +78,6 @@ const SignIn = ({navigation}) => {
                 value={value}
                 icon="mail"
                 placeholderTextColor={colors.lightBlue}
-
               />
             )}
             name="Email"
@@ -115,29 +107,26 @@ const SignIn = ({navigation}) => {
           />
           {errors.Password && <ErrorText ErrorText={errors.Password.message} />}
           {error && <ErrorText ErrorText={error} />}
-          </View>
+        </View>
+      </View>
 
+      <View>
+        <View style={styles.signUpContainer}>
+          <Text style={{fontSize: 16}}>Don't have an account? </Text>
+          <TouchableWithoutFeedback>
+            <Text
+              style={styles.signUp}
+              onPress={() => {
+                navigation.navigate('SignUp');
+              }}>
+              Register
+            </Text>
+          </TouchableWithoutFeedback>
         </View>
 
-              <View>
-
-          <View style={styles.signUpContainer}>
-            <Text style={{fontSize:16 }}>Don't have an account? </Text>
-            <TouchableWithoutFeedback>
-              <Text
-                style={styles.signUp}
-                onPress={() => {
-                  navigation.navigate('SignUp');
-                }}>
-                 Register
-              </Text>
-            </TouchableWithoutFeedback>
-          </View>
-
-          <PrimaryButton title="Sign In" onPress={handleSubmit(onSubmit)} />
-              </View>
-        </View>
-
+        <PrimaryButton title="Sign In" onPress={handleSubmit(onSubmit)} />
+      </View>
+    </View>
   );
 };
 
@@ -146,45 +135,42 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     width: '100%',
-    justifyContent:'space-between',
-    backgroundColor:colors.white,
-    paddingBottom:15
+    justifyContent: 'space-between',
+    backgroundColor: colors.white,
+    paddingBottom: 15,
   },
   welcome: {
     marginTop: 10,
     alignSelf: 'flex-start',
     marginLeft: 20,
   },
-  text:{
+  text: {
     fontSize: 30,
     color: colors.blue,
   },
- 
 
   subContainer: {
     paddingVertical: 50,
-    marginStart:10,
-   
+    marginStart: 10,
   },
 
   signUp: {
     color: colors.blue,
     fontWeight: 'bold',
-    fontSize:18,
+    fontSize: 18,
     marginStart: 2,
   },
 
   backIcon: {
-    marginBottom:10,
+    marginBottom: 10,
     color: colors.lightBlue,
   },
   signUpContainer: {
-    marginBottom:15,
+    marginBottom: 15,
     flexDirection: 'row',
-    justifyContent:'center',
-    alignItems:'center'
+    justifyContent: 'center',
+    alignItems: 'center',
   },
- 
 });
 
 export default SignIn;

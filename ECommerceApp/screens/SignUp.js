@@ -12,7 +12,7 @@ import ErrorText from '../components/ErrorText';
 import PrimaryButton from '../components/PrimaryButton';
 import colors from '../config/colors';
 import {useDispatch, useSelector} from 'react-redux';
-import {register} from '../actions/UserAction';
+import {register} from '../actions/UserActions';
 
 const SignUp = ({navigation}) => {
   const {
@@ -203,8 +203,8 @@ const SignUp = ({navigation}) => {
           </TouchableWithoutFeedback>
           {error && <ErrorText ErrorText={error} />}
         </View>
-
         <PrimaryButton title="Sign Up" onPress={handleSubmit(onSubmit)} />
+        {error && <ErrorText ErrorText={error} />}
       </View>
     </ScrollView>
   );
@@ -212,7 +212,8 @@ const SignUp = ({navigation}) => {
 
 const styles = StyleSheet.create({
   ScrollView: {
-    flexGrow: 1,
+    // flex: 1,
+    flexGrow:1,
     backgroundColor: colors.white,
   },
   container: {

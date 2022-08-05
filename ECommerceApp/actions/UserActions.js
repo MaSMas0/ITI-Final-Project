@@ -9,19 +9,9 @@ import {
   userRegisterSuccess,
   userRegisterFail,
 } from '../store/reducers/User/UserRegisterSlice';
-
 import axios from 'axios';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
-import AsyncStorage from 'react-native';
+import {persistor} from '../store/store';
 
-// const storeData = async (value, keyValue) => {
-//   try {
-//     const jsonValue = JSON.stringify(value);
-//     await AsyncStorage.setItem(keyValue, jsonValue);
-//   } catch (e) {
-//     console.log(e);
-//   }
-// };
 export const login = (email, password) => async dispatch => {
   try {
     dispatch(userLoginRequest());
@@ -37,7 +27,6 @@ export const login = (email, password) => async dispatch => {
       config,
     );
     dispatch(userLoginSuccess(data));
-    await AsyncStorage.setItem('token', data.token);
   } catch (error) {
     dispatch(
       userLoginFail(
@@ -50,8 +39,8 @@ export const login = (email, password) => async dispatch => {
 };
 
 export const logout = () => dispatch => {
-  // AsyncStorage.removeItem('@userInfo');
   dispatch(userLogout());
+  persistor.purge();
 };
 
 export const register = (name, email, password) => async dispatch => {
@@ -71,7 +60,6 @@ export const register = (name, email, password) => async dispatch => {
     dispatch(userRegisterSuccess(data));
     console.log(data);
     dispatch(userLoginSuccess(data));
-    await AsyncStorage.setItem('token', data.token);
   } catch (error) {
     dispatch(
       userRegisterFail(

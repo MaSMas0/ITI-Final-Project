@@ -10,6 +10,8 @@ function Category(props) {
     <View style={styles.procductCategory}>
 
       <FlatList
+        showsVerticalScrollIndicator={false}
+
         nestedScrollEnabled
         numColumns={3}
         data={[1, 2, 3, 45, 5, 6, 7, 8, 8, 8, 8, 8,8,8,9,8,8]}
