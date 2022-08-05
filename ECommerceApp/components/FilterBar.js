@@ -14,6 +14,7 @@ const FilterBar = props => {
     <View>
       <FlatList
         nestedScrollEnabled
+        showsHorizontalScrollIndicator={false}
         horizontal
         data={[1, 2, 3, 45, 5, 6, 7, 8, 8, 8, 8, 8, 8, 8]}
         renderItem={(item, index) => {

@@ -57,9 +57,10 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     width,
     margin: 5,
-    borderRadius: 15,
+    borderRadius: 10,
     justifyContent: 'space-between',
     padding: 10,
+
   },
   price: {
     fontSize: 18,
