@@ -13,12 +13,14 @@ import Payment from './screens/Payment';
 import Page1 from './screens/Page1';
 import Address from './screens/SavedAddress';
 import NewAddress from './screens/NewAddress';
+import MoreOrderDetails from './components/MoreOrderDetailsCom';
 const App = () => {
   return (
     <NavigationContainer>
       <StatusBar backgroundColor="white" barStyle="dark-content" />
       <AppNavigator />
       {/* <Payment /> */}
+      {/* <MoreOrderDetails /> */}
     </NavigationContainer>
   );
 };

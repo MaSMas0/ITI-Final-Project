@@ -6,6 +6,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import Settings from '../screens/Profile';
 import AboutScreen from '../screens/AboutScreen';
 import ContactUs from '../screens/ContactUs';
+import MoreOrderDetails from '../components/MoreOrderDetailsCom';
 
 const Drawer = createDrawerNavigator();
 
@@ -30,6 +31,7 @@ const DrawerNavigator = ({navigation}) => {
         ),
       }}>
       <Drawer.Screen name="profile" component={Settings} />
+      <Drawer.Screen name="Orders Details" component={MoreOrderDetails} />
       <Drawer.Screen name="AboutScreen" component={AboutScreen} />
       <Drawer.Screen name="ContactUs" component={ContactUs} />
     </Drawer.Navigator>
