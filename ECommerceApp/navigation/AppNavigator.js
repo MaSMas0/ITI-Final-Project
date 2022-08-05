@@ -143,7 +143,7 @@ const Footer = () => (
       component={SettingsStackScreen}
       options={{
         tabBarIcon: ({color}) => (
-          <AntDesign name="user" color={color} size={25} />
+          <MaterialIcons name="account-circle" color={color} size={25} />
         ),
       }}
     />

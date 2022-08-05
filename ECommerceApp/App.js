@@ -1,5 +1,5 @@
 import React from 'react';
-import {StatusBar, StyleSheet} from 'react-native';
+import {StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import 'react-native-gesture-handler';
 import TabViewExample from './screens/Ansary';
@@ -11,7 +11,7 @@ import Cart from './screens/Cart';
 import SettingProfile from './screens/SettingProfile';
 import Payment from './screens/Payment';
 import Page1 from './screens/Page1';
-import Address from './screens/SavedAddress';
+import Address from './screens/Address';
 import NewAddress from './screens/NewAddress';
 import MoreOrderDetails from './components/MoreOrderDetailsCom';
 const App = () => {

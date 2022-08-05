@@ -10,7 +10,6 @@ import {
   StyleSheet,
   TouchableHighlight
 } from 'react-native';
-import {color} from 'react-native-reanimated';
 import colors from '../config/colors';
 import LinearGradient from 'react-native-linear-gradient';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';

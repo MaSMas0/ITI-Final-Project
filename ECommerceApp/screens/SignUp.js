@@ -203,7 +203,6 @@ const SignUp = ({navigation}) => {
           </TouchableWithoutFeedback>
           {error && <ErrorText ErrorText={error} />}
         </View>
-
         <PrimaryButton title="Sign Up" onPress={handleSubmit(onSubmit)} />
         {error && <ErrorText ErrorText={error} />}
       </View>
@@ -214,7 +213,7 @@ const SignUp = ({navigation}) => {
 const styles = StyleSheet.create({
   ScrollView: {
     // flex: 1,
-    flexGrow: 1,
+    flexGrow:1,
     backgroundColor: colors.white,
   },
   container: {

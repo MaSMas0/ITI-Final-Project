@@ -1,8 +1,31 @@
-import {Text, View, SafeAreaView, StyleSheet, Image} from 'react-native';
-import React from 'react';
+import {
+  Text,
+  View,
+  SafeAreaView,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
+import React, {useState} from 'react';
 import colors from '../config/colors';
 import LinearGradient from 'react-native-linear-gradient';
-const ProductDetails = () => {
+import {useSelector, useDispatch} from 'react-redux/';
+import {addToCart} from '../store/reducers/User/CartReducer';
+
+const ProductDetails = ({route}) => {
+  const {item} = route.params;
+  console.log(item);
+  const [counter, SetCounter] = useState(1);
+
+  const dispatch = useDispatch();
+  const handleCounter = inc => {
+    if (inc == true) {
+      SetCounter(c => c + 1);
+    }
+    if (!inc && counter > 1) {
+      SetCounter(c => c - 1);
+    }
+  };
   return (
     <SafeAreaView style={style.saveAreaStyle}>
       <View style={style.header}></View>
@@ -10,50 +33,54 @@ const ProductDetails = () => {
         <Image
           style={style.imgStyle}
           source={{
-            uri: 'https://www.slazzer.com/static/images/home-page/individual-image-design-maker.jpg',
+            uri: item.image,
           }}
         />
       </View>
       <View style={style.Container}>
         <View style={style.subCont}>
-          <Text style={style.title}>Product Name</Text>
+          <Text style={style.title}>{item.title}</Text>
           <LinearGradient
             start={{x: 1, y: 0}}
             end={{x: 0, y: 0}}
             colors={['#030A4E', '#22336a']}
             style={style.priceContainer}>
-            <Text style={style.priceText}>$200</Text>
+            <Text style={style.priceText}>{item.price}</Text>
           </LinearGradient>
         </View>
         <View style={style.descriptionContainer}>
-          <Text style={style.description}>
-            praising pain was born and I will give you a complete account of the
-            system, and expound the actual teachings of the great explorer of
-            the truth, the master-builder of human happiness.
-          </Text>
+          <Text style={style.description}>{item.description}</Text>
           <View style={style.downContainer}>
             <View style={style.subDownContainer}>
-              <View style={style.decreContainer}>
-                <Text style={style.decreBtn}>-</Text>
-              </View>
-              <Text style={style.prodNo}>1</Text>
+              <TouchableOpacity onPress={() => handleCounter(false)}>
+                <View style={style.decreContainer}>
+                  <Text style={style.decreBtn}>-</Text>
+                </View>
+              </TouchableOpacity>
+              <Text style={style.prodNo}>{counter}</Text>
 
+              <TouchableOpacity onPress={() => handleCounter(true)}>
+                <LinearGradient
+                  start={{x: 1, y: 0}}
+                  end={{x: 0, y: 0}}
+                  colors={['#030A4E', '#22336a']}
+                  style={style.increContainer}>
+                  <Text style={style.increBtn}>+</Text>
+                </LinearGradient>
+              </TouchableOpacity>
+            </View>
+            <TouchableOpacity
+              onPress={() => {
+                dispatch(addToCart(item));
+              }}>
               <LinearGradient
                 start={{x: 1, y: 0}}
                 end={{x: 0, y: 0}}
                 colors={['#030A4E', '#22336a']}
-                style={style.increContainer}>
-                <Text style={style.increBtn}>+</Text>
+                style={style.buyBtn}>
+                <Text style={style.buyText}>Cart</Text>
               </LinearGradient>
-            </View>
-
-            <LinearGradient
-              start={{x: 1, y: 0}}
-              end={{x: 0, y: 0}}
-              colors={['#030A4E', '#22336a']}
-              style={style.buyBtn}>
-              <Text style={style.buyText}>Buy</Text>
-            </LinearGradient>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
