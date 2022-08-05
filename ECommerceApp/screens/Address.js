@@ -4,11 +4,7 @@ import SecondryButton from '../components/SecondryButton';
 
 const Address = () => {
   return (
-    <SafeAreaView
-      style={{
-        margin: 30,
-        marginVertical: 50,
-      }}>
+    <View>
       <View
         style={{
           backgroundColor: '#fff',
@@ -88,7 +84,7 @@ const Address = () => {
         }}>
         <SecondryButton title="ADD NEW ADDRESS" />
       </TouchableOpacity>
-    </SafeAreaView>
+    </View>
   );
 };
 
