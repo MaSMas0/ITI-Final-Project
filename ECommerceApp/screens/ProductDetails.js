@@ -10,7 +10,7 @@ import React, {useState} from 'react';
 import colors from '../config/colors';
 import LinearGradient from 'react-native-linear-gradient';
 import {useSelector, useDispatch} from 'react-redux/';
-import {addToCart} from '../store/reducers/User/CartReducer';
+// import addToCart from '../store/reducers/User/CartReducer';
 
 const ProductDetails = ({route}) => {
   const {item} = route.params;
@@ -71,7 +71,7 @@ const ProductDetails = ({route}) => {
             </View>
             <TouchableOpacity
               onPress={() => {
-                dispatch(addToCart(item));
+                // dispatch(addToCart(item));
               }}>
               <LinearGradient
                 start={{x: 1, y: 0}}

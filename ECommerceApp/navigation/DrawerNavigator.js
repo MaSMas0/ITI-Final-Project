@@ -10,6 +10,8 @@ import AboutScreen from '../screens/AboutScreen';
 import ContactUs from '../screens/ContactUs';
 import AddressNavigator from './AddressNavigator';
 import colors from '../config/colors';
+import MoreOrderDetails from '../components/MoreOrderDetailsCom';
+import OrderItems from './OrderItems';
 
 const Drawer = createDrawerNavigator();
 
@@ -54,6 +56,16 @@ const DrawerNavigator = ({navigation}) => {
           title: 'Address',
           drawerIcon: ({color, size, focused}) => (
             <EvilIcons name="location" size={size} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="OrderItems"
+        component={OrderItems}
+        options={{
+          title: 'Order Details',
+          drawerIcon: ({color, size, focused}) => (
+            <MaterialIcons name="more" size={size} color={color} />
           ),
         }}
       />
