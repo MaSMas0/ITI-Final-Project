@@ -1,15 +1,4 @@
 import {createSlice} from '@reduxjs/toolkit';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
-import AsyncStorage from 'react-native';
-
-const userInfoFromStorage = async () => {
-  try {
-    const jsonValue = await AsyncStorage.getItem('@userInfo');
-    return jsonValue != null ? JSON.parse(jsonValue) : null;
-  } catch (e) {
-    console.log(e);
-  }
-};
 
 const initialState = {};
 
