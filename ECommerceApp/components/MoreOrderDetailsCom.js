@@ -1,9 +1,15 @@
 import React from 'react';
-import {StyleSheet, TextInput, Text, View} from 'react-native';
+import {
+  StyleSheet,
+  TextInput,
+  Text,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 import {block} from 'react-native-reanimated';
 import colors from '../config/colors';
 
-const MoreOrderDetails = () => {
+const MoreOrderDetails = ({navigation}) => {
   return (
     <View style={styles.allPage}>
       {/* <View style={styles.all}>
@@ -20,17 +26,23 @@ const MoreOrderDetails = () => {
       </View> */}
       <View style={styles.all}>
         <Text style={styles.order}>MY ORDER ....</Text>
-        <View style={styles.part}>
-          <Text style={styles.txt1}>
-            PRICE : <Text style={{color: 'black'}}> 487.00 </Text>
-          </Text>
-          <Text style={styles.txt}>
-            CREATION DATE :{' '}
-            <Text style={{color: 'black'}}> 2022-8-12 +02:00 </Text>
-          </Text>
-        </View>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('MoreOrderItemDetails');
+          }}>
+          <View style={styles.part}>
+            <Text style={styles.txt1}>
+              PRICE : <Text style={{color: 'black'}}> 487.00 </Text>
+            </Text>
+            <Text style={styles.txt}>
+              CREATION DATE :{' '}
+              <Text style={{color: 'black'}}> 2022-8-12 +02:00 </Text>
+            </Text>
+          </View>
+        </TouchableOpacity>
       </View>
     </View>
+    // </TouchableOpacity>
   );
 };
 

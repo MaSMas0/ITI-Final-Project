@@ -14,6 +14,7 @@ import Page1 from './screens/Page1';
 import Address from './screens/Address';
 import NewAddress from './screens/NewAddress';
 import MoreOrderDetails from './components/MoreOrderDetailsCom';
+import MoreOrderItemDetails from './components/MoreOrderItemDetails';
 const App = () => {
   return (
     <NavigationContainer>
@@ -21,6 +22,7 @@ const App = () => {
       <AppNavigator />
       {/* <Payment /> */}
       {/* <MoreOrderDetails /> */}
+      {/* <MoreOrderItemDetails /> */}
     </NavigationContainer>
   );
 };
