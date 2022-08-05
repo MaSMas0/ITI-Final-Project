@@ -1,26 +1,98 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import InputApp from '../components/InputApp';
+import PrimaryButton from '../components/PrimaryButton';
+import colors from '../config/colors';
+
+
+import {StyleSheet, Text, TextInput, View,TouchableOpacity} from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const ContactUs = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.item}>Email : NileBuySite.gmail.com</Text>
-      <Text style={styles.item}>Phone : 01145773245</Text>
+    <ScrollView style={{
+      height:'100%',
+      width:'100%',
+      backgroundColor:colors.white,
+    padding: 10,
+
+    }}>
+
+  <View style={styles.container}>
+    <View style={styles.para}>
+      <Text style={{
+        color:colors.blue,
+        fontSize: 35,
+        fontWeight: 'bold',
+        color: colors.blue,
+      }}>
+        Get in touch!
+      </Text>
+      <Text style={{
+         fontSize: 24,
+         color: colors.blue,
+      }}>Feel Free to message us and we will get back to you as soon as we can.  </Text>
     </View>
+    <View style={styles.form}>
+      <InputApp placeholder='Name'placeholderTextColor={colors.blue} />
+      <InputApp placeholder='Email' placeholderTextColor={colors.blue} />
+      <TextInput style={styles.textarea} multiline={true} placeholder='Message..' placeholderTextColor={colors.blue}   />
+    </View>
+
+    <TouchableOpacity style={styles.submit}>
+      <Text style={styles.title}>Submit</Text>     
+    </TouchableOpacity>
+
+
+ 
+  </View>
+  </ScrollView>
+
   );
 };
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
-    display: 'flex',
-    justifyContent: 'center',
+    width:'100%',
+    height:'100%',
     alignItems: 'center',
+    backgroundColor:colors.white
   },
-  item: {
+
+  para:{
+    marginBottom:30,
+    width:'90%'
+  },
+  form:{
+    width:'90%'
+  },
+  textarea:{
+    backgroundColor:'white',
+    height:250,
+    alignItems:'flex-start',
+    flexDirection: 'row',
+    color: colors.blue,
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    paddingHorizontal: 5,
+    borderWidth:1,
+    borderColor:colors.blue,
+    margin:5,
+    borderRadius:10,
+  },
+  submit: {
+    backgroundColor: colors.blue,
+    width: '50%',
+    height: 40,
+    borderRadius: 12,
+    alignItems:'center',
+    justifyContent:'center',
+    marginTop:20
+
+  },
+  title:{
+    color: colors.white,
     fontSize: 18,
-    padding: 10,
-    fontStyle: 'italic',
-  },
+    fontWeight:'bold' 
+  }
 });
 
 export default ContactUs;

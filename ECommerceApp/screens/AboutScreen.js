@@ -1,5 +1,7 @@
 import React from 'react';
 import * as Animatable from 'react-native-animatable';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+
 
 import {StyleSheet, Text, View, Image, ScrollView} from 'react-native';
 import colors from '../config/colors';
@@ -17,7 +19,10 @@ const AboutScreen = () => {
           improve our application.
         </Text>
         <View style={styles.sub}> 
-        <Text style={styles.our}>The Team </Text>
+        <Text style={styles.our}>Team <AntDesign
+        name="team"
+        size={18}
+        ></AntDesign></Text>
         <Animatable.Text animation="fadeInLeftBig" duration={5000} iterationCount={'infinite'} style={styles.item}>Mahmoud Mahmoud Abdallah</Animatable.Text>
         <Animatable.Text animation="fadeInRightBig" duration={5000} iterationCount={'infinite'} style={styles.item}>Ahmed Mahmoud Ragheb</Animatable.Text>
         <Animatable.Text animation="fadeInLeftBig" duration={5000} iterationCount={'infinite'} style={styles.item}>Amr El Sokary</Animatable.Text>
