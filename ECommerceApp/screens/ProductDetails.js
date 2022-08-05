@@ -10,7 +10,7 @@ import React, {useState} from 'react';
 import colors from '../config/colors';
 import LinearGradient from 'react-native-linear-gradient';
 import {useSelector, useDispatch} from 'react-redux/';
-// import addToCart from '../store/reducers/User/CartReducer';
+// import addToCart from '../store/reducers/User/CartReducer';    // error here  and line 74
 
 const ProductDetails = ({route}) => {
   const {item} = route.params;
