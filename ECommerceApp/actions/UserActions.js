@@ -3,8 +3,6 @@ import {
   userLoginSuccess,
   userLoginFail,
   userLogout,
-  getUpdatedJwt,
-  updateJwt,
 } from '../store/reducers/User/UserLoginSlice';
 import {
   userRegisterRequest,
