@@ -37,7 +37,7 @@ const Product = ({navigation}) => {
             <Card
               product={item}
               onPress={() => {
-                navigation.navigate('ProductDetails', item);
+                navigation.navigate('ProductDetails', {item});
               }}
             />
           );
