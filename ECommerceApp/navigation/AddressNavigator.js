@@ -1,14 +1,14 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Address from '../screens/Address';
 import NewAddress from '../screens/NewAddress';
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 const AddressNavigator = () => (
   <Stack.Navigator>
-    <Stack.Screen name="Address" component={Address} />
-    <Stack.Screen name="Messages" component={NewAddress} />
+    <Stack.Screen name="SavedAddress" component={Address} />
+    <Stack.Screen name="NewAddress" component={NewAddress} />
   </Stack.Navigator>
 );
 
