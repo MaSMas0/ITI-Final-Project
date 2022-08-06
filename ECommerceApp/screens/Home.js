@@ -11,7 +11,22 @@ import {useSelector, useDispatch} from 'react-redux';
 const Home = ({navigation}) => {
   const dispatch = useDispatch();
   const {products, isLoading, isError} = useSelector(state => state.products);
-  console.log(products?.products[0].brand);
+
+  const brands = [];
+
+  products.forEach(p => {
+    if (!brands.includes(p.brand)) {
+      brands.push(p.brand);
+    }
+  });
+
+  const brandProducts = item => {
+    const filterProducts = products.filter(p => {
+      return p.brand == item;
+    });
+    return filterProducts;
+  };
+
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
@@ -35,14 +50,14 @@ const Home = ({navigation}) => {
             style={{margin: 5}}
             nestedScrollEnabled
             numColumns={2}
-            data={products?.products}
-            renderItem={(item, index) => {
+            data={brands}
+            renderItem={({item, index}) => {
               return (
                 <BrandCard
-                  title={item.brand}
+                  title={item}
                   onpress={() => {
-                    console.log(item.brand, 'ashraf');
-                    navigation.navigate('Products');
+                    console.log(item);
+                    navigation.navigate('Products', brandProducts(item));
                   }}
                 />
               );

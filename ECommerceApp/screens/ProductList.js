@@ -4,7 +4,9 @@ import {FlatList, SafeAreaView} from 'react-native';
 import colors from '../config/colors';
 import Card from '../components/ProductCard';
 
-const Product = ({navigation}) => {
+const Product = ({navigation, route}) => {
+  const products = route.params;
+
   return (
     <SafeAreaView style={{backgroundColor: colors.grey, paddingHorizontal: 5}}>
       <FlatList
@@ -15,7 +17,7 @@ const Product = ({navigation}) => {
           paddingBottom: 50,
         }}
         numColumns={2}
-        data={[1]}
+        data={products}
         renderItem={({item}) => {
           return (
             <Card
