@@ -15,6 +15,7 @@ import Address from './screens/Address';
 import NewAddress from './screens/NewAddress';
 import MoreOrderDetails from './components/MoreOrderDetailsCom';
 import MoreOrderItemDetails from './components/MoreOrderItemDetails';
+import Loader from './components/Loader';
 const App = () => {
   return (
     <NavigationContainer>

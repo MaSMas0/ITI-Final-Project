@@ -1,5 +1,12 @@
 import React, {useEffect} from 'react';
-import {FlatList, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {
+  FlatList,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import SlideShow from '../components/SlideShow';
 import BrandCard from '../components/BrandCard';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
@@ -7,6 +14,7 @@ import colors from '../config/colors';
 
 import {getProducts} from '../store/reducers/Products/ProductsSlice';
 import {useSelector, useDispatch} from 'react-redux';
+import Loader from '../components/Loader';
 
 const Home = ({navigation}) => {
   const dispatch = useDispatch();
@@ -32,12 +40,8 @@ const Home = ({navigation}) => {
   }, [dispatch]);
 
   return (
-    <View>
-      {isLoading && (
-        <View>
-          <Text>Loading</Text>
-        </View>
-      )}
+    <>
+      {isLoading && <Loader size={Platform.OS == 'android' ? 60 : 'large'} />}
       {!isLoading && (
         <View style={styles.container}>
           <SlideShow />
@@ -65,7 +69,7 @@ const Home = ({navigation}) => {
           />
         </View>
       )}
-    </View>
+    </>
   );
 };
 
