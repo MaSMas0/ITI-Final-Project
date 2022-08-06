@@ -10,7 +10,7 @@ import {
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import colors from '../config/colors';
 
-function BrandCard({onpress}) {
+function BrandCard({onpress, title}) {
   return (
     <TouchableOpacity onPress={onpress}>
       <View style={styles.container}>
@@ -22,7 +22,7 @@ function BrandCard({onpress}) {
               uri: 'https://img.icons8.com/external-tal-revivo-bold-tal-revivo/96/000000/external-adidas-a-multinational-corporation-that-designs-and-manufactures-shoes-clothing-and-accessories-fashion-bold-tal-revivo.png',
             }}
           />
-          <Text style={styles.title}>adidas</Text>
+          <Text style={styles.title}>{title}</Text>
         </View>
         <View style={styles.shadow}></View>
       </View>

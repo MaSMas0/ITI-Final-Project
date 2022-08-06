@@ -1,34 +1,55 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {FlatList, ScrollView, StyleSheet, Text, View} from 'react-native';
 import SlideShow from '../components/SlideShow';
 import BrandCard from '../components/BrandCard';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import colors from '../config/colors';
 
-const Home = ({navigation}) => {
-  return (
-    <View style={styles.container}>
-      <SlideShow />
-      <Text style={styles.line}></Text>
-      <Text style={styles.h1}>Brands</Text>
-      <Text style={styles.line}></Text>
+import {getProducts} from '../store/reducers/Products/ProductsSlice';
+import {useSelector, useDispatch} from 'react-redux';
 
-      <FlatList
-        showsVerticalScrollIndicator={false} 
-        style={{margin: 5}}
-        nestedScrollEnabled
-        numColumns={2}
-        data={[1, 2, 3, 45, 5, 6, 7, 8, 8, 8, 8, 8, 9, 9, 10, 10, 1, 1, 1]}
-        renderItem={(item, index) => {
-          return (
-            <BrandCard
-              onpress={() => {
-                navigation.navigate('Products');
-              }}
-            />
-          );
-        }}
-      />
+const Home = ({navigation}) => {
+  const dispatch = useDispatch();
+  const {products, isLoading, isError} = useSelector(state => state.products);
+  console.log(products?.products[0].brand);
+  useEffect(() => {
+    dispatch(getProducts());
+  }, [dispatch]);
+
+  return (
+    <View>
+      {isLoading && (
+        <View>
+          <Text>Loading</Text>
+        </View>
+      )}
+      {!isLoading && (
+        <View style={styles.container}>
+          <SlideShow />
+          <Text style={styles.line}></Text>
+          <Text style={styles.h1}>Brands</Text>
+          <Text style={styles.line}></Text>
+
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            style={{margin: 5}}
+            nestedScrollEnabled
+            numColumns={2}
+            data={products?.products}
+            renderItem={(item, index) => {
+              return (
+                <BrandCard
+                  title={item.brand}
+                  onpress={() => {
+                    console.log(item.brand, 'ashraf');
+                    navigation.navigate('Products');
+                  }}
+                />
+              );
+            }}
+          />
+        </View>
+      )}
     </View>
   );
 };
