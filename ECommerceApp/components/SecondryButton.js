@@ -5,7 +5,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import colors from '../config/colors';
 
 function SecondryButton({onPress, title, style}) {
-  console.log({...style}, 'esta');
   return (
     <TouchableOpacity onPress={onPress}>
       <LinearGradient

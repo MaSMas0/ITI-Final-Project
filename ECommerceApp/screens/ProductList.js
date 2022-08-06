@@ -1,26 +1,18 @@
 // import {SafeAreaView, StyleSheet, Text, TextInput, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
-import Icon from 'react-native-vector-icons';
 import {FlatList, SafeAreaView} from 'react-native';
 import colors from '../config/colors';
 import Card from '../components/ProductCard';
+import {getProducts} from '../store/reducers/Products/ProductsSlice';
+import {useSelector, useDispatch} from 'react-redux';
 
 const Product = ({navigation}) => {
-  const [products, setProduct] = useState([]);
+  const dispatch = useDispatch();
+  const {products, isLoading, isError} = useSelector(state => state.products);
 
-  function getEvents() {
-    axios
-      .get('https://fakestoreapi.com/products')
-      .then(response => response.data)
-      .then(data => {
-        setProduct(data);
-      });
-  }
   useEffect(() => {
-    getEvents();
-  }, []);
-
+    dispatch(getProducts());
+  }, [dispatch]);
   return (
     <SafeAreaView style={{backgroundColor: colors.grey, paddingHorizontal: 5}}>
       <FlatList
@@ -31,7 +23,7 @@ const Product = ({navigation}) => {
           paddingBottom: 50,
         }}
         numColumns={2}
-        data={products}
+        data={products?.products}
         renderItem={({item}) => {
           return (
             <Card

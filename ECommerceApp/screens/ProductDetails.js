@@ -39,7 +39,7 @@ const ProductDetails = ({route}) => {
       </View>
       <View style={style.Container}>
         <View style={style.subCont}>
-          <Text style={style.title}>{item.title}</Text>
+          <Text style={style.title}>{item.name}</Text>
           <LinearGradient
             start={{x: 1, y: 0}}
             end={{x: 0, y: 0}}
