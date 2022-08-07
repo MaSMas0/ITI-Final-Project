@@ -18,15 +18,16 @@ import Loader from '../components/Loader';
 
 const Home = ({navigation}) => {
   const dispatch = useDispatch();
-  const {products, isLoading, isError} = useSelector(state => state.products);
+  const {products, isLoading, isError, brands} = useSelector(
+    state => state.products,
+  );
 
-  const brands = [];
-
-  products.forEach(p => {
-    if (!brands.includes(p.brand)) {
-      brands.push(p.brand);
-    }
-  });
+  console.log(brands);
+  // products.forEach(p => {
+  //   if (!brands.includes(p.brand)) {
+  //     brands.push(p.brand);
+  //   }
+  // });
 
   const brandProducts = item => {
     const filterProducts = products.filter(p => {
@@ -51,7 +52,7 @@ const Home = ({navigation}) => {
 
           <FlatList
             showsVerticalScrollIndicator={false}
-            style={{margin: 5}}
+            style={{margin: 0}}
             nestedScrollEnabled
             numColumns={2}
             data={brands}

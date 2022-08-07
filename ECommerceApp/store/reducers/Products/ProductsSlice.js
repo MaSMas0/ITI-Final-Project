@@ -10,7 +10,13 @@ export const getProducts = createAsyncThunk('products/getProducts', async _ => {
 });
 const productsSlice = createSlice({
   name: 'products',
-  initialState: {products: [], isLoading: false, isError: null},
+  initialState: {
+    products: [],
+    isLoading: false,
+    isError: null,
+    categoryList: [],
+    brands: [],
+  },
   extraReducers: {
     [getProducts.pending]: (state, action) => {
       state.isLoading = true;
@@ -20,7 +26,14 @@ const productsSlice = createSlice({
     [getProducts.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.products = action.payload.products;
-      console.log(action);
+      state.categoryList = [
+        ...new Set(action.payload.products.map(p => p.category.toUpperCase())),
+      ];
+
+      state.brands = [
+        ...new Set(action.payload.products.map(p => p.brand.toUpperCase())),
+      ];
+      //   action.payload.products
     },
     [getProducts.rejected]: (state, action) => {
       state.isLoading = false;

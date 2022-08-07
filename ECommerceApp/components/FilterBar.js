@@ -9,19 +9,19 @@ import {
 } from 'react-native';
 import colors from '../config/colors';
 
-const FilterBar = props => {
+const FilterBar = ({categories}) => {
   return (
     <View>
       <FlatList
         nestedScrollEnabled
         showsHorizontalScrollIndicator={false}
         horizontal
-        data={[1, 2, 3, 45, 5, 6, 7, 8, 8, 8, 8, 8, 8, 8]}
-        renderItem={(item, index) => {
+        data={categories}
+        renderItem={({item}) => {
           return (
             <TouchableOpacity>
               <View style={styles.container}>
-                <Text style={styles.nameOfCategory}>Nike</Text>
+                <Text style={styles.nameOfCategory}>{item}</Text>
               </View>
             </TouchableOpacity>
           );
