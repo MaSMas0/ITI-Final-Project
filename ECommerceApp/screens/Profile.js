@@ -1,10 +1,13 @@
 import {NavigationContainer} from '@react-navigation/native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
+import {useSelector} from 'react-redux';
 import colors from '../config/colors';
 import TopNavigator from '../navigation/TopNavigator';
 
 function Settings(props) {
+  const userInfo = useSelector(state => state.userLogin.userInfo);
+
   return (
     <>
       <View style={styles.container}>
@@ -14,8 +17,8 @@ function Settings(props) {
             source={require('../assets/account.png')}
           />
           <View>
-            <Text style={styles.userName}>Kareem Ansary</Text>
-            <Text style={styles.email}>kareem.ansary@gmail</Text>
+            <Text style={styles.userName}>{userInfo.name}</Text>
+            <Text style={styles.email}>{userInfo.email}</Text>
           </View>
         </View>
       </View>
