@@ -187,10 +187,11 @@ const styles = StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: 10,
   },
   dropdown3BtnStyle: {
-    width: '80%',
-    height: 50,
+    width: '97%',
+    height: 53,
     backgroundColor: 'transparent',
     paddingHorizontal: 0,
     borderWidth: 1,

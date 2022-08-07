@@ -14,11 +14,11 @@ const Home = ({navigation}) => {
       <Text style={styles.line}></Text>
 
       <FlatList
-        showsVerticalScrollIndicator={false} 
-        style={{margin: 5}}
+        showsVerticalScrollIndicator={false}
+        style={{marginBottom: 105}}
         nestedScrollEnabled
         numColumns={2}
-        data={[1, 2, 3, 45, 5, 6, 7, 8, 8, 8, 8, 8, 9, 9, 10, 10, 1, 1, 1]}
+        data={[1, 2, 3, 45, 5, 6, 6, 7, 8, 8, 8, 8, 8, 9, 9, 10, 10, 1, 1, 1]}
         renderItem={(item, index) => {
           return (
             <BrandCard
