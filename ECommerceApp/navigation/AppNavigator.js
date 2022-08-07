@@ -97,6 +97,15 @@ function CategoryStackScreen() {
           }
         }
       />
+      <Stack.Screen
+        name="ProductDetails"
+        component={ProductDetails}
+        options={
+          {
+            // headerTitle: props => <Header title={'Category'} {...props} />,
+          }
+        }
+      />
     </Stack.Navigator>
   );
 }

@@ -6,7 +6,7 @@ import * as Animatable from 'react-native-animatable';
 import {getProducts} from '../store/reducers/Products/ProductsSlice';
 import {useSelector, useDispatch} from 'react-redux';
 import {Item} from 'react-native-paper/lib/typescript/components/List/List';
-function Category(props) {
+function Category({navigation}) {
   const dispatch = useDispatch();
   const {products, isLoading, isError, categoryList} = useSelector(
     state => state.products,
@@ -41,7 +41,14 @@ function Category(props) {
           numColumns={3}
           data={filterProductss}
           renderItem={({item, index}) => {
-            return <ProductiteminCategory price={item.price} />;
+            return (
+              <ProductiteminCategory
+                price={item.price}
+                onPress={() => {
+                  navigation.navigate('ProductDetails', {item});
+                }}
+              />
+            );
           }}
         />
       </View>

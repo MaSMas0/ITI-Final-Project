@@ -12,10 +12,10 @@ import * as Animatable from 'react-native-animatable';
 import Like from './Like';
 import colors from '../config/colors';
 
-const ProductiteminCategory = ({price}) => {
+const ProductiteminCategory = ({price, onPress}) => {
   console.log(price, 'price');
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPress}>
       <ScrollView>
         <Animatable.View
           animation="flipInY"
