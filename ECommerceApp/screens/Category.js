@@ -4,6 +4,7 @@ import ProductiteminCategory from '../components/ProductiteminCategory';
 import FilterBar from '../components/FilterBar';
 import {getProducts} from '../store/reducers/Products/ProductsSlice';
 import {useSelector, useDispatch} from 'react-redux';
+import Loader from '../components/Loader';
 function Category({navigation}) {
   const dispatch = useDispatch();
   const {products, isLoading, isError, categoryList} = useSelector(
@@ -36,7 +37,6 @@ function Category({navigation}) {
 
       return setFilterProducts(filterProducts);
     }
-    console.log('flooooooooooooooooooooooooooooooooos');
     return setFilterProducts([...products].sort(() => 0.5 - Math.random()));
   };
 
@@ -52,24 +52,27 @@ function Category({navigation}) {
         onPress={handleFilterItems}
         changeColor={changeColor}
       />
-      <View style={styles.procductCategory}>
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          nestedScrollEnabled
-          numColumns={3}
-          data={filterProductss}
-          renderItem={({item, index}) => {
-            return (
-              <ProductiteminCategory
-                price={item.price}
-                onPress={() => {
-                  navigation.navigate('ProductDetails', {item});
-                }}
-              />
-            );
-          }}
-        />
-      </View>
+      {isLoading && <Loader size={Platform.OS == 'android' ? 60 : 'large'} />}
+      {!isLoading && (
+        <View style={styles.procductCategory}>
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            nestedScrollEnabled
+            numColumns={3}
+            data={filterProductss}
+            renderItem={({item, index}) => {
+              return (
+                <ProductiteminCategory
+                  price={item.price}
+                  onPress={() => {
+                    navigation.navigate('ProductDetails', {item});
+                  }}
+                />
+              );
+            }}
+          />
+        </View>
+      )}
     </View>
   );
 }
