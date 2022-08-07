@@ -104,12 +104,20 @@ const NewAddress = () => {
                     style={styles.dropdown3BtnImage}
                   />
                 ) : (
-                  <Ionicons name="md-earth-sharp" color={'grey'} size={32} />
+                  <Ionicons
+                    name="md-earth-sharp"
+                    color={colors.lightBlue}
+                    size={32}
+                  />
                 )}
                 <Text style={styles.dropdown3BtnTxt}>
                   {selectedItem ? selectedItem.title : 'Select country'}
                 </Text>
-                <FontAwesome name="chevron-down" color={'grey'} size={18} />
+                <FontAwesome
+                  name="chevron-down"
+                  color={colors.lightBlue}
+                  size={18}
+                />
               </View>
             );
           }}
