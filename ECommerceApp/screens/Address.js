@@ -15,8 +15,8 @@ const Address = ({navigation}) => {
   return (
     <SafeAreaView
       style={{
-        margin: 30,
-        marginVertical: 50,
+        margin: 10,
+        marginVertical: 30,
       }}>
       <View style={styles.container}>
         <View
