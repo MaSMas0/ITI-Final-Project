@@ -34,7 +34,7 @@ const SignIn = ({navigation}) => {
   // const passwordInput = watch().Password;
   useEffect(() => {
     if (userInfo) {
-      navigation.navigate('SignUp');
+      navigation.navigate('Settings');
     }
   }, [navigation, userInfo]);
 
