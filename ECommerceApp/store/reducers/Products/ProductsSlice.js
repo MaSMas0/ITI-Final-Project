@@ -30,9 +30,7 @@ const productsSlice = createSlice({
         ...new Set(action.payload.products.map(p => p.category.toUpperCase())),
       ];
 
-      state.brands = [
-        ...new Set(action.payload.products.map(p => p.brand.toUpperCase())),
-      ];
+      state.brands = [...new Set(action.payload.products.map(p => p.brand))];
       //   action.payload.products
     },
     [getProducts.rejected]: (state, action) => {

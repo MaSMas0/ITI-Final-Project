@@ -31,7 +31,7 @@ const Home = ({navigation}) => {
 
   const brandProducts = item => {
     const filterProducts = products.filter(p => {
-      return p.brand == item;
+      return p.brand === item;
     });
     return filterProducts;
   };

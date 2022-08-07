@@ -9,17 +9,20 @@ import {
 } from 'react-native';
 import colors from '../config/colors';
 
-const FilterBar = ({categories}) => {
+const FilterBar = ({categories, onPress}) => {
   return (
     <View>
       <FlatList
         nestedScrollEnabled
         showsHorizontalScrollIndicator={false}
         horizontal
-        data={categories}
+        data={['All', ...categories]}
         renderItem={({item}) => {
           return (
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                onPress(item);
+              }}>
               <View style={styles.container}>
                 <Text style={styles.nameOfCategory}>{item}</Text>
               </View>
