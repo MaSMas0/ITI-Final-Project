@@ -19,6 +19,8 @@ import SearchBar from '../components/SearchBar';
 import HeaderRight from '../components/HeaderRight';
 import Cart from '../screens/Cart';
 import DrawerNavigator from './DrawerNavigator';
+import SearchScreen from '../screens/SearchScreen';
+import Search from '../components/Search';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -31,7 +33,12 @@ function HomeStackScreen({navigation}) {
         name="HomeStack"
         component={Home}
         options={{
-          headerTitle: () => <SearchBar title={'Home'} />,
+          headerTitle: () => (
+            <SearchBar
+              title={'Home'}
+              onPress={() => navigation.navigate('SearchScreen')}
+            />
+          ),
           headerRight: () => (
             <HeaderRight
               wishList={() => {
@@ -45,6 +52,13 @@ function HomeStackScreen({navigation}) {
         }}
       />
 
+      <Stack.Screen
+        name="SearchScreen"
+        component={SearchScreen}
+        options={{
+          headerTitle: props => <Search {...props} />,
+        }}
+      />
       <Stack.Screen
         name="WishList"
         component={WishList}
