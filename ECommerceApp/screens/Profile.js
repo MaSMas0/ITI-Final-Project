@@ -17,8 +17,8 @@ function Settings(props) {
             source={require('../assets/account.png')}
           />
           <View>
-            <Text style={styles.userName}>{userInfo.name}</Text>
-            <Text style={styles.email}>{userInfo.email}</Text>
+            <Text style={styles.userName}>mahmoud </Text>
+            <Text style={styles.email}>salem</Text>
           </View>
         </View>
       </View>

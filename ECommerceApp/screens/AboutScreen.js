@@ -33,16 +33,20 @@ const styles = StyleSheet.create({
     backgroundColor: colors.blue,
   },
   img: {
-    marginTop: 20,
-    width: 500,
+    marginTop: 5,
+    width: 400,
     height: 400,
+    // padding: 18,
+    // paddingRight: 8,
   },
   item: {
     fontSize: 24,
     padding: 5,
+    color: 'white',
   },
   our: {
     color: colors.blue,
+    color: 'white',
     fontWeight: 'bold',
     fontSize: 26,
     marginStart: 5,
@@ -52,6 +56,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     marginBottom: 10,
+    color: 'white',
   },
 });
 // export default AboutScreen;

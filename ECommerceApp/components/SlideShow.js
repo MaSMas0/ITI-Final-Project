@@ -60,6 +60,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
+    margin: 5,
+    // marginEnd: 5,
   },
   text: {
     fontSize: 100,
