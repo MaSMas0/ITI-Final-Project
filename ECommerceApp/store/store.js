@@ -2,6 +2,10 @@ import {configureStore} from '@reduxjs/toolkit';
 import userLoginReducer from './reducers/User/UserLoginSlice';
 import userRegisterReducer from './reducers/User/UserRegisterSlice';
 import cartReducer from './reducers/Cart/CartSlice';
+import orderCreateReducer from './reducers/Order/OrderSlice';
+import orderDetailsReducer from './reducers/Order/OrderDetailsSlice';
+import orderListMyReducer from './reducers/Order/OrderMyListSlice';
+import orderPayReducer from './reducers/Order/OrderPaySlice';
 import {
   persistStore,
   persistReducer,
@@ -19,6 +23,10 @@ const rootReducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   cart: cartReducer,
+  orderCreate: orderCreateReducer,
+  orderDetails: orderDetailsReducer,
+  orderPay: orderPayReducer,
+  orderListMy: orderListMyReducer,
 });
 
 const persistConfig = {
