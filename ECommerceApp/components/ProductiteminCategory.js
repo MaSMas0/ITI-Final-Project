@@ -13,7 +13,6 @@ import Like from './Like';
 import colors from '../config/colors';
 
 const ProductiteminCategory = ({price, onPress}) => {
-  console.log(price, 'price');
   return (
     <TouchableOpacity onPress={onPress}>
       <ScrollView>
