@@ -1,89 +1,47 @@
-import {View, Text, SafeAreaView, TouchableOpacity} from 'react-native';
 import React from 'react';
+import {StyleSheet, View, SafeAreaView} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
+import AddressComp from '../components/SavedAddressesComponent';
 import SecondryButton from '../components/SecondryButton';
-
 const Address = ({navigation}) => {
   return (
-    <View>
-      <View
-        style={{
-          backgroundColor: '#fff',
-          justifyContent: 'flex-start',
-          paddingVertical: 25,
-          borderRadius: 20,
-          paddingHorizontal: 40,
-        }}>
-        <View
-          style={{
-            flexDirection: 'row',
-          }}>
-          <Text
-            style={{
-              fontSize: 18,
-              fontWeight: '600',
-            }}>
-            Country:
-          </Text>
-          <Text
-            style={{
-              fontSize: 18,
-              fontWeight: '600',
-            }}>
-            {' '}
-            Egypt
-          </Text>
-        </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            marginVertical: 10,
-          }}>
-          <Text
-            style={{
-              fontSize: 18,
-              fontWeight: '600',
-            }}>
-            Address:
-          </Text>
-          <Text
-            style={{
-              fontSize: 18,
-              fontWeight: '600',
-            }}>
-            {' '}
-            Ismailia
-          </Text>
-        </View>
-        <View
-          style={{
-            flexDirection: 'row',
-          }}>
-          <Text
-            style={{
-              fontSize: 18,
-              fontWeight: '600',
-            }}>
-            Phone:
-          </Text>
-          <Text
-            style={{
-              fontSize: 18,
-              fontWeight: '600',
-            }}>
-            {' '}
-            01276567619
-          </Text>
-        </View>
-      </View>
+    <ScrollView>
+      <SafeAreaView>
+        <AddressComp
+          countryName="Cairo"
+          phoneNumber="01276567619"
+          location="Ain Shams"
+        />
+        <AddressComp
+          countryName="Gharbia"
+          phoneNumber="01001239584 "
+          location="Tanta"
+        />
+        <AddressComp />
 
-      <SecondryButton
-        title="ADD NEW ADDRESS"
-        onPress={() => {
-          navigation.navigate('NewAddress');
-        }}
-      />
-    </View>
+        <View style={styles.btnContainer}>
+          <SecondryButton
+            title="ADD NEW ADDRESS"
+            style={styles.addAddress}
+            onPress={() => {
+              navigation.navigate('NewAddress');
+            }}
+          />
+        </View>
+      </SafeAreaView>
+    </ScrollView>
   );
 };
+const styles = StyleSheet.create({
+  addAddress: {
+    marginVertical: 70,
+    width: 250,
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  btnContainer: {justifyContent: 'center', alignItems: 'center'},
+});
 
 export default Address;
+

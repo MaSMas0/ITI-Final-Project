@@ -1,8 +1,13 @@
-import {configureStore, createReducer} from '@reduxjs/toolkit';
+import {configureStore} from '@reduxjs/toolkit';
 import userLoginReducer from './reducers/User/UserLoginSlice';
 import userRegisterReducer from './reducers/User/UserRegisterSlice';
 import cartReducer from './reducers/Cart/CartSlice';
 import productsSlice from './reducers/Products/ProductsSlice';
+import orderCreateReducer from './reducers/Order/OrderSlice';
+import orderDetailsReducer from './reducers/Order/OrderDetailsSlice';
+import orderListMyReducer from './reducers/Order/OrderMyListSlice';
+import orderPayReducer from './reducers/Order/OrderPaySlice';
+
 import {
   persistStore,
   persistReducer,
@@ -21,6 +26,11 @@ const rootReducer = combineReducers({
   userRegister: userRegisterReducer,
   cart: cartReducer,
   products: productsSlice,
+  orderCreate: orderCreateReducer,
+  orderDetails: orderDetailsReducer,
+  orderPay: orderPayReducer,
+  orderListMy: orderListMyReducer,
+
 });
 
 const persistConfig = {

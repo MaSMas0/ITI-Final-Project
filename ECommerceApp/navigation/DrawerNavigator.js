@@ -29,7 +29,7 @@ const DrawerNavigator = ({navigation}) => {
               name="setting"
               size={27}
               color="black"
-              style={{marginRight: 5}}
+              style={{marginRight: 15}}
             />
           </TouchableOpacity>
         ),
@@ -39,6 +39,7 @@ const DrawerNavigator = ({navigation}) => {
         },
       }}>
       <Drawer.Screen
+        // style={{color: 'red'}}
         name="profile"
         component={Settings}
         options={{
