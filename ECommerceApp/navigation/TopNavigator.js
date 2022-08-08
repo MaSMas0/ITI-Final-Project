@@ -9,7 +9,7 @@ const TopNavigator = props => {
   return (
     <Tab.Navigator initialRouteName="WishList">
       <Tab.Screen name="WishList" component={WishList} />
-      <Tab.Screen name="Products" component={Product} />
+      {/* <Tab.Screen name="Products" component={Product} /> */}
     </Tab.Navigator>
   );
 };

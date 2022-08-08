@@ -107,7 +107,7 @@ const NewAddress = () => {
                   <Ionicons
                     name="md-earth-sharp"
                     color={colors.lightBlue}
-                    size={32}
+                    size={25}
                   />
                 )}
                 <Text style={styles.dropdown3BtnTxt}>
@@ -187,11 +187,10 @@ const styles = StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 10,
   },
   dropdown3BtnStyle: {
-    width: '97%',
-    height: 53,
+    width: '84.8%',
+    height: 50,
     backgroundColor: 'transparent',
     paddingHorizontal: 0,
     borderWidth: 1,
@@ -205,21 +204,27 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 18,
   },
-  dropdown3BtnImage: {width: 40, height: 40, resizeMode: 'cover'},
+  dropdown3BtnImage: {
+    width: 25,
+    height: 25,
+    borderRadius: 30,
+  },
   dropdown3BtnTxt: {
     color: colors.lightBlue,
     textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 24,
+    fontWeight: '700',
+    fontSize: 20,
     marginHorizontal: 12,
   },
-  dropdown3DropdownStyle: {backgroundColor: colors.medium},
+  dropdown3DropdownStyle: {backgroundColor: colors.white},
   dropdown3RowStyle: {
     backgroundColor: colors.lightGrey,
     borderBottomColor: '#444',
     height: 50,
-    borderRadius: 8,
-    marginVertical: 2,
+    // borderColor: 'grey',
+    // borderRadius: 12,
+    // borderWidth: 1,
+    marginVertical: 3,
   },
   dropdown3RowChildStyle: {
     flex: 1,
@@ -228,7 +233,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 18,
   },
-  dropdownRowImage: {width: 20, height: 20, resizeMode: 'cover'},
+  dropdownRowImage: {
+    width: 25,
+    height: 25,
+    resizeMode: 'cover',
+    borderRadius: 30,
+  },
   dropdown3RowTxt: {
     color: colors.lightBlue,
     textAlign: 'center',

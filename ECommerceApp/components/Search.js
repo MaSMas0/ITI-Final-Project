@@ -4,7 +4,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import colors from '../config/colors';
 import {Searchbar} from 'react-native-paper';
 import * as Animatable from 'react-native-animatable';
-const Search = ({title, onPress, searchFilter, search}) => {
+const Search = ({title, onPress, searchFilter}) => {
   // const [searchQuery, setSearchQuery] = useState('');
   // const [icon, setIcon] = useState(false);
   // const onChangeSearch = query => setSearchQuery(query);
@@ -14,7 +14,6 @@ const Search = ({title, onPress, searchFilter, search}) => {
       <TextInput
         placeholder="Search"
         onChangeText={text => searchFilter(text)}
-        value={search}
         style={{
           borderWidth: 1,
           borderRadius: 30,
