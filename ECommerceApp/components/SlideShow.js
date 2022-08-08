@@ -21,7 +21,8 @@ const SlideShow = props => {
         }}>
         <Image
           source={require('../assets/cover.jpg')}
-          style={{width: '99.2%', height: '98.5%'}}
+          style={{width: '99.2%', height: '98.5%',borderRadius:8,margin:5,
+        }}
         />
       </TouchableOpacity>
     );
