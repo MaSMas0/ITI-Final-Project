@@ -20,11 +20,16 @@ const Card = ({product, onPress}) => {
     <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
       <View style={styles.card}>
         <FreeShipping />
-        <Image source={{uri: product.image}} style={styles.image} />
+        <Image
+          source={{
+            uri: 'https://images.search.yahoo.com/search/images?p=ashraf&fr=mcafee&type=E210US91213G91640&imgurl=https%3A%2F%2Fstatic.independent.co.uk%2Fs3fs-public%2Fthumbnails%2Fimage%2F2014%2F09%2F29%2F07%2FAfghan-AFP.jpg%3Fwidth%3D1200%26auto%3Dwebp%26quality%3D75#id=3&iurl=https%3A%2F%2Fstatic.independent.co.uk%2Fs3fs-public%2Fthumbnails%2Fimage%2F2014%2F09%2F29%2F07%2FAfghan-AFP.jpg%3Fwidth%3D1200%26auto%3Dwebp%26quality%3D75&action=click',
+          }}
+          style={styles.image}
+        />
         <Text style={styles.like}>
           <Like />
         </Text>
-        <Text style={styles.name}> Name of Product</Text>
+        <Text style={styles.name}> {product.name}</Text>
         <View style={styles.info}>
           <Text style={styles.price}>${product.price}</Text>
         </View>
@@ -60,7 +65,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: 'space-between',
     padding: 10,
-
   },
   price: {
     fontSize: 18,

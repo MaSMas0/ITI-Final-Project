@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   FlatList,
   StyleSheet,
@@ -9,19 +9,37 @@ import {
 } from 'react-native';
 import colors from '../config/colors';
 
-const FilterBar = props => {
+const FilterBar = ({categories, onPress, changeColor}) => {
   return (
     <View>
       <FlatList
         nestedScrollEnabled
         showsHorizontalScrollIndicator={false}
         horizontal
-        data={[1, 2, 3, 45, 5, 6, 7, 8, 8, 8, 8, 8, 8, 8]}
-        renderItem={(item, index) => {
+        data={[...categories]}
+        renderItem={({item}) => {
           return (
-            <TouchableOpacity>
-              <View style={styles.container}>
-                <Text style={styles.nameOfCategory}>Nike</Text>
+            <TouchableOpacity
+              onPress={() => {
+                console.log(item, 'check');
+                onPress(item);
+                changeColor(item);
+              }}>
+              <View
+                style={[
+                  styles.container,
+                  {
+                    backgroundColor: item.isChecked
+                      ? colors.lightBlue
+                      : colors.white,
+                  },
+                ]}>
+                <Text
+                  style={{
+                    color: item.isChecked == true ? colors.white : colors.black,
+                  }}>
+                  {item.title}
+                </Text>
               </View>
             </TouchableOpacity>
           );
@@ -34,7 +52,7 @@ const FilterBar = props => {
 const styles = StyleSheet.create({
   container: {
     height: 30,
-    backgroundColor: colors.lightBlue,
+
     justifyContent: 'center',
     alignItems: 'center',
     borderTopLeftRadius: 8,
@@ -42,9 +60,6 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     marginHorizontal: 8,
     paddingHorizontal: 10,
-  },
-  nameOfCategory: {
-    color: colors.lightGrey,
   },
 });
 

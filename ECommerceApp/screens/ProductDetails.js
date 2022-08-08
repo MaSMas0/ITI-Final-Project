@@ -27,18 +27,19 @@ const ProductDetails = ({route}) => {
     }
   };
   return (
-    <ScrollView>
-      <SafeAreaView style={style.saveAreaStyle}>
-        <View style={style.header}></View>
-        <View style={style.imageContainer}>
-          <Image
-            style={style.imgStyle}
-            source={{
-              uri: item.image,
-            }}
-          />
-        </View>
-        <View style={style.Container}>
+    <SafeAreaView style={style.saveAreaStyle}>
+      <View style={style.header}></View>
+      <View style={style.imageContainer}>
+        <Image
+          style={style.imgStyle}
+          source={{
+            uri: item.image,
+          }}
+        />
+      </View>
+      <View style={style.Container}>
+        <View style={style.subCont}>
+          <Text style={style.title}>{item.name}</Text>
           <LinearGradient
             start={{x: 1, y: 0}}
             end={{x: 0, y: 0}}

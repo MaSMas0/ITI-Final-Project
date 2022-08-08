@@ -1,25 +1,11 @@
 // import {SafeAreaView, StyleSheet, Text, TextInput, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
-import Icon from 'react-native-vector-icons';
 import {FlatList, SafeAreaView} from 'react-native';
 import colors from '../config/colors';
 import Card from '../components/ProductCard';
 
-const Product = ({navigation}) => {
-  const [products, setProduct] = useState([]);
-
-  function getEvents() {
-    axios
-      .get('https://fakestoreapi.com/products')
-      .then(response => response.data)
-      .then(data => {
-        setProduct(data);
-      });
-  }
-  useEffect(() => {
-    getEvents();
-  }, []);
+const Product = ({navigation, route}) => {
+  const products = route.params;
 
   return (
     <SafeAreaView style={{backgroundColor: colors.grey, paddingHorizontal: 5}}>
