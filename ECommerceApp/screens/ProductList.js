@@ -8,59 +8,15 @@ import Search from '../components/Search';
 const Product = ({navigation, route}) => {
   const products = route.params;
   const [product, setProduct] = useState(products);
-  const [search, setSearch] = useState('');
+  const [product1, setProduct1] = useState(products);
 
-  // function searchFilter(text) {
-  //   setSearch(text);
-  //   products.filter(valueSearch => {
-  //     if (search === '') {
-  //       return setProduct(valueSearch);
-  //     } else if (
-  //       valueSearch.name.toLowerCase().includes(search.toLowerCase())
-  //     ) {
-  //       return setProduct(valueSearch);
-  //     } else {
-  //       return setProduct([]);
-  //     }
-  //   });
-  // }
-
-  // function searchFilter(text) {
-  //   if (text) {
-  //     const newProduct = products.filter(valueSearch => {
-  //       if (valueSearch.name.toLowerCase().includes(text.toLowerCase())) {
-  //         return valueSearch;
-  //       } else {
-  //         return [];
-  //       }
-  //     });
-  //     setProduct(newProduct);
-  //     setSearch(text);
-  //   } else {
-  //     setProduct(products);
-  //     setSearch(text);
-  //   }
-  // }
-
-  function searchFilter(text) {
-    if (text) {
-      const newProduct = products.filter(item => {
-        const itemProduct = item.name ? item.name.toLowerCase() : '';
-        const check = () => {
-          if (itemProduct.indexOf(text.toLowerCase())) {
-            return itemProduct.indexOf(text.toLowerCase()) > -1;
-          } else {
-            return [];
-          }
-        };
-        return check();
-      });
-      setProduct(newProduct);
-      setSearch(text);
-    } else {
-      setProduct(products);
-      setSearch(text);
-    }
+  function searchFilter(value) {
+    const filterProduct = product1.filter(p => {
+      let itemLowerCase = p.name.toLowerCase();
+      let searchTermLowerCase = value.toLowerCase();
+      return itemLowerCase.indexOf(searchTermLowerCase) > -1;
+    });
+    setProduct(filterProduct);
   }
 
   return (
@@ -70,8 +26,8 @@ const Product = ({navigation, route}) => {
         paddingHorizontal: 5,
         paddingTop: 20,
       }}>
-      <Search searchFilter={searchFilter} search={search} />
-      {product?.length === 0 ? (
+      <Search searchFilter={searchFilter} />
+      {product.length === 0 ? (
         <View
           style={{
             marginVertical: 60,
