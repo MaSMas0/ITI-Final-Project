@@ -71,7 +71,7 @@ const Product = ({navigation, route}) => {
         paddingTop: 20,
       }}>
       <Search searchFilter={searchFilter} search={search} />
-      {product.length === 0 ? (
+      {product?.length === 0 ? (
         <View
           style={{
             marginVertical: 60,
