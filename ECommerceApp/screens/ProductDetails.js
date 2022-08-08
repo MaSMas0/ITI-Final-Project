@@ -88,8 +88,8 @@ const ProductDetails = ({route}) => {
             </View>
           </View>
         </View>
-    </View>
       </SafeAreaView>
+    </ScrollView>
   );
 };
 

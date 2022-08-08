@@ -26,20 +26,16 @@ const MoreOrderDetails = ({navigation}) => {
       </View> */}
       <View style={styles.all}>
         <Text style={styles.order}>MY ORDER ....</Text>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('MoreOrderItemDetails');
-          }}>
-          <View style={styles.part}>
-            <Text style={styles.txt1}>
-              PRICE : <Text style={{color: 'black'}}> 487.00 </Text>
-            </Text>
-            <Text style={styles.txt}>
-              CREATION DATE :{' '}
-              <Text style={{color: 'black'}}> 2022-8-12 +02:00 </Text>
-            </Text>
-          </View>
-        </TouchableOpacity>
+
+        <View style={styles.part}>
+          <Text style={styles.txt1}>
+            PRICE : <Text style={{color: 'black'}}> 487.00 </Text>
+          </Text>
+          <Text style={styles.txt}>
+            CREATION DATE :{' '}
+            <Text style={{color: 'black'}}> 2022-8-12 +02:00 </Text>
+          </Text>
+        </View>
       </View>
     </View>
     // </TouchableOpacity>
@@ -77,7 +73,7 @@ const styles = StyleSheet.create({
   },
   allPage: {
     backgroundColor: colors.grey,
-    height: '100%',
+    // height: '100%',
     // margin: 15,
     // padding: 15,
   },

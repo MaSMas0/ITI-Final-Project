@@ -28,7 +28,7 @@ const MoreOrderItemDetails = () => {
           QUANTATY :<Text style={{color: 'black'}}> 1 </Text>
         </Text>
       </View>
-      <View style={styles.part}>
+      {/* <View style={styles.part}>
         <Text style={styles.all}>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text
@@ -40,7 +40,7 @@ const MoreOrderItemDetails = () => {
         <Text style={styles.txt}>
           QUANTATY :<Text style={{color: 'black'}}> 4 </Text>
         </Text>
-      </View>
+      </View> */}
     </View>
   );
 };

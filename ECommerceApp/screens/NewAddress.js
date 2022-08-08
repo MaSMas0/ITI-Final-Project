@@ -218,7 +218,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.lightGrey,
     borderBottomColor: '#444',
     height: 50,
-    borderRadius: 12,
+    borderRadius: 8,
+    marginVertical: 2,
   },
   dropdown3RowChildStyle: {
     flex: 1,
