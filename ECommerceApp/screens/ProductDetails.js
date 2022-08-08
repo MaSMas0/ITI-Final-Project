@@ -27,62 +27,64 @@ const ProductDetails = ({route}) => {
     }
   };
   return (
-    <SafeAreaView style={style.saveAreaStyle}>
-      <View style={style.header}></View>
-      <View style={style.imageContainer}>
-        <Image
-          style={style.imgStyle}
-          source={{
-            uri: item.image,
-          }}
-        />
-      </View>
-      <View style={style.Container}>
-        <View style={style.subCont}>
-          <Text style={style.title}>{item.name}</Text>
-          <LinearGradient
-            start={{x: 1, y: 0}}
-            end={{x: 0, y: 0}}
-            colors={['#030A4E', '#22336a']}
-            style={style.priceContainer}>
-            <Text style={style.priceText}>{item.price} $</Text>
-          </LinearGradient>
+    <ScrollView>
+      <SafeAreaView style={style.saveAreaStyle}>
+        <View style={style.header}></View>
+        <View style={style.imageContainer}>
+          <Image
+            style={style.imgStyle}
+            source={{
+              uri: item.image,
+            }}
+          />
+        </View>
+        <View style={style.Container}>
           <View style={style.subCont}>
-            <Text numberOfLines={1} style={style.title}>
-              {item.title}
-            </Text>
-          </View>
-          <View style={style.descriptionContainer}>
-            <Text style={style.description}>{item.description}</Text>
-            <View style={style.downContainer}>
-              <View style={style.subDownContainer}>
-                <TouchableOpacity onPress={() => handleCounter(false)}>
-                  <View style={style.decreContainer}>
-                    <Text style={style.decreBtn}>-</Text>
-                  </View>
-                </TouchableOpacity>
-                <Text style={style.prodNo}>{counter}</Text>
+            <Text style={style.title}>{item.name}</Text>
+            <LinearGradient
+              start={{x: 1, y: 0}}
+              end={{x: 0, y: 0}}
+              colors={['#030A4E', '#22336a']}
+              style={style.priceContainer}>
+              <Text style={style.priceText}>{item.price} $</Text>
+            </LinearGradient>
+            <View style={style.subCont}>
+              <Text numberOfLines={1} style={style.title}>
+                {item.title}
+              </Text>
+            </View>
+            <View style={style.descriptionContainer}>
+              <Text style={style.description}>{item.description}</Text>
+              <View style={style.downContainer}>
+                <View style={style.subDownContainer}>
+                  <TouchableOpacity onPress={() => handleCounter(false)}>
+                    <View style={style.decreContainer}>
+                      <Text style={style.decreBtn}>-</Text>
+                    </View>
+                  </TouchableOpacity>
+                  <Text style={style.prodNo}>{counter}</Text>
 
-                <TouchableOpacity onPress={() => handleCounter(true)}>
+                  <TouchableOpacity onPress={() => handleCounter(true)}>
+                    <LinearGradient
+                      start={{x: 1, y: 0}}
+                      end={{x: 0, y: 0}}
+                      colors={['#030A4E', '#22336a']}
+                      style={style.increContainer}>
+                      <Text style={style.increBtn}>+</Text>
+                    </LinearGradient>
+                  </TouchableOpacity>
+                </View>
+
+                <TouchableOpacity>
                   <LinearGradient
                     start={{x: 1, y: 0}}
                     end={{x: 0, y: 0}}
                     colors={['#030A4E', '#22336a']}
-                    style={style.increContainer}>
-                    <Text style={style.increBtn}>+</Text>
+                    style={style.buyBtn}>
+                    <Text style={style.buyText}>Cart</Text>
                   </LinearGradient>
                 </TouchableOpacity>
               </View>
-
-              <TouchableOpacity>
-                <LinearGradient
-                  start={{x: 1, y: 0}}
-                  end={{x: 0, y: 0}}
-                  colors={['#030A4E', '#22336a']}
-                  style={style.buyBtn}>
-                  <Text style={style.buyText}>Cart</Text>
-                </LinearGradient>
-              </TouchableOpacity>
             </View>
           </View>
         </View>

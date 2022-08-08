@@ -16,6 +16,7 @@ import Like from './Like';
 const width = Dimensions.get('window').width / 2 - 15;
 
 const Card = ({product, onPress}) => {
+  console.log(product);
   return (
     <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
       <View style={styles.card}>
