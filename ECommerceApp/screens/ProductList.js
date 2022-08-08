@@ -1,6 +1,13 @@
 // import {SafeAreaView, StyleSheet, Text, TextInput, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import {FlatList, Image, SafeAreaView, Text, View} from 'react-native';
+import {
+  FlatList,
+  Image,
+  SafeAreaView,
+  Text,
+  View,
+  StyleSheet,
+} from 'react-native';
 import colors from '../config/colors';
 import Card from '../components/ProductCard';
 import Search from '../components/Search';
@@ -22,34 +29,23 @@ const Product = ({navigation, route}) => {
   return (
     <SafeAreaView
       style={{
-        backgroundColor: colors.grey,
         paddingHorizontal: 5,
         paddingTop: 20,
       }}>
       <Search searchFilter={searchFilter} />
       {product.length === 0 ? (
-        <View
-          style={{
-            marginVertical: 60,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
+        <View style={styles.notFoundContainer}>
           <Image
-            source={{
-              uri: 'https://t3.ftcdn.net/jpg/01/97/13/54/240_F_197135414_Hiy7mFFJQUBDoNm33L7i9sNUUtJNllXs.jpg',
-            }}
+            source={require('../assets/notfound.png')}
             style={{
-              width: 400,
-              height: 250,
+              width: 200,
+              height: 200,
             }}
           />
-          <Text
-            style={{
-              fontWeight: 'bold',
-              fontSize: 20,
-              color: 'grey',
-            }}>
-            Not Found
+          <Text style={styles.Textnotfound1}>We're sorry</Text>
+          <Text style={styles.Textnotfound2}>
+            We've searched more 100+ products ,{'\n'}but didn't match any
+            product.
           </Text>
         </View>
       ) : (
@@ -77,4 +73,26 @@ const Product = ({navigation, route}) => {
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  notFoundContainer: {
+    marginVertical: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  Textnotfound1: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: 'black',
+    paddingVertical: 5,
+  },
+  Textnotfound2: {
+    fontWeight: 'bold',
+    fontSize: 17,
+    color: 'grey',
+    paddingVertical: 5,
+
+    textAlign: 'center',
+  },
+});
 export default Product;

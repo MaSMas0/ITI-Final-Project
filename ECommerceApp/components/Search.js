@@ -12,16 +12,9 @@ const Search = ({title, onPress, searchFilter}) => {
   return (
     <>
       <TextInput
-        placeholder="Search"
+        placeholder=" Search here"
         onChangeText={text => searchFilter(text)}
-        style={{
-          borderWidth: 1,
-          borderRadius: 30,
-          height: 40,
-          paddingHorizontal: 20,
-          borderColor: 'grey',
-          backgroundColor: '#fff',
-        }}
+        style={styles.inputStyle}
       />
     </>
     // <View style={styles.searchContainer}>
@@ -40,11 +33,17 @@ const Search = ({title, onPress, searchFilter}) => {
 };
 
 const styles = StyleSheet.create({
-  searchContainer: {
-    flex: 1,
-  },
-  search: {
-    paddingEnd: '18%',
+  // searchContainer: {
+  //   flex: 1,
+  // },
+  // search: {
+  //   paddingEnd: '18%',
+  // },
+  inputStyle: {
+    borderRadius: 12,
+    height: 50,
+    paddingHorizontal: 10,
+    backgroundColor: colors.white,
   },
 });
 export default Search;

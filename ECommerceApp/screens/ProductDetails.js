@@ -11,6 +11,7 @@ import React, {useState} from 'react';
 import colors from '../config/colors';
 import LinearGradient from 'react-native-linear-gradient';
 import {useSelector, useDispatch} from 'react-redux/';
+import ReadMore from 'react-native-read-more-text';
 
 const ProductDetails = ({route}) => {
   const {item} = route.params;
@@ -27,7 +28,7 @@ const ProductDetails = ({route}) => {
     }
   };
   return (
-    <ScrollView>
+    <ScrollView style={style.pageBgColor}>
       <SafeAreaView style={style.saveAreaStyle}>
         <View style={style.header}></View>
         <View style={style.imageContainer}>
@@ -52,7 +53,9 @@ const ProductDetails = ({route}) => {
             </Text>
           </View>
           <View style={style.descriptionContainer}>
-            <Text style={style.description}>{item.description}</Text>
+            <ReadMore numberOfLines={2}>
+              <Text style={style.description}>{item.description}</Text>
+            </ReadMore>
             <View style={style.downContainer}>
               <View style={style.subDownContainer}>
                 <TouchableOpacity onPress={() => handleCounter(false)}>
@@ -60,6 +63,7 @@ const ProductDetails = ({route}) => {
                     <Text style={style.decreBtn}>-</Text>
                   </View>
                 </TouchableOpacity>
+
                 <Text style={style.prodNo}>{counter}</Text>
 
                 <TouchableOpacity onPress={() => handleCounter(true)}>
@@ -85,8 +89,8 @@ const ProductDetails = ({route}) => {
             </View>
           </View>
         </View>
-    </View>
       </SafeAreaView>
+    </ScrollView>
   );
 };
 
@@ -139,22 +143,14 @@ const style = StyleSheet.create({
   },
   descriptionContainer: {
     paddingHorizontal: 20,
-    marginTop: 5,
+    marginTop: 10,
   },
   description: {
     color: colors.medium,
     fontSize: 16,
-    lineHeight: 22,
-    marginTop: 4,
-    marginBottom: 15,
+    lineHeight: 24,
   },
-  line: {
-    width: 25,
-    height: 2,
-    backgroundColor: colors.dark,
-    marginBottom: 5,
-    marginRight: 3,
-  },
+
   increContainer: {
     borderRadius: 12,
     justifyContent: 'center',
@@ -217,8 +213,8 @@ const style = StyleSheet.create({
   },
   subDownContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
   },
+  pageBgColor: {backgroundColor: colors.white},
 });
 
 export default ProductDetails;
