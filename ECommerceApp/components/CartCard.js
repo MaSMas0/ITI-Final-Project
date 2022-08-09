@@ -11,86 +11,54 @@ import {
   TouchableHighlight,
   FlatList,
 } from 'react-native';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import colors from '../config/colors';
 import LinearGradient from 'react-native-linear-gradient';
-
-import CartCard from '../components/CartCard';
-
-const Cart = () => {
-  const arr = [];
+function CartCard(props) {
   return (
-    <ScrollView
-      style={{
-        backgroundColor: colors.white,
-      }}>
-      {arr.length !== 0 ? (
-        <View style={styles.emptyCartContainer}>
-          <View style={styles.imgContainer}>
-            <Image
-              source={{
-                uri: 'https://cdn-icons-png.flaticon.com/512/5435/5435052.png',
-              }}
-              style={styles.imgStyle}
-            />
-            <View style={styles.textContainer}>
-              <Text style={styles.text1Style}>Oops!</Text>
-              <Text style={styles.text2Style}>
-                Your Cart is
-                <Text style={{color: colors.blue}}> Empty</Text>
-              </Text>
-              <Text style={styles.addItemStyle}>Add item to get started</Text>
-              <TouchableOpacity style={styles.emptyCartBtn}>
-                <Text style={styles.cartBtnStyle}>GO TO STORE</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-      ) : (
-        <ScrollView>
-          <FlatList
-            showsVerticalScrollIndicator={false}
-            nestedScrollEnabled
-            numColumns={3}
-            data={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
-            renderItem={({item, index}) => {
-              return <CartCard />;
-            }}
-          />
+    <View style={styles.cartContainer}>
+      <View style={styles.cartImgContainer}>
+        <Image
+          source={{
+            uri: 'https://img.freepik.com/free-vector/vector-illustration-mountain-landscape_1441-71.jpg?w=2000',
+          }}
+          style={styles.CartImgStyle}
+        />
 
-          <View style={styles.secondContainer}>
-            <View>
-              <Text style={styles.summeryStyle}>Order summary</Text>
-
-              <View style={styles.subSecContainer}>
-                <Text style={styles.greyText}>Price :</Text>
-                <Text style={styles.blueText}>250$</Text>
-              </View>
-              <View style={styles.delivCont}>
-                <Text style={styles.greyText}>Delivery Service:</Text>
-                <Text style={styles.blueText}>0$ (Free Delivery)</Text>
-              </View>
-              <View style={styles.totalPriceCont}>
-                <Text style={styles.greyText}>Total Price :</Text>
-                <Text style={styles.blueText}>250$</Text>
-              </View>
-            </View>
+        <View style={{flexShrink: 1}}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+            }}>
+            <Text style={styles.prodTitle}>Product Name</Text>
+            <FontAwesome name="remove" size={20}></FontAwesome>
           </View>
-          <View style={styles.checkBtnCont}>
-            <TouchableOpacity>
+          <View style={styles.CartText1Container}>
+            <Text style={styles.qtStyle}>Qty:1</Text>
+            <View style={styles.incDeCont}>
               <LinearGradient
                 start={{x: 1, y: 0}}
                 end={{x: 0, y: 0}}
                 colors={['#030A4E', '#22336a']}
-                style={styles.checkOutContainer}>
-                <Text style={styles.checkOut}> CHECK OUT</Text>
+                style={styles.increSubContainer}>
+                <Text style={styles.increBtn}>+</Text>
               </LinearGradient>
-            </TouchableOpacity>
+              <View style={{marginHorizontal: 10}}></View>
+              <View style={styles.decreSubContainer}>
+                <Text style={styles.decreBtn}>-</Text>
+              </View>
+            </View>
           </View>
-        </ScrollView>
-      )}
-    </ScrollView>
+          <View style={styles.priceContainer}>
+            <Text style={styles.priceText}>Price</Text>
+            <Text style={styles.priceStyle}>250$</Text>
+          </View>
+        </View>
+      </View>
+    </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   emptyCartContainer: {
@@ -262,22 +230,6 @@ const styles = StyleSheet.create({
     color: colors.blue,
     fontWeight: 'bold',
   },
-  delivCont: {
-    paddingVertical: 20,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: 350,
-  },
-  totalPriceCont: {
-    paddingVertical: 20,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  checkBtnCont: {
-    alignItems: 'center',
-
-    backgroundColor: colors.white,
-  },
 });
 
-export default Cart;
+export default CartCard;
