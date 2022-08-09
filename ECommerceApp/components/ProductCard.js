@@ -16,6 +16,10 @@ import Like from './Like';
 const width = Dimensions.get('window').width / 2 - 15;
 
 const Card = ({product, onPress}) => {
+  const [check, setcheck] = useState(true);
+  function handelCheck() {
+    setcheck(!check);
+  }
   console.log(product);
   return (
     <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
@@ -23,7 +27,7 @@ const Card = ({product, onPress}) => {
         <FreeShipping />
         <Image
           source={{
-            uri: 'https://images.search.yahoo.com/search/images?p=ashraf&fr=mcafee&type=E210US91213G91640&imgurl=https%3A%2F%2Fstatic.independent.co.uk%2Fs3fs-public%2Fthumbnails%2Fimage%2F2014%2F09%2F29%2F07%2FAfghan-AFP.jpg%3Fwidth%3D1200%26auto%3Dwebp%26quality%3D75#id=3&iurl=https%3A%2F%2Fstatic.independent.co.uk%2Fs3fs-public%2Fthumbnails%2Fimage%2F2014%2F09%2F29%2F07%2FAfghan-AFP.jpg%3Fwidth%3D1200%26auto%3Dwebp%26quality%3D75&action=click',
+            uri: product.image,
           }}
           style={styles.image}
         />
@@ -42,7 +46,14 @@ const Card = ({product, onPress}) => {
         <Text style={{fontSize: 12}}>
           Eligable for <Text style={styles.freeDelvStyle}>Free Delivery</Text>
         </Text>
-        <SecondryButton title="ADD TO CART" />
+        {}
+        <SecondryButton
+          onPress={() => handelCheck()}
+          title={check ? 'ADD TO CART' : 'Remove Cart'}
+          // colors.mediumBlue
+          colors={check ? colors.mix : 'red'}
+          // color1={check ? 'red' : 'grey'}
+        />
       </View>
     </TouchableOpacity>
   );
