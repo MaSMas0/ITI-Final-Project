@@ -34,13 +34,13 @@ function Settings() {
 
 const styles = StyleSheet.create({
   container: {
-    height: '40%',
+    height: '35%',
     paddingHorizontal: 20,
     backgroundColor: colors.white,
   },
   image: {
-    width: 150,
-    height: 150,
+    width: 120,
+    height: 120,
   },
   welcomeUserCont: {
     flexDirection: 'row',
