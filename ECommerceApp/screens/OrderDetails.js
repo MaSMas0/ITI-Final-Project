@@ -6,10 +6,9 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
-import {block} from 'react-native-reanimated';
 import colors from '../config/colors';
 
-const MoreOrderDetails = ({navigation}) => {
+const OrderDetails = ({navigation}) => {
   return (
     <View style={styles.allPage}>
       {/* <View style={styles.all}>
@@ -32,7 +31,7 @@ const MoreOrderDetails = ({navigation}) => {
             PRICE : <Text style={{color: 'black'}}> 487.00 </Text>
           </Text>
           <Text style={styles.txt}>
-            CREATION DATE :{' '}
+            CREATION DATE :
             <Text style={{color: 'black'}}> 2022-8-12 +02:00 </Text>
           </Text>
         </View>
@@ -52,12 +51,11 @@ const styles = StyleSheet.create({
   all: {
     // backgroundColor: 'gray',
     marginTop: 15,
-    padding: 15,
   },
   part: {
     backgroundColor: 'white',
     borderRadius: 13,
-    padding: 10,
+    padding: 15,
     marginTop: 5,
   },
   txt: {
@@ -73,10 +71,11 @@ const styles = StyleSheet.create({
   },
   allPage: {
     backgroundColor: colors.grey,
+
     // height: '100%',
     // margin: 15,
     // padding: 15,
   },
 });
 
-export default MoreOrderDetails;
+export default OrderDetails;

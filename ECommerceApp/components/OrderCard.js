@@ -3,7 +3,7 @@ import {StyleSheet, TextInput, Text, View} from 'react-native';
 import {block} from 'react-native-reanimated';
 import colors from '../config/colors';
 
-const MoreOrderItemDetails = () => {
+const OrderCard = () => {
   return (
     <View style={styles.allPage}>
       <View style={styles.part}>
@@ -11,7 +11,7 @@ const MoreOrderItemDetails = () => {
           SHIPPING TO : <Text style={{color: 'black'}}>Moatz</Text>
         </Text>
         <Text style={styles.txt}>
-          CREATION DATE :{' '}
+          CREATION DATE :
           <Text style={{color: 'black'}}> 2022-8-12 +02:00 </Text>
         </Text>
       </View>
@@ -86,4 +86,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MoreOrderItemDetails;
+export default OrderCard;
