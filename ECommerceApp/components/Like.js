@@ -2,13 +2,28 @@ import {StyleSheet, Text, View} from 'react-native';
 import colors from '../config/colors';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {
+  addToWishList,
+  removeWishList,
+} from '../store/reducers/WishList/WishlistSlice';
 
-export default function Like() {
+export default function Like({product}) {
+  const dispatch = useDispatch();
+
   const [like, setLike] = useState(false);
+
   function handelLike() {
     setLike(!like);
+    if (!like) {
+      dispatch(addToWishList(product));
+    } else {
+      dispatch(removeWishList(product));
+    }
   }
+
+  useEffect(() => {}, [product, handelLike]);
   return (
     <View>
       <AntDesign

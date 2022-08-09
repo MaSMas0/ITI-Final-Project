@@ -20,6 +20,7 @@ import {
 } from 'redux-persist';
 import {combineReducers} from 'redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import WishlistReducer from './reducers/WishList/WishlistSlice';
 
 const rootReducer = combineReducers({
   userLogin: userLoginReducer,
@@ -30,6 +31,7 @@ const rootReducer = combineReducers({
   orderDetails: orderDetailsReducer,
   orderPay: orderPayReducer,
   orderListMy: orderListMyReducer,
+  wishLists: WishlistReducer,
 });
 
 const persistConfig = {
