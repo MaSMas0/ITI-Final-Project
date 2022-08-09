@@ -14,7 +14,6 @@ import Page1 from './screens/Page1';
 import Address from './screens/Address';
 import NewAddress from './screens/NewAddress';
 
-import Loader from './components/Loader';
 const App = () => {
   return (
     <NavigationContainer>
