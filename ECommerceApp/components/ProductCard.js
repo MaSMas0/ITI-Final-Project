@@ -28,7 +28,7 @@ const Card = ({product, onPress}) => {
           style={styles.image}
         />
         <Text style={styles.like}>
-          <Like />
+          <Like product={product} />
         </Text>
         <Text style={styles.name}> {product.name}</Text>
         <View style={styles.info}>
