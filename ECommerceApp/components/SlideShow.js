@@ -1,6 +1,7 @@
 import React, {useRef} from 'react';
 import {
   Dimensions,
+  Image,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -10,18 +11,19 @@ import Carousel from 'react-native-anchor-carousel';
 const SlideShow = props => {
   const carouselRef = useRef(null);
   const {width: windowWidth} = Dimensions.get('window');
-  function getRandomHexColor() {
-    return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-  }
+
   const renderItem = ({item, index}) => {
-    const backgroundColor = getRandomHexColor();
     return (
       <TouchableOpacity
-        style={[styles.item, {backgroundColor}]}
+        style={[styles.item]}
         onPress={() => {
           carouselRef.current.scrollToIndex(index);
         }}>
-        <Text style={styles.text}>{(index + 1).toString()}</Text>
+        <Image
+          source={require('../assets/cover.jpg')}
+          style={{width: '99.2%', height: '98.5%',borderRadius:8,margin:5,
+        }}
+        />
       </TouchableOpacity>
     );
   };
@@ -50,13 +52,17 @@ const styles = StyleSheet.create({
     flexGrow: 0,
     height: 150,
     backgroundColor: 'white',
-    borderWidth: 1,
-    borderColor: 'red',
+    borderRadius: 10,
+    marginLeft: 20,
+    marginRight: 20,
   },
   item: {
-    borderWidth: 2,
+    width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
+    borderRadius: 10,
+    margin: 5,
+    // marginEnd: 5,
   },
   text: {
     fontSize: 100,

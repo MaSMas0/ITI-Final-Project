@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   ScrollView,
   StyleSheet,
@@ -13,26 +13,54 @@ import ErrorText from '../components/ErrorText';
 import PrimaryButton from '../components/PrimaryButton';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import colors from '../config/colors';
+
+import {useDispatch, useSelector} from 'react-redux';
+import {login} from '../actions/UserActions';
+
 const SignIn = ({navigation}) => {
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+  const userLogin = useSelector(state => state.userLogin);
+  console.log(userLogin);
+  const {loading, error, userInfo} = userLogin;
+  const dispatch = useDispatch();
   const {
     control,
     handleSubmit,
     formState: {errors},
+    watch,
   } = useForm();
+  // const emailInput = watch().Email;
+  // const passwordInput = watch().Password;
+  useEffect(() => {
+    if (userInfo) {
+      navigation.navigate('Settings');
+    }
+  }, [navigation, userInfo]);
 
-  console.log(errors);
-  const onSubmit = data => console.log(data);
+  // useEffect(() => {
+  //   setEmail(emailInput);
+  //   setPassword(passwordInput);
+  // }, [emailInput, passwordInput]);
+  const onSubmit = data => {
+    console.log(data);
+    dispatch(login(data.Email, data.Password));
+  };
   return (
-    <ScrollView style={styles.mainContainer}>
-      <AntDesign style={styles.backIcon} name="left" size={25} />
-
-      <View style={styles.container}>
-        <Text style={styles.header}>
-          <FontAwesome5 name="person-booth" size={30}></FontAwesome5>Sign In
+    <View style={styles.container}>
+      <View style={styles.welcome}>
+        <AntDesign style={styles.backIcon} name="back" size={40} />
+        <Text
+          style={{
+            color: colors.blue,
+            fontSize: 40,
+            fontWeight: 'bold',
+          }}>
+          Let's Sign You in.
         </Text>
-
+        <Text style={styles.text}>Welcome Back.</Text>
+        <Text style={styles.text}>You Have Been Missed!</Text>
         <View style={styles.subContainer}>
-          <Text style={styles.labelStyle}>Email</Text>
           <Controller
             control={control}
             rules={{
@@ -49,12 +77,12 @@ const SignIn = ({navigation}) => {
                 onChange={onChange}
                 value={value}
                 icon="mail"
+                placeholderTextColor={colors.lightBlue}
               />
             )}
-            name="UserName"
+            name="Email"
           />
-          {errors.UserName && <ErrorText ErrorText={errors.UserName.message} />}
-          <Text style={styles.labelStyle}>Password</Text>
+          {errors.Email && <ErrorText ErrorText={errors.Email.message} />}
           <Controller
             control={control}
             rules={{
@@ -72,28 +100,33 @@ const SignIn = ({navigation}) => {
                 value={value}
                 icon="lock1"
                 secureTextEntry={true}
+                placeholderTextColor={colors.lightBlue}
               />
             )}
             name="Password"
           />
           {errors.Password && <ErrorText ErrorText={errors.Password.message} />}
-
-          <PrimaryButton title="Sign In" onPress={handleSubmit(onSubmit)} />
-          <View style={styles.signUpContainer}>
-            <Text>Don't have account? </Text>
-            <TouchableWithoutFeedback>
-              <Text
-                style={styles.signUp}
-                onPress={() => {
-                  navigation.navigate('SignUp');
-                }}>
-                Sign Up
-              </Text>
-            </TouchableWithoutFeedback>
-          </View>
+          {error && <ErrorText ErrorText={error} />}
         </View>
       </View>
-    </ScrollView>
+
+      <View>
+        <View style={styles.signUpContainer}>
+          <Text style={{fontSize: 16}}>Don't have an account? </Text>
+          <TouchableWithoutFeedback>
+            <Text
+              style={styles.signUp}
+              onPress={() => {
+                navigation.navigate('SignUp');
+              }}>
+              Register
+            </Text>
+          </TouchableWithoutFeedback>
+        </View>
+
+        <PrimaryButton title="Sign In" onPress={handleSubmit(onSubmit)} />
+      </View>
+    </View>
   );
 };
 
@@ -102,45 +135,41 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     width: '100%',
+    justifyContent: 'space-between',
+    backgroundColor: colors.white,
+    paddingBottom: 15,
   },
-  header: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: colors.black,
-    marginTop: 50,
+  welcome: {
+    marginTop: 10,
     alignSelf: 'flex-start',
     marginLeft: 20,
   },
-  labelStyle: {
-    color: colors.black,
-    fontWeight: 'bold',
-    margin: 5,
+  text: {
+    fontSize: 30,
+    color: colors.blue,
   },
 
   subContainer: {
-    flex: 1,
-    justifyContent: 'space-evenly',
-    paddingVertical: 100,
-    width: '90%',
+    paddingVertical: 50,
+    marginStart: 10,
   },
 
   signUp: {
-    color: colors.black,
-    // textDecorationLine: 'underline',
+    color: colors.blue,
     fontWeight: 'bold',
+    fontSize: 18,
     marginStart: 2,
   },
-  mainContainer: {
-    backgroundColor: colors.white,
-  },
+
   backIcon: {
-    marginTop: 20,
-    margin: 10,
-    color: colors.black,
+    marginBottom: 10,
+    color: colors.lightBlue,
   },
   signUpContainer: {
+    marginBottom: 15,
     flexDirection: 'row',
-    marginStart: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
