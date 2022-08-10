@@ -35,7 +35,8 @@ function HomeStackScreen({navigation}) {
         options={{
           headerTitle: () => (
             <SearchBar
-              title={'Home'}
+              title={'Nile'}
+              title1={'Buy'}
               onPress={() => navigation.navigate('SearchScreen')}
             />
           ),

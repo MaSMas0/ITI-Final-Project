@@ -39,7 +39,13 @@ const SlideShow = props => {
         }}>
         <Image
           source={item.image}
-          style={{width: '99.2%', height: '98.5%', borderRadius: 8, margin: 5}}
+          style={{
+            width: '100%',
+            height: '100%',
+            borderRadius: 8,
+            margin: 5,
+            resizeMode: 'cover',
+          }}
         />
       </TouchableOpacity>
     );

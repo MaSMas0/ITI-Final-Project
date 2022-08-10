@@ -1,7 +1,7 @@
 import React from 'react';
 import {TouchableOpacity, Text, ScrollView, View, FlatList} from 'react-native';
 import OrderDetails from './OrderDetails';
-const Orders = ({navigation}) => {
+const OrderList = ({navigation}) => {
   const x = [];
   return (
     <View>

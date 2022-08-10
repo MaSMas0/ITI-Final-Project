@@ -1,73 +1,55 @@
 import React from 'react';
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import colors from '../config/colors';
 
 function BrandCard({onpress, title}) {
   return (
-    <TouchableOpacity onPress={onpress}>
-      <View style={styles.container}>
-        <View style={styles.subcontainer}>
-          {/* <Image source={require('../assets/rr.png')} style={styles.image} /> */}
-          <Image
-            style={styles.image}
-            source={{
-              uri: 'https://img.icons8.com/external-tal-revivo-bold-tal-revivo/96/000000/external-adidas-a-multinational-corporation-that-designs-and-manufactures-shoes-clothing-and-accessories-fashion-bold-tal-revivo.png',
-            }}
-          />
+    <View>
+      <TouchableOpacity onPress={onpress}>
+        <View style={styles.container}>
+          <View style={styles.subcontainer}>
+            <Image
+              style={styles.image}
+              source={{
+                uri: 'https://img.icons8.com/external-tal-revivo-bold-tal-revivo/96/000000/external-adidas-a-multinational-corporation-that-designs-and-manufactures-shoes-clothing-and-accessories-fashion-bold-tal-revivo.png',
+              }}
+            />
+          </View>
           <Text style={styles.title}>{title}</Text>
         </View>
-        <View style={styles.shadow}></View>
-      </View>
-    </TouchableOpacity>
+      </TouchableOpacity>
+      <Text
+        style={{borderBottomWidth: 1, borderBottomColor: colors.grey}}></Text>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
     alignItems: 'center',
 
-    marginVertical: 8,
-    marginHorizontal: 10,
+    marginVertical: 10,
 
-    // alignItems: 'center',
+    paddingHorizontal: 17,
   },
   subcontainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 140,
-    height: 160,
+    width: 80,
+    height: 80,
     backgroundColor: colors.grey,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
+    borderRadius: 40,
   },
 
   image: {
-    width: 80,
-    height: 60,
+    width: 50,
+    height: 50,
     marginStart: 2,
   },
   title: {
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 14,
     color: colors.black,
-  },
-
-  shadow: {
-    borderRadius: 100,
-    width: 135,
-
-    height: 0.5,
-    elevation: 2.5,
-    shadowColor: Colors.lightGrey,
   },
 });
 

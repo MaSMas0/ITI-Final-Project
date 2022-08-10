@@ -9,12 +9,13 @@ import {
 } from 'react-native';
 import SlideShow from '../components/SlideShow';
 import BrandCard from '../components/BrandCard';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+
 import colors from '../config/colors';
 
 import {getProducts} from '../store/reducers/Products/ProductsSlice';
 import {useSelector, useDispatch} from 'react-redux';
 import Loader from '../components/Loader';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const Home = ({navigation}) => {
   const dispatch = useDispatch();
@@ -45,29 +46,49 @@ const Home = ({navigation}) => {
       {isLoading && <Loader size={Platform.OS == 'android' ? 60 : 'large'} />}
       {!isLoading && (
         <View style={styles.container}>
-          <SlideShow />
-          <Text style={styles.line}></Text>
-          <Text style={styles.h1}>Brands</Text>
-          <Text style={styles.line}></Text>
-
-          <FlatList
-            showsVerticalScrollIndicator={false}
-            style={{margin: 0}}
-            nestedScrollEnabled
-            numColumns={2}
-            data={brands}
-            renderItem={({item, index}) => {
-              return (
-                <BrandCard
-                  title={item}
-                  onpress={() => {
-                    console.log(item);
-                    navigation.navigate('Products', brandProducts(item));
-                  }}
-                />
-              );
-            }}
-          />
+          <SafeAreaView>
+            <SlideShow />
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                marginHorizontal: 30,
+                marginVertical: 10,
+              }}>
+              <Text style={styles.h1}>BRANDS</Text>
+              <Text style={{color: colors.blue}}>See More</Text>
+            </View>
+            <FlatList
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              data={brands}
+              renderItem={({item, index}) => {
+                return (
+                  <BrandCard
+                    title={item}
+                    onpress={() => {
+                      console.log(item);
+                      navigation.navigate('Products', brandProducts(item));
+                    }}
+                  />
+                );
+              }}
+            />
+            <View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  marginHorizontal: 30,
+                  marginBottom: 170,
+                }}>
+                <Text style={styles.h2}>TOP SALES</Text>
+                <Text style={{color: colors.blue}}>See More</Text>
+              </View>
+            </View>
+          </SafeAreaView>
         </View>
       )}
     </>
@@ -76,23 +97,22 @@ const Home = ({navigation}) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.white,
+    backgroundColor: colors.white,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  line: {
-    width: '100%',
-    height: 5,
-    backgroundColor: colors.lightGrey,
-    // backgroundColor:"#F6F6F6",
-    margin: 5,
-  },
+
   h1: {
-    fontSize: 24,
-    textTransform: 'uppercase',
+    fontSize: 20,
     letterSpacing: 3,
     fontWeight: 'bold',
-    color: colors.black,
+    color: colors.blue,
+  },
+  h2: {
+    fontSize: 20,
+    letterSpacing: 3,
+    fontWeight: 'bold',
+    color: colors.blue,
   },
 });
 
