@@ -9,4 +9,5 @@ export default {
   blue: '#030A4E',
   mediumBlue: '#22336a',
   lightBlue: '#22336a',
+  mix: ['#030A0E', '#22336a'],
 };
