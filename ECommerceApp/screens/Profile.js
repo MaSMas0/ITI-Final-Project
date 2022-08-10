@@ -17,8 +17,6 @@ function Settings() {
             source={require('../assets/account.png')}
           />
           <View style={styles.welcomeUserCont}>
-            <Text style={styles.welcome}>Welcome, </Text>
-            <Text style={styles.userName}> Mahmoud </Text>
             {/* 
             <Text style={styles.email}>salem</Text> */}
           </View>
@@ -34,13 +32,13 @@ function Settings() {
 
 const styles = StyleSheet.create({
   container: {
-    height: '40%',
+    height: '35%',
     paddingHorizontal: 20,
     backgroundColor: colors.white,
   },
   image: {
-    width: 150,
-    height: 150,
+    width: 120,
+    height: 120,
   },
   welcomeUserCont: {
     flexDirection: 'row',

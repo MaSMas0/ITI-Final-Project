@@ -1,20 +1,15 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import MoreOrderDetails from '../components/MoreOrderDetailsCom';
-import MoreOrderItemDetails from '../components/MoreOrderItemDetails';
-import OrdersMe from '../screens/OrdersMe';
-
+import OrderList from '../screens/Orderslist';
+import OrderDetails from '../screens/OrderDetails';
 const Stack = createNativeStackNavigator();
-const OrderItems = () => {
+const OrderNavgigator = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="OrdersMe" component={OrdersMe} />
-      <Stack.Screen
-        name="MoreOrderItemDetails"
-        component={MoreOrderItemDetails}
-      />
+      <Stack.Screen name="OrdersList" component={OrderList} />
+      <Stack.Screen name="OrderDetails" component={OrderDetails} />
     </Stack.Navigator>
   );
 };
 
-export default OrderItems;
+export default OrderNavgigator;

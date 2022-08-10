@@ -56,9 +56,7 @@ function HomeStackScreen({navigation}) {
       <Stack.Screen
         name="SearchScreen"
         component={SearchScreen}
-        options={{
-          headerTitle: props => <Search {...props} />,
-        }}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="WishList"
@@ -90,11 +88,9 @@ function HomeStackScreen({navigation}) {
       <Stack.Screen
         name="Products"
         component={Product}
-        options={
-          {
-            // headerTitle: props => <Header title={'Products'} {...props} />,
-          }
-        }
+        options={{
+          headerShown: false,
+        }}
       />
 
       <Stack.Screen

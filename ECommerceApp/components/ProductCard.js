@@ -15,7 +15,12 @@ import Like from './Like';
 
 const width = Dimensions.get('window').width / 2 - 15;
 
-const Card = ({product, onPress, navigation}) => {
+const Card = ({product, onPress}) => {
+  const [check, setcheck] = useState(true);
+
+  function handelCheck() {
+    setcheck(!check);
+  }
   console.log(product);
   const addToCartHandler = () => {
     navigation.navigate('Cart', product);
@@ -31,7 +36,7 @@ const Card = ({product, onPress, navigation}) => {
           style={styles.image}
         />
         <Text style={styles.like}>
-          <Like />
+          <Like product={product} />
         </Text>
         <Text style={styles.name}> {product.name}</Text>
         <View style={styles.info}>
@@ -45,7 +50,14 @@ const Card = ({product, onPress, navigation}) => {
         <Text style={{fontSize: 12}}>
           Eligable for <Text style={styles.freeDelvStyle}>Free Delivery</Text>
         </Text>
-        <SecondryButton title="ADD TO CART" onPress={addToCartHandler} />
+        {}
+        <SecondryButton
+          onPress={() => handelCheck()}
+          title={check ? 'ADD TO CART' : 'REMOVE FROM CART'}
+          // colors.mediumBlue
+          colors={check ? colors.blue : 'red'}
+          // color1={check ? 'red' : 'grey'}
+        />
       </View>
     </TouchableOpacity>
   );

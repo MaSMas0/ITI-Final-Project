@@ -1,9 +1,9 @@
 import React from 'react';
-import {StyleSheet, TextInput, Text, View} from 'react-native';
-import {block} from 'react-native-reanimated';
+import {StyleSheet, Text, View} from 'react-native';
+
 import colors from '../config/colors';
 
-const MoreOrderItemDetails = () => {
+const OrderDetails = () => {
   return (
     <View style={styles.allPage}>
       <View style={styles.part}>
@@ -11,7 +11,7 @@ const MoreOrderItemDetails = () => {
           SHIPPING TO : <Text style={{color: 'black'}}>Moatz</Text>
         </Text>
         <Text style={styles.txt}>
-          CREATION DATE :{' '}
+          CREATION DATE :
           <Text style={{color: 'black'}}> 2022-8-12 +02:00 </Text>
         </Text>
       </View>
@@ -28,19 +28,6 @@ const MoreOrderItemDetails = () => {
           QUANTATY :<Text style={{color: 'black'}}> 1 </Text>
         </Text>
       </View>
-      {/* <View style={styles.part}>
-        <Text style={styles.all}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text
-          ever.
-        </Text>
-        <Text style={styles.txt1}>
-          PRICE : <Text style={{color: 'black'}}>59.00</Text>
-        </Text>
-        <Text style={styles.txt}>
-          QUANTATY :<Text style={{color: 'black'}}> 4 </Text>
-        </Text>
-      </View> */}
     </View>
   );
 };
@@ -53,8 +40,6 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   all: {
-    // backgroundColor: 'gray',
-    // marginTop: 15,
     paddingVertical: 8,
     textAlign: 'center',
     fontSize: 16,
@@ -86,4 +71,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MoreOrderItemDetails;
+export default OrderDetails;

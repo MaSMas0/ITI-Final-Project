@@ -2,33 +2,32 @@ import React, {useState} from 'react';
 import {Image, Text, View, StyleSheet} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import colors from '../config/colors';
-const WishlistComponent = () => {
-  const [like, setLike] = useState(true);
-  function handelLike() {
-    setLike(!like);
-  }
+import {useDispatch} from 'react-redux';
+import {removeWishList} from '../store/reducers/WishList/WishlistSlice';
+
+const WishlistComponent = ({wishLists}) => {
+  const dispatch = useDispatch();
+
+  // const [like, setLike] = useState(true);
+
   return (
     <View style={styles.container}>
       <Image
         source={{
-          uri: 'https://img.freepik.com/free-vector/vector-illustration-mountain-landscape_1441-71.jpg?w=2000',
+          uri: wishLists.image,
         }}
         style={styles.imgStyle}
       />
-      <View style={{flexShrink: 1}}>
-        <View style={styles.subContainer}>
-          <Text style={styles.title}>Product Nike</Text>
-          <AntDesign
-            onPress={() => handelLike()}
-            style={styles.iconStyle}
-            color={like ? colors.mediumBlue : 'grey'}
-            name="heart"
-            size={25}></AntDesign>
-        </View>
-        <Text>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry.
+      <View style={styles.subContainer}>
+        <Text numberOfLines={3} style={styles.title}>
+          {wishLists.name}
         </Text>
+        <AntDesign
+          onPress={() => dispatch(removeWishList(wishLists))}
+          style={styles.iconStyle}
+          color={colors.mediumBlue}
+          name="heart"
+          size={25}></AntDesign>
       </View>
     </View>
   );
@@ -64,6 +63,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
     color: colors.black,
+    width: 200,
   },
 });
 

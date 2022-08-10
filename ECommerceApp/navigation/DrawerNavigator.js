@@ -10,14 +10,17 @@ import AboutScreen from '../screens/AboutScreen';
 import ContactUs from '../screens/ContactUs';
 import AddressNavigator from './AddressNavigator';
 import colors from '../config/colors';
-import MoreOrderDetails from '../components/MoreOrderDetailsCom';
-import OrderItems from './OrderNavigator';
+
+import OrderNavgigator from './OrderNavigator';
+import Drawerheader from '../components/Drawerheader';
+import Currency from '../screens/Currency';
 
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = ({navigation}) => {
   return (
     <Drawer.Navigator
+      drawerContent={props => <Drawerheader {...props} />}
       screenOptions={{
         drawerPosition: 'right',
         drawerType: 'slide',
@@ -60,16 +63,18 @@ const DrawerNavigator = ({navigation}) => {
           ),
         }}
       />
+
       <Drawer.Screen
-        name="OrderItems"
-        component={OrderItems}
+        name="Currency"
+        component={Currency}
         options={{
-          title: 'Order Details',
+          title: 'Currency',
           drawerIcon: ({color, size, focused}) => (
-            <MaterialIcons name="more" size={size} color={color} />
+            <AntDesign name="wallet" size={size} color={color} />
           ),
         }}
       />
+
       <Drawer.Screen
         name="ContactUs"
         component={ContactUs}

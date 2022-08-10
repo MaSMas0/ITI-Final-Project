@@ -63,6 +63,7 @@ function Category({navigation}) {
             renderItem={({item, index}) => {
               return (
                 <ProductiteminCategory
+                  image={item.image}
                   price={item.price}
                   onPress={() => {
                     navigation.navigate('ProductDetails', {item});
