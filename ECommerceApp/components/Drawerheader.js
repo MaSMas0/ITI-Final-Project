@@ -33,7 +33,7 @@ function Drawerheader(props) {
             marginBottom: 20,
           }}>
           <AntDesign name="logout" size={22} color={colors.medium} />
-          <Text style={{fontSize: 16}}>Log Out</Text>
+          <Text style={{fontSize: 16, fontWeight: 'bold'}}>Log Out</Text>
         </View>
       </TouchableOpacity>
     </View>
