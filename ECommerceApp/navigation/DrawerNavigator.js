@@ -13,6 +13,7 @@ import colors from '../config/colors';
 
 import OrderNavgigator from './OrderNavigator';
 import Drawerheader from '../components/Drawerheader';
+import Currency from '../screens/Currency';
 
 const Drawer = createDrawerNavigator();
 
@@ -59,6 +60,17 @@ const DrawerNavigator = ({navigation}) => {
           title: 'Address',
           drawerIcon: ({color, size, focused}) => (
             <EvilIcons name="location" size={size} color={color} />
+          ),
+        }}
+      />
+
+      <Drawer.Screen
+        name="Currency"
+        component={Currency}
+        options={{
+          title: 'Currency',
+          drawerIcon: ({color, size, focused}) => (
+            <AntDesign name="wallet" size={size} color={color} />
           ),
         }}
       />
