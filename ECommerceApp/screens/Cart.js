@@ -1,25 +1,23 @@
 import React from 'react';
 import {
-  Button,
   Image,
-  SafeAreaView,
-  ScrollView,
   Text,
   TouchableOpacity,
   View,
   StyleSheet,
-  TouchableHighlight,
   FlatList,
 } from 'react-native';
 import colors from '../config/colors';
 import LinearGradient from 'react-native-linear-gradient';
-
+import {useSelector} from 'react-redux';
 import CartCard from '../components/CartCard';
 
 const Cart = () => {
+  const cartLists = useSelector(state => state.cart);
+
   const arr = [];
   return (
-    <ScrollView
+    <View
       style={{
         backgroundColor: colors.white,
       }}>
@@ -46,12 +44,12 @@ const Cart = () => {
           </View>
         </View>
       ) : (
-        <ScrollView>
+        <View style={{}}>
           <FlatList
             showsVerticalScrollIndicator={false}
             nestedScrollEnabled
             numColumns={3}
-            data={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
+            data={cartLists}
             renderItem={({item, index}) => {
               return <CartCard />;
             }}
@@ -86,9 +84,9 @@ const Cart = () => {
               </LinearGradient>
             </TouchableOpacity>
           </View>
-        </ScrollView>
+        </View>
       )}
-    </ScrollView>
+    </View>
   );
 };
 

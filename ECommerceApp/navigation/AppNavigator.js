@@ -55,9 +55,7 @@ function HomeStackScreen({navigation}) {
       <Stack.Screen
         name="SearchScreen"
         component={SearchScreen}
-        options={{
-          headerTitle: props => <Search {...props} />,
-        }}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="WishList"

@@ -27,12 +27,10 @@ const Product = ({navigation, route}) => {
   }
 
   return (
-    <SafeAreaView
-      style={{
-        paddingHorizontal: 5,
-        paddingTop: 20,
-      }}>
-      <Search searchFilter={searchFilter} />
+    <SafeAreaView>
+      <View style={{flexDirection: 'row'}}>
+        <Search searchFilter={searchFilter} />
+      </View>
       {product.length === 0 ? (
         <View style={styles.notFoundContainer}>
           <Image

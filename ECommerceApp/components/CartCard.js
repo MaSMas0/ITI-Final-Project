@@ -30,6 +30,7 @@ function CartCard(props) {
             style={{
               flexDirection: 'row',
               justifyContent: 'space-between',
+              paddingEnd: 7,
             }}>
             <Text style={styles.prodTitle}>Product Name</Text>
             <FontAwesome name="remove" size={20}></FontAwesome>
@@ -159,7 +160,7 @@ const styles = StyleSheet.create({
   },
   cartContainer: {
     paddingVertical: 15,
-    paddingHorizontal: 5,
+    paddingHorizontal: 0,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -193,6 +194,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    paddingEnd: 7,
   },
   priceText: {
     fontSize: 17,
