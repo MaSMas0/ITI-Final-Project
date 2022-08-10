@@ -35,6 +35,7 @@ const Product = ({navigation, route}) => {
       return p.price >= value;
     });
     setProduct(filterProduct);
+    setValue(value);
   }
 
   return (
@@ -64,16 +65,43 @@ const Product = ({navigation, route}) => {
         />
       </View>
       {showFilter && (
-        <View style={{marginVertical: 20}}>
-          <Slider
-            maximumValue={1000}
-            minimumValue={0}
-            step={10}
-            value={0}
-            onSlidingComplete={value => {
-              priceFilter(value);
-            }}
-          />
+        <View
+          style={{
+            marginVertical: 20,
+            flexDirection: 'row-reverse',
+            alignItems: 'center',
+            paddingHorizontal: 20,
+            justifyContent: 'space-between',
+          }}>
+          <View
+            style={{
+              width: '77%',
+            }}>
+            <Slider
+              minimumTrackTintColor={colors.blue}
+              thumbTintColor="red"
+              maximumValue={1000}
+              minimumValue={0}
+              step={10}
+              value={value}
+              onSlidingComplete={value => {
+                priceFilter(value);
+              }}
+            />
+          </View>
+          <Text
+            style={{
+              fontSize: 17,
+              fontWeight: 'bold',
+            }}>
+            Price:{' '}
+            <Text
+              style={{
+                color: 'red',
+              }}>
+              {value}$
+            </Text>
+          </Text>
         </View>
       )}
 
