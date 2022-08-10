@@ -36,6 +36,7 @@ const persistConfig = {
   key: 'root',
   version: 1,
   storage: AsyncStorage,
+  blacklist: ['cart'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -51,5 +52,5 @@ const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-
+// persistor.purge();
 export default store;

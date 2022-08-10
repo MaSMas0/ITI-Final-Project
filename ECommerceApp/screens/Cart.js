@@ -8,19 +8,20 @@ import {
   TouchableOpacity,
   View,
   StyleSheet,
-  TouchableHighlight
+  TouchableHighlight,
 } from 'react-native';
 import colors from '../config/colors';
 import LinearGradient from 'react-native-linear-gradient';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-
-const Cart = () => {
+const Cart = ({navigation, route}) => {
+  const product = route.params;
   const arr = [];
   return (
-    <ScrollView style={{
-      backgroundColor:colors.white
-    }}>
+    <ScrollView
+      style={{
+        backgroundColor: colors.white,
+      }}>
       {arr.length !== 0 ? (
         <View style={styles.emptyCartContainer}>
           <View style={styles.imgContainer}>
@@ -49,22 +50,19 @@ const Cart = () => {
             <View style={styles.cartImgContainer}>
               <Image
                 source={{
-                  uri: 'https://img.freepik.com/free-vector/vector-illustration-mountain-landscape_1441-71.jpg?w=2000',
+                  uri: product.image,
                 }}
                 style={styles.CartImgStyle}
               />
 
               <View style={{flexShrink: 1}}>
-                <View style={{
-                  flexDirection:'row',
-                  justifyContent:'space-between'
-                }}>
-
-                <Text style={styles.prodTitle}>Product Name</Text>
-                <FontAwesome
-                        name="remove"
-                        size={20}>
-                </FontAwesome> 
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                  }}>
+                  <Text style={styles.prodTitle}>{product.name}</Text>
+                  <FontAwesome name="remove" size={20}></FontAwesome>
                 </View>
                 <View style={styles.CartText1Container}>
                   <Text style={styles.qtStyle}>Qty:1</Text>
@@ -84,12 +82,12 @@ const Cart = () => {
                 </View>
                 <View style={styles.priceContainer}>
                   <Text style={styles.priceText}>Price</Text>
-                  <Text style={styles.priceStyle}>250$</Text>
-                </View>  
+                  <Text style={styles.priceStyle}>${product.price}</Text>
+                </View>
               </View>
             </View>
           </View>
-              {/* <Text>
+          {/* <Text>
                   Remove
                 </Text> */}
           <View style={styles.secondContainer}>
@@ -111,16 +109,18 @@ const Cart = () => {
             </View>
           </View>
           <View style={styles.checkBtnCont}>
-            <TouchableOpacity>
-            <LinearGradient
-              start={{x: 1, y: 0}}
-              end={{x: 0, y: 0}}
-              colors={['#030A4E', '#22336a']}
-              style={styles.checkOutContainer}>
-
-              <Text style={styles.checkOut}> CHECK OUT</Text>
-            </LinearGradient>
-                </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('Payment');
+              }}>
+              <LinearGradient
+                start={{x: 1, y: 0}}
+                end={{x: 0, y: 0}}
+                colors={['#030A4E', '#22336a']}
+                style={styles.checkOutContainer}>
+                <Text style={styles.checkOut}> CHECK OUT</Text>
+              </LinearGradient>
+            </TouchableOpacity>
           </View>
         </ScrollView>
       )}
@@ -232,15 +232,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   cartImgContainer: {
-      flexDirection: 'row',
-      padding: 8,
-      width: 370,
+    flexDirection: 'row',
+    padding: 8,
+    width: 370,
   },
   CartImgStyle: {
     width: 100,
     height: 100,
-    marginRight:8
-    
+    marginRight: 8,
   },
   CartText1Container: {
     flexDirection: 'row',

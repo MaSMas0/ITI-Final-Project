@@ -15,8 +15,11 @@ import Like from './Like';
 
 const width = Dimensions.get('window').width / 2 - 15;
 
-const Card = ({product, onPress}) => {
+const Card = ({product, onPress, navigation}) => {
   console.log(product);
+  const addToCartHandler = () => {
+    navigation.navigate('Cart', product);
+  };
   return (
     <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
       <View style={styles.card}>
@@ -42,7 +45,7 @@ const Card = ({product, onPress}) => {
         <Text style={{fontSize: 12}}>
           Eligable for <Text style={styles.freeDelvStyle}>Free Delivery</Text>
         </Text>
-        <SecondryButton title="ADD TO CART" />
+        <SecondryButton title="ADD TO CART" onPress={addToCartHandler} />
       </View>
     </TouchableOpacity>
   );

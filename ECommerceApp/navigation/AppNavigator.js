@@ -18,6 +18,7 @@ import WishList from '../screens/WishList';
 import SearchBar from '../components/SearchBar';
 import HeaderRight from '../components/HeaderRight';
 import Cart from '../screens/Cart';
+import Payment from '../screens/Payment';
 import DrawerNavigator from './DrawerNavigator';
 import SearchScreen from '../screens/SearchScreen';
 import Search from '../components/Search';
@@ -71,6 +72,15 @@ function HomeStackScreen({navigation}) {
       <Stack.Screen
         name="Cart"
         component={Cart}
+        options={
+          {
+            // headerTitle: props => <Header title={'ProductDetails'} {...props} />,
+          }
+        }
+      />
+      <Stack.Screen
+        name="Payment"
+        component={Payment}
         options={
           {
             // headerTitle: props => <Header title={'ProductDetails'} {...props} />,
