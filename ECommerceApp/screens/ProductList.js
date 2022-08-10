@@ -78,9 +78,10 @@ const Product = ({navigation, route}) => {
               width: '77%',
             }}>
             <Slider
-              minimumTrackTintColor={colors.blue}
+              style={{transform: [{scaleY: 3}]}}
+              minimumTrackTintColor={colors.lightBlue}
               maximumTrackTintColor={colors.medium}
-              thumbTintColor={colors.danger}
+              thumbTintColor="transparent"
               maximumValue={1000}
               minimumValue={0}
               step={10}
