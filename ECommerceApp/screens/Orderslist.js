@@ -1,29 +1,32 @@
 import React from 'react';
-import {
-  TouchableOpacity,
-  ScrollView,
-  View,
-  FlatList,
-  SafeAreaView,
-} from 'react-native';
-import OrderCard from '../components/OrderCard';
-const OrderList = ({navigation}) => {
+import {TouchableOpacity, Text, ScrollView, View, FlatList} from 'react-native';
+import OrderDetails from './OrderDetails';
+const Orders = ({navigation}) => {
+  const x = [];
   return (
-    <SafeAreaView>
-      <FlatList
-        data={[0]}
-        renderItem={() => {
-          return (
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('OrderDetails');
-              }}>
-              <OrderCard />
-            </TouchableOpacity>
-          );
-        }}
-      />
-    </SafeAreaView>
+    <View>
+      {x.length == 0 && (
+        <View style={{alignItems: 'center', justifyContent: 'center'}}>
+          <Text>notfound</Text>
+        </View>
+      )}
+
+      {x.length !== 0 && (
+        <FlatList
+          data={x}
+          renderItem={() => {
+            return (
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('MoreOrderItemDetails');
+                }}>
+                <OrderDetails />
+              </TouchableOpacity>
+            );
+          }}
+        />
+      )}
+    </View>
   );
 };
 

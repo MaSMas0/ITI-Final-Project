@@ -12,7 +12,7 @@ import * as Animatable from 'react-native-animatable';
 import Like from './Like';
 import colors from '../config/colors';
 
-const ProductiteminCategory = ({price, onPress}) => {
+const ProductiteminCategory = ({price, onPress, image}) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <ScrollView>
@@ -24,12 +24,12 @@ const ProductiteminCategory = ({price, onPress}) => {
             <Image
               style={styles.image}
               source={{
-                uri: 'https://img.icons8.com/external-tal-revivo-bold-tal-revivo/96/000000/external-adidas-a-multinational-corporation-that-designs-and-manufactures-shoes-clothing-and-accessories-fashion-bold-tal-revivo.png',
+                uri: image,
               }}
             />
           </View>
           <View style={styles.details}>
-            <Text style={styles.fav}>{price} EG</Text>
+            <Text style={styles.fav}>{price} $</Text>
 
             <Like />
           </View>

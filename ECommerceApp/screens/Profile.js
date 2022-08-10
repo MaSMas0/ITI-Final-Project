@@ -17,8 +17,6 @@ function Settings() {
             source={require('../assets/account.png')}
           />
           <View style={styles.welcomeUserCont}>
-            <Text style={styles.welcome}>Welcome, </Text>
-            <Text style={styles.userName}> Mahmoud </Text>
             {/* 
             <Text style={styles.email}>salem</Text> */}
           </View>

@@ -7,7 +7,9 @@ import {
   Text,
   View,
   StyleSheet,
+  Slider,
 } from 'react-native';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import colors from '../config/colors';
 import Card from '../components/ProductCard';
 import Search from '../components/Search';
@@ -16,6 +18,8 @@ const Product = ({navigation, route}) => {
   const products = route.params;
   const [product, setProduct] = useState(products);
   const [product1, setProduct1] = useState(products);
+  const [value, setValue] = useState(0);
+  const [showFilter, setShowFilter] = useState(false);
 
   function searchFilter(value) {
     const filterProduct = product1.filter(p => {
@@ -25,14 +29,54 @@ const Product = ({navigation, route}) => {
     });
     setProduct(filterProduct);
   }
+  function priceFilter(value) {
+    console.log(value);
+    const filterProduct = product1.filter(p => {
+      return p.price >= value;
+    });
+    setProduct(filterProduct);
+  }
 
   return (
-    <SafeAreaView
-      style={{
-        paddingHorizontal: 5,
-        paddingTop: 20,
-      }}>
-      <Search searchFilter={searchFilter} />
+    <SafeAreaView>
+      <View
+        style={{
+          flexDirection: 'row',
+          backgroundColor: colors.white,
+          alignItems: 'center',
+          paddingStart: 10,
+        }}>
+        <AntDesign
+          name="back"
+          size={30}
+          onPress={() => {
+            navigation.goBack();
+          }}
+        />
+        <Search searchFilter={searchFilter} />
+        <AntDesign
+          style={{paddingEnd: 15}}
+          name="filter"
+          size={30}
+          onPress={() => {
+            setShowFilter(!showFilter);
+          }}
+        />
+      </View>
+      {showFilter && (
+        <View style={{marginVertical: 20}}>
+          <Slider
+            maximumValue={1000}
+            minimumValue={0}
+            step={10}
+            value={0}
+            onSlidingComplete={value => {
+              priceFilter(value);
+            }}
+          />
+        </View>
+      )}
+
       {product.length === 0 ? (
         <View style={styles.notFoundContainer}>
           <Image
