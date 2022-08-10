@@ -18,8 +18,8 @@ const App = () => {
   return (
     <NavigationContainer>
       <StatusBar backgroundColor="white" barStyle="dark-content" />
-      {/* <AuthNavigator /> */}
-      <AppNavigator />
+      <AuthNavigator />
+      {/* <AppNavigator /> */}
       {/* <Payment /> */}
       {/* <MoreOrderDetails /> */}
       {/* <MoreOrderItemDetails /> */}

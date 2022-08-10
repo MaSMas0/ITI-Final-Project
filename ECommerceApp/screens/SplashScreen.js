@@ -43,7 +43,7 @@ const SplashScreen = ({navigation}) => {
       <View style={styles.contentContainer}>
         <Animated.Image
           style={[styles.image, {opacity: fadeAnim}]}
-          source={require('../assets/rr.png')}
+          source={require('../assets/logo.png')}
         />
         <Animated.View style={[styles.logoContainer, {marginLeft: moveAnim}]}>
           <Text style={[styles.logoText]}>E</Text>
