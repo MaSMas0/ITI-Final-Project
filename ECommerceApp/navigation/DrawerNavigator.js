@@ -12,12 +12,14 @@ import AddressNavigator from './AddressNavigator';
 import colors from '../config/colors';
 
 import OrderNavgigator from './OrderNavigator';
+import Drawerheader from '../components/Drawerheader';
 
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = ({navigation}) => {
   return (
     <Drawer.Navigator
+      drawerContent={props => <Drawerheader {...props} />}
       screenOptions={{
         drawerPosition: 'right',
         drawerType: 'slide',
@@ -60,16 +62,7 @@ const DrawerNavigator = ({navigation}) => {
           ),
         }}
       />
-      {/* <Drawer.Screen
-        name="OrderItems"
-        component={OrderNavgigator}
-        options={{
-          title: 'My Orders',
-          drawerIcon: ({color, size, focused}) => (
-            <MaterialIcons name="more" size={size} color={color} />
-          ),
-        }}
-      /> */}
+
       <Drawer.Screen
         name="ContactUs"
         component={ContactUs}

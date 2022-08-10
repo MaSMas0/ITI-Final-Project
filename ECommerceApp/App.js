@@ -12,6 +12,7 @@ import Payment from './screens/Payment';
 import Page1 from './screens/Page1';
 import Address from './screens/Address';
 import NewAddress from './screens/NewAddress';
+import Drawerheader from './components/Drawerheader';
 
 const App = () => {
   return (
@@ -20,7 +21,7 @@ const App = () => {
       {/* <AuthNavigator /> */}
       <AppNavigator />
       {/* <Payment /> */}
-      {/* <MoreOrderDetails /> */}
+      {/* <Drawerheader /> */}
       {/* <MoreOrderItemDetails /> */}
     </NavigationContainer>
   );
