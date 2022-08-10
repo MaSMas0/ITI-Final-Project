@@ -78,11 +78,9 @@ function HomeStackScreen({navigation}) {
       <Stack.Screen
         name="Products"
         component={Product}
-        options={
-          {
-            // headerTitle: props => <Header title={'Products'} {...props} />,
-          }
-        }
+        options={{
+          headerShown: false,
+        }}
       />
 
       <Stack.Screen

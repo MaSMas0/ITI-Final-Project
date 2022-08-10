@@ -8,6 +8,7 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import colors from '../config/colors';
 import Card from '../components/ProductCard';
 import Search from '../components/Search';
@@ -28,9 +29,23 @@ const Product = ({navigation, route}) => {
 
   return (
     <SafeAreaView>
-      <View style={{flexDirection: 'row'}}>
+      <View
+        style={{
+          flexDirection: 'row',
+          backgroundColor: colors.white,
+          alignItems: 'center',
+          paddingStart: 10,
+        }}>
+        <AntDesign
+          name="back"
+          size={30}
+          onPress={() => {
+            navigation.goBack();
+          }}
+        />
         <Search searchFilter={searchFilter} />
       </View>
+
       {product.length === 0 ? (
         <View style={styles.notFoundContainer}>
           <Image
