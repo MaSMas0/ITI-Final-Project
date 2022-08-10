@@ -1,24 +1,30 @@
 import React from 'react';
-import {TouchableOpacity, ScrollView, View, FlatList} from 'react-native';
-import OrderDetails from './OrderDetails';
-const Orders = ({navigation}) => {
+import {
+  TouchableOpacity,
+  ScrollView,
+  View,
+  FlatList,
+  SafeAreaView,
+} from 'react-native';
+import OrderCard from '../components/OrderCard';
+const OrderList = ({navigation}) => {
   return (
-    <View>
+    <SafeAreaView>
       <FlatList
-        data={[0, 0, 0, 0, 0, 0, 0, 0]}
+        data={[0]}
         renderItem={() => {
           return (
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate('MoreOrderItemDetails');
+                navigation.navigate('OrderDetails');
               }}>
-              <OrderDetails />
+              <OrderCard />
             </TouchableOpacity>
           );
         }}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
-export default Orders;
+export default OrderList;
