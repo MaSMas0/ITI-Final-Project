@@ -11,6 +11,24 @@ import Carousel from 'react-native-anchor-carousel';
 const SlideShow = props => {
   const carouselRef = useRef(null);
   const {width: windowWidth} = Dimensions.get('window');
+  const images = [
+    {
+      id: 0,
+      image: require('../assets/SlideShow/JeansSale.png'),
+    },
+    {
+      id: 1,
+      image: require('../assets/SlideShow/ElectronicsSale.png'),
+    },
+    {
+      id: 2,
+      image: require('../assets/SlideShow/ShirtsSale.png'),
+    },
+    {
+      id: 3,
+      image: require('../assets/SlideShow/ShoesSale.png'),
+    },
+  ];
 
   const renderItem = ({item, index}) => {
     return (
@@ -20,9 +38,8 @@ const SlideShow = props => {
           carouselRef.current.scrollToIndex(index);
         }}>
         <Image
-          source={require('../assets/cover.jpg')}
-          style={{width: '99.2%', height: '98.5%',borderRadius:8,margin:5,
-        }}
+          source={item.image}
+          style={{width: '99.2%', height: '98.5%', borderRadius: 8, margin: 5}}
         />
       </TouchableOpacity>
     );
@@ -31,7 +48,7 @@ const SlideShow = props => {
     <View style={{padding: 0}}>
       <Carousel
         ref={carouselRef}
-        data={Array(6).fill(0)}
+        data={images}
         renderItem={renderItem}
         style={styles.carousel}
         itemWidth={windowWidth * 0.92}
