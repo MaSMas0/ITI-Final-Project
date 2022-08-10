@@ -30,4 +30,4 @@ const Orders = ({navigation}) => {
   );
 };
 
-export default Orders;
+export default OrderList;
