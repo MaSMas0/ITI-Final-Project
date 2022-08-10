@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, View, FlatList, Text} from 'react-native';
+import {StyleSheet, View, FlatList, Text, Slider} from 'react-native';
 import ProductiteminCategory from '../components/ProductiteminCategory';
 import FilterBar from '../components/FilterBar';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import {getProducts} from '../store/reducers/Products/ProductsSlice';
 import {useSelector, useDispatch} from 'react-redux';
 import Loader from '../components/Loader';
@@ -16,6 +17,8 @@ function SearchScreen({navigation}) {
   );
   const [product, setProduct] = useState(products);
   const [product1, setProduct1] = useState(products);
+  const [value, setValue] = useState(0);
+  const [showFilter, setShowFilter] = useState(false);
 
   const handleCategories = categoryList.map(p => {
     return {title: p, isChecked: false};
@@ -28,6 +31,14 @@ function SearchScreen({navigation}) {
       return itemLowerCase.indexOf(searchTermLowerCase) > -1;
     });
     setProduct(filterProduct);
+  }
+  function priceFilter(value) {
+    console.log(value);
+    const filterProduct = product1.filter(p => {
+      return p.price >= value;
+    });
+    setProduct(filterProduct);
+    setValue(value);
   }
 
   useEffect(() => {
@@ -51,26 +62,80 @@ function SearchScreen({navigation}) {
           }}
         />
         <Search searchFilter={searchFilter} />
+        <Ionicons
+          style={{paddingEnd: 15}}
+          name="filter"
+          size={30}
+          onPress={() => {
+            setShowFilter(!showFilter);
+          }}
+        />
       </View>
+      {showFilter && (
+        <View
+          style={{
+            marginVertical: 20,
+            flexDirection: 'row-reverse',
+            alignItems: 'center',
+            paddingHorizontal: 20,
+            justifyContent: 'space-between',
+          }}>
+          <View
+            style={{
+              width: '77%',
+            }}>
+            <Slider
+              style={{transform: [{scaleY: 3}]}}
+              minimumTrackTintColor={colors.lightBlue}
+              maximumTrackTintColor={colors.medium}
+              thumbTintColor="transparent"
+              maximumValue={1000}
+              minimumValue={0}
+              step={10}
+              value={value}
+              onSlidingComplete={value => {
+                priceFilter(value);
+              }}
+            />
+          </View>
+          <Text
+            style={{
+              fontSize: 17,
+              fontWeight: 'bold',
+            }}>
+            Price:{' '}
+            <Text
+              style={{
+                color: colors.danger,
+              }}>
+              {value}$
+            </Text>
+          </Text>
+        </View>
+      )}
       {isLoading && <Loader size={Platform.OS == 'android' ? 60 : 'large'} />}
       {!isLoading && (
         <View style={styles.procductCategory}>
-          <FlatList
-            showsVerticalScrollIndicator={false}
-            nestedScrollEnabled
-            numColumns={2}
-            data={product}
-            renderItem={({item, index}) => {
-              return (
-                <Card
-                  product={item}
-                  onPress={() => {
-                    navigation.navigate('ProductDetails', {item});
-                  }}
-                />
-              );
-            }}
-          />
+          {product.length === 0 ? (
+            <Text>not found</Text>
+          ) : (
+            <FlatList
+              showsVerticalScrollIndicator={false}
+              nestedScrollEnabled
+              numColumns={2}
+              data={product}
+              renderItem={({item, index}) => {
+                return (
+                  <Card
+                    product={item}
+                    onPress={() => {
+                      navigation.navigate('ProductDetails', {item});
+                    }}
+                  />
+                );
+              }}
+            />
+          )}
         </View>
       )}
     </View>
