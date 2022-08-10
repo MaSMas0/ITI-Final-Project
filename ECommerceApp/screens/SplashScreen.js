@@ -34,7 +34,7 @@ const SplashScreen = ({navigation}) => {
       useNativeDriver: false,
     }).start();
     setTimeout(() => {
-      navigation.navigate('SignIn');
+      navigation.replace('AppNavigator');
     }, 4000);
   }, [moveAnim, fadeAnim]);
 

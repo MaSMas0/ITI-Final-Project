@@ -13,16 +13,13 @@ import Payment from './screens/Payment';
 import Address from './screens/Address';
 import NewAddress from './screens/NewAddress';
 import Drawerheader from './components/Drawerheader';
+import WelcomeNav from './navigation/WelcomeNav';
 
 const App = () => {
   return (
     <NavigationContainer>
       <StatusBar backgroundColor="white" barStyle="dark-content" />
-      {/* <AuthNavigator /> */}
-      <AppNavigator />
-      {/* <Payment /> */}
-      {/* <Drawerheader /> */}
-      {/* <MoreOrderItemDetails /> */}
+      <WelcomeNav />
     </NavigationContainer>
   );
 };

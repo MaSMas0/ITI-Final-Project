@@ -13,10 +13,10 @@ import {useSelector} from 'react-redux';
 
 const WishList = ({navigation}) => {
   const wishLists = useSelector(state => state.wishLists.wishLists);
-
+  console.log(wishLists);
   return (
     <SafeAreaView>
-      {wishLists.length === 0 ? (
+      {/* {wishLists.length === 0 ? (
         <View style={styles.notFoundContainer}>
           <Image
             source={require('../assets/EmptyWishlist.png')}
@@ -30,18 +30,18 @@ const WishList = ({navigation}) => {
         <FlatList
           showsVerticalScrollIndicator={false}
           nestedScrollEnabled
-          numColumns={3}
+          numColumns={1}
           data={wishLists}
           renderItem={({item, index}) => {
             return (
               <TouchableOpacity
                 onPress={() => navigation.navigate('ProductDetails', {item})}>
-                <WishlistComponent wishLists={item} />
+                <WishlistComponent wishList={item} />
               </TouchableOpacity>
             );
           }}
         />
-      )}
+      )} */}
     </SafeAreaView>
   );
 };
