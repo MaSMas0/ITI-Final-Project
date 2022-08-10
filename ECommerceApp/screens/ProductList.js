@@ -79,7 +79,8 @@ const Product = ({navigation, route}) => {
             }}>
             <Slider
               minimumTrackTintColor={colors.blue}
-              thumbTintColor="red"
+              maximumTrackTintColor={colors.medium}
+              thumbTintColor={colors.danger}
               maximumValue={1000}
               minimumValue={0}
               step={10}
@@ -97,7 +98,7 @@ const Product = ({navigation, route}) => {
             Price:{' '}
             <Text
               style={{
-                color: 'red',
+                color: colors.danger,
               }}>
               {value}$
             </Text>
