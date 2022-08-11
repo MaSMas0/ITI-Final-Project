@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, View, FlatList, Text, Slider} from 'react-native';
+import {StyleSheet, View, FlatList, Text, Slider, Image} from 'react-native';
 import ProductiteminCategory from '../components/ProductiteminCategory';
 import FilterBar from '../components/FilterBar';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -117,7 +117,20 @@ function SearchScreen({navigation}) {
       {!isLoading && (
         <View style={styles.procductCategory}>
           {product.length === 0 ? (
-            <Text>not found</Text>
+            <View style={styles.notFoundContainer}>
+              <Image
+                source={require('../assets/Not_Found.png')}
+                style={{
+                  width: 300,
+                  height: 300,
+                }}
+              />
+              {/* <Text style={styles.Textnotfound2}>We're sorry</Text> */}
+              {/* <Text style={styles.Textnotfound2}>
+                We've searched more 100+ products ,{'\n'}but didn't match any
+                product.
+              </Text> */}
+            </View>
           ) : (
             <FlatList
               showsVerticalScrollIndicator={false}
@@ -151,6 +164,25 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-evenly',
     alignItems: 'center',
+  },
+  notFoundContainer: {
+    marginVertical: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  Textnotfound1: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: 'black',
+    paddingVertical: 5,
+  },
+  Textnotfound2: {
+    fontWeight: 'bold',
+    fontSize: 17,
+    color: 'grey',
+    paddingVertical: 5,
+
+    textAlign: 'center',
   },
 });
 
