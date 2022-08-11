@@ -7,27 +7,50 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import colors from '../config/colors';
 import LinearGradient from 'react-native-linear-gradient';
 import {useSelector, useDispatch} from 'react-redux/';
-import {cartAddItem} from '../store/reducers/Cart/CartSlice';
 import ReadMore from 'react-native-read-more-text';
+import {addToCart, removeFromCart} from '../actions/CartActions';
+import SecondryButton from '../components/SecondryButton';
 
-const ProductDetails = ({route}) => {
+const ProductDetails = ({route, navigation}) => {
   const {item} = route.params;
-  console.log(item);
-  const [counter, SetCounter] = useState(1);
-
-  const dispatch = useDispatch();
-  const handleCounter = inc => {
-    if (inc == true) {
-      SetCounter(c => c + 1);
-    }
-    if (!inc && counter > 1) {
-      SetCounter(c => c - 1);
+  const cartItems = useSelector(state => state.cart.cartItems);
+  const ProductInCart =
+    cartItems.length !== 0
+      ? cartItems.filter(product => product.product == item._id)[0]
+      : null;
+  let quantity =
+    cartItems.length !== 0
+      ? cartItems.filter(product => product.product == item._id)[0].qty
+      : 1;
+  const countInStock =
+    cartItems.length !== 0
+      ? cartItems.filter(product => product.product == item._id)[0].countInStock
+      : 0;
+  const handleIncrement = () => {
+    if (quantity < countInStock) {
+      quantity++;
+      dispatch(addToCart(item._id, quantity));
     }
   };
+  const handleDecrement = () => {
+    if (quantity > 0) {
+      quantity--;
+      dispatch(addToCart(item._id, quantity));
+    }
+  };
+  const addToCartHandler = () => {
+    dispatch(addToCart(item._id, 1));
+  };
+  const removeFromCartHandler = () => {
+    dispatch(removeFromCart(item._id));
+  };
+
+  const dispatch = useDispatch();
+
   return (
     <ScrollView style={style.pageBgColor}>
       <SafeAreaView style={style.saveAreaStyle}>
@@ -58,27 +81,47 @@ const ProductDetails = ({route}) => {
               <Text style={style.description}>{item.description}</Text>
             </ReadMore>
             <View style={style.downContainer}>
-              <View style={style.subDownContainer}>
-                <TouchableOpacity onPress={() => handleCounter(false)}>
-                  <View style={style.decreContainer}>
-                    <Text style={style.decreBtn}>-</Text>
-                  </View>
-                </TouchableOpacity>
+              {ProductInCart && quantity !== 0 ? (
+                <View style={style.subDownContainer}>
+                  <TouchableOpacity onPress={handleDecrement}>
+                    <View style={style.decreContainer}>
+                      <Text style={style.decreBtn}>-</Text>
+                    </View>
+                  </TouchableOpacity>
 
-                <Text style={style.prodNo}>{counter}</Text>
+                  <Text style={style.prodNo}>{quantity}</Text>
 
-                <TouchableOpacity onPress={() => handleCounter(true)}>
-                  <LinearGradient
-                    start={{x: 1, y: 0}}
-                    end={{x: 0, y: 0}}
-                    colors={['#030A4E', '#22336a']}
-                    style={style.increContainer}>
-                    <Text style={style.increBtn}>+</Text>
-                  </LinearGradient>
-                </TouchableOpacity>
-              </View>
+                  <TouchableOpacity
+                    onPress={handleIncrement}
+                    disabled={quantity == countInStock}>
+                    <LinearGradient
+                      start={{x: 1, y: 0}}
+                      end={{x: 0, y: 0}}
+                      colors={['#030A4E', '#22336a']}
+                      style={style.increContainer}>
+                      <Text style={style.increBtn}>+</Text>
+                    </LinearGradient>
+                  </TouchableOpacity>
+                </View>
+              ) : ProductInCart && quantity == 0 ? (
+                <View style={style.subDownContainer}>
+                  <SecondryButton
+                    onPress={removeFromCartHandler}
+                    title="REMOVE FROM CART"
+                    colors="red"
+                  />
+                </View>
+              ) : (
+                <View style={style.subDownContainer}>
+                  <SecondryButton
+                    onPress={addToCartHandler}
+                    title="ADD TO CART"
+                    colors={colors.blue}
+                  />
+                </View>
+              )}
 
-              <TouchableOpacity onPress={() => dispatch(cartAddItem(item))}>
+              <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
                 <LinearGradient
                   start={{x: 1, y: 0}}
                   end={{x: 0, y: 0}}
