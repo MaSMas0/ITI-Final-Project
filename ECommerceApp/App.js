@@ -11,18 +11,21 @@ import SettingProfile from './screens/SettingProfile';
 import Payment from './screens/Payment';
 
 import Address from './screens/Address';
+import Profile from './screens/Profile';
 import NewAddress from './screens/NewAddress';
 import Drawerheader from './components/Drawerheader';
 import WelcomePage from './screens/WelcomePage';
+import OrderList from './screens/Orderslist';
 
 const App = () => {
   return (
     <NavigationContainer>
       <StatusBar backgroundColor="white" barStyle="dark-content" />
+      {/* <Profile /> */}
       {/* <AuthNavigator /> */}
-      {/* <AppNavigator /> */}
+      <AppNavigator />
       {/* <Payment /> */}
-      <WelcomePage />
+      {/* <WelcomePage /> */}
       {/* <Drawerheader /> */}
       {/* <MoreOrderItemDetails /> */}
     </NavigationContainer>
