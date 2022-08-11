@@ -20,9 +20,9 @@ const App = () => {
     <NavigationContainer>
       <StatusBar backgroundColor="white" barStyle="dark-content" />
       {/* <AuthNavigator /> */}
-      <AppNavigator />
+      {/* <AppNavigator /> */}
       {/* <Payment /> */}
-      {/* <WelcomePage /> */}
+      <WelcomePage />
       {/* <Drawerheader /> */}
       {/* <MoreOrderItemDetails /> */}
     </NavigationContainer>

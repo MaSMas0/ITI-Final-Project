@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     width: 250,
     height: 250,
-    // backgroundColor: colors.grey,
+    backgroundColor: colors.grey,
     borderRadius: 10,
   },
   item: {
