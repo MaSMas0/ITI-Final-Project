@@ -1,26 +1,13 @@
 import React from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import Home from '../screens/Home';
-import Settings from '../screens/Profile';
-import Category from '../screens/Category';
-import Product from '../screens/ProductList';
-
-import ProductDetails from '../screens/ProductDetails';
+import HomeNavigator from './HomeNavigator';
+import CategoryNavigator from './CategoryNavigator';
+import ProfileNavigator from './ProfileNavigator';
 
 import colors from '../config/colors';
-import WishList from '../screens/WishList';
-
-import SearchBar from '../components/SearchBar';
-import HeaderRight from '../components/HeaderRight';
-import Cart from '../screens/Cart';
-import DrawerNavigator from './DrawerNavigator';
-import SearchScreen from '../screens/SearchScreen';
-import Search from '../components/Search';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -35,8 +22,7 @@ function HomeStackScreen({navigation}) {
         options={{
           headerTitle: () => (
             <SearchBar
-              title={'Nile'}
-              title1={'Buy'}
+              title={'Home'}
               onPress={() => navigation.navigate('SearchScreen')}
             />
           ),
@@ -140,7 +126,7 @@ const Footer = () => (
     barStyle={{backgroundColor: colors.white}}>
     <Tab.Screen
       name="Home"
-      component={HomeStackScreen}
+      component={HomeNavigator}
       options={{
         tabBarIcon: ({color}) => (
           <MaterialCommunityIcons name="home" color={color} size={25} />
@@ -150,7 +136,7 @@ const Footer = () => (
 
     <Tab.Screen
       name="Category"
-      component={CategoryStackScreen}
+      component={CategoryNavigator}
       options={{
         tabBarIcon: ({color}) => (
           <MaterialIcons name="category" color={color} size={25} />
@@ -159,8 +145,8 @@ const Footer = () => (
     />
 
     <Tab.Screen
-      name="Me"
-      component={SettingsStackScreen}
+      name="Profile"
+      component={ProfileNavigator}
       options={{
         tabBarIcon: ({color}) => (
           <MaterialIcons name="account-circle" color={color} size={25} />
@@ -170,4 +156,4 @@ const Footer = () => (
   </Tab.Navigator>
 );
 
-export default Footer;
+export default AppNavigator;

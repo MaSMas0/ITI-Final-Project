@@ -30,7 +30,7 @@ const SignUp = ({navigation}) => {
 
   useEffect(() => {
     if (userInfo) {
-      navigation.navigate('SignIn');
+      // navigation.navigate('SignIn');
     }
   }, [userInfo, navigation]);
 
@@ -213,7 +213,7 @@ const SignUp = ({navigation}) => {
 const styles = StyleSheet.create({
   ScrollView: {
     // flex: 1,
-    flexGrow:1,
+    flexGrow: 1,
     backgroundColor: colors.white,
   },
   container: {
