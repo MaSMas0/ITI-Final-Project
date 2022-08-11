@@ -16,11 +16,13 @@ import NewAddress from './screens/NewAddress';
 import Drawerheader from './components/Drawerheader';
 import WelcomePage from './screens/WelcomePage';
 import OrderList from './screens/Orderslist';
+import OrderDetails from './screens/OrderDetails';
 
 const App = () => {
   return (
     <NavigationContainer>
       <StatusBar backgroundColor="white" barStyle="dark-content" />
+      {/* <OrderDetails /> */}
       {/* <Profile /> */}
       {/* <AuthNavigator /> */}
       <AppNavigator />
