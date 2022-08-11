@@ -8,6 +8,7 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
+
 import WishlistComponent from '../components/WishlistComponant';
 import {useSelector} from 'react-redux';
 
