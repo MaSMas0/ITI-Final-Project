@@ -13,7 +13,6 @@ import routes from './routes';
 import OrderDetails from '../screens/OrderDetails';
 import NewAddress from '../screens/NewAddress';
 
-
 function HomeNavigator({navigation}) {
   const Stack = createNativeStackNavigator();
   return (
