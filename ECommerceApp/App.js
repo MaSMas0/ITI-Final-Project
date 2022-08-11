@@ -9,7 +9,7 @@ import WishList from './screens/WishList';
 import Cart from './screens/Cart';
 import SettingProfile from './screens/SettingProfile';
 import Payment from './screens/Payment';
-
+import WelcomeNav from './navigation/WelcomeNav';
 import Address from './screens/Address';
 import Profile from './screens/Profile';
 import NewAddress from './screens/NewAddress';
@@ -29,7 +29,7 @@ const App = () => {
       {/* <OrderList /> */}
       {/* <Profile /> */}
       {/* <AuthNavigator /> */}
-      {/* <AppNavigator /> */}
+      <WelcomeNav />
       {/* <Payment /> */}
       {/* <Drawerheader /> */}
       {/* <MoreOrderItemDetails /> */}
