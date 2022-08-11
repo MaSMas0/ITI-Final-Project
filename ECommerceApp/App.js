@@ -25,9 +25,9 @@ const App = () => {
       {/* <OrderDetails /> */}
       {/* <Profile /> */}
       {/* <AuthNavigator /> */}
-      {/* <AppNavigator /> */}
+      <AppNavigator />
       {/* <Payment /> */}
-      <WelcomePage />
+      {/* <WelcomePage /> */}
       {/* <Drawerheader /> */}
       {/* <MoreOrderItemDetails /> */}
     </NavigationContainer>
