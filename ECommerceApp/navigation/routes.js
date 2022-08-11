@@ -1,3 +1,22 @@
 export default Object.freeze({
-
+  SplashScreen: 'SplashScreen',
+  AppScreen: 'AppNavigator',
+  WishLists: 'WishList',
+  Orders: 'Orders',
+  profile: 'Profile',
+  Address: 'Address',
+  Currency: 'Currency',
+  ContactUs: 'ContactUs',
+  AboutScreen: 'AboutScreen',
+  OrdersList: 'OrdersList',
+  OrderDetails: 'MoreOrderItemDetails',
+  LogIn: 'SignIn',
+  LogOut: 'SignUp',
+  Settings: 'Settings',
+  ProductDetails: 'ProductDetails',
+  Category: 'CategoryStack',
+  Products: 'Products',
+  Cart: 'Cart',
+  SearchScreen: 'SearchScreen',
+  AuthScreens: 'AuthScreens',
 });

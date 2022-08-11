@@ -13,8 +13,9 @@ import WishlistComponent from '../components/WishlistComponant';
 import {useSelector} from 'react-redux';
 
 const WishList = ({navigation}) => {
-  const wishLists = useSelector(state => state.wishLists.wishLists);
+  const wishLists = useSelector(state => state.wishLists);
 
+  console.log(wishLists, 'ashraf sw7naa');
   return (
     <SafeAreaView>
       {wishLists.length === 0 ? (
@@ -28,20 +29,21 @@ const WishList = ({navigation}) => {
           />
         </View>
       ) : (
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          nestedScrollEnabled
-          numColumns={3}
-          data={wishLists}
-          renderItem={({item, index}) => {
-            return (
-              <TouchableOpacity
-                onPress={() => navigation.navigate('ProductDetails', {item})}>
-                <WishlistComponent wishLists={item} />
-              </TouchableOpacity>
-            );
-          }}
-        />
+        <View></View>
+        // <FlatList
+        //   showsVerticalScrollIndicator={false}
+        //   nestedScrollEnabled
+        //   numColumns={3}
+        //   data={wishLists}
+        //   renderItem={({item, index}) => {
+        //     return (
+        //       <TouchableOpacity
+        //         onPress={() => navigation.navigate('ProductDetails', {item})}>
+        //         <WishlistComponent wishLists={item} />
+        //       </TouchableOpacity>
+        //     );
+        //   }}
+        // />
       )}
     </SafeAreaView>
   );

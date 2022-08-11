@@ -3,13 +3,27 @@ import React, {useEffect} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {useSelector} from 'react-redux';
 import colors from '../config/colors';
+import AuthNavigator from '../navigation/AuthNavigator';
+import routes from '../navigation/routes';
 import TopNavigator from '../navigation/TopNavigator';
 
-function Settings() {
+function Settings({navigation}) {
   const userInfo = useSelector(state => state.userLogin.userInfo);
+
+  // useEffect(() => {
+  //   if (!userInfo) {
+  //     navigation.replace(routes.AuthScreens);
+  //   }
+  // }, []);
 
   return (
     <>
+      {!userInfo && (
+        <NavigationContainer independent={true}>
+          <AuthNavigator />
+        </NavigationContainer>
+      )}
+
       <View style={styles.container}>
         <View style={styles.infoContainer}>
           <Image
