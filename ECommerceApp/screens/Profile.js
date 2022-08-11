@@ -26,7 +26,9 @@ function Settings({navigation}) {
           <Text style={styles.welcomephrase}>It's Good to see you Again !</Text>
         </View>
       </View>
-      <TopNavigator />
+      <NavigationContainer independent={true}>
+        <TopNavigator />
+      </NavigationContainer>
     </>
   );
 }
