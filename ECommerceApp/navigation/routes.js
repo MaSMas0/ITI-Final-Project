@@ -19,4 +19,7 @@ export default Object.freeze({
   Cart: 'Cart',
   SearchScreen: 'SearchScreen',
   AuthScreens: 'AuthScreens',
+  NewAddress: 'NewAddress',
+  Payment: 'Payment',
+  PlaceOrder: 'OrderDetails',
 });

@@ -137,6 +137,7 @@ const Product = ({navigation, route}) => {
             return (
               <Card
                 product={item}
+                navigation={navigation}
                 onPress={() => {
                   navigation.navigate('ProductDetails', {item});
                 }}
