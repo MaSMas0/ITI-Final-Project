@@ -7,7 +7,7 @@ const Currency = () => {
   const [currency, setCurrency] = useState('EGY');
 
   function handelCurrencyEgy() {
-    setCurrency('EGY');
+    setCurrency('EGP');
     setShow(false);
   }
   function handelCurrencyUsd() {
@@ -67,6 +67,7 @@ const Currency = () => {
                   style={{
                     backgroundColor: 'rgba(255,255,255,0.9)',
                     margin: 50,
+                    marginTop: 200,
                     borderRadius: 30,
                   }}>
                   <View
@@ -90,9 +91,17 @@ const Currency = () => {
                     style={{
                       flexDirection: 'row',
                       justifyContent: 'space-around',
-                      paddingVertical: 15,
+                      paddingVertical: 10,
                     }}>
-                    <View>
+                    <View
+                      style={{
+                        width: '50%',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        borderEndWidth: 2,
+                        borderColor: 'grey',
+                        paddingVertical: 6,
+                      }}>
                       <Text
                         onPress={() => handelCurrencyUsd()}
                         style={{
@@ -104,7 +113,12 @@ const Currency = () => {
                         USD
                       </Text>
                     </View>
-                    <View>
+                    <View
+                      style={{
+                        width: '50%',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                      }}>
                       <Text
                         onPress={() => handelCurrencyEgy()}
                         style={{
