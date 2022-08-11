@@ -7,6 +7,7 @@ import DrawerNavigator from '../navigation/DrawerNavigator';
 function Choice(props) {
   const userLogin = useSelector(state => state.userLogin);
   const {loading, error, userInfo} = userLogin;
+  console.log(userInfo);
   return (
     <>
       {userInfo && <DrawerNavigator />}

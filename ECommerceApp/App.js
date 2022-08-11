@@ -9,7 +9,7 @@ import WishList from './screens/WishList';
 import Cart from './screens/Cart';
 import SettingProfile from './screens/SettingProfile';
 import Payment from './screens/Payment';
-
+import WelcomeNav from './navigation/WelcomeNav';
 import Address from './screens/Address';
 import NewAddress from './screens/NewAddress';
 import Drawerheader from './components/Drawerheader';
@@ -19,7 +19,7 @@ const App = () => {
     <NavigationContainer>
       <StatusBar backgroundColor="white" barStyle="dark-content" />
       {/* <AuthNavigator /> */}
-      <AppNavigator />
+      <WelcomeNav />
       {/* <Payment /> */}
       {/* <Drawerheader /> */}
       {/* <MoreOrderItemDetails /> */}

@@ -54,6 +54,6 @@ const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-// console.log(persistor.purge(), 'ABdelsame3');
+//console.log(persistor.purge(), 'ABdelsame3');
 
 export default store;
