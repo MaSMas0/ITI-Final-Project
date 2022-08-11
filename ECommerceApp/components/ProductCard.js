@@ -16,6 +16,11 @@ import Like from './Like';
 const width = Dimensions.get('window').width / 2 - 15;
 
 const Card = ({product, onPress}) => {
+  const [check, setcheck] = useState(true);
+
+  function handelCheck() {
+    setcheck(!check);
+  }
   console.log(product);
   return (
     <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
@@ -42,7 +47,14 @@ const Card = ({product, onPress}) => {
         <Text style={{fontSize: 12}}>
           Eligable for <Text style={styles.freeDelvStyle}>Free Delivery</Text>
         </Text>
-        <SecondryButton title="ADD TO CART" />
+        {}
+        <SecondryButton
+          onPress={() => handelCheck()}
+          title={check ? 'ADD TO CART' : 'REMOVE FROM CART'}
+          // colors.mediumBlue
+          colors={check ? colors.blue : 'red'}
+          // color1={check ? 'red' : 'grey'}
+        />
       </View>
     </TouchableOpacity>
   );

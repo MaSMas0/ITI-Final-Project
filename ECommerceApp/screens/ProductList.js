@@ -10,6 +10,7 @@ import {
   Slider,
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import colors from '../config/colors';
 import Card from '../components/ProductCard';
 import Search from '../components/Search';
@@ -35,6 +36,7 @@ const Product = ({navigation, route}) => {
       return p.price >= value;
     });
     setProduct(filterProduct);
+    setValue(value);
   }
 
   return (
@@ -54,7 +56,7 @@ const Product = ({navigation, route}) => {
           }}
         />
         <Search searchFilter={searchFilter} />
-        <AntDesign
+        <Ionicons
           style={{paddingEnd: 15}}
           name="filter"
           size={30}
@@ -64,16 +66,45 @@ const Product = ({navigation, route}) => {
         />
       </View>
       {showFilter && (
-        <View style={{marginVertical: 20}}>
-          <Slider
-            maximumValue={1000}
-            minimumValue={0}
-            step={10}
-            value={0}
-            onSlidingComplete={value => {
-              priceFilter(value);
-            }}
-          />
+        <View
+          style={{
+            marginVertical: 20,
+            flexDirection: 'row-reverse',
+            alignItems: 'center',
+            paddingHorizontal: 20,
+            justifyContent: 'space-between',
+          }}>
+          <View
+            style={{
+              width: '77%',
+            }}>
+            <Slider
+              style={{transform: [{scaleY: 3}]}}
+              minimumTrackTintColor={colors.lightBlue}
+              maximumTrackTintColor={colors.medium}
+              thumbTintColor="transparent"
+              maximumValue={1000}
+              minimumValue={0}
+              step={10}
+              value={value}
+              onSlidingComplete={value => {
+                priceFilter(value);
+              }}
+            />
+          </View>
+          <Text
+            style={{
+              fontSize: 17,
+              fontWeight: 'bold',
+            }}>
+            Price:{' '}
+            <Text
+              style={{
+                color: colors.danger,
+              }}>
+              {value}$
+            </Text>
+          </Text>
         </View>
       )}
 

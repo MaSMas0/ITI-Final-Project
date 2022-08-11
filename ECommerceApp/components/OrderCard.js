@@ -1,47 +1,43 @@
 import React from 'react';
-import {StyleSheet, TextInput, Text, View} from 'react-native';
-import {block} from 'react-native-reanimated';
+import {
+  StyleSheet,
+  TextInput,
+  Text,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 import colors from '../config/colors';
 
 const OrderCard = () => {
   return (
     <View style={styles.allPage}>
-      <View style={styles.part}>
-        <Text style={styles.txt1}>
-          SHIPPING TO : <Text style={{color: 'black'}}>Moatz</Text>
-        </Text>
-        <Text style={styles.txt}>
-          CREATION DATE :
-          <Text style={{color: 'black'}}> 2022-8-12 +02:00 </Text>
-        </Text>
-      </View>
-      <View style={styles.part}>
-        <Text style={styles.all}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text
-          ever.
-        </Text>
-        <Text style={styles.txt1}>
-          PRICE : <Text style={{color: 'black'}}>249.00</Text>
-        </Text>
-        <Text style={styles.txt}>
-          QUANTATY :<Text style={{color: 'black'}}> 1 </Text>
-        </Text>
-      </View>
-      {/* <View style={styles.part}>
-        <Text style={styles.all}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text
-          ever.
-        </Text>
-        <Text style={styles.txt1}>
-          PRICE : <Text style={{color: 'black'}}>59.00</Text>
-        </Text>
-        <Text style={styles.txt}>
-          QUANTATY :<Text style={{color: 'black'}}> 4 </Text>
-        </Text>
+      {/* <View style={styles.all}>
+        <Text style={styles.order}>MY ORDERS ....</Text>
+        <View style={styles.part}>
+          <Text style={styles.txt1}>
+            PRICE : <Text style={{color: 'black'}}> 487.00 </Text>
+          </Text>
+          <Text style={styles.txt}>
+            CREATION DATE :{' '}
+            <Text style={{color: 'black'}}> 2022-8-12 +02:00 </Text>
+          </Text>
+        </View>
       </View> */}
+      <View style={styles.all}>
+        <Text style={styles.order}>MY ORDER ....</Text>
+
+        <View style={styles.part}>
+          <Text style={styles.txt1}>
+            PRICE : <Text style={{color: 'black'}}> 487.00 </Text>
+          </Text>
+          <Text style={styles.txt}>
+            CREATION DATE :
+            <Text style={{color: 'black'}}> 2022-8-12 +02:00 </Text>
+          </Text>
+        </View>
+      </View>
     </View>
+    // </TouchableOpacity>
   );
 };
 
@@ -54,17 +50,12 @@ const styles = StyleSheet.create({
   },
   all: {
     // backgroundColor: 'gray',
-    // marginTop: 15,
-    paddingVertical: 8,
-    textAlign: 'center',
-    fontSize: 16,
-    color: 'black',
-    textTransform: 'capitalize',
+    marginTop: 15,
   },
   part: {
     backgroundColor: 'white',
-    borderRadius: 5,
-    padding: 10,
+    borderRadius: 13,
+    padding: 15,
     marginTop: 5,
   },
   txt: {
@@ -80,7 +71,8 @@ const styles = StyleSheet.create({
   },
   allPage: {
     backgroundColor: colors.grey,
-    height: '100%',
+
+    // height: '100%',
     // margin: 15,
     // padding: 15,
   },

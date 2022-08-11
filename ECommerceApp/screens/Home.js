@@ -9,13 +9,16 @@ import {
 } from 'react-native';
 import SlideShow from '../components/SlideShow';
 import BrandCard from '../components/BrandCard';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+
 import colors from '../config/colors';
 
 import {getProducts} from '../store/reducers/Products/ProductsSlice';
 import {useSelector, useDispatch} from 'react-redux';
 import Loader from '../components/Loader';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
+import HomeProduct from '../components/HomeProduct';
+import {color} from 'react-native-reanimated';
 const Home = ({navigation}) => {
   const dispatch = useDispatch();
   const {products, isLoading, isError, brands} = useSelector(
@@ -44,31 +47,41 @@ const Home = ({navigation}) => {
     <>
       {isLoading && <Loader size={Platform.OS == 'android' ? 60 : 'large'} />}
       {!isLoading && (
-        <View style={styles.container}>
-          <SlideShow />
-          <Text style={styles.line}></Text>
-          <Text style={styles.h1}>Brands</Text>
-          <Text style={styles.line}></Text>
+        <ScrollView style={{backgroundColor: colors.white}}>
+          <View style={styles.container}>
+            <SlideShow />
+            <View
+              style={{
+                margin: 10,
+              }}>
+              <Text style={styles.h1}>BRANDS</Text>
+            </View>
 
-          <FlatList
-            showsVerticalScrollIndicator={false}
-            style={{margin: 0}}
-            nestedScrollEnabled
-            numColumns={2}
-            data={brands}
-            renderItem={({item, index}) => {
-              return (
-                <BrandCard
-                  title={item}
-                  onpress={() => {
-                    console.log(item);
-                    navigation.navigate('Products', brandProducts(item));
-                  }}
-                />
-              );
-            }}
-          />
-        </View>
+            <FlatList
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              data={brands}
+              renderItem={({item, index}) => {
+                return (
+                  <BrandCard
+                    title={item}
+                    onpress={() => {
+                      console.log(item);
+                      navigation.navigate('Products', brandProducts(item));
+                    }}
+                  />
+                );
+              }}
+            />
+            <View
+              style={{
+                margin: 10,
+              }}>
+              <Text style={styles.h1}>TOP SALE</Text>
+            </View>
+            <HomeProduct />
+          </View>
+        </ScrollView>
       )}
     </>
   );
@@ -76,23 +89,22 @@ const Home = ({navigation}) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.white,
+    backgroundColor: colors.white,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
-  line: {
-    width: '100%',
-    height: 5,
-    backgroundColor: colors.lightGrey,
-    // backgroundColor:"#F6F6F6",
-    margin: 5,
-  },
+
   h1: {
-    fontSize: 24,
-    textTransform: 'uppercase',
+    fontSize: 20,
     letterSpacing: 3,
     fontWeight: 'bold',
-    color: colors.black,
+    color: colors.blue,
+  },
+  h2: {
+    fontSize: 20,
+    letterSpacing: 3,
+    fontWeight: 'bold',
+    color: colors.blue,
   },
 });
 
