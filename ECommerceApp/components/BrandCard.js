@@ -18,8 +18,6 @@ function BrandCard({onpress, title}) {
           <Text style={styles.title}>{title}</Text>
         </View>
       </TouchableOpacity>
-      <Text
-        style={{borderBottomWidth: 1, borderBottomColor: colors.grey}}></Text>
     </View>
   );
 }
@@ -28,7 +26,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
 
-    marginVertical: 10,
+    marginVertical: 20,
 
     paddingHorizontal: 17,
   },
@@ -50,6 +48,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 14,
     color: colors.black,
+    marginBottom: 10,
   },
 });
 

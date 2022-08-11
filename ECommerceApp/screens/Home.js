@@ -17,6 +17,8 @@ import {useSelector, useDispatch} from 'react-redux';
 import Loader from '../components/Loader';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
+import HomeProduct from '../components/HomeProduct';
+import {color} from 'react-native-reanimated';
 const Home = ({navigation}) => {
   const dispatch = useDispatch();
   const {products, isLoading, isError, brands} = useSelector(
@@ -45,20 +47,16 @@ const Home = ({navigation}) => {
     <>
       {isLoading && <Loader size={Platform.OS == 'android' ? 60 : 'large'} />}
       {!isLoading && (
-        <View style={styles.container}>
-          <SafeAreaView>
+        <ScrollView style={{backgroundColor: colors.white}}>
+          <View style={styles.container}>
             <SlideShow />
             <View
               style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                marginHorizontal: 30,
-                marginVertical: 10,
+                margin: 10,
               }}>
               <Text style={styles.h1}>BRANDS</Text>
-              <Text style={{color: colors.blue}}>See More</Text>
             </View>
+
             <FlatList
               horizontal
               showsHorizontalScrollIndicator={false}
@@ -75,21 +73,15 @@ const Home = ({navigation}) => {
                 );
               }}
             />
-            <View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  marginHorizontal: 30,
-                  marginBottom: 170,
-                }}>
-                <Text style={styles.h2}>TOP SALES</Text>
-                <Text style={{color: colors.blue}}>See More</Text>
-              </View>
+            <View
+              style={{
+                margin: 10,
+              }}>
+              <Text style={styles.h1}>TOP SALE</Text>
             </View>
-          </SafeAreaView>
-        </View>
+            <HomeProduct />
+          </View>
+        </ScrollView>
       )}
     </>
   );
@@ -99,7 +91,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.white,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
 
   h1: {
