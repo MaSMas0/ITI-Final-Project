@@ -7,8 +7,12 @@ import Product from '../screens/ProductList';
 import ProductDetails from '../screens/ProductDetails';
 import WishList from '../screens/WishList';
 import Cart from '../screens/Cart';
+import Payment from '../screens/Payment';
 import SearchBar from '../components/SearchBar';
 import routes from './routes';
+import OrderDetails from '../screens/OrderDetails';
+import NewAddress from '../screens/NewAddress';
+
 
 function HomeNavigator({navigation}) {
   const Stack = createNativeStackNavigator();
@@ -54,6 +58,33 @@ function HomeNavigator({navigation}) {
       <Stack.Screen
         name={routes.Cart}
         component={Cart}
+        options={
+          {
+            // headerTitle: props => <Header title={'ProductDetails'} {...props} />,
+          }
+        }
+      />
+      <Stack.Screen
+        name={routes.NewAddress}
+        component={NewAddress}
+        options={
+          {
+            // headerTitle: props => <Header title={'ProductDetails'} {...props} />,
+          }
+        }
+      />
+      <Stack.Screen
+        name={routes.Payment}
+        component={Payment}
+        options={
+          {
+            // headerTitle: props => <Header title={'ProductDetails'} {...props} />,
+          }
+        }
+      />
+      <Stack.Screen
+        name={routes.PlaceOrder}
+        component={OrderDetails}
         options={
           {
             // headerTitle: props => <Header title={'ProductDetails'} {...props} />,
