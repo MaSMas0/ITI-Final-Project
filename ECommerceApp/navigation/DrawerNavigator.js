@@ -27,8 +27,7 @@ const DrawerNavigator = ({navigation}) => {
         drawerPosition: 'right',
         headerLeft: false,
         headerRight: () => (
-          <TouchableOpacity
-            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+          <TouchableOpacity>
             <AntDesign
               name="setting"
               size={27}

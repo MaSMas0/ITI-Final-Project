@@ -8,12 +8,11 @@ import PrimaryButton from '../components/PrimaryButton';
 import colors from '../config/colors';
 import {useDispatch, useSelector} from 'react-redux';
 import {login} from '../actions/UserActions';
+import routes from '../navigation/routes';
 
 const SignIn = ({navigation}) => {
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
   const userLogin = useSelector(state => state.userLogin);
-  console.log(userLogin);
+
   const {loading, error, userInfo} = userLogin;
   const dispatch = useDispatch();
   const {
@@ -22,21 +21,12 @@ const SignIn = ({navigation}) => {
     formState: {errors},
     watch,
   } = useForm();
-  // const emailInput = watch().Email;
-  // const passwordInput = watch().Password;
-  useEffect(() => {
-    if (userInfo) {
-      // navigation.navigate('Settings');
-    }
-  }, [navigation, userInfo]);
 
-  // useEffect(() => {
-  //   setEmail(emailInput);
-  //   setPassword(passwordInput);
-  // }, [emailInput, passwordInput]);
   const onSubmit = data => {
     console.log(data);
+
     dispatch(login(data.Email, data.Password));
+    navigation.replace(routes.profile);
   };
   return (
     <View style={styles.container}>

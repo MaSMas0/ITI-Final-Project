@@ -1,12 +1,18 @@
+import React from 'react';
 import {
   DrawerContentScrollView,
   DrawerItemList,
 } from '@react-navigation/drawer';
-import React from 'react';
+import {useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import colors from '../config/colors';
+import {logout} from '../actions/UserActions';
 function Drawerheader(props) {
+  const userLogin = useSelector(state => state.userLogin);
+  const {loading, error, userInfo} = userLogin;
+  const dispatch = useDispatch();
   return (
     <View style={styles.container}>
       <DrawerContentScrollView {...props}>
@@ -16,14 +22,14 @@ function Drawerheader(props) {
             source={require('../assets/account.png')}
           />
           <View>
-            <Text style={styles.name}>kareem Ansary</Text>
-            <Text style={styles.email}>kareem.ansary@gmail.com</Text>
+            <Text style={styles.name}>{userInfo?.name}</Text>
+            <Text style={styles.email}>{userInfo?.email}</Text>
           </View>
         </View>
 
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => dispatch(logout())}>
         <View
           style={{
             flexDirection: 'row',
