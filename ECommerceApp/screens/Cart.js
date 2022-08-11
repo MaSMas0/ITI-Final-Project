@@ -16,7 +16,8 @@ import routes from '../navigation/routes';
 
 const Cart = ({navigation}) => {
   const cartLists = useSelector(state => state.cart.cartItems);
-
+  const userInfo = useSelector(state => state.userLogin.userInfo);
+  console.log(userInfo, 'cart');
   return (
     <View
       style={{
@@ -92,7 +93,13 @@ const Cart = ({navigation}) => {
           </View>
           <View style={styles.checkBtnCont}>
             <TouchableOpacity
-              onPress={() => navigation.navigate(routes.NewAddress)}>
+              onPress={() => {
+                if (!userInfo) {
+                  navigation.navigate(routes.LogIn);
+                } else {
+                  navigation.navigate(routes.NewAddress);
+                }
+              }}>
               <LinearGradient
                 start={{x: 1, y: 0}}
                 end={{x: 0, y: 0}}
