@@ -9,9 +9,11 @@ import CategoryNavigator from './CategoryNavigator';
 import colors from '../config/colors';
 import Choice from '../screens/Choice';
 
+
 const Tab = createMaterialBottomTabNavigator();
 
 const AppNavigator = () => (
+
   <Tab.Navigator
     initialRouteName="Home"
     activeColor={colors.blue}

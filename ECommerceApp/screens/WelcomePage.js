@@ -1,52 +1,82 @@
 import {View, Text, SafeAreaView, Image, StyleSheet} from 'react-native';
 import React from 'react';
 import SecondryButton from '../components/SecondryButton';
+import ThirdButton from '../components/ThirdButton';
+import * as Animatable from 'react-native-animatable';
+
+import colors from '../config/colors';
 
 const WelcomePage = () => {
   return (
     <SafeAreaView
       style={{
         alignItems: 'center',
-        marginTop: 20,
-        backgroundColor: 'darkgrey',
+        backgroundColor: colors.lightBlue,
         height: '100%',
-        //   //   display: flex,
-        //   flex: 1,
-        //   justifyContent: 'center',
-        //   alignContent: 'center',
+        justifyContent:'space-evenly',
+        
+        
       }}>
+       
       <View
         style={{
-          marginBottom: 26,
         }}>
-        <Image style={styles.imgStyle} source={require('../assets/logo.png')} />
+        <Animatable.Image style={styles.imgStyle}
+           animation="wobble"
+           duration={4000}
+           iterationCount="infinite"
+           source={require('../assets/logo.png')} />
       </View>
+      <View style={{
+        marginBottom:40
+      }}>
+        <Text
+          style={{
+            fontSize: 30,
+            color:colors.white,
+            textAlign:'center',
+            margin:8
+          }}>
+          Welcome To Nile Buy App
+        </Text>
+
       <Text
         style={{
           fontSize: 16,
-          padding: 15,
+          color:'#eee',
+          margin:8
         }}>
-        Welcome , Happy to see you ,You must login in Application to Enjoy by
-        Our features
+         Happy to see you ,You must login to the Application to Enjoy
+        Our features ..
       </Text>
+      </View>
+        <View style={styles.btns}>
 
-      <SecondryButton style={styles.btnStyle} title="SIGN IN" />
+      <ThirdButton style={styles.btnStyle} title="SIGNUP" />
       <SecondryButton style={styles.btnStyle} title="LOGIN" />
+        </View>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   imgStyle: {
+    // backgroundColor:colors.lightBlue,
     width: 250,
     height: 250,
   },
+  btns:{
+    width:'100%',
+     flexDirection:'row',
+    justifyContent: 'space-evenly',
+
+  },
   btnStyle: {
-    width: 300,
+    width: 170,
     height: 50,
-    justifyContent: 'center',
     alignItems: 'center',
-    marginVertical: 10,
+    justifyContent: 'center',
+
   },
 });
 

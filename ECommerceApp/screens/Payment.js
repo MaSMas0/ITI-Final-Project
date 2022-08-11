@@ -12,11 +12,32 @@ import {RadioButton} from 'react-native-paper';
 import colors from '../config/colors';
 
 import SecondryButton from '../components/SecondryButton';
+import {useDispatch, useSelector} from 'react-redux';
+import {savePaymentMethod} from '../actions/CartActions';
 
-const Payment = () => {
-  const [checked, setChecked] = useState('first');
+const Payment = ({navigation}) => {
+  const cart = useSelector(state => state.cart);
+  const {
+    cartItems,
+    paymentMethod,
+    itemsPrice,
+    shippingPrice,
+    taxPrice,
+    totalPrice,
+  } = cart;
+  console.log(cartItems);
+  console.log(itemsPrice);
+  console.log(paymentMethod);
+  console.log(shippingPrice);
+  console.log(taxPrice);
+  console.log(totalPrice);
+  const [checked, setChecked] = useState('Debit or Credit Card');
   const [show, setShow] = useState(false);
-
+  const dispatch = useDispatch();
+  const handleContinueToPayment = () => {
+    setShow(true);
+    dispatch(savePaymentMethod(checked));
+  };
   return (
     <SafeAreaView>
       <View>
@@ -38,14 +59,14 @@ const Payment = () => {
               flex: 1,
               justifyContent: 'flex-end',
             }}>
-            <Text style={styles.textStyle}> Nile Pay (0 $)</Text>
+            <Text style={styles.textStyle}> Pay with PayPal</Text>
           </View>
 
           <RadioButton
             color="blue"
-            value="first"
-            status={checked === 'second' ? 'checked' : 'unchecked'}
-            onPress={() => setChecked('second')}
+            value="Pay with PayPal"
+            status={checked === 'Pay with PayPal' ? 'checked' : 'unchecked'}
+            onPress={() => setChecked('Pay with PayPal')}
           />
         </View>
 
@@ -55,14 +76,16 @@ const Payment = () => {
               flex: 1,
               justifyContent: 'flex-end',
             }}>
-            <Text style={styles.textStyle}> Pay With Card</Text>
+            <Text style={styles.textStyle}> Debit or Credit Card</Text>
           </View>
 
           <RadioButton
             color="blue"
-            value="first"
-            status={checked === 'first' ? 'checked' : 'unchecked'}
-            onPress={() => setChecked('first')}
+            value="Debit or Credit Card"
+            status={
+              checked === 'Debit or Credit Card' ? 'checked' : 'unchecked'
+            }
+            onPress={() => setChecked('Debit or Credit Card')}
           />
         </View>
         <View style={styles.textCont}>
@@ -76,16 +99,18 @@ const Payment = () => {
 
           <RadioButton
             color="blue"
-            value="first"
-            status={checked === 'third' ? 'checked' : 'unchecked'}
-            onPress={() => setChecked('third')}
+            value="Cash on Delivery (COD)"
+            status={
+              checked === 'Cash on Delivery (COD)' ? 'checked' : 'unchecked'
+            }
+            onPress={() => setChecked('Cash on Delivery (COD)')}
           />
         </View>
       </View>
       <View style={{alignItems: 'center', paddingVertical: 300}}>
         <SecondryButton
           title="CONTINUE TO PAYMENT"
-          onPress={() => setShow(true)}
+          onPress={handleContinueToPayment}
           style={styles.secondaryButton}
         />
       </View>
@@ -106,8 +131,17 @@ const Payment = () => {
                   justifyContent: 'space-between',
                   marginBottom: 10,
                 }}>
-                <Text style={styles.blueText}>Sub Total</Text>
-                <Text style={styles.blackText}>976.0 USD</Text>
+                <Text style={styles.blueText}>Items</Text>
+                <Text style={styles.blackText}>$ {itemsPrice}</Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  marginBottom: 10,
+                }}>
+                <Text style={styles.blueText}>Shipping Fees</Text>
+                <Text style={styles.blackText}>$ {shippingPrice}</Text>
               </View>
               <View
                 style={{
@@ -115,8 +149,8 @@ const Payment = () => {
                   justifyContent: 'space-between',
                   marginBottom: 25,
                 }}>
-                <Text style={styles.blueText}>Shipping Fees</Text>
-                <Text style={styles.blackText}>30.0 USD</Text>
+                <Text style={styles.blueText}>Tax</Text>
+                <Text style={styles.blackText}>$ {taxPrice}</Text>
               </View>
               <View
                 style={{
@@ -134,8 +168,10 @@ const Payment = () => {
               </View>
 
               <Text style={styles.blueText}>Total Price</Text>
-              <Text style={styles.blackText}>1006.0 USD</Text>
-              <TouchableOpacity style={styles.orderStyle}>
+              <Text style={styles.blackText}>$ {totalPrice} </Text>
+              <TouchableOpacity
+                style={styles.orderStyle}
+                onPress={() => navigation.navigate('OrderDetails')}>
                 <Text style={styles.orderText}>Place Order</Text>
               </TouchableOpacity>
               <TouchableOpacity

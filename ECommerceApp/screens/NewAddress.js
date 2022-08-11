@@ -8,13 +8,15 @@ import {
   ScrollView,
 } from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
-import React from 'react';
+import React, {useEffect} from 'react';
 import SecondryButton from '../components/SecondryButton';
 import colors from '../config/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {useDispatch} from 'react-redux';
+import {saveShippingAddress} from '../actions/CartActions';
 
-const NewAddress = () => {
+const NewAddress = ({navigation}) => {
   const countriesWithFlags = [
     {title: 'Alexandria', image: require('../assets/AddressLogo/Alex.png')},
     {title: 'Aswan', image: require('../assets/AddressLogo/Aswan.png')},
@@ -71,6 +73,16 @@ const NewAddress = () => {
     },
     {title: 'Suez', image: require('../assets/AddressLogo/Suez.png')},
   ];
+  const [city, onChangeCity] = React.useState('');
+  const [address, onChangeAddress] = React.useState('');
+  const [phone, onChangePhone] = React.useState('');
+  const [country, onChangeCountry] = React.useState('');
+  const dispatch = useDispatch();
+  const handleAddAddress = () => {
+    dispatch(saveShippingAddress(country, city, address, phone));
+    navigation.navigate('Payment');
+    console.log(country);
+  };
   return (
     <ScrollView>
       <SafeAreaView
@@ -92,7 +104,7 @@ const NewAddress = () => {
         <SelectDropdown
           data={countriesWithFlags}
           onSelect={(selectedItem, index) => {
-            console.log(selectedItem, index);
+            onChangeCountry(selectedItem.title);
           }}
           buttonStyle={styles.dropdown3BtnStyle}
           renderCustomizedButtonChild={(selectedItem, index) => {
@@ -140,20 +152,39 @@ const NewAddress = () => {
           }}
         />
         <View style={styles.inputContainer}>
-          <TextInput style={styles.inputStyle} placeholder="City" />
+          <TextInput
+            style={styles.inputStyle}
+            placeholder="City"
+            onChangeText={onChangeCity}
+            value={city}
+          />
         </View>
         <View
           style={{
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <TextInput style={styles.inputStyle} placeholder="Address" />
+          <TextInput
+            style={styles.inputStyle}
+            placeholder="Address"
+            onChangeText={onChangeAddress}
+            value={address}
+          />
         </View>
         <View style={styles.phoneContainer}>
-          <TextInput style={styles.inputStyle} placeholder="Phone" />
+          <TextInput
+            style={styles.inputStyle}
+            placeholder="Phone"
+            onChangeText={onChangePhone}
+            value={phone}
+          />
         </View>
 
-        <SecondryButton style={styles.addAddress} title="ADD ADDRESS" />
+        <SecondryButton
+          style={styles.addAddress}
+          title="ADD ADDRESS"
+          onPress={handleAddAddress}
+        />
       </SafeAreaView>
     </ScrollView>
   );

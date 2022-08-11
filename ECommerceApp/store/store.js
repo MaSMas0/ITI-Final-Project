@@ -38,7 +38,7 @@ const persistConfig = {
   key: 'root',
   version: 1,
   storage: AsyncStorage,
-  blackList: 'wishLists',
+  blacklist: ['cart','wishLists'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -54,6 +54,6 @@ const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-// console.log(persistor.purge(), 'ABdelsame3');
+// persistor.purge();
 
 export default store;
