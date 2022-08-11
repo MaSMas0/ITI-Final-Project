@@ -14,28 +14,69 @@ const MainOrderDetails =() =>{
             <Text style={styles.head}>ITEMS IN YOUR ORDER </Text>
             </View>
 
-        
+        <View style={{
+            backgroundColor:colors.white,
+            marginHorizontal:10,
+            borderRadius:8,
+            marginVertical:2
+
+        }}>
+
+            <Text style={styles.deliverd}>DELIVERD</Text>
+            <Text style={{
+                color:'black',
+                margin:5,
+                fontWeight:'bold'
+
+
+            }}>On 7/7/2022</Text>
+        </View>
+
         <View style={styles.item}>
+            
             <View>
                 <Image style={styles.img} source={require('../assets/cc.png')} /> 
             </View>
             <View style={styles.orderDetials}>
-                <Text>Product Name</Text>
-                <Text>QTY</Text>
-                <Text>1000</Text>                
+                <Text style={{
+                    color:'black'
+                }}>Product Name</Text>
+                <Text>QTY : 1</Text>
+                <Text style={{
+                    color:'black'
+                }}>1000</Text>                
             </View>
         </View>
-            <Text style={styles.head}>PAYMENT</Text>
+        <View style={styles.item}>
+            
+            <View>
+                <Image style={styles.img} source={require('../assets/cc.png')} /> 
+            </View>
+            <View style={styles.orderDetials}>
+                <Text style={{
+                    color:'black'
+                }}>Product Name</Text>
+                <Text>QTY : 1</Text>
+                <Text style={{
+                    color:'black'
+                }}>1000</Text>                
+            </View>
+        </View>
+            <Text style={{marginTop:20,
+            marginBottom:10 ,
+            marginHorizontal:10,
+            fontWeight:'bold'
+                }}>PAYMENT</Text>
         <View style={styles.paymentCard}>
             <Text style={styles.head2}>Payment Method</Text>
             <Text style={{marginHorizontal:8}}>Cash on Delivery</Text>
             <Text style={styles.line}></Text>
             <Text style={styles.head2}>Payment Detials</Text>
-            <Text style={styles.head3}>Items Totals : <Text>
+            <Text style={styles.head3}>Items Totals : <Text style={styles.head4}>
                 135.00</Text></Text>
-            <Text style={styles.head3}>Shipping Fes: <Text>
+            <Text style={styles.head3}>Shipping Fees : <Text style={styles.head4}>
                 10.00</Text></Text>
-            <Text style={styles.head3}>Total : <Text>
+            <Text style={styles.head3}>Total : <Text style={styles.head4}>
                 145.00</Text></Text>    
         </View>
             <Text style={styles.head}>DELIVERY</Text>
@@ -46,7 +87,7 @@ const MainOrderDetails =() =>{
 
             <Text style={styles.head2}>Shipping Address</Text>
             <Text style={styles.head3}>egypt , cairo</Text>  
-        <Text style={styles.deliverd}>DELIVERD</Text>
+        
           
 
         </View>
@@ -73,12 +114,19 @@ const styles = StyleSheet.create({
         alignItems:'center',
         backgroundColor:colors.white,
         marginHorizontal:10,
-        height:120,
+        marginBottom:10,
+        height:150,
         borderRadius:10
         
 
 
 
+    },
+    orderDetials:{
+        marginHorizontal:5,
+        justifyContent:'space-evenly',
+        alignItems:'flex-start',
+        height:'100%'
     },
     img:{
         width:150,
@@ -86,7 +134,7 @@ const styles = StyleSheet.create({
     },
     DeliveryOpt:{
         backgroundColor:colors.white,
-        height:120,
+        height:180,
         justifyContent:'space-evenly',
         margin:10,
         borderRadius:10,
@@ -102,19 +150,17 @@ const styles = StyleSheet.create({
         margin:10,
         borderRadius:10,
 
-        
-
-        // padding:5
-
-
     },
     head:{
-        margin:10
+        margin:10,
+        fontWeight:'bold'
+
 
     },
     head2:{
         color:colors.black,
-        marginHorizontal:8
+        marginHorizontal:8,
+        fontWeight:'bold'
 
     },
     head3:{
@@ -136,8 +182,13 @@ const styles = StyleSheet.create({
         textAlignVertical:'center',
         color:colors.white,
         borderRadius:5,
-        marginHorizontal:8,
-        fontSize:12
+        margin:5,
+        fontSize:12,
+        fontWeight:'bold'
+
+      },
+      head4 :{
+        color:colors.black
       }
 
 })
