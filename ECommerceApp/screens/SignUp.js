@@ -13,6 +13,7 @@ import PrimaryButton from '../components/PrimaryButton';
 import colors from '../config/colors';
 import {useDispatch, useSelector} from 'react-redux';
 import {register} from '../actions/UserActions';
+import routes from '../navigation/routes';
 
 const SignUp = ({navigation}) => {
   const {
@@ -30,7 +31,7 @@ const SignUp = ({navigation}) => {
 
   useEffect(() => {
     if (userInfo) {
-      // navigation.navigate('SignIn');
+      navigation.navigate(routes.LogIn);
     }
   }, [userInfo, navigation]);
 

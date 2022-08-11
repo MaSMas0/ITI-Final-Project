@@ -3,7 +3,7 @@ export default Object.freeze({
   AppScreen: 'AppNavigator',
   WishLists: 'WishList',
   Orders: 'Orders',
-  profile: 'Profile',
+  profile: 'Me',
   Address: 'Address',
   Currency: 'Currency',
   ContactUs: 'ContactUs',

@@ -5,9 +5,9 @@ import {createMaterialBottomTabNavigator} from '@react-navigation/material-botto
 
 import HomeNavigator from './HomeNavigator';
 import CategoryNavigator from './CategoryNavigator';
-import ProfileNavigator from './ProfileNavigator';
 
 import colors from '../config/colors';
+import Choice from '../screens/Choice';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -40,7 +40,7 @@ const AppNavigator = () => (
 
     <Tab.Screen
       name="Profile"
-      component={ProfileNavigator}
+      component={Choice}
       options={{
         tabBarIcon: ({color}) => (
           <MaterialIcons name="account-circle" color={color} size={25} />

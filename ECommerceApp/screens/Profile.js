@@ -1,5 +1,5 @@
 import {NavigationContainer} from '@react-navigation/native';
-import React, {useEffect} from 'react';
+import React, {useEffect, useLayoutEffect} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {useSelector} from 'react-redux';
 import colors from '../config/colors';
@@ -8,22 +8,11 @@ import routes from '../navigation/routes';
 import TopNavigator from '../navigation/TopNavigator';
 
 function Settings({navigation}) {
-  const userInfo = useSelector(state => state.userLogin.userInfo);
-
-  // useEffect(() => {
-  //   if (!userInfo) {
-  //     navigation.replace(routes.AuthScreens);
-  //   }
-  // }, []);
+  const userLogin = useSelector(state => state.userLogin);
+  const {loading, error, userInfo} = userLogin;
 
   return (
     <>
-      {!userInfo && (
-        <NavigationContainer independent={true}>
-          <AuthNavigator />
-        </NavigationContainer>
-      )}
-
       <View style={styles.container}>
         <View style={styles.infoContainer}>
           <Image
@@ -37,9 +26,7 @@ function Settings({navigation}) {
           <Text style={styles.welcomephrase}>It's Good to see you Again !</Text>
         </View>
       </View>
-      <NavigationContainer independent={true}>
-        <TopNavigator />
-      </NavigationContainer>
+      <TopNavigator />
     </>
   );
 }
