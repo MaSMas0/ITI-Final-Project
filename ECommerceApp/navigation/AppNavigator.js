@@ -8,10 +8,19 @@ import CategoryNavigator from './CategoryNavigator';
 import ProfileNavigator from './ProfileNavigator';
 
 import colors from '../config/colors';
+import WishList from '../screens/WishList';
+import SearchBar from '../components/SearchBar';
+import HeaderRight from '../components/HeaderRight';
+import Cart from '../screens/Cart';
+import Payment from '../screens/Payment';
+import DrawerNavigator from './DrawerNavigator';
+import SearchScreen from '../screens/SearchScreen';
+import Search from '../components/Search';
 
 const Tab = createMaterialBottomTabNavigator();
 
 const AppNavigator = () => (
+
   <Tab.Navigator
     initialRouteName="Home"
     activeColor={colors.blue}

@@ -6,22 +6,22 @@ import {
   View,
   StyleSheet,
   FlatList,
+  ScrollView,
 } from 'react-native';
 import colors from '../config/colors';
 import LinearGradient from 'react-native-linear-gradient';
 import {useSelector} from 'react-redux';
 import CartCard from '../components/CartCard';
 
-const Cart = () => {
-  const cartLists = useSelector(state => state.cart);
+const Cart = ({navigation}) => {
+  const cartLists = useSelector(state => state.cart.cartItems);
 
-  const arr = [];
   return (
     <View
       style={{
         backgroundColor: colors.white,
       }}>
-      {arr.length !== 0 ? (
+      {cartLists.length === 0 ? (
         <View style={styles.emptyCartContainer}>
           <View style={styles.imgContainer}>
             <Image
@@ -37,44 +37,60 @@ const Cart = () => {
                 <Text style={{color: colors.blue}}> Empty</Text>
               </Text>
               <Text style={styles.addItemStyle}>Add item to get started</Text>
-              <TouchableOpacity style={styles.emptyCartBtn}>
+              <TouchableOpacity
+                style={styles.emptyCartBtn}
+                onPress={() => navigation.navigate('SearchScreen')}>
                 <Text style={styles.cartBtnStyle}>GO TO STORE</Text>
               </TouchableOpacity>
             </View>
           </View>
         </View>
       ) : (
-        <View style={{}}>
+        <View>
           <FlatList
+            contentContainerStyle={{
+              marginTop: 10,
+              paddingBottom: 0,
+            }}
             showsVerticalScrollIndicator={false}
             nestedScrollEnabled
-            numColumns={3}
             data={cartLists}
             renderItem={({item, index}) => {
-              return <CartCard />;
+              return <CartCard item={item} />;
             }}
           />
-
           <View style={styles.secondContainer}>
             <View>
               <Text style={styles.summeryStyle}>Order summary</Text>
 
               <View style={styles.subSecContainer}>
-                <Text style={styles.greyText}>Price :</Text>
-                <Text style={styles.blueText}>250$</Text>
+                <Text style={styles.greyText}>SubTotal :</Text>
+                <Text style={styles.blueText}>
+                  ({cartLists.reduce((acc, item) => acc + item.qty, 0)}) items
+                </Text>
               </View>
-              <View style={styles.delivCont}>
+
+              <View style={styles.subSecContainer}>
+                <Text style={styles.greyText}>Total Price :</Text>
+                <Text style={styles.blueText}>
+                  $
+                  {cartLists
+                    .reduce((acc, item) => acc + item.qty * item.price, 0)
+                    .toFixed(2)}
+                </Text>
+              </View>
+              {/* <View style={styles.delivCont}>
                 <Text style={styles.greyText}>Delivery Service:</Text>
                 <Text style={styles.blueText}>0$ (Free Delivery)</Text>
-              </View>
-              <View style={styles.totalPriceCont}>
+              </View> */}
+              {/* <View style={styles.totalPriceCont}>
                 <Text style={styles.greyText}>Total Price :</Text>
                 <Text style={styles.blueText}>250$</Text>
-              </View>
+              </View> */}
             </View>
           </View>
           <View style={styles.checkBtnCont}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigation.navigate('Payment')}>
               <LinearGradient
                 start={{x: 1, y: 0}}
                 end={{x: 0, y: 0}}
@@ -231,7 +247,8 @@ const styles = StyleSheet.create({
   },
   priceStyle: {fontSize: 18, fontWeight: 'bold', color: colors.lightBlue},
   secondContainer: {
-    flex: 1,
+    // flex: 1,
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.white,

@@ -12,16 +12,24 @@ import colors from '../config/colors';
 import SecondryButton from './SecondryButton';
 import FreeShipping from './FreeShipping';
 import Like from './Like';
+import {useDispatch, useSelector} from 'react-redux';
+import {addToCart, removeFromCart} from '../actions/CartActions';
 
 const width = Dimensions.get('window').width / 2 - 15;
 
 const Card = ({product, onPress}) => {
-  const [check, setcheck] = useState(true);
-
-  function handelCheck() {
-    setcheck(!check);
-  }
-  console.log(product);
+  const cartItems = useSelector(state => state.cart.cartItems);
+  const dispatch = useDispatch();
+  const ProductInCart =
+    cartItems.length !== 0
+      ? cartItems.filter(selected => selected.product == product._id)[0]
+      : null;
+  const addToCartHandler = () => {
+    dispatch(addToCart(product._id, 1));
+  };
+  const removeFromCartHandler = () => {
+    dispatch(removeFromCart(product._id));
+  };
   return (
     <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
       <View style={styles.card}>
@@ -47,14 +55,19 @@ const Card = ({product, onPress}) => {
         <Text style={{fontSize: 12}}>
           Eligable for <Text style={styles.freeDelvStyle}>Free Delivery</Text>
         </Text>
-        {}
-        <SecondryButton
-          onPress={() => handelCheck()}
-          title={check ? 'ADD TO CART' : 'REMOVE FROM CART'}
-          // colors.mediumBlue
-          colors={check ? colors.blue : 'red'}
-          // color1={check ? 'red' : 'grey'}
-        />
+        {!ProductInCart ? (
+          <SecondryButton
+            onPress={addToCartHandler}
+            title="ADD TO CART"
+            colors={colors.blue}
+          />
+        ) : (
+          <SecondryButton
+            onPress={removeFromCartHandler}
+            title="REMOVE FROM CART"
+            colors="red"
+          />
+        )}
       </View>
     </TouchableOpacity>
   );
