@@ -38,7 +38,7 @@ const persistConfig = {
   key: 'root',
   version: 1,
   storage: AsyncStorage,
-  blacklist: ['cart'],
+  blacklist: ['cart','wishLists'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
