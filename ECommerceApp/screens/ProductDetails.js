@@ -112,32 +112,64 @@ const ProductDetails = ({route, navigation}) => {
                   </TouchableOpacity>
                 </View>
               ) : ProductInCart && quantity == 0 ? (
-                <View style={style.subDownContainer}>
-                  <SecondryButton
+                <View style={style.buyBtn}>
+                  {/* <SecondryButton
                     onPress={removeFromCartHandler}
                     title="REMOVE FROM CART"
                     colors="red"
-                  />
+                    style={{
+                      width: 300,
+                      height: 40,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      borderRadius: 30,
+                    }}
+                  /> */}
+                  <TouchableOpacity onPress={removeFromCartHandler}>
+                    <LinearGradient
+                      start={{x: 1, y: 0}}
+                      end={{x: 0, y: 0}}
+                      colors={['#B21807', '#FF4500']}
+                      style={style.buyBtn}>
+                      <Text style={style.buyText}>REMOVE FROM CART</Text>
+                    </LinearGradient>
+                  </TouchableOpacity>
                 </View>
               ) : (
-                <View style={style.subDownContainer}>
-                  <SecondryButton
+                <View style={style.buyBtn}>
+                  {/* <SecondryButton
                     onPress={addToCartHandler}
                     title="ADD TO CART"
                     colors={colors.blue}
-                  />
+                    style={{
+                      width: 300,
+                      height: 40,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      borderRadius: 30,
+                    }}
+                  /> */}
+                  <TouchableOpacity onPress={addToCartHandler}>
+                    <LinearGradient
+                      start={{x: 1, y: 0}}
+                      end={{x: 0, y: 0}}
+                      colors={['#030A4E', '#22336a']}
+                      style={style.buyBtn}>
+                      <Text style={style.buyText}>ADD TO CART</Text>
+                    </LinearGradient>
+                  </TouchableOpacity>
                 </View>
               )}
-              <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
-                <LinearGradient
-                  start={{x: 1, y: 0}}
-                  end={{x: 0, y: 0}}
-                  colors={['#030A4E', '#22336a']}
-                  style={style.buyBtn}>
-                  <Text style={style.buyText}>Add To Cart</Text>
-                </LinearGradient>
-              </TouchableOpacity>
             </View>
+            <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
+              <LinearGradient
+                start={{x: 1, y: 0}}
+                end={{x: 0, y: 0}}
+                colors={['#030A4E', '#22336a']}
+                style={style.buyBtn}>
+                <Text style={style.buyText}>CHECK THE CART</Text>
+              </LinearGradient>
+            </TouchableOpacity>
           </View>
         </View>
       </SafeAreaView>
@@ -237,7 +269,7 @@ const style = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 30,
-    marginTop: 10,
+    marginVertical: 10,
   },
   buyText: {
     color: 'white',
@@ -268,6 +300,11 @@ const style = StyleSheet.create({
   },
   subDownContainer: {
     flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    // alignSelf: 'center',
+    flex: 1,
+    marginBottom: 10,
   },
   pageBgColor: {backgroundColor: colors.white},
 });
