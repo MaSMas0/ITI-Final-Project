@@ -17,6 +17,7 @@ const WelcomePage = () => {
         
         
       }}>
+       
       <View
         style={{
         }}>
