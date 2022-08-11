@@ -12,6 +12,7 @@ import colors from '../config/colors';
 import LinearGradient from 'react-native-linear-gradient';
 import {useSelector} from 'react-redux';
 import CartCard from '../components/CartCard';
+import routes from '../navigation/routes';
 
 const Cart = ({navigation}) => {
   const cartLists = useSelector(state => state.cart.cartItems);
@@ -90,7 +91,8 @@ const Cart = ({navigation}) => {
             </View>
           </View>
           <View style={styles.checkBtnCont}>
-            <TouchableOpacity onPress={()=>navigation.navigate('Payment')}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate(routes.NewAddress)}>
               <LinearGradient
                 start={{x: 1, y: 0}}
                 end={{x: 0, y: 0}}
