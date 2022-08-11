@@ -6,8 +6,10 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  Alert,
 } from 'react-native';
 import React from 'react';
+import {Rating} from 'react-native-ratings';
 import colors from '../config/colors';
 import LinearGradient from 'react-native-linear-gradient';
 import {useSelector, useDispatch} from 'react-redux/';
@@ -63,20 +65,28 @@ const ProductDetails = ({route, navigation}) => {
             }}
           />
         </View>
+        <View style={style.subCont}>
+          <Text numberOfLines={2} style={style.title}>
+            {item.name}
+          </Text>
+        </View>
+        <Text style={style.priceText}>{item.price} $</Text>
+        <Rating
+          readonly
+          startingValue={item.rating}
+          imageSize={20}
+          style={{paddingVertical: 10}}
+        />
         <View style={style.Container}>
-          <LinearGradient
+          {/* <LinearGradient
             start={{x: 1, y: 0}}
             end={{x: 0, y: 0}}
             colors={['#030A4E', '#22336a']}
-            style={style.priceContainer}>
-            <Text style={style.priceText}>{item.price} $</Text>
-          </LinearGradient>
-          <View style={style.subCont}>
-            <Text numberOfLines={2} style={style.title}>
-              {item.name}
-            </Text>
-          </View>
+            style={style.priceContainer}></LinearGradient> */}
           <View style={style.descriptionContainer}>
+            <Text style={{fontSize: 20, fontWeight: 'bold', color: 'black'}}>
+              About
+            </Text>
             <ReadMore numberOfLines={2}>
               <Text style={style.description}>{item.description}</Text>
             </ReadMore>
@@ -88,9 +98,7 @@ const ProductDetails = ({route, navigation}) => {
                       <Text style={style.decreBtn}>-</Text>
                     </View>
                   </TouchableOpacity>
-
                   <Text style={style.prodNo}>{quantity}</Text>
-
                   <TouchableOpacity
                     onPress={handleIncrement}
                     disabled={quantity == countInStock}>
@@ -120,14 +128,13 @@ const ProductDetails = ({route, navigation}) => {
                   />
                 </View>
               )}
-
               <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
                 <LinearGradient
                   start={{x: 1, y: 0}}
                   end={{x: 0, y: 0}}
                   colors={['#030A4E', '#22336a']}
                   style={style.buyBtn}>
-                  <Text style={style.buyText}>Cart</Text>
+                  <Text style={style.buyText}>Add To Cart</Text>
                 </LinearGradient>
               </TouchableOpacity>
             </View>
@@ -193,6 +200,7 @@ const style = StyleSheet.create({
     color: colors.medium,
     fontSize: 16,
     lineHeight: 24,
+    fontStyle: 'italic',
   },
 
   increContainer: {
@@ -224,11 +232,12 @@ const style = StyleSheet.create({
   },
   borderBtnText: {fontWeight: 'bold', fontSize: 30},
   buyBtn: {
-    width: 110,
+    width: 300,
     height: 40,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 30,
+    marginTop: 10,
   },
   buyText: {
     color: 'white',
@@ -246,9 +255,11 @@ const style = StyleSheet.create({
   },
   priceText: {
     marginLeft: 20,
+    marginTop: 10,
     color: colors.white,
     fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: 16,
+    color: 'red',
   },
   downContainer: {
     marginTop: 20,

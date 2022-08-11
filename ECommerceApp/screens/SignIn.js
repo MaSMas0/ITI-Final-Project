@@ -1,19 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableWithoutFeedback,
-  View,
-} from 'react-native';
+import {StyleSheet, Text, TouchableWithoutFeedback, View} from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import InputApp from '../components/InputApp';
 import ErrorText from '../components/ErrorText';
 import PrimaryButton from '../components/PrimaryButton';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import colors from '../config/colors';
-
 import {useDispatch, useSelector} from 'react-redux';
 import {login} from '../actions/UserActions';
 
@@ -34,7 +26,7 @@ const SignIn = ({navigation}) => {
   // const passwordInput = watch().Password;
   useEffect(() => {
     if (userInfo) {
-      navigation.navigate('Settings');
+      // navigation.navigate('Settings');
     }
   }, [navigation, userInfo]);
 

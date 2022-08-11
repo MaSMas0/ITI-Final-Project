@@ -5,7 +5,7 @@ import colors from '../config/colors';
 import {useDispatch} from 'react-redux';
 import {removeWishList} from '../store/reducers/WishList/WishlistSlice';
 
-const WishlistComponent = ({wishLists}) => {
+const WishlistComponent = ({wishList}) => {
   const dispatch = useDispatch();
 
   // const [like, setLike] = useState(true);
@@ -14,16 +14,16 @@ const WishlistComponent = ({wishLists}) => {
     <View style={styles.container}>
       <Image
         source={{
-          uri: wishLists.image,
+          uri: wishList.image,
         }}
         style={styles.imgStyle}
       />
       <View style={styles.subContainer}>
         <Text numberOfLines={3} style={styles.title}>
-          {wishLists.name}
+          {wishList.name}
         </Text>
         <AntDesign
-          onPress={() => dispatch(removeWishList(wishLists))}
+          onPress={() => dispatch(removeWishList(wishList))}
           style={styles.iconStyle}
           color={colors.mediumBlue}
           name="heart"
@@ -41,12 +41,14 @@ const styles = StyleSheet.create({
     borderColor: colors.grey,
     marginTop: 10,
     borderRadius: 20,
+
     marginHorizontal: 10,
   },
   subContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginHorizontal: 15,
   },
   imgStyle: {
     width: 100,

@@ -1,19 +1,19 @@
 import React from 'react';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {DrawerActions} from '@react-navigation/native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 import Settings from '../screens/Profile';
 import AboutScreen from '../screens/AboutScreen';
 import ContactUs from '../screens/ContactUs';
 import AddressNavigator from './AddressNavigator';
 import colors from '../config/colors';
 
-import OrderNavgigator from './OrderNavigator';
 import Drawerheader from '../components/Drawerheader';
 import Currency from '../screens/Currency';
+import routes from './routes';
 
 const Drawer = createDrawerNavigator();
 
@@ -44,7 +44,7 @@ const DrawerNavigator = ({navigation}) => {
       }}>
       <Drawer.Screen
         // style={{color: 'red'}}
-        name="profile"
+        name={routes.profile}
         component={Settings}
         options={{
           title: 'Profile',
@@ -54,7 +54,7 @@ const DrawerNavigator = ({navigation}) => {
         }}
       />
       <Drawer.Screen
-        name="Address"
+        name={routes.Address}
         component={AddressNavigator}
         options={{
           title: 'Address',
@@ -65,7 +65,7 @@ const DrawerNavigator = ({navigation}) => {
       />
 
       <Drawer.Screen
-        name="Currency"
+        name={routes.Currency}
         component={Currency}
         options={{
           title: 'Currency',
@@ -76,7 +76,7 @@ const DrawerNavigator = ({navigation}) => {
       />
 
       <Drawer.Screen
-        name="ContactUs"
+        name={routes.ContactUs}
         component={ContactUs}
         options={{
           title: 'Contact Us',
@@ -87,7 +87,7 @@ const DrawerNavigator = ({navigation}) => {
       />
 
       <Drawer.Screen
-        name="AboutScreen"
+        name={routes.AboutScreen}
         component={AboutScreen}
         options={{
           title: 'About',

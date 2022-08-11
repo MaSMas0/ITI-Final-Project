@@ -10,6 +10,7 @@ import {
   Slider,
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import colors from '../config/colors';
 import Card from '../components/ProductCard';
 import Search from '../components/Search';
@@ -55,7 +56,7 @@ const Product = ({navigation, route}) => {
           }}
         />
         <Search searchFilter={searchFilter} />
-        <AntDesign
+        <Ionicons
           style={{paddingEnd: 15}}
           name="filter"
           size={30}
