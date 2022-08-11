@@ -17,15 +17,19 @@ import Drawerheader from './components/Drawerheader';
 import WelcomePage from './screens/WelcomePage';
 import OrderList from './screens/Orderslist';
 import OrderDetails from './screens/OrderDetails';
+import MainOrderDetails from './screens/MainOrderDetails';
 
 const App = () => {
   return (
     <NavigationContainer>
       <StatusBar backgroundColor="white" barStyle="dark-content" />
       {/* <OrderDetails /> */}
+      <MainOrderDetails />
+     
+      {/* <OrderList /> */}
       {/* <Profile /> */}
       {/* <AuthNavigator /> */}
-      <AppNavigator />
+      {/* <AppNavigator /> */}
       {/* <Payment /> */}
       {/* <Drawerheader /> */}
       {/* <MoreOrderItemDetails /> */}
