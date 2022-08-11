@@ -5,17 +5,10 @@ import {createMaterialBottomTabNavigator} from '@react-navigation/material-botto
 
 import HomeNavigator from './HomeNavigator';
 import CategoryNavigator from './CategoryNavigator';
-import ProfileNavigator from './ProfileNavigator';
 
 import colors from '../config/colors';
-import WishList from '../screens/WishList';
-import SearchBar from '../components/SearchBar';
-import HeaderRight from '../components/HeaderRight';
-import Cart from '../screens/Cart';
-import Payment from '../screens/Payment';
-import DrawerNavigator from './DrawerNavigator';
-import SearchScreen from '../screens/SearchScreen';
-import Search from '../components/Search';
+import Choice from '../screens/Choice';
+
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -49,7 +42,7 @@ const AppNavigator = () => (
 
     <Tab.Screen
       name="Profile"
-      component={ProfileNavigator}
+      component={Choice}
       options={{
         tabBarIcon: ({color}) => (
           <MaterialIcons name="account-circle" color={color} size={25} />

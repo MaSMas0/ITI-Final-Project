@@ -1,12 +1,15 @@
+import React from 'react';
 import {
   DrawerContentScrollView,
   DrawerItemList,
 } from '@react-navigation/drawer';
-import React from 'react';
+import {useDispatch} from 'react-redux';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import colors from '../config/colors';
+import {logout} from '../actions/UserActions';
 function Drawerheader(props) {
+  const dispatch = useDispatch();
   return (
     <View style={styles.container}>
       <DrawerContentScrollView {...props}>
@@ -23,7 +26,7 @@ function Drawerheader(props) {
 
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => dispatch(logout())}>
         <View
           style={{
             flexDirection: 'row',

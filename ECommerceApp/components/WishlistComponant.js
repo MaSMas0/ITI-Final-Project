@@ -41,8 +41,6 @@ const styles = StyleSheet.create({
     borderColor: colors.grey,
     marginTop: 10,
     borderRadius: 20,
-
-    marginHorizontal: 10,
   },
   subContainer: {
     flexDirection: 'row',
