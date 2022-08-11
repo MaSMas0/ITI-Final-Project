@@ -18,4 +18,5 @@ export default Object.freeze({
   Products: 'Products',
   Cart: 'Cart',
   SearchScreen: 'SearchScreen',
+  AuthScreens: 'AuthScreens',
 });

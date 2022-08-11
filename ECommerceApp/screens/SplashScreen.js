@@ -7,6 +7,7 @@ import {
   Dimensions,
   Animated,
 } from 'react-native';
+import routes from '../navigation/routes';
 
 const SplashScreen = ({navigation}) => {
   const moveAnim = useRef(new Animated.Value(0)).current;
@@ -34,7 +35,7 @@ const SplashScreen = ({navigation}) => {
       useNativeDriver: false,
     }).start();
     setTimeout(() => {
-      navigation.replace('AppNavigator');
+      navigation.replace(routes.AppScreen);
     }, 4000);
   }, [moveAnim, fadeAnim]);
 
