@@ -14,7 +14,7 @@ import {useSelector} from 'react-redux';
 
 const WishList = ({navigation}) => {
   const wishLists = useSelector(state => state.wishLists.wishLists);
-
+  console.log(navigation);
   console.log(wishLists, 'ashraf sw7naa');
   return (
     <SafeAreaView>

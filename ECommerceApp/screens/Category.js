@@ -5,6 +5,9 @@ import FilterBar from '../components/FilterBar';
 import {getProducts} from '../store/reducers/Products/ProductsSlice';
 import {useSelector, useDispatch} from 'react-redux';
 import Loader from '../components/Loader';
+import colors from '../config/colors';
+import CatogeryCard from '../components/CategoryCard ';
+
 function Category({navigation}) {
   const dispatch = useDispatch();
   const {products, isLoading, isError, categoryList} = useSelector(
@@ -54,25 +57,27 @@ function Category({navigation}) {
       />
       {isLoading && <Loader size={Platform.OS == 'android' ? 60 : 'large'} />}
       {!isLoading && (
-        <View style={styles.procductCategory}>
-          <FlatList
-            showsVerticalScrollIndicator={false}
-            nestedScrollEnabled
-            numColumns={3}
-            data={filterProductss}
-            renderItem={({item, index}) => {
-              return (
-                <ProductiteminCategory
-                  image={item.image}
-                  price={item.price}
-                  onPress={() => {
-                    navigation.navigate('ProductDetails', {item});
-                  }}
-                />
-              );
-            }}
-          />
-        </View>
+        <FlatList
+          contentContainerStyle={{
+            flexGrow: 1,
+            alignItems: 'center',
+          }}
+          showsVerticalScrollIndicator={false}
+          nestedScrollEnabled
+          numColumns={3}
+          data={filterProductss}
+          renderItem={({item, index}) => {
+            return (
+              <CatogeryCard
+                product={item}
+                navigation={navigation}
+                onPress={() => {
+                  navigation.navigate('ProductDetails', {item});
+                }}
+              />
+            );
+          }}
+        />
       )}
     </View>
   );
@@ -81,12 +86,7 @@ function Category({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-  },
-  procductCategory: {
-    flex: 1,
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
+    backgroundColor: colors.ashrafgray,
   },
 });
 

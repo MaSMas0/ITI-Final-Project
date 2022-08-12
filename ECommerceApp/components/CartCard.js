@@ -101,6 +101,8 @@ function CartCard({item}) {
           </View>
         </View>
       </View>
+      
+      
     </View>
   );
 }
@@ -174,16 +176,23 @@ const styles = StyleSheet.create({
   increBtn: {fontWeight: 'bold', color: colors.white, fontSize: 22},
   decreSubContainer: {
     borderRadius: 12,
-    justifyContent: 'center',
-    alignItems: 'center',
+    // justifyContent: 'center',
+    // alignItems: 'center',
     width: 35,
     height: 35,
-    backgroundColor: colors.white,
+    backgroundColor: '#eee',
+    textAlignVertical:'center',
+    textAlign:'center',
+    
   },
   decreBtn: {
     fontWeight: 'bold',
     fontSize: 22,
     color: colors.black,
+    width: 35,
+    height: 35,
+    textAlign:'center',
+    textAlignVertical:'center'
   },
   checkOutContainer: {
     justifyContent: 'center',
@@ -199,7 +208,7 @@ const styles = StyleSheet.create({
   },
   prodTitle: {
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 18,
     color: colors.lightBlue,
   },
   cartContainer: {
@@ -276,6 +285,7 @@ const styles = StyleSheet.create({
     color: colors.blue,
     fontWeight: 'bold',
   },
+
 });
 
 export default CartCard;

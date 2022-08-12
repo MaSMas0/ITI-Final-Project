@@ -14,7 +14,7 @@ export default Object.freeze({
   LogOut: 'SignUp',
   Settings: 'Settings',
   ProductDetails: 'ProductDetails',
-  Category: 'CategoryStack',
+  Category: 'Category',
   Products: 'Products',
   Cart: 'Cart',
   SearchScreen: 'SearchScreen',

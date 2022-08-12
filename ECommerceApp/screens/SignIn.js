@@ -19,31 +19,34 @@ const SignIn = ({navigation}) => {
     control,
     handleSubmit,
     formState: {errors},
-    watch,
+    reset,
   } = useForm();
 
   const onSubmit = data => {
-    console.log(data);
     dispatch(login(data.Email, data.Password));
-    if (navigation.getState().routeNames[0] == 'HomeStack') {
-      navigation.replace(routes.NewAddress);
-    } else {
-      navigation.replace(routes.profile);
-    }
   };
+
+  useEffect(() => {
+    if (userInfo) {
+      if (navigation.getState().routeNames[0] == 'HomeStack') {
+        navigation.replace(routes.NewAddress);
+        reset();
+      }
+    }
+  }, [userInfo]);
   return (
     <View style={styles.container}>
       <View style={styles.welcome}>
         <AntDesign
           style={styles.backIcon}
           name="back"
-          size={40}
+          size={35}
           onPress={() => navigation.goBack()}
         />
         <Text
           style={{
             color: colors.blue,
-            fontSize: 40,
+            fontSize: 35,
             fontWeight: 'bold',
           }}>
           Let's Sign You in.
@@ -102,19 +105,23 @@ const SignIn = ({navigation}) => {
 
       <View>
         <View style={styles.signUpContainer}>
-          <Text style={{fontSize: 16}}>Don't have an account? </Text>
+          <Text style={{fontSize: 14}}>Don't have an account? </Text>
           <TouchableWithoutFeedback>
             <Text
               style={styles.signUp}
               onPress={() => {
-                navigation.navigate('SignUp');
+                navigation.navigate(routes.LogOut);
               }}>
               Register
             </Text>
           </TouchableWithoutFeedback>
         </View>
 
-        <PrimaryButton title="Sign In" onPress={handleSubmit(onSubmit)} />
+        <PrimaryButton
+          loading={loading}
+          title="Sign In"
+          onPress={handleSubmit(onSubmit)}
+        />
       </View>
     </View>
   );
@@ -147,7 +154,7 @@ const styles = StyleSheet.create({
   signUp: {
     color: colors.blue,
     fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: 16,
     marginStart: 2,
   },
 

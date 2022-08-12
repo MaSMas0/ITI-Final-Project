@@ -76,15 +76,15 @@ const styles = StyleSheet.create({
     height: 150,
     backgroundColor: 'white',
     borderRadius: 10,
-    marginLeft: 20,
-    marginRight: 20,
+    marginLeft: 5,
+    // marginRight: 20,
   },
   item: {
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
-    margin: 5,
+    // margin: 5,
     // marginEnd: 5,
   },
   text: {
