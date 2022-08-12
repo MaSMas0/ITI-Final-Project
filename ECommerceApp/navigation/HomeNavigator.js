@@ -12,7 +12,8 @@ import SearchBar from '../components/SearchBar';
 import routes from './routes';
 import OrderDetails from '../screens/OrderDetails';
 import NewAddress from '../screens/NewAddress';
-
+import SignIn from '../screens/SignIn';
+import SignUp from '../screens/SignUp';
 
 function HomeNavigator({navigation}) {
   const Stack = createNativeStackNavigator();
@@ -64,14 +65,16 @@ function HomeNavigator({navigation}) {
           }
         }
       />
+      <Stack.Screen name={routes.NewAddress} component={NewAddress} />
       <Stack.Screen
-        name={routes.NewAddress}
-        component={NewAddress}
-        options={
-          {
-            // headerTitle: props => <Header title={'ProductDetails'} {...props} />,
-          }
-        }
+        name={routes.LogIn}
+        component={SignIn}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={routes.LogOut}
+        component={SignUp}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name={routes.Payment}
