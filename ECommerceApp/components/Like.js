@@ -9,7 +9,7 @@ import {
   removeWishList,
 } from '../store/reducers/WishList/WishlistSlice';
 
-export default function Like({product}) {
+export default function Like({product, size = 18}) {
   const dispatch = useDispatch();
 
   const [like, setLike] = useState(false);
@@ -29,10 +29,8 @@ export default function Like({product}) {
       <AntDesign
         onPress={() => handelLike()}
         name="heart"
-        size={18}
+        size={22}
         color={like ? colors.mediumBlue : colors.medium}></AntDesign>
     </View>
   );
 }
-
-const styles = StyleSheet.create({});

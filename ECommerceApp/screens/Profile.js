@@ -1,20 +1,48 @@
 import {NavigationContainer} from '@react-navigation/native';
-import React, {useEffect, useLayoutEffect} from 'react';
+import React, {useEffect, useLayoutEffect, useState} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {useSelector} from 'react-redux';
 import colors from '../config/colors';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import AuthNavigator from '../navigation/AuthNavigator';
 import routes from '../navigation/routes';
 import TopNavigator from '../navigation/TopNavigator';
-
+import * as Animatable from 'react-native-animatable';
 function Settings({navigation}) {
   const userLogin = useSelector(state => state.userLogin);
   const {loading, error, userInfo} = userLogin;
+  const [showArrow, setShowArrow] = useState(true);
   console.log(userInfo, 'profile');
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowArrow(false);
+    }, 4500);
+  }, []);
   return (
     <>
       <View style={styles.container}>
         <View style={styles.infoContainer}>
+          {showArrow && (
+            <Animatable.View
+              iterationCount={2}
+              duration={2000}
+              animation="wobble"
+              style={{
+                position: 'absolute',
+                right: 0,
+                bottom: '50%',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <Ionicons
+                name="md-arrow-redo-outline"
+                size={40}
+                color={colors.blue}
+              />
+              <Text style={{color: colors.blue}}>swipe Left</Text>
+            </Animatable.View>
+          )}
           <Image
             style={styles.image}
             source={require('../assets/account.png')}

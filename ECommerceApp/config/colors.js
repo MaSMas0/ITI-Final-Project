@@ -10,4 +10,5 @@ export default {
   mediumBlue: '#22336a',
   lightBlue: '#22336a',
   mix: ['#030A0E', '#22336a'],
+  ashrafgray: '#fafafa',
 };

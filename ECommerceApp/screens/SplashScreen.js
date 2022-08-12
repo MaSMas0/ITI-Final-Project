@@ -44,12 +44,12 @@ const SplashScreen = ({navigation}) => {
       <View style={styles.contentContainer}>
         <Animated.Image
           style={[styles.image, {opacity: fadeAnim}]}
-          source={require('../assets/logo.png')}
+          source={require('../assets/logo.jpg')}
         />
         <Animated.View style={[styles.logoContainer, {marginLeft: moveAnim}]}>
-          <Text style={[styles.logoText]}>E</Text>
-          <Animated.Text style={[styles.logoText, {opacity: fadeAnim}]}>
-            commerce
+          <Text style={[styles.logoText1]}>Nile </Text>
+          <Animated.Text style={[styles.logoText2, {opacity: fadeAnim}]}>
+            Buy
           </Animated.Text>
         </Animated.View>
       </View>
@@ -63,23 +63,30 @@ export const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flex: 1,
-    backgroundColor: '#000000',
+    backgroundColor: '#110034',
   },
-  logoText: {
-    fontSize: 25,
-    marginTop: 20,
-    color: 'white',
+  logoText1: {
+    fontSize: 35,
+
+    color: '#ff47be',
+    fontWeight: '700',
+    marginLeft: 30,
+  },
+  logoText2: {
+    fontSize: 35,
+
+    color: '#d1e5fd',
     fontWeight: '700',
   },
   contentContainer: {
-    top: '50%',
+    top: '30%',
     alignItems: 'center',
   },
   image: {
     // backgroundColor: 'white',
     // color: 'white',
-    width: 100,
-    height: 100,
+    width: 300,
+    height: 300,
   },
   logoContainer: {
     flexDirection: 'row',

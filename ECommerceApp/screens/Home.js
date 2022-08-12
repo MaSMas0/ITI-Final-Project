@@ -5,6 +5,7 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import SlideShow from '../components/SlideShow';
@@ -13,34 +14,30 @@ import BrandCard from '../components/BrandCard';
 import colors from '../config/colors';
 
 import {getProducts} from '../store/reducers/Products/ProductsSlice';
+import {getTopProducts} from '../store/reducers/Products/topProductsSlice';
 import {useSelector, useDispatch} from 'react-redux';
-import Loader from '../components/Loader';
-import {SafeAreaView} from 'react-native-safe-area-context';
 
+import Loader from '../components/Loader';
+import routes from '../navigation/routes';
 import HomeProduct from '../components/HomeProduct';
-import {color} from 'react-native-reanimated';
+
 const Home = ({navigation}) => {
   const dispatch = useDispatch();
   const {products, isLoading, isError, brands} = useSelector(
     state => state.products,
   );
-
-  console.log(brands);
-  // products.forEach(p => {
-  //   if (!brands.includes(p.brand)) {
-  //     brands.push(p.brand);
-  //   }
-  // });
+  const {topProducts} = useSelector(state => state.topProducts);
 
   const brandProducts = item => {
     const filterProducts = products.filter(p => {
-      return p.brand === item;
+      return p.brand === item.title;
     });
     return filterProducts;
   };
 
   useEffect(() => {
     dispatch(getProducts());
+    dispatch(getTopProducts());
   }, [dispatch]);
 
   return (
@@ -61,13 +58,15 @@ const Home = ({navigation}) => {
               horizontal
               showsHorizontalScrollIndicator={false}
               data={brands}
+              keyExtractor={item => item.title}
               renderItem={({item, index}) => {
                 return (
                   <BrandCard
-                    title={item}
+                    title={item.title}
+                    image={item.image}
                     onpress={() => {
                       console.log(item);
-                      navigation.navigate('Products', brandProducts(item));
+                      navigation.navigate(routes.Products, brandProducts(item));
                     }}
                   />
                 );
@@ -77,9 +76,24 @@ const Home = ({navigation}) => {
               style={{
                 margin: 10,
               }}>
-              <Text style={styles.h1}>TOP SALE</Text>
+              <Text style={styles.h1}>TOP RATING</Text>
             </View>
-            <HomeProduct />
+            <FlatList
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              data={topProducts}
+              keyExtractor={item => item.title}
+              renderItem={({item, index}) => {
+                return (
+                  <TouchableOpacity
+                    onPress={() => {
+                      navigation.navigate(routes.ProductDetails, {item});
+                    }}>
+                    <HomeProduct topProduct={item} />
+                  </TouchableOpacity>
+                );
+              }}
+            />
           </View>
         </ScrollView>
       )}

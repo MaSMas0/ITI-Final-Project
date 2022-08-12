@@ -2,10 +2,10 @@ import React from 'react';
 import {StyleSheet, View, ActivityIndicator} from 'react-native';
 import colors from '../config/colors';
 
-function Loader({size}) {
+function Loader({size, color = colors.blue}) {
   return (
     <View style={styles.container}>
-      <ActivityIndicator size={size} color={colors.blue} />
+      <ActivityIndicator size={size} color={color} />
     </View>
   );
 }
