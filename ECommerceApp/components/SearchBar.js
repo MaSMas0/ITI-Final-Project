@@ -11,8 +11,8 @@ const SearchBar = ({title, onPress, title1}) => {
   return (
     <View style={styles.searchContainer}>
       <Animatable.View
-        // animation="zoomIn"
-        // duration={500}
+        animation="zoomIn"
+        duration={500}
         style={styles.iconContainer}>
         <FontAwesome5
           color={colors.lightBlue}
@@ -21,9 +21,7 @@ const SearchBar = ({title, onPress, title1}) => {
           onPress={onPress}
         />
 
-        <Text style={styles.title}>
-          {title} <Text style={styles.title1}>{title1}</Text>
-        </Text>
+        <Text style={styles.title}>{title}</Text>
       </Animatable.View>
     </View>
   );
@@ -34,17 +32,17 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   search: {
-    paddingEnd: '25%',
+    paddingEnd: '20%',
   },
   iconContainer: {
     flexDirection: 'row',
-    width: '54%',
+    width: '50%',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
   title: {
-    fontSize: 25,
-    color: '#f811aa',
+    fontSize: 22,
+    color: colors.blue,
     fontWeight: 'bold',
   },
   title1: {
