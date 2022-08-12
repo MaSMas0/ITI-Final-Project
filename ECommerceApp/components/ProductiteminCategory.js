@@ -29,7 +29,7 @@ const ProductiteminCategory = ({price, onPress, image}) => {
             />
           </View>
           <View style={styles.details}>
-            <Text style={styles.fav}>{price} $</Text>
+            <Text style={styles.fav}> {price} $</Text>
 
             <Like />
           </View>
@@ -41,13 +41,14 @@ const ProductiteminCategory = ({price, onPress, image}) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.lightGrey,
+    backgroundColor: colors.white,
     padding: 8,
     marginVertical: 5,
     width: 103,
     borderColor: 'black',
     borderRadius: 20,
-    borderWidth: 0.5,
+    borderWidth: 1,
+    borderColor: colors.lightGrey,
   },
   image: {
     width: '100%',
@@ -55,7 +56,8 @@ const styles = StyleSheet.create({
   },
   fav: {
     fontWeight: 'bold',
-    fontSize: 12,
+    fontSize: 15,
+    paddingRight: 5,
   },
   iconStyle: {
     fontSize: 16,
