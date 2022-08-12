@@ -139,7 +139,7 @@ const Payment = ({navigation}) => {
           />
         </View>
       </View>
-      <View style={{alignItems: 'center', paddingVertical: 300}}>
+      <View style={{alignItems: 'center', paddingVertical: 150}}>
         <SecondryButton
           title="CONTINUE TO PAYMENT"
           onPress={handleContinueToPayment}

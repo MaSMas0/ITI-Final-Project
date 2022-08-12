@@ -4,7 +4,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const Currency = () => {
   const [show, setShow] = useState(false);
-  const [currency, setCurrency] = useState('EGY');
+  const [currency, setCurrency] = useState('EGP');
 
   function handelCurrencyEgy() {
     setCurrency('EGP');
