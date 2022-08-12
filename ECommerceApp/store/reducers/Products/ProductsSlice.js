@@ -1,6 +1,5 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 
-
 const api = 'https://iti-mern-ecommerce.herokuapp.com/api/products/mobile';
 
 // writing by MohamedAshraf

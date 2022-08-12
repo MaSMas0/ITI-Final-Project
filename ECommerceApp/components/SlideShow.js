@@ -14,19 +14,19 @@ const SlideShow = props => {
   const images = [
     {
       id: 0,
-      image: require('../assets/SlideShow/JeansSale.png'),
+      image: require('../assets/SlideShow/Jeans.png'),
     },
     {
       id: 1,
-      image: require('../assets/SlideShow/ElectronicsSale.png'),
+      image: require('../assets/SlideShow/Electronics.png'),
     },
     {
       id: 2,
-      image: require('../assets/SlideShow/ShirtsSale.png'),
+      image: require('../assets/SlideShow/Shirts.png'),
     },
     {
       id: 3,
-      image: require('../assets/SlideShow/ShoesSale.png'),
+      image: require('../assets/SlideShow/Shoes.png'),
     },
   ];
 
@@ -44,7 +44,7 @@ const SlideShow = props => {
             height: '100%',
             borderRadius: 8,
             margin: 5,
-            resizeMode: 'cover',
+            resizeMode: 'stretch',
           }}
         />
       </TouchableOpacity>
@@ -57,7 +57,7 @@ const SlideShow = props => {
         data={images}
         renderItem={renderItem}
         style={styles.carousel}
-        itemWidth={windowWidth * 0.92}
+        itemWidth={windowWidth * 0.85}
         containerWidth={windowWidth}
         separatorWidth={5}
         inActiveOpacity={0.2}
