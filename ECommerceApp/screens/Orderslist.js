@@ -1,20 +1,42 @@
-import React from 'react';
-import {TouchableOpacity, Text, ScrollView, View, FlatList,Image} from 'react-native';
+import React, {useEffect} from 'react';
+import {
+  TouchableOpacity,
+  Text,
+  ScrollView,
+  View,
+  FlatList,
+  Image,
+} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {listMyOrders} from '../actions/OrderActions';
+import OrderCard from '../components/OrderCard';
 import colors from '../config/colors';
-import OrderDetails from './OrderDetails';
 const OrderList = ({navigation}) => {
-  const x = [];
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(listMyOrders());
+  }, [dispatch]);
+
+  const orderListMy = useSelector(state => state.orderListMy);
+  const {loading: loadingOrders, error: errorOrders, orders} = orderListMy;
   return (
     <View>
-      {x.length == 0 && (
-        <View style={{alignItems: 'center', justifyContent: 'space-evenly',
-        height:'100%'}}>
-          <Text style={{
-            fontSize:18,
-            color:colors.blue,
-            padding:10,
-            fontWeight:'bold'
-          }}>Oops! No Orders Yet</Text>
+      {orders.length == 0 && (
+        <View
+          style={{
+            alignItems: 'center',
+            justifyContent: 'space-evenly',
+            height: '100%',
+          }}>
+          <Text
+            style={{
+              fontSize: 18,
+              color: colors.blue,
+              padding: 10,
+              fontWeight: 'bold',
+            }}>
+            Oops! No Orders Yet
+          </Text>
           <Image
             source={require('../assets/Empty-pana.png')}
             style={{
@@ -25,16 +47,16 @@ const OrderList = ({navigation}) => {
         </View>
       )}
 
-      {x.length !== 0 && (
+      {orders.length !== 0 && (
         <FlatList
-          data={x}
-          renderItem={() => {
+          data={orders}
+          renderItem={order => {
             return (
               <TouchableOpacity
                 onPress={() => {
-                  navigation.navigate('MoreOrderItemDetails');
+                  navigation.navigate('OrderDetails', order);
                 }}>
-                <OrderDetails />
+                <OrderCard order={order} />
               </TouchableOpacity>
             );
           }}
