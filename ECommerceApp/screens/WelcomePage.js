@@ -6,7 +6,7 @@ import * as Animatable from 'react-native-animatable';
 
 import colors from '../config/colors';
 
-const WelcomePage = () => {
+const WelcomePage = ({navigation}) => {
   return (
     <SafeAreaView
       style={{
@@ -23,7 +23,7 @@ const WelcomePage = () => {
         }}>
         <Animatable.Image style={styles.imgStyle}
            animation="wobble"
-           duration={4000}
+           duration={3500}
            iterationCount="infinite"
            source={require('../assets/logo2.png')} />
       </View>
@@ -55,8 +55,8 @@ const WelcomePage = () => {
         <View style={styles.btns}>
 
       {/* <ThirdButton style={styles.btnStyle} title="SIGNUP" /> */}
-      <SecondryButton style={styles.btnStyle} title="SIGNUP" />
-      <SecondryButton style={styles.btnStyle} title="LOGIN" />
+      <SecondryButton style={styles.btnStyle} title="SIGNUP"  />
+      <SecondryButton  style={styles.btnStyle} title="LOGIN"  />
         </View>
     </SafeAreaView>
   );

@@ -60,13 +60,17 @@ const Card = ({product, onPress}) => {
             onPress={addToCartHandler}
             title="ADD TO CART"
             colors={colors.blue}
+            
           />
         ) : (
           <SecondryButton
             onPress={removeFromCartHandler}
+            style={{
+              color:colors.blue
+            }}
             title="REMOVE FROM CART"
-            colors="red"
-          />
+            colors={colors.medium}
+                      />
         )}
       </View>
     </TouchableOpacity>

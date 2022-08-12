@@ -52,19 +52,7 @@ const Cart = ({navigation}) => {
         </View>
       ) : (
         <ScrollView>
-          {/* <FlatList
-            contentContainerStyle={{
-              marginTop: 20,
-              paddingBottom: 10,
-            }}
-            horizontal
-            showsVerticalScrollIndicator={false}
-            nestedScrollEnabled            
-            data={cartLists}
-            renderItem={({item, index}) => {
-              return <CartCard item={item} />;
-            }}
-          /> */}
+   
           {
             cartLists.map((item) => (
               <View key={item._id}>
@@ -93,14 +81,7 @@ const Cart = ({navigation}) => {
                     .toFixed(2)}
                 </Text>
               </View>
-              {/* <View style={styles.delivCont}>
-                <Text style={styles.greyText}>Delivery Service:</Text>
-                <Text style={styles.blueText}>0$ (Free Delivery)</Text>
-              </View> */}
-              {/* <View style={styles.totalPriceCont}>
-                <Text style={styles.greyText}>Total Price :</Text>
-                <Text style={styles.blueText}>250$</Text>
-              </View> */}
+          
             </View>
           </View>
           <View style={styles.checkBtnCont}>
