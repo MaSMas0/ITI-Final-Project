@@ -204,7 +204,11 @@ const SignUp = ({navigation}) => {
           </TouchableWithoutFeedback>
           {error && <ErrorText ErrorText={error} />}
         </View>
-        <PrimaryButton title="Sign Up" onPress={handleSubmit(onSubmit)} />
+        <PrimaryButton
+          title="Sign Up"
+          loading={loading}
+          onPress={handleSubmit(onSubmit)}
+        />
         {error && <ErrorText ErrorText={error} />}
       </View>
     </ScrollView>

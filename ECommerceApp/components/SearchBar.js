@@ -2,11 +2,10 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import colors from '../config/colors';
-import {Searchbar} from 'react-native-paper';
 import * as Animatable from 'react-native-animatable';
 const SearchBar = ({title, onPress, title1}) => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [icon, setIcon] = useState(false);
+
   const onChangeSearch = query => setSearchQuery(query);
   return (
     <View style={styles.searchContainer}>

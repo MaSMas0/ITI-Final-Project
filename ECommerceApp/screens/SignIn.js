@@ -19,18 +19,21 @@ const SignIn = ({navigation}) => {
     control,
     handleSubmit,
     formState: {errors},
-    watch,
+    reset,
   } = useForm();
 
   const onSubmit = data => {
-    console.log(data);
     dispatch(login(data.Email, data.Password));
-    if (navigation.getState().routeNames[0] == 'HomeStack') {
-      navigation.replace(routes.NewAddress);
-    } else {
-      navigation.replace(routes.profile);
-    }
   };
+
+  useEffect(() => {
+    if (userInfo) {
+      if (navigation.getState().routeNames[0] == 'HomeStack') {
+        navigation.replace(routes.NewAddress);
+        reset();
+      }
+    }
+  }, [userInfo]);
   return (
     <View style={styles.container}>
       <View style={styles.welcome}>
@@ -107,14 +110,18 @@ const SignIn = ({navigation}) => {
             <Text
               style={styles.signUp}
               onPress={() => {
-                navigation.navigate('SignUp');
+                navigation.navigate(routes.LogOut);
               }}>
               Register
             </Text>
           </TouchableWithoutFeedback>
         </View>
 
-        <PrimaryButton title="Sign In" onPress={handleSubmit(onSubmit)} />
+        <PrimaryButton
+          loading={loading}
+          title="Sign In"
+          onPress={handleSubmit(onSubmit)}
+        />
       </View>
     </View>
   );
