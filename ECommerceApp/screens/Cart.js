@@ -16,11 +16,15 @@ import routes from '../navigation/routes';
 
 const Cart = ({navigation}) => {
   const cartLists = useSelector(state => state.cart.cartItems);
-
+  const userInfo = useSelector(state => state.userLogin.userInfo);
+  console.log(userInfo, 'cart');
   return (
     <View
       style={{
         backgroundColor: colors.white,
+        justifyContent:'flex-start',
+        width:'100%',
+        height:'100%',
       }}>
       {cartLists.length === 0 ? (
         <View style={styles.emptyCartContainer}>
@@ -47,19 +51,28 @@ const Cart = ({navigation}) => {
           </View>
         </View>
       ) : (
-        <View>
-          <FlatList
+        <ScrollView>
+          {/* <FlatList
             contentContainerStyle={{
-              marginTop: 10,
-              paddingBottom: 0,
+              marginTop: 20,
+              paddingBottom: 10,
             }}
+            horizontal
             showsVerticalScrollIndicator={false}
-            nestedScrollEnabled
+            nestedScrollEnabled            
             data={cartLists}
             renderItem={({item, index}) => {
               return <CartCard item={item} />;
             }}
-          />
+          /> */}
+          {
+            cartLists.map((item) => (
+              <View key={item._id}>
+                 <CartCard  item={item} />
+              </View>
+            ))
+          }
+           
           <View style={styles.secondContainer}>
             <View>
               <Text style={styles.summeryStyle}>Order summary</Text>
@@ -92,7 +105,13 @@ const Cart = ({navigation}) => {
           </View>
           <View style={styles.checkBtnCont}>
             <TouchableOpacity
-              onPress={() => navigation.navigate(routes.NewAddress)}>
+              onPress={() => {
+                if (!userInfo) {
+                  navigation.navigate(routes.LogIn);
+                } else {
+                  navigation.navigate(routes.NewAddress);
+                }
+              }}>
               <LinearGradient
                 start={{x: 1, y: 0}}
                 end={{x: 0, y: 0}}
@@ -102,7 +121,7 @@ const Cart = ({navigation}) => {
               </LinearGradient>
             </TouchableOpacity>
           </View>
-        </View>
+        </ScrollView>
       )}
     </View>
   );
@@ -254,7 +273,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.white,
-    height: 270,
   },
   summeryStyle: {
     fontSize: 18,

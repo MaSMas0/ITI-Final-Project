@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   View,
+  ScrollView,
 } from 'react-native';
 import {RadioButton} from 'react-native-paper';
 import colors from '../config/colors';
@@ -39,7 +40,7 @@ const Payment = ({navigation}) => {
     dispatch(savePaymentMethod(checked));
   };
   return (
-    <SafeAreaView>
+    <ScrollView>
       <View>
         <View style={styles.barContainer}>
           <View style={styles.barStyle}>
@@ -183,7 +184,7 @@ const Payment = ({navigation}) => {
           </View>
         </Modal>
       </View>
-    </SafeAreaView>
+    </ScrollView>
   );
 };
 
@@ -282,7 +283,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     position: 'relative',
     left: 30,
-    marginBottom: 60,
+    marginBottom: 120,
   },
 });
 
