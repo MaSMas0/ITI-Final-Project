@@ -12,7 +12,7 @@ import * as Animatable from 'react-native-animatable';
 import Like from './Like';
 import colors from '../config/colors';
 
-const ProductiteminCategory = ({price, onPress, image}) => {
+const ProductiteminCategory = ({price, onPress, image, name}) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <Animatable.View animation="flipInY" duration={1000} style={{margin: 8}}>
@@ -23,12 +23,14 @@ const ProductiteminCategory = ({price, onPress, image}) => {
               uri: image,
             }}
           />
+          <Text numberOfLines={2} style={styles.name}>
+            {name}
+          </Text>
+          <View style={styles.details}>
+            <Text style={styles.fav}>{price} $</Text>
+          </View>
         </View>
-        <View style={styles.details}>
-          <Text style={styles.fav}>{price} $</Text>
-
-          <Like />
-        </View>
+        <Like />
       </Animatable.View>
     </TouchableOpacity>
   );
@@ -36,17 +38,16 @@ const ProductiteminCategory = ({price, onPress, image}) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.lightGrey,
-    padding: 8,
-    marginVertical: 5,
-    width: 103,
     borderColor: 'black',
-    borderRadius: 20,
-    borderWidth: 0.5,
+    marginHorizontal: 18,
+  },
+  name: {
+    width: 70,
+    textAlign: 'center',
   },
   image: {
-    width: '100%',
-    height: 90,
+    width: 70,
+    height: 70,
   },
   fav: {
     fontWeight: 'bold',
@@ -54,12 +55,9 @@ const styles = StyleSheet.create({
   },
   iconStyle: {
     fontSize: 16,
-    marginStart: 5,
   },
   details: {
-    display: 'flex',
     flexDirection: 'row',
-    marginStart: 10,
     justifyContent: 'space-evenly',
   },
 });
