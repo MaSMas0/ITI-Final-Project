@@ -14,6 +14,7 @@ import NewAddress from '../screens/NewAddress';
 import SignIn from '../screens/SignIn';
 import SignUp from '../screens/SignUp';
 import WelcomePage from '../screens/WelcomePage';
+import MainOrderDetails from '../screens/MainOrderDetails';
 
 function HomeNavigator({navigation}) {
   const Stack = createNativeStackNavigator();
