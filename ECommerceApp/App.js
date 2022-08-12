@@ -25,12 +25,12 @@ const App = () => {
       <StatusBar backgroundColor="white" barStyle="dark-content" />
       {/* <OrderDetails /> */}
       {/* <MainOrderDetails /> */}
-     {/* <AppNavigator /> */}
+     <AppNavigator />
       {/* <OrderList /> */}
       {/* <Profile /> */}
       {/* <AuthNavigator /> */}
       {/* <WelcomeNav /> */}
-      <WelcomePage />
+      {/* <WelcomePage /> */}
       {/* <Payment /> */}
       {/* <Drawerheader /> */}
       {/* <MoreOrderItemDetails /> */}
