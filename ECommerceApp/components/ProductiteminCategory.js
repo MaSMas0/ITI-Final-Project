@@ -46,26 +46,27 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderRadius: 20,
     borderWidth: 1,
-    borderColor: colors.lightGrey,
-  name: {
-    width: 70,
-    textAlign: 'center',
-  },
-  image: {
-    width: 70,
-    height: 70,
-  },
-  fav: {
-    fontWeight: 'bold',
-    fontSize: 15,
-    paddingRight: 5,
-  },
-  iconStyle: {
-    fontSize: 16,
-  },
-  details: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
+    // borderColor: colors.lightGrey,
+    name: {
+      width: 70,
+      textAlign: 'center',
+    },
+    image: {
+      width: 70,
+      height: 70,
+    },
+    fav: {
+      fontWeight: 'bold',
+      fontSize: 15,
+      paddingRight: 5,
+    },
+    iconStyle: {
+      fontSize: 16,
+    },
+    details: {
+      flexDirection: 'row',
+      justifyContent: 'space-evenly',
+    },
   },
 });
 

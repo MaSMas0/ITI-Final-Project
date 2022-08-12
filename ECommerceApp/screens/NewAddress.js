@@ -13,7 +13,7 @@ import SecondryButton from '../components/SecondryButton';
 import colors from '../config/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {saveShippingAddress} from '../actions/CartActions';
 
 const NewAddress = ({navigation}) => {
@@ -73,16 +73,27 @@ const NewAddress = ({navigation}) => {
     },
     {title: 'Suez', image: require('../assets/AddressLogo/Suez.png')},
   ];
-  const [city, onChangeCity] = React.useState('');
-  const [address, onChangeAddress] = React.useState('');
-  const [phone, onChangePhone] = React.useState('');
-  const [country, onChangeCountry] = React.useState('');
+  const cart = useSelector(state => state.cart);
+  const {shippingAddress} = cart;
+  const [city, onChangeCity] = React.useState(
+    shippingAddress ? shippingAddress.city : '',
+  );
+  const [address, onChangeAddress] = React.useState(
+    shippingAddress ? shippingAddress.address : '',
+  );
+  const [postalCode, onChangePostalCode] = React.useState(
+    shippingAddress ? shippingAddress.postalCode : '',
+  );
+  const [country, onChangeCountry] = React.useState(
+    shippingAddress ? shippingAddress.country : '',
+  );
   const dispatch = useDispatch();
   const handleAddAddress = () => {
-    dispatch(saveShippingAddress(country, city, address, phone));
+    dispatch(saveShippingAddress({address, city, postalCode, country}));
     navigation.navigate('Payment');
     console.log(country);
   };
+  // console.log(shippingAddress.address);
   return (
     <ScrollView>
       <SafeAreaView
@@ -168,15 +179,15 @@ const NewAddress = ({navigation}) => {
             style={styles.inputStyle}
             placeholder="Address"
             onChangeText={onChangeAddress}
-            value={address}
+            value={address || ''}
           />
         </View>
         <View style={styles.phoneContainer}>
           <TextInput
             style={styles.inputStyle}
             placeholder="Phone"
-            onChangeText={onChangePhone}
-            value={phone}
+            onChangeText={onChangePostalCode}
+            value={postalCode || ''}
           />
         </View>
 
