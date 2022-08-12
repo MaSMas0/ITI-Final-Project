@@ -24,8 +24,7 @@ const App = () => {
     <NavigationContainer>
       <StatusBar backgroundColor="white" barStyle="dark-content" />
       {/* <OrderDetails /> */}
-      <MainOrderDetails />
-     
+      {/* <MainOrderDetails /> */}
       {/* <OrderList /> */}
       {/* <Profile /> */}
       {/* <AuthNavigator /> */}
