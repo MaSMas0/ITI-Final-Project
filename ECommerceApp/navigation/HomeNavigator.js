@@ -10,7 +10,6 @@ import Cart from '../screens/Cart';
 import Payment from '../screens/Payment';
 import SearchBar from '../components/SearchBar';
 import routes from './routes';
-import OrderDetails from '../screens/OrderDetails';
 import NewAddress from '../screens/NewAddress';
 import SignIn from '../screens/SignIn';
 import SignUp from '../screens/SignUp';
