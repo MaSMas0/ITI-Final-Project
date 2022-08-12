@@ -1,6 +1,7 @@
 export default Object.freeze({
   SplashScreen: 'SplashScreen',
   AppScreen: 'AppNavigator',
+
   WishLists: 'WishList',
   Orders: 'Orders',
   profile: 'Me',
@@ -22,4 +23,5 @@ export default Object.freeze({
   NewAddress: 'NewAddress',
   Payment: 'Payment',
   PlaceOrder: 'OrderDetails',
+  WelcomeScreen: 'WelcomeScreen',
 });

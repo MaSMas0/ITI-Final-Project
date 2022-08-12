@@ -84,7 +84,7 @@ const Cart = ({navigation}) => {
             <TouchableOpacity
               onPress={() => {
                 if (!userInfo) {
-                  navigation.navigate(routes.LogIn);
+                  navigation.navigate(routes.WelcomeScreen);
                 } else {
                   navigation.navigate(routes.NewAddress);
                 }

@@ -55,6 +55,7 @@ const SlideShow = props => {
       <Carousel
         ref={carouselRef}
         data={images}
+        key={item => item.id}
         renderItem={renderItem}
         style={styles.carousel}
         itemWidth={windowWidth * 0.85}

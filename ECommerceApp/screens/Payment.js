@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import {RadioButton} from 'react-native-paper';
 import colors from '../config/colors';
-
+import routes from '../navigation/routes';
 import SecondryButton from '../components/SecondryButton';
 import {useDispatch, useSelector} from 'react-redux';
 import {savePaymentMethod} from '../actions/CartActions';
@@ -19,6 +19,7 @@ import {createOrder, getOrderDetails} from '../actions/OrderActions';
 import {orderCreateReset} from '../store/reducers/Order/OrderSlice';
 
 const Payment = ({navigation}) => {
+  const {loading, error, userInfo} = useSelector(state => state.userLogin);
   const cart = useSelector(state => state.cart);
   const {
     cartItems,
@@ -39,6 +40,11 @@ const Payment = ({navigation}) => {
     setShow(true);
     dispatch(savePaymentMethod(checked));
   };
+  useEffect(() => {
+    if (!userInfo) {
+      navigation.navigate(routes.WelcomeScreen);
+    }
+  }, [userInfo]);
   const orderDetails = useSelector(state => state.orderDetails);
   const orderDetail = orderDetails.order;
   console.log(orderDetail);

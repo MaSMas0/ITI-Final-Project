@@ -58,7 +58,7 @@ const Home = ({navigation}) => {
               horizontal
               showsHorizontalScrollIndicator={false}
               data={brands}
-              keyExtractor={item => item.title}
+              keyExtractor={item => item.image}
               renderItem={({item, index}) => {
                 return (
                   <BrandCard
@@ -82,7 +82,7 @@ const Home = ({navigation}) => {
               horizontal
               showsHorizontalScrollIndicator={false}
               data={topProducts}
-              keyExtractor={item => item.title}
+              keyExtractor={item => item._id}
               renderItem={({item, index}) => {
                 return (
                   <TouchableOpacity

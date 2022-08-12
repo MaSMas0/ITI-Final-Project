@@ -66,6 +66,7 @@ function Category({navigation}) {
           nestedScrollEnabled
           numColumns={3}
           data={filterProductss}
+          keyExtractor={item => item._id}
           renderItem={({item, index}) => {
             return (
               <CatogeryCard

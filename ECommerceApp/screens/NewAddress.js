@@ -15,8 +15,10 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {useDispatch, useSelector} from 'react-redux';
 import {saveShippingAddress} from '../actions/CartActions';
+import routes from '../navigation/routes';
 
 const NewAddress = ({navigation}) => {
+  const {loading, error, userInfo} = useSelector(state => state.userLogin);
   const countriesWithFlags = [
     {title: 'Alexandria', image: require('../assets/AddressLogo/Alex.png')},
     {title: 'Aswan', image: require('../assets/AddressLogo/Aswan.png')},
@@ -94,6 +96,11 @@ const NewAddress = ({navigation}) => {
     console.log(country);
   };
   // console.log(shippingAddress.address);
+  useEffect(() => {
+    if (!userInfo) {
+      navigation.navigate(routes.WelcomeScreen);
+    }
+  }, [userInfo]);
   return (
     <ScrollView>
       <SafeAreaView

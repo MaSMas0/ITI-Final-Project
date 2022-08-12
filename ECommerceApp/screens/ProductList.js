@@ -136,6 +136,7 @@ const Product = ({navigation, route}) => {
           renderItem={({item}) => {
             return (
               <Card
+                key={({item}) => item._id}
                 product={item}
                 navigation={navigation}
                 onPress={() => {

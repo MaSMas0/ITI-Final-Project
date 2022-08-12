@@ -5,6 +5,7 @@ import ThirdButton from '../components/ThirdButton';
 import * as Animatable from 'react-native-animatable';
 
 import colors from '../config/colors';
+import routes from '../navigation/routes';
 
 const WelcomePage = ({navigation}) => {
   return (
@@ -25,11 +26,12 @@ const WelcomePage = ({navigation}) => {
         />
       </View>
       <View
+       
         style={{
-          marginBottom: 40,
-          // backgroundColor:colors.blue,
-          width: '100%',
-        }}>
+            marginBottom:  40,
+            // backgroundColor:colors.blue,
+            width:  '100%',,
+          }}>
         <Text
           style={{
             fontSize: 30,
@@ -52,8 +54,16 @@ const WelcomePage = ({navigation}) => {
       </View>
       <View style={styles.btns}>
         {/* <ThirdButton style={styles.btnStyle} title="SIGNUP" /> */}
-        <SecondryButton style={styles.btnStyle} title="SIGNUP" />
-        <SecondryButton style={styles.btnStyle} title="LOGIN" />
+        <SecondryButton
+          style={styles.btnStyle}
+          title="SIGNUP"
+          onPress={() => navigation.replace(routes.LogOut)}
+        />
+        <SecondryButton
+          style={styles.btnStyle}
+          title="LOGIN"
+          onPress={() => navigation.replace(routes.LogIn)}
+        />
       </View>
     </SafeAreaView>
   );
