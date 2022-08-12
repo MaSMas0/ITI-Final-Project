@@ -15,7 +15,6 @@ import NewAddress from './screens/NewAddress';
 import Drawerheader from './components/Drawerheader';
 import WelcomePage from './screens/WelcomePage';
 import OrderList from './screens/Orderslist';
-import OrderDetails from './screens/OrderDetails';
 import MainOrderDetails from './screens/MainOrderDetails';
 
 const App = () => {
@@ -24,7 +23,7 @@ const App = () => {
       <StatusBar backgroundColor="white" barStyle="dark-content" />
       {/* <OrderDetails /> */}
       {/* <MainOrderDetails /> */}
-     <AppNavigator />
+      <AppNavigator />
       {/* <OrderList /> */}
       {/* <Profile /> */}
       {/* <AuthNavigator /> */}
