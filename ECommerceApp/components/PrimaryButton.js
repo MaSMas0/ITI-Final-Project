@@ -16,8 +16,8 @@ function PrimaryButton({onPress, title, loading}) {
 const styles = StyleSheet.create({
   submit: {
     backgroundColor: colors.blue,
-    width: 320,
-    height: 60,
+    width: 300,
+    height: 55,
     borderRadius: 22,
     alignItems: 'center',
     justifyContent: 'center',
@@ -25,9 +25,9 @@ const styles = StyleSheet.create({
   },
   title: {
     color: colors.white,
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
+    fontSize: 20,
+    fontWeight:'bold' 
+  }
 });
 
 export default PrimaryButton;

@@ -238,11 +238,11 @@ const styles = StyleSheet.create({
   signup: {
     fontWeight: 'bold',
 
-    fontSize: 40,
+    fontSize: 35,
     color: colors.blue,
   },
   text: {
-    fontSize: 30,
+    fontSize: 28,
     color: colors.blue,
   },
   signUp: {

@@ -22,6 +22,9 @@ const Cart = ({navigation}) => {
     <View
       style={{
         backgroundColor: colors.white,
+        justifyContent:'flex-start',
+        width:'100%',
+        height:'100%',
       }}>
       {cartLists.length === 0 ? (
         <View style={styles.emptyCartContainer}>
@@ -48,19 +51,16 @@ const Cart = ({navigation}) => {
           </View>
         </View>
       ) : (
-        <View>
-          <FlatList
-            contentContainerStyle={{
-              marginTop: 10,
-              paddingBottom: 0,
-            }}
-            showsVerticalScrollIndicator={false}
-            nestedScrollEnabled
-            data={cartLists}
-            renderItem={({item, index}) => {
-              return <CartCard item={item} />;
-            }}
-          />
+        <ScrollView>
+   
+          {
+            cartLists.map((item) => (
+              <View key={item._id}>
+                 <CartCard  item={item} />
+              </View>
+            ))
+          }
+           
           <View style={styles.secondContainer}>
             <View>
               <Text style={styles.summeryStyle}>Order summary</Text>
@@ -81,14 +81,7 @@ const Cart = ({navigation}) => {
                     .toFixed(2)}
                 </Text>
               </View>
-              {/* <View style={styles.delivCont}>
-                <Text style={styles.greyText}>Delivery Service:</Text>
-                <Text style={styles.blueText}>0$ (Free Delivery)</Text>
-              </View> */}
-              {/* <View style={styles.totalPriceCont}>
-                <Text style={styles.greyText}>Total Price :</Text>
-                <Text style={styles.blueText}>250$</Text>
-              </View> */}
+          
             </View>
           </View>
           <View style={styles.checkBtnCont}>
@@ -109,7 +102,7 @@ const Cart = ({navigation}) => {
               </LinearGradient>
             </TouchableOpacity>
           </View>
-        </View>
+        </ScrollView>
       )}
     </View>
   );
@@ -261,7 +254,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.white,
-    height: 270,
   },
   summeryStyle: {
     fontSize: 18,
