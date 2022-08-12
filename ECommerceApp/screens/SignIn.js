@@ -12,7 +12,7 @@ import routes from '../navigation/routes';
 
 const SignIn = ({navigation}) => {
   const userLogin = useSelector(state => state.userLogin);
-
+  console.log();
   const {loading, error, userInfo} = userLogin;
   const dispatch = useDispatch();
   const {
@@ -24,14 +24,22 @@ const SignIn = ({navigation}) => {
 
   const onSubmit = data => {
     console.log(data);
-
     dispatch(login(data.Email, data.Password));
-    navigation.replace(routes.profile);
+    if (navigation.getState().routeNames[0] == 'HomeStack') {
+      navigation.replace(routes.NewAddress);
+    } else {
+      navigation.replace(routes.profile);
+    }
   };
   return (
     <View style={styles.container}>
       <View style={styles.welcome}>
-        <AntDesign style={styles.backIcon} name="back" size={40} />
+        <AntDesign
+          style={styles.backIcon}
+          name="back"
+          size={40}
+          onPress={() => navigation.goBack()}
+        />
         <Text
           style={{
             color: colors.blue,

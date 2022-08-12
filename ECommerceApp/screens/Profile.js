@@ -10,7 +10,7 @@ import TopNavigator from '../navigation/TopNavigator';
 function Settings({navigation}) {
   const userLogin = useSelector(state => state.userLogin);
   const {loading, error, userInfo} = userLogin;
-  console.log(userInfo);
+  console.log(userInfo, 'profile');
   return (
     <>
       <View style={styles.container}>
