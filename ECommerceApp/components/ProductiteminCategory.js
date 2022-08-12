@@ -15,26 +15,21 @@ import colors from '../config/colors';
 const ProductiteminCategory = ({price, onPress, image}) => {
   return (
     <TouchableOpacity onPress={onPress}>
-      <ScrollView>
-        <Animatable.View
-          animation="flipInY"
-          duration={1000}
-          style={{margin: 8}}>
-          <View style={styles.container}>
-            <Image
-              style={styles.image}
-              source={{
-                uri: image,
-              }}
-            />
-          </View>
-          <View style={styles.details}>
-            <Text style={styles.fav}>{price} $</Text>
+      <Animatable.View animation="flipInY" duration={1000} style={{margin: 8}}>
+        <View style={styles.container}>
+          <Image
+            style={styles.image}
+            source={{
+              uri: image,
+            }}
+          />
+        </View>
+        <View style={styles.details}>
+          <Text style={styles.fav}>{price} $</Text>
 
-            <Like />
-          </View>
-        </Animatable.View>
-      </ScrollView>
+          <Like />
+        </View>
+      </Animatable.View>
     </TouchableOpacity>
   );
 };

@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 
-const api = 'https://iti-mern-ecommerce.herokuapp.com/api/products';
+const api = 'https://iti-mern-ecommerce.herokuapp.com/api/products/mobile';
 
 // writing by MohamedAshraf
 export const getProducts = createAsyncThunk('products/getProducts', async _ => {
@@ -30,7 +30,19 @@ const productsSlice = createSlice({
         ...new Set(action.payload.products.map(p => p.category.toUpperCase())),
       ];
 
-      state.brands = [...new Set(action.payload.products.map(p => p.brand))];
+      state.brands = [
+        ...action.payload.products
+          .map(p => {
+            return {
+              title: p.brand,
+              image: p.brandImage,
+            };
+          })
+          .filter((value, index, self) => {
+            return index === self.findIndex(item => value.title === item.title);
+          }),
+      ];
+
       //   action.payload.products
     },
     [getProducts.rejected]: (state, action) => {
