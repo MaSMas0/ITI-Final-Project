@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import colors from '../config/colors';
-function PrimaryButton({onPress, title}) {
+import Loader from './Loader';
+function PrimaryButton({onPress, title, loading}) {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.submit}>
-
-      <Text style={styles.title}>{title}</Text>
+        {!loading && <Text style={styles.title}>{title}</Text>}
+        {loading && <Loader size={20} color={colors.white} />}
       </View>
     </TouchableOpacity>
   );
@@ -18,12 +19,11 @@ const styles = StyleSheet.create({
     width: 300,
     height: 55,
     borderRadius: 22,
-    alignItems:'center',
-    justifyContent:'center',
-    marginBottom:10
-
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 10,
   },
-  title:{
+  title: {
     color: colors.white,
     fontSize: 20,
     fontWeight:'bold' 

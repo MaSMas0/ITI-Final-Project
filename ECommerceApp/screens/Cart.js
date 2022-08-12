@@ -44,7 +44,7 @@ const Cart = ({navigation}) => {
               <Text style={styles.addItemStyle}>Add item to get started</Text>
               <TouchableOpacity
                 style={styles.emptyCartBtn}
-                onPress={() => navigation.navigate('SearchScreen')}>
+                onPress={() => navigation.replace(routes.SearchScreen)}>
                 <Text style={styles.cartBtnStyle}>GO TO STORE</Text>
               </TouchableOpacity>
             </View>
