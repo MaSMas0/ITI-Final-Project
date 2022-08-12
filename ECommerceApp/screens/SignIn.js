@@ -37,13 +37,13 @@ const SignIn = ({navigation}) => {
         <AntDesign
           style={styles.backIcon}
           name="back"
-          size={40}
+          size={35}
           onPress={() => navigation.goBack()}
         />
         <Text
           style={{
             color: colors.blue,
-            fontSize: 40,
+            fontSize: 35,
             fontWeight: 'bold',
           }}>
           Let's Sign You in.
@@ -102,7 +102,7 @@ const SignIn = ({navigation}) => {
 
       <View>
         <View style={styles.signUpContainer}>
-          <Text style={{fontSize: 16}}>Don't have an account? </Text>
+          <Text style={{fontSize: 14}}>Don't have an account? </Text>
           <TouchableWithoutFeedback>
             <Text
               style={styles.signUp}
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
   signUp: {
     color: colors.blue,
     fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: 16,
     marginStart: 2,
   },
 
