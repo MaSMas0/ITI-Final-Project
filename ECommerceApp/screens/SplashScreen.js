@@ -37,6 +37,7 @@ const SplashScreen = ({navigation}) => {
     setTimeout(() => {
       navigation.replace(routes.AppScreen);
     }, 4000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [moveAnim, fadeAnim]);
 
   return (
