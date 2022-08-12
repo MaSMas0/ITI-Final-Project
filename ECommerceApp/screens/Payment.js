@@ -19,7 +19,7 @@ import {createOrder, getOrderDetails} from '../actions/OrderActions';
 import {orderCreateReset} from '../store/reducers/Order/OrderSlice';
 
 const Payment = ({navigation}) => {
-  const {loading, error, userInfo} = useSelector(state => state.userLogin);
+  const {userInfo} = useSelector(state => state.userLogin);
   const cart = useSelector(state => state.cart);
   const {
     cartItems,
@@ -44,7 +44,7 @@ const Payment = ({navigation}) => {
     if (!userInfo) {
       navigation.navigate(routes.WelcomeScreen);
     }
-  }, [userInfo]);
+  }, [navigation, userInfo]);
   const orderDetails = useSelector(state => state.orderDetails);
   const orderDetail = orderDetails.order;
   console.log(orderDetail);
