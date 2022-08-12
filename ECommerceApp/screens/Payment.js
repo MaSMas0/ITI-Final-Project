@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Modal,
   SafeAreaView,
@@ -15,8 +15,9 @@ import colors from '../config/colors';
 import SecondryButton from '../components/SecondryButton';
 import {useDispatch, useSelector} from 'react-redux';
 import {savePaymentMethod} from '../actions/CartActions';
-
+import routes from '../navigation/routes';
 const Payment = ({navigation}) => {
+  const {loading, error, userInfo} = useSelector(state => state.userLogin);
   const cart = useSelector(state => state.cart);
   const {
     cartItems,
@@ -39,6 +40,12 @@ const Payment = ({navigation}) => {
     setShow(true);
     dispatch(savePaymentMethod(checked));
   };
+
+  useEffect(() => {
+    if (!userInfo) {
+      navigation.navigate(routes.WelcomeScreen);
+    }
+  }, [userInfo]);
   return (
     <ScrollView>
       <View>
