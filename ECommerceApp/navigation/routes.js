@@ -1,6 +1,7 @@
 export default Object.freeze({
   SplashScreen: 'SplashScreen',
   AppScreen: 'AppNavigator',
+
   WishLists: 'WishList',
   Orders: 'Orders',
   profile: 'Me',

@@ -22,9 +22,9 @@ const Cart = ({navigation}) => {
     <View
       style={{
         backgroundColor: colors.white,
-        justifyContent:'flex-start',
-        width:'100%',
-        height:'100%',
+        justifyContent: 'flex-start',
+        width: '100%',
+        height: '100%',
       }}>
       {cartLists.length === 0 ? (
         <View style={styles.emptyCartContainer}>
@@ -52,15 +52,12 @@ const Cart = ({navigation}) => {
         </View>
       ) : (
         <ScrollView>
-   
-          {
-            cartLists.map((item) => (
-              <View key={item._id}>
-                 <CartCard  item={item} />
-              </View>
-            ))
-          }
-           
+          {cartLists.map(item => (
+            <View key={item._id}>
+              <CartCard item={item} />
+            </View>
+          ))}
+
           <View style={styles.secondContainer}>
             <View>
               <Text style={styles.summeryStyle}>Order summary</Text>
@@ -81,14 +78,13 @@ const Cart = ({navigation}) => {
                     .toFixed(2)}
                 </Text>
               </View>
-          
             </View>
           </View>
           <View style={styles.checkBtnCont}>
             <TouchableOpacity
               onPress={() => {
                 if (!userInfo) {
-                  navigation.navigate(routes.LogIn);
+                  navigation.navigate(routes.WelcomeScreen);
                 } else {
                   navigation.navigate(routes.NewAddress);
                 }

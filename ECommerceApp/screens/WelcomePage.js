@@ -56,12 +56,12 @@ const WelcomePage = ({navigation}) => {
         <SecondryButton
           style={styles.btnStyle}
           title="SIGNUP"
-          onPress={() => navigation.navigate(routes.LogOut)}
+          onPress={() => navigation.replace(routes.LogOut)}
         />
         <SecondryButton
           style={styles.btnStyle}
           title="LOGIN"
-          onPress={() => navigation.navigate(routes.LogIn)}
+          onPress={() => navigation.replace(routes.LogIn)}
         />
       </View>
     </SafeAreaView>

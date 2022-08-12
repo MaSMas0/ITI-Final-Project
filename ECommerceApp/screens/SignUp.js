@@ -197,7 +197,7 @@ const SignUp = ({navigation}) => {
             <Text
               style={styles.signUp}
               onPress={() => {
-                navigation.navigate('SignUp');
+                navigation.navigate(routes.LogIn);
               }}>
               SignIn
             </Text>
