@@ -13,51 +13,48 @@ const WelcomePage = ({navigation}) => {
         alignItems: 'center',
         backgroundColor: colors.white,
         height: '100%',
-        justifyContent:'space-evenly',
-        
-        
+        justifyContent: 'space-evenly',
       }}>
-       
+      <View style={{}}>
+        <Animatable.Image
+          style={styles.imgStyle}
+          animation="wobble"
+          duration={3500}
+          iterationCount="infinite"
+          source={require('../assets/logo2.png')}
+        />
+      </View>
       <View
         style={{
+          marginBottom: 40,
+          // backgroundColor:colors.blue,
+          width: '100%',
         }}>
-        <Animatable.Image style={styles.imgStyle}
-           animation="wobble"
-           duration={3500}
-           iterationCount="infinite"
-           source={require('../assets/logo2.png')} />
-      </View>
-      <View style={{
-        marginBottom:40,
-        // backgroundColor:colors.blue,
-        width:'100%'
-      }}>
         <Text
           style={{
             fontSize: 30,
-            color:colors.blue,
-            textAlign:'center',
-            margin:8
+            color: colors.blue,
+            textAlign: 'center',
+            margin: 8,
           }}>
           Welcome To Nile Buy App
         </Text>
 
-      <Text
-        style={{
-          fontSize: 16,
-          color:colors.lightBlue,
-          marginHorizontal:20
-        }}>
-         Happy to see you ,You must login to the Application to Enjoy
-        Our features ..
-      </Text>
+        <Text
+          style={{
+            fontSize: 16,
+            color: colors.lightBlue,
+            marginHorizontal: 20,
+          }}>
+          Happy to see you ,You must login to the Application to Enjoy Our
+          features ..
+        </Text>
       </View>
-        <View style={styles.btns}>
-
-      {/* <ThirdButton style={styles.btnStyle} title="SIGNUP" /> */}
-      <SecondryButton style={styles.btnStyle} title="SIGNUP"  />
-      <SecondryButton  style={styles.btnStyle} title="LOGIN"  />
-        </View>
+      <View style={styles.btns}>
+        {/* <ThirdButton style={styles.btnStyle} title="SIGNUP" /> */}
+        <SecondryButton style={styles.btnStyle} title="SIGNUP" />
+        <SecondryButton style={styles.btnStyle} title="LOGIN" />
+      </View>
     </SafeAreaView>
   );
 };
@@ -68,18 +65,16 @@ const styles = StyleSheet.create({
     width: 250,
     height: 250,
   },
-  btns:{
-    width:'100%',
-     flexDirection:'row',
+  btns: {
+    width: '100%',
+    flexDirection: 'row',
     justifyContent: 'space-evenly',
-
   },
   btnStyle: {
     width: 170,
     height: 50,
     alignItems: 'center',
     justifyContent: 'center',
-
   },
 });
 
