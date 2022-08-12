@@ -26,11 +26,12 @@ const WelcomePage = ({navigation}) => {
         />
       </View>
       <View
+       
         style={{
-          marginBottom: 40,
-          // backgroundColor:colors.blue,
-          width: '100%',
-        }}>
+            marginBottom:  40,
+            // backgroundColor:colors.blue,
+            width:  '100%',,
+          }}>
         <Text
           style={{
             fontSize: 30,

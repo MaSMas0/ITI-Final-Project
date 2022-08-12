@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Modal,
   SafeAreaView,
@@ -11,11 +11,13 @@ import {
 } from 'react-native';
 import {RadioButton} from 'react-native-paper';
 import colors from '../config/colors';
-
+import routes from '../navigation/routes';
 import SecondryButton from '../components/SecondryButton';
 import {useDispatch, useSelector} from 'react-redux';
 import {savePaymentMethod} from '../actions/CartActions';
-import routes from '../navigation/routes';
+import {createOrder, getOrderDetails} from '../actions/OrderActions';
+import {orderCreateReset} from '../store/reducers/Order/OrderSlice';
+
 const Payment = ({navigation}) => {
   const {loading, error, userInfo} = useSelector(state => state.userLogin);
   const cart = useSelector(state => state.cart);
@@ -23,16 +25,14 @@ const Payment = ({navigation}) => {
     cartItems,
     paymentMethod,
     itemsPrice,
+    shippingAddress,
     shippingPrice,
     taxPrice,
     totalPrice,
   } = cart;
-  console.log(cartItems);
-  console.log(itemsPrice);
-  console.log(paymentMethod);
-  console.log(shippingPrice);
-  console.log(taxPrice);
-  console.log(totalPrice);
+  console.log(shippingAddress);
+  const orderCreate = useSelector(state => state.orderCreate);
+  const {order, success, error} = orderCreate;
   const [checked, setChecked] = useState('Debit or Credit Card');
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
@@ -40,12 +40,36 @@ const Payment = ({navigation}) => {
     setShow(true);
     dispatch(savePaymentMethod(checked));
   };
-
   useEffect(() => {
     if (!userInfo) {
       navigation.navigate(routes.WelcomeScreen);
     }
   }, [userInfo]);
+  const orderDetails = useSelector(state => state.orderDetails);
+  const orderDetail = orderDetails.order;
+  console.log(orderDetail);
+  useEffect(() => {
+    if (success) {
+      dispatch(orderCreateReset());
+      navigation.navigate('OrderDetails', order);
+    }
+  }, [dispatch, navigation, order, orderDetail, success]);
+  const placeOrderHandler = () => {
+    dispatch(
+      createOrder({
+        orderItems: cartItems,
+        shippingAddress,
+        paymentMethod,
+        itemsPrice,
+        shippingPrice,
+        taxPrice,
+        totalPrice,
+      }),
+    );
+  };
+  // console.log(order);
+  // console.log(success);
+  // console.log(error);
   return (
     <ScrollView>
       <View>
@@ -179,7 +203,7 @@ const Payment = ({navigation}) => {
               <Text style={styles.blackText}>$ {totalPrice} </Text>
               <TouchableOpacity
                 style={styles.orderStyle}
-                onPress={() => navigation.navigate('OrderDetails')}>
+                onPress={placeOrderHandler}>
                 <Text style={styles.orderText}>Place Order</Text>
               </TouchableOpacity>
               <TouchableOpacity

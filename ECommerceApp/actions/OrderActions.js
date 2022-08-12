@@ -44,7 +44,6 @@ export const createOrder = order => async (dispatch, getState) => {
     );
     dispatch(orderCreateSuccess(data));
     dispatch(cartClearItems(data));
-    await AsyncStorage.removeItem('cartItems');
   } catch (error) {
     const message =
       error.response && error.response.data.message
