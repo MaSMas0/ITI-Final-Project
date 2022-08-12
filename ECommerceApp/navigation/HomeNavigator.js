@@ -14,6 +14,7 @@ import OrderDetails from '../screens/OrderDetails';
 import NewAddress from '../screens/NewAddress';
 import SignIn from '../screens/SignIn';
 import SignUp from '../screens/SignUp';
+import MainOrderDetails from '../screens/MainOrderDetails';
 
 function HomeNavigator({navigation}) {
   const Stack = createNativeStackNavigator();
@@ -87,7 +88,7 @@ function HomeNavigator({navigation}) {
       />
       <Stack.Screen
         name={routes.PlaceOrder}
-        component={OrderDetails}
+        component={MainOrderDetails}
         options={
           {
             // headerTitle: props => <Header title={'ProductDetails'} {...props} />,
