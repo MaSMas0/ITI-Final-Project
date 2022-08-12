@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderWidth: 1,
     borderColor: colors.lightGrey,
+  },
   name: {
     width: 70,
     textAlign: 'center',

@@ -2,6 +2,7 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import SignIn from '../screens/SignIn';
 import SignUp from '../screens/SignUp';
+import WelcomePage from '../screens/WelcomePage';
 import ProfileNavigator from './ProfileNavigator';
 import routes from './routes';
 
@@ -9,6 +10,11 @@ const Stack = createNativeStackNavigator();
 
 const AuthNavigator = () => (
   <Stack.Navigator>
+    <Stack.Screen
+      name={routes.WelcomeScreen}
+      component={WelcomePage}
+      options={{headerShown: false}}
+    />
     <Stack.Screen
       name={routes.LogIn}
       component={SignIn}

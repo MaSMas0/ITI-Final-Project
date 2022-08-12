@@ -137,6 +137,7 @@ function SearchScreen({navigation}) {
               nestedScrollEnabled
               numColumns={2}
               data={product}
+              keyExtractor={item => item._id}
               renderItem={({item, index}) => {
                 return (
                   <Card
