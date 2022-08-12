@@ -204,7 +204,11 @@ const SignUp = ({navigation}) => {
           </TouchableWithoutFeedback>
           {error && <ErrorText ErrorText={error} />}
         </View>
-        <PrimaryButton title="Sign Up" onPress={handleSubmit(onSubmit)} />
+        <PrimaryButton
+          title="Sign Up"
+          loading={loading}
+          onPress={handleSubmit(onSubmit)}
+        />
         {error && <ErrorText ErrorText={error} />}
       </View>
     </ScrollView>
@@ -234,11 +238,11 @@ const styles = StyleSheet.create({
   signup: {
     fontWeight: 'bold',
 
-    fontSize: 40,
+    fontSize: 35,
     color: colors.blue,
   },
   text: {
-    fontSize: 30,
+    fontSize: 28,
     color: colors.blue,
   },
   signUp: {

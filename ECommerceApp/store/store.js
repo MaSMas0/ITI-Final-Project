@@ -21,12 +21,14 @@ import {
 import {combineReducers} from 'redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import WishlistReducer from './reducers/WishList/WishlistSlice';
+import topProductsReducer from './reducers/Products/topProductsSlice';
 
 const rootReducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   cart: cartReducer,
   products: productsSlice,
+  topProducts: topProductsReducer,
   orderCreate: orderCreateReducer,
   orderDetails: orderDetailsReducer,
   orderPay: orderPayReducer,

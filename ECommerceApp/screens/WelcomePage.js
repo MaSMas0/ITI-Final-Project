@@ -6,12 +6,12 @@ import * as Animatable from 'react-native-animatable';
 
 import colors from '../config/colors';
 
-const WelcomePage = () => {
+const WelcomePage = ({navigation}) => {
   return (
     <SafeAreaView
       style={{
         alignItems: 'center',
-        backgroundColor: colors.lightBlue,
+        backgroundColor: colors.white,
         height: '100%',
         justifyContent:'space-evenly',
         
@@ -23,17 +23,19 @@ const WelcomePage = () => {
         }}>
         <Animatable.Image style={styles.imgStyle}
            animation="wobble"
-           duration={4000}
+           duration={3500}
            iterationCount="infinite"
-           source={require('../assets/logo.png')} />
+           source={require('../assets/logo2.png')} />
       </View>
       <View style={{
-        marginBottom:40
+        marginBottom:40,
+        // backgroundColor:colors.blue,
+        width:'100%'
       }}>
         <Text
           style={{
             fontSize: 30,
-            color:colors.white,
+            color:colors.blue,
             textAlign:'center',
             margin:8
           }}>
@@ -43,8 +45,8 @@ const WelcomePage = () => {
       <Text
         style={{
           fontSize: 16,
-          color:'#eee',
-          margin:8
+          color:colors.lightBlue,
+          marginHorizontal:20
         }}>
          Happy to see you ,You must login to the Application to Enjoy
         Our features ..
@@ -52,8 +54,9 @@ const WelcomePage = () => {
       </View>
         <View style={styles.btns}>
 
-      <ThirdButton style={styles.btnStyle} title="SIGNUP" />
-      <SecondryButton style={styles.btnStyle} title="LOGIN" />
+      {/* <ThirdButton style={styles.btnStyle} title="SIGNUP" /> */}
+      <SecondryButton style={styles.btnStyle} title="SIGNUP"  />
+      <SecondryButton  style={styles.btnStyle} title="LOGIN"  />
         </View>
     </SafeAreaView>
   );

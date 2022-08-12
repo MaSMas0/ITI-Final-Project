@@ -4,7 +4,6 @@ import {NavigationContainer} from '@react-navigation/native';
 import 'react-native-gesture-handler';
 import AuthNavigator from './navigation/AuthNavigator';
 import AppNavigator from './navigation/AppNavigator';
-import navigationTheme from './navigation/navigationTheme';
 import WishList from './screens/WishList';
 import Cart from './screens/Cart';
 import SettingProfile from './screens/SettingProfile';
@@ -25,11 +24,12 @@ const App = () => {
       <StatusBar backgroundColor="white" barStyle="dark-content" />
       {/* <OrderDetails /> */}
       {/* <MainOrderDetails /> */}
-
+     <AppNavigator />
       {/* <OrderList /> */}
       {/* <Profile /> */}
       {/* <AuthNavigator /> */}
-      <WelcomeNav />
+      {/* <WelcomeNav /> */}
+      {/* <WelcomePage /> */}
       {/* <Payment /> */}
       {/* <Drawerheader /> */}
       {/* <MoreOrderItemDetails /> */}

@@ -93,6 +93,9 @@ const ProductDetails = ({route, navigation}) => {
             <View style={style.downContainer}>
               {ProductInCart && quantity !== 0 ? (
                 <View style={style.subDownContainer}>
+                  <View style={{flexDirection:'row'}}>
+
+
                   <TouchableOpacity onPress={handleDecrement}>
                     <View style={style.decreContainer}>
                       <Text style={style.decreBtn}>-</Text>
@@ -110,6 +113,17 @@ const ProductDetails = ({route, navigation}) => {
                       <Text style={style.increBtn}>+</Text>
                     </LinearGradient>
                   </TouchableOpacity>
+                  </View> 
+
+                   <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
+              <LinearGradient
+                start={{x: 1, y: 0}}
+                end={{x: 0, y: 0}}
+                colors={['#030A4E', '#22336a']}
+                style={style.buyBtn}>
+                <Text style={style.buyText}>CHECK THE CART</Text>
+              </LinearGradient>
+            </TouchableOpacity>
                 </View>
               ) : ProductInCart && quantity == 0 ? (
                 <View style={style.buyBtn}>
@@ -136,19 +150,8 @@ const ProductDetails = ({route, navigation}) => {
                   </TouchableOpacity>
                 </View>
               ) : (
-                <View style={style.buyBtn}>
-                  {/* <SecondryButton
-                    onPress={addToCartHandler}
-                    title="ADD TO CART"
-                    colors={colors.blue}
-                    style={{
-                      width: 300,
-                      height: 40,
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      borderRadius: 30,
-                    }}
-                  /> */}
+                <View style={style.buyBtnContainer}>
+                
                   <TouchableOpacity onPress={addToCartHandler}>
                     <LinearGradient
                       start={{x: 1, y: 0}}
@@ -160,8 +163,20 @@ const ProductDetails = ({route, navigation}) => {
                   </TouchableOpacity>
                 </View>
               )}
+                {/* <SecondryButton
+                    onPress={addToCartHandler}
+                    title="ADD TO CART"
+                    colors={colors.blue}
+                    style={{
+                      width: 300,
+                      height: 40,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      borderRadius: 30,
+                    }}
+                  /> */}
             </View>
-            <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
+            {/* <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
               <LinearGradient
                 start={{x: 1, y: 0}}
                 end={{x: 0, y: 0}}
@@ -169,7 +184,7 @@ const ProductDetails = ({route, navigation}) => {
                 style={style.buyBtn}>
                 <Text style={style.buyText}>CHECK THE CART</Text>
               </LinearGradient>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
         </View>
       </SafeAreaView>
@@ -182,6 +197,8 @@ const style = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white,
     height: '100%',
+    // justifyContent:'space-evenly',
+    // alignItems:'center'
   },
   imgStyle: {
     resizeMode: 'contain',
@@ -249,7 +266,7 @@ const style = StyleSheet.create({
     alignItems: 'center',
     width: 35,
     height: 35,
-    backgroundColor: colors.lightGrey,
+    backgroundColor: "#eee",
   },
   decreBtn: {
     fontWeight: 'bold',
@@ -291,7 +308,7 @@ const style = StyleSheet.create({
     color: colors.white,
     fontWeight: 'bold',
     fontSize: 16,
-    color: 'red',
+    color: colors.blue,
   },
   downContainer: {
     marginTop: 20,
@@ -299,7 +316,7 @@ const style = StyleSheet.create({
     justifyContent: 'space-between',
   },
   subDownContainer: {
-    flexDirection: 'row',
+    // flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     // alignSelf: 'center',
@@ -307,6 +324,11 @@ const style = StyleSheet.create({
     marginBottom: 10,
   },
   pageBgColor: {backgroundColor: colors.white},
+  buyBtnContainer:{
+    width:'100%',
+    justifyContent:'center',
+    alignItems:'center'
+  }
 });
 
 export default ProductDetails;
