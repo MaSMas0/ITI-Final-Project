@@ -47,11 +47,11 @@ const Payment = ({navigation}) => {
   }, [navigation, userInfo]);
   const orderDetails = useSelector(state => state.orderDetails);
   const orderDetail = orderDetails.order;
-  console.log(orderDetail);
+  console.log(order);
   useEffect(() => {
     if (success) {
-      dispatch(orderCreateReset());
       navigation.navigate('OrderDetails', order);
+      dispatch(orderCreateReset());
     }
   }, [dispatch, navigation, order, orderDetail, success]);
   const placeOrderHandler = () => {
