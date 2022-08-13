@@ -43,18 +43,18 @@ const ProductDetails = ({route, navigation}) => {
   //   }, deps);
   // };
   // dispatch(addToCart(item._id, quantity));
-  // const didMount = useRef(false);
+  const didMount = useRef(false);
   const countInStock = item.countInStock;
-  // console.log(cartItems);
-  // console.log(didMount.current);
-  // console.log(quantity);
-  // useEffect(() => {
-  //   if (didMount.current) {
-  //     dispatch(addToCart(item._id, quantity));
-  //   } else {
-  //     didMount.current = true;
-  //   }
-  // }, [dispatch, item._id, quantity]);
+  console.log(cartItems);
+  console.log(didMount.current);
+  console.log(quantity);
+  useEffect(() => {
+    if (didMount.current) {
+      dispatch(addToCart(item._id, quantity));
+    } else {
+      didMount.current = true;
+    }
+  }, [dispatch, item._id, quantity]);
   const handleIncrement = () => {
     if (quantity < countInStock) {
       setQuantity(quantity + 1);
