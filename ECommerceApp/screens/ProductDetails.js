@@ -21,6 +21,9 @@ const ProductDetails = ({route, navigation}) => {
   const {item} = route.params;
   console.log(route);
   const cartItems = useSelector(state => state.cart.cartItems);
+  // if (cartItems) {
+  //   console.log(cartItems[0])
+  // }
   const [quantity, setQuantity] = useState(0);
   const ProductInCart =
     cartItems.length !== 0
@@ -43,18 +46,24 @@ const ProductDetails = ({route, navigation}) => {
   //   }, deps);
   // };
   // dispatch(addToCart(item._id, quantity));
-  // const didMount = useRef(false);
+  const didMount = useRef(false);
   const countInStock = item.countInStock;
-  // console.log(cartItems);
-  // console.log(didMount.current);
-  // console.log(quantity);
+  console.log(cartItems);
+  console.log(didMount.current);
+  console.log(quantity);
   // useEffect(() => {
-  //   if (didMount.current) {
-  //     dispatch(addToCart(item._id, quantity));
-  //   } else {
-  //     didMount.current = true;
+  //   console.log(cartItems[0].qty);
+  //   if (cartItems[0].qty) {
+  //     setQuantity(cartItems[0].qty);
   //   }
-  // }, [dispatch, item._id, quantity]);
+  // }, []);
+  useEffect(() => {
+    if (didMount.current) {
+      dispatch(addToCart(item._id, quantity));
+    } else {
+      didMount.current = true;
+    }
+  }, [dispatch, item._id, quantity]);
   const handleIncrement = () => {
     if (quantity < countInStock) {
       setQuantity(quantity + 1);
