@@ -52,7 +52,7 @@ const DrawerNavigator = ({navigation}) => {
           ),
         }}
       />
-      <Drawer.Screen
+      {/* <Drawer.Screen
         name={routes.Address}
         component={AddressNavigator}
         options={{
@@ -61,7 +61,7 @@ const DrawerNavigator = ({navigation}) => {
             <EvilIcons name="location" size={size} color={color} />
           ),
         }}
-      />
+      /> */}
 
       <Drawer.Screen
         name={routes.Currency}
