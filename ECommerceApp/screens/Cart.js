@@ -53,8 +53,8 @@ const Cart = ({navigation}) => {
       ) : (
         <ScrollView>
           {cartLists.map(item => (
-            <View key={item._id}>
-              <CartCard item={item} />
+            <View>
+              <CartCard item={item} key={item._id} />
             </View>
           ))}
 
