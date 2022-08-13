@@ -9,19 +9,19 @@ import ProductInOrderCard from '../components/ProductInOrderCard';
 const MainOrderDetails = ({route}) => {
   const {userInfo} = useSelector(state => state.userLogin);
   const dispatch = useDispatch();
-  useEffect(() => {
-    if (route.params.item != undefined) {
-      dispatch(getOrderDetails(route.params.item._id));
-    } else {
-      dispatch(getOrderDetails(route.params._id));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch]);
+  // useEffect(() => {
+  //   if (route.params.item != undefined) {
+  //     dispatch(getOrderDetails(route.params.item._id));
+  //   } else {
+  //     dispatch(getOrderDetails(route.params._id));
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [dispatch]);
 
-  const orderDetail = useSelector(state => state.orderDetails.order);
+  // const orderDetail = useSelector(state => state.orderDetails.order);
   // console.log(order);
   // console.log(route.params);
-  const order = orderDetail;
+  const order = route.params.item ? route.params.item : route.params;
   console.log(order);
   return (
     <ScrollView style={{}}>
@@ -87,7 +87,14 @@ const MainOrderDetails = ({route}) => {
           <Text style={styles.line}></Text>
           <Text style={styles.head2}>Payment Details</Text>
           <Text style={styles.head3}>
-            Items Totals : <Text style={styles.head4}>{order.itemsPrice}</Text>
+            Items Totals :{' '}
+            <Text style={styles.head4}>
+              {(
+                order.totalPrice -
+                order.taxPrice -
+                order.shippingPrice
+              ).toFixed(2)}
+            </Text>
           </Text>
           <Text style={styles.head3}>
             Shipping Fees :{' '}

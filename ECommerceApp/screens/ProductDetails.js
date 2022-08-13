@@ -8,7 +8,7 @@ import {
   ScrollView,
   Alert,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {Rating} from 'react-native-ratings';
 import colors from '../config/colors';
 import LinearGradient from 'react-native-linear-gradient';
@@ -19,37 +19,65 @@ import SecondryButton from '../components/SecondryButton';
 
 const ProductDetails = ({route, navigation}) => {
   const {item} = route.params;
+  console.log(route);
   const cartItems = useSelector(state => state.cart.cartItems);
+  const [quantity, setQuantity] = useState(0);
   const ProductInCart =
     cartItems.length !== 0
-      ? cartItems.filter(product => product.product == item._id)[0]
+      ? cartItems.filter(ci => ci.product === item._id)[0]
       : null;
-  let quantity =
-    cartItems.length !== 0
-      ? cartItems.filter(product => product.product == item._id)[0].qty
-      : 1;
-  const countInStock =
-    cartItems.length !== 0
-      ? cartItems.filter(product => product.product == item._id)[0].countInStock
-      : 0;
+  // let quantity =
+  // let quantity = 0;
+  //   cartItems.length !== 0
+  //     ? cartItems.filter(ci => ci.product === item._id)[0].qty
+  //     : 1;
+  // const useDidMountEffect = (func, deps) => {
+  //   const didMount = useRef(false);
+
+  //   useEffect(() => {
+  //     if (didMount.current) {
+  //       func();
+  //     } else {
+  //       didMount.current = true;
+  //     }
+  //   }, deps);
+  // };
+  // dispatch(addToCart(item._id, quantity));
+  // const didMount = useRef(false);
+  const countInStock = item.countInStock;
+  // console.log(cartItems);
+  // console.log(didMount.current);
+  // console.log(quantity);
+  // useEffect(() => {
+  //   if (didMount.current) {
+  //     dispatch(addToCart(item._id, quantity));
+  //   } else {
+  //     didMount.current = true;
+  //   }
+  // }, [dispatch, item._id, quantity]);
   const handleIncrement = () => {
     if (quantity < countInStock) {
-      quantity++;
+      setQuantity(quantity + 1);
       dispatch(addToCart(item._id, quantity));
     }
   };
   const handleDecrement = () => {
     if (quantity > 0) {
-      quantity--;
+      setQuantity(quantity - 1);
       dispatch(addToCart(item._id, quantity));
     }
   };
   const addToCartHandler = () => {
-    dispatch(addToCart(item._id, 1));
+    // setQuantity(quantity + 1);
+    setQuantity(quantity + 1);
+    dispatch(addToCart(item._id, quantity));
+    // console.log(quantity);
+    // dispatch(addToCart(item._id, 1));
   };
   const removeFromCartHandler = () => {
     dispatch(removeFromCart(item._id));
   };
+  // console.log(quantity);
 
   const dispatch = useDispatch();
 
@@ -93,37 +121,35 @@ const ProductDetails = ({route, navigation}) => {
             <View style={style.downContainer}>
               {ProductInCart && quantity !== 0 ? (
                 <View style={style.subDownContainer}>
-                  <View style={{flexDirection:'row'}}>
+                  <View style={{flexDirection: 'row'}}>
+                    <TouchableOpacity onPress={handleDecrement}>
+                      <View style={style.decreContainer}>
+                        <Text style={style.decreBtn}>-</Text>
+                      </View>
+                    </TouchableOpacity>
+                    <Text style={style.prodNo}>{quantity}</Text>
+                    <TouchableOpacity
+                      onPress={handleIncrement}
+                      disabled={quantity == countInStock}>
+                      <LinearGradient
+                        start={{x: 1, y: 0}}
+                        end={{x: 0, y: 0}}
+                        colors={['#030A4E', '#22336a']}
+                        style={style.increContainer}>
+                        <Text style={style.increBtn}>+</Text>
+                      </LinearGradient>
+                    </TouchableOpacity>
+                  </View>
 
-
-                  <TouchableOpacity onPress={handleDecrement}>
-                    <View style={style.decreContainer}>
-                      <Text style={style.decreBtn}>-</Text>
-                    </View>
-                  </TouchableOpacity>
-                  <Text style={style.prodNo}>{quantity}</Text>
-                  <TouchableOpacity
-                    onPress={handleIncrement}
-                    disabled={quantity == countInStock}>
+                  <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
                     <LinearGradient
                       start={{x: 1, y: 0}}
                       end={{x: 0, y: 0}}
                       colors={['#030A4E', '#22336a']}
-                      style={style.increContainer}>
-                      <Text style={style.increBtn}>+</Text>
+                      style={style.buyBtn}>
+                      <Text style={style.buyText}>CHECK THE CART</Text>
                     </LinearGradient>
                   </TouchableOpacity>
-                  </View> 
-
-                   <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
-              <LinearGradient
-                start={{x: 1, y: 0}}
-                end={{x: 0, y: 0}}
-                colors={['#030A4E', '#22336a']}
-                style={style.buyBtn}>
-                <Text style={style.buyText}>CHECK THE CART</Text>
-              </LinearGradient>
-            </TouchableOpacity>
                 </View>
               ) : ProductInCart && quantity == 0 ? (
                 <View style={style.buyBtn}>
@@ -151,7 +177,6 @@ const ProductDetails = ({route, navigation}) => {
                 </View>
               ) : (
                 <View style={style.buyBtnContainer}>
-                
                   <TouchableOpacity onPress={addToCartHandler}>
                     <LinearGradient
                       start={{x: 1, y: 0}}
@@ -163,7 +188,7 @@ const ProductDetails = ({route, navigation}) => {
                   </TouchableOpacity>
                 </View>
               )}
-                {/* <SecondryButton
+              {/* <SecondryButton
                     onPress={addToCartHandler}
                     title="ADD TO CART"
                     colors={colors.blue}
@@ -266,7 +291,7 @@ const style = StyleSheet.create({
     alignItems: 'center',
     width: 35,
     height: 35,
-    backgroundColor: "#eee",
+    backgroundColor: '#eee',
   },
   decreBtn: {
     fontWeight: 'bold',
@@ -305,7 +330,7 @@ const style = StyleSheet.create({
   priceText: {
     marginLeft: 20,
     marginTop: 10,
-    color: colors.white,
+    // color: colors.white,
     fontWeight: 'bold',
     fontSize: 16,
     color: colors.blue,
@@ -324,11 +349,11 @@ const style = StyleSheet.create({
     marginBottom: 10,
   },
   pageBgColor: {backgroundColor: colors.white},
-  buyBtnContainer:{
-    width:'100%',
-    justifyContent:'center',
-    alignItems:'center'
-  }
+  buyBtnContainer: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
 export default ProductDetails;

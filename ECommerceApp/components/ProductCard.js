@@ -24,12 +24,12 @@ const Card = ({product, onPress}) => {
     cartItems.length !== 0
       ? cartItems.filter(selected => selected.product == product._id)[0]
       : null;
-  const addToCartHandler = () => {
-    dispatch(addToCart(product._id, 1));
-  };
-  const removeFromCartHandler = () => {
-    dispatch(removeFromCart(product._id));
-  };
+  // const addToCartHandler = () => {
+  //   dispatch(addToCart(product._id, 1));
+  // };
+  // const removeFromCartHandler = () => {
+  //   dispatch(removeFromCart(product._id));
+  // };
   return (
     <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
       <View style={styles.card}>
@@ -55,23 +55,22 @@ const Card = ({product, onPress}) => {
         <Text style={{fontSize: 12}}>
           Eligable for <Text style={styles.freeDelvStyle}>Free Delivery</Text>
         </Text>
-        {!ProductInCart ? (
+        {/* {!ProductInCart ? (
           <SecondryButton
             onPress={addToCartHandler}
             title="ADD TO CART"
             colors={colors.blue}
-            
           />
         ) : (
           <SecondryButton
             onPress={removeFromCartHandler}
             style={{
-              color:colors.blue
+              color: colors.blue,
             }}
             title="REMOVE FROM CART"
             colors={colors.medium}
-                      />
-        )}
+          />
+        )} */}
       </View>
     </TouchableOpacity>
   );
