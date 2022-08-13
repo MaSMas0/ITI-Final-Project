@@ -15,6 +15,7 @@ import SignIn from '../screens/SignIn';
 import SignUp from '../screens/SignUp';
 import WelcomePage from '../screens/WelcomePage';
 import MainOrderDetails from '../screens/MainOrderDetails';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 function HomeNavigator({navigation}) {
   const Stack = createNativeStackNavigator();
@@ -95,11 +96,17 @@ function HomeNavigator({navigation}) {
       <Stack.Screen
         name={routes.PlaceOrder}
         component={MainOrderDetails}
-        options={
-          {
-            // headerTitle: props => <Header title={'ProductDetails'} {...props} />,
-          }
-        }
+        options={{
+          headerLeft: () => (
+            <AntDesign
+              name="arrowleft"
+              size={25}
+              onPress={() => {
+                navigation.replace(routes.AppScreen);
+              }}
+            />
+          ),
+        }}
       />
       <Stack.Screen
         name={routes.Products}

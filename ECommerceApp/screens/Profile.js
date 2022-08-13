@@ -51,7 +51,10 @@ function Settings({navigation}) {
             {/* 
             <Text style={styles.email}>salem</Text> */}
           </View>
-          <Text style={styles.welcomephrase}>It's Good to see you Again !</Text>
+          <Text style={styles.welcomephrase}>
+            It's Good to see you Again ,{' '}
+            <Text style={styles.username}>{userInfo.name}</Text>
+          </Text>
         </View>
       </View>
       <NavigationContainer independent={true}>
@@ -86,7 +89,9 @@ const styles = StyleSheet.create({
     fontSize: 22,
   },
   welcomephrase: {
-    fontSize: 15,
+    fontSize: 17,
+    color: colors.medium,
+    fontWeight: '500',
   },
 
   // email: {
@@ -98,6 +103,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // justifyContent: 'space-between',
     // marginTop: 30,
+  },
+  username: {
+    fontWeight: 'bold',
+    color: colors.lightBlue,
   },
 });
 
