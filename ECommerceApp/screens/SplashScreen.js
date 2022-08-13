@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Dimensions,
   Animated,
+  StatusBar,
 } from 'react-native';
 import routes from '../navigation/routes';
 
@@ -42,6 +43,7 @@ const SplashScreen = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar backgroundColor="#110034" barStyle="light-content" />
       <View style={styles.contentContainer}>
         <Animated.Image
           style={[styles.image, {opacity: fadeAnim}]}
