@@ -3,6 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import SplashScreen from '../screens/SplashScreen';
 import AppNavigator from './AppNavigator';
 import routes from './routes';
+import {StatusBar} from 'react-native';
 const Stack = createNativeStackNavigator();
 
 const WelcomeNav = () => (
