@@ -21,17 +21,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <StatusBar backgroundColor="white" barStyle="dark-content" />
-      {/* <OrderDetails /> */}
-      {/* <MainOrderDetails /> */}
-      <AppNavigator />
-      {/* <OrderList /> */}
-      {/* <Profile /> */}
-      {/* <AuthNavigator /> */}
-      {/* <WelcomeNav /> */}
-      {/* <WelcomePage /> */}
-      {/* <Payment /> */}
-      {/* <Drawerheader /> */}
-      {/* <MoreOrderItemDetails /> */}
+      <WelcomeNav />
     </NavigationContainer>
   );
 };

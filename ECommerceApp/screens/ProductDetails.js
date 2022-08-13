@@ -51,12 +51,6 @@ const ProductDetails = ({route, navigation}) => {
   console.log(cartItems);
   console.log(didMount.current);
   console.log(quantity);
-  // useEffect(() => {
-  //   console.log(cartItems[0].qty);
-  //   if (cartItems[0].qty) {
-  //     setQuantity(cartItems[0].qty);
-  //   }
-  // }, []);
   useEffect(() => {
     if (didMount.current) {
       dispatch(addToCart(item._id, quantity));
